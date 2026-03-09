@@ -1,0 +1,2508 @@
+\documentclass{beamer}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{bm}
+\usepackage[utf8]{inputenc}
+%\usepackage{listings}
+\usepackage{minted}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{stmaryrd}
+\usepackage{mathrsfs}
+\usepackage{multimedia}
+
+\usepackage{algorithm}
+\usepackage{algorithmic}
+%\usepackage{verbatim}
+
+% \lstloadlanguages{C}
+% \lstset{language=C}
+% columns=flexible, basicstyle=\footnotesize\sffamily, keywordstyle=\color{motcle}\bfseries,identifierstyle=\color{ocre}\itshape,stringstyle=\color{blue},commentstyle=\color{vert}}
+
+
+% \lstset{basicstyle=\footnotesize}
+
+\setminted[python]{
+  style=vs,
+  fontsize=\footnotesize,
+  frame=single,
+  breaklines=true,
+  linenos=false
+}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}{}
+
+
+\title{Machine Learning for Business}
+\author{ Thibault Defourneau \\ defourneau.thibault@gmail.com }
+
+
+\begin{document}
+\begin{frame}\maketitle\end{frame}
+
+
+\begin{frame}{Key Points of the Course}
+
+\textbf{Objective}
+
+\begin{itemize}
+    \item Understand the core principles of Machine Learning
+    \item Connect theory to real business decision-making
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Learning Outcomes}
+
+\begin{itemize}
+    \item Select appropriate models depending on the problem
+    \item Interpret results and evaluate performance
+    \item Understand limitations and trade-offs
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Assessment \& Practice}
+
+\begin{itemize}
+    \item Applied exercises throughout the course
+    \item Mid-term exam (March 10th)
+    \item Final group business project
+\end{itemize}
+
+\end{frame}
+
+
+% =====================================================
+
+\begin{frame}
+\frametitle{Course Roadmap — Machine Learning for Business}
+
+\tableofcontents
+\end{frame}
+
+% =====================================================
+
+
+% =====================================================
+\section{Module 0 — Big Picture of Machine Learning}
+
+\begin{frame}{Module 0 — Big Picture}
+\begin{itemize}
+    \item What is Machine Learning?
+    \item Supervised vs Unsupervised Learning
+    \item From Data to Decision-Making
+\end{itemize}
+\end{frame}
+
+\begin{frame}{What is Machine Learning?}
+\textbf{Definition:} Machine Learning (ML) enables algorithms to learn patterns and tasks directly from data without being explicitly programmed.
+
+\vspace{0.5cm}
+
+\textbf{Key Points:}
+\begin{itemize}
+    \item ML lies at the intersection of \textbf{Mathematics} and \textbf{Computer Science}.
+    \item A \textbf{Machine Learning Model} automates repetitive tasks.
+    \item An \textbf{AI Agent} goes further: it takes decisions and actions based on triggers and observations.
+    \item Two main strategies to teach a Machine Learning Model:
+    \begin{itemize}
+        \item \textit{Supervised Learning}: The model is guided using labeled data points $(x_i, y_i)$.
+        \item \textit{Unsupervised Learning}: The model discovers structure or patterns in unlabeled data $(x_i)$.
+    \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Supervised Learning}
+\textbf{Setup:} We have input-output pairs:
+
+\[
+(x_i, y_i), \quad i=1,\dots,n
+\]
+
+\textbf{Goal:} Learn a function $f(x)$ that predicts $y$ accurately.
+
+\vspace{0.5cm}
+
+\textbf{Two main types:}
+\begin{itemize}
+    \item \textit{Regression:} Predict a continuous outcome (e.g., house prices, sales forecast)
+    \item \textit{Classification:} Predict a categorical outcome (e.g., loan default, churn yes/no)
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Business Example:}  
+A bank wants to predict whether a new applicant will default (classification) or estimate the expected loan amount (regression).
+\end{frame}
+
+\begin{frame}{Unsupervised Learning}
+\textbf{Goal:} Discover structure in unlabeled data.
+
+\vspace{0.5cm}
+
+We observe only features:
+
+\[
+x_i, \quad i=1,\dots,n
+\]
+
+No target $y$ is available.
+
+\vspace{0.5cm}
+
+\textbf{Common Tasks:}
+\begin{itemize}
+    \item \textit{Clustering}: Group similar data points (e.g., customer segmentation)
+    \item \textit{Dimensionality Reduction}: Summarize data with fewer variables (e.g., PCA for marketing analytics)
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Business Example:}  
+A retail company wants to identify customer segments based on purchase behavior to design targeted marketing campaigns.
+\end{frame}
+
+\begin{frame}{Data-Driven Approach}
+\textbf{Idea:} Use data to drive business decisions instead of intuition alone.
+
+\vspace{0.5cm}
+
+\textbf{Steps:}
+\begin{enumerate}
+    \item Collect and clean relevant data
+    \item Explore and visualize patterns
+    \item Build predictive or descriptive models
+    \item Make decisions and take action
+    \item Monitor outcomes and iterate
+\end{enumerate}
+
+\vspace{0.5cm}
+
+\textbf{Business Example:}  
+A bank wants to optimize credit offers:
+\begin{itemize}
+    \item Analyze past customer data
+    \item Predict likelihood of accepting a new offer
+    \item Adjust campaigns dynamically
+\end{itemize}
+
+\end{frame}
+
+
+% =====================================================
+\section{Module 1 — Probability and Statistical Foundations}
+
+\begin{frame}{Module 1 — Probability Foundations}
+\begin{itemize}
+    \item Random Variables (Discrete and Continuous)
+    \item Probability Distributions
+    \item Expectation and Variance
+    \item Normal Distribution
+    \item Law of Large Numbers
+    \item Central Limit Theorem
+    \item Confidence Intervals
+    \item Bayes’ Theorem
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Why Probability in Business?}
+
+\textbf{Business Example: Loan Default}
+
+A bank evaluates loan applications.
+
+\begin{itemize}
+    \item 8\% of all customers default
+    \item 25\% of customers with low credit score default
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Question:}
+\begin{center}
+What is the probability that a new applicant will default?
+\end{center}
+
+\vspace{0.5cm}
+
+\textbf{Key Idea:} Business decisions are made under uncertainty.
+
+\end{frame}
+
+\begin{frame}{Discrete Random Variables}
+
+\textbf{Business Example: Online Shop}
+
+Let
+\[
+X = \text{Number of purchases per customer per month}
+\]
+
+Possible values:
+\[
+X \in \{0,1,2,3,\dots\}
+\]
+
+\vspace{0.5cm}
+
+\textbf{Definition:}
+
+A \textit{discrete} random variable is a function
+
+\[
+X : \Omega \rightarrow \mathbb{N}
+\]
+
+that assigns a numerical value to each outcome. An element $\omega \in \Omega$ is called an \textbf{observation} (here the behaviour of a customer).
+
+\end{frame}
+
+\begin{frame}{Example: Probability Distribution of Purchases}
+
+\textbf{Histogram for Discrete Distribution:}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{figures/module_1/purchase_distribution_figure.png}
+    \label{fig:purchase_distribution_example}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Discrete Probability Distribution}
+
+\textbf{Business Example: Purchase Behavior}
+
+\begin{center}
+\begin{tabular}{c|c}
+Purchases & Relative Frequency \\
+\hline
+0 & 0.4 \\
+1 & 0.3 \\
+2 & 0.2 \\
+3+ & 0.1
+\end{tabular}
+\end{center}
+
+\vspace{0.25cm}
+
+\textbf{Definition:}
+
+For a discrete random variable:
+
+\begin{align*}
+p(x) & = \mathbf{P}(X = x) = \mathbf{P}(\{\omega \in \Omega | X(\omega) = x\})\\
+& = \mathbf{P}(\{ \text{all customers that buy x times} \})
+\end{align*}
+
+with
+
+\[
+\sum_x p(x) = 1
+\]
+
+\end{frame}
+
+\begin{frame}{Relative Frequency}
+
+\textbf{From Data to Probability}
+
+In practice, probabilities are often estimated from observed data.
+
+\medskip
+
+If we observe $n$ customers and $n_x$ of them buy $x$ times, the \textbf{relative frequency} is
+
+\[
+f(x) = \frac{n_x}{n}
+\]
+
+\medskip
+
+As the number of observations increases,
+
+\[
+f(x) \rightarrow P(X=x)
+\]
+
+\textbf{Idea:} Relative frequencies approximate probabilities.
+
+\end{frame}
+
+\begin{frame}{Expectation of Discrete Probability Distribution}
+
+\textbf{Business Example: Average Purchases}
+
+\[
+\mathbb{E}[X] = \sum_x x \cdot \mathbf{P}(X=x)
+\]
+
+\[
+= 0(0.4) + 1(0.3) + 2(0.2) + 3(0.1) = 0.7
+\]
+
+\vspace{0.5cm}
+
+\textbf{Interpretation:}
+
+\begin{itemize}
+    \item The purchase average is nearly $1$
+    \item It is possible to estimate the expected revenue 
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Continuous Random Variables}
+
+\textbf{Business Example: Delivery Time}
+
+Let
+
+\[
+X = \text{Delivery time (in days)}
+\]
+
+\textbf{Possible values:}
+
+\[
+2.13, \; 3.47, \; 4.002, \; \dots
+\]
+
+\vspace{0.5cm}
+
+\textbf{Definition:}
+
+A \textit{continuous} random variable is a function
+
+\[
+X : \Omega \rightarrow \mathbb{R}
+\]
+
+that assigns a numerical value lying in the \textit{uncountable} set of real numbers to each observation.
+
+\end{frame}
+
+\begin{frame}{Example: Probability Density of Delivery Time}
+
+\textbf{Assumption:}
+The density function of delivery time follows an exponential distribution of parameter $\lambda=0.10$ (i.e. $f(x) = \lambda \, exp(-\lambda x)$ if $x \geq 0$, else $0$).
+
+\vspace{0.4cm}
+
+\textbf{Visualization of Probability:}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{figures/module_1/delivery_time_figure.png}
+    \label{fig:delivery_time_density_example}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Probability Density Function}
+
+\textbf{Definition:}
+A continuous random variable has a density $f(x)$ such that:
+
+\begin{itemize}
+    \item $f(x) \ge 0$
+    \item $\int_{-\infty}^{\infty} f(x)\, dx = 1$
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Probability of an interval:}
+
+\[
+\mathbf{P}(a \le X \le b)
+=
+\int_a^b f(x)\, dx
+\]
+
+\vspace{0.5cm}
+
+\textbf{For continuous variables:}
+
+\[
+\mathbf{P}(X = a) = 0
+\]
+
+\end{frame}
+
+\begin{frame}{Expectation of Probability Density Function}
+
+\textbf{Business Example: Delivery Time}
+
+\[
+\mathbb{E}[X] = \int_{-\infty}^{+\infty} x \, f(x) \, dx = \frac{1}{\lambda} = 10
+\]
+
+\vspace{0.5cm}
+
+\textbf{Business Interpretation:}
+
+\begin{itemize}
+    \item The average of delivery time is $10$ days
+    \item It is possible to estimate the delivery delay between two customers.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Variance and Risk}
+
+\textbf{Business Question:}
+
+Two segments have the same average revenue. Which one is riskier?
+
+\vspace{0.5cm}
+
+\textbf{Definition:}
+
+\[
+\mathrm{Var}(X) = \mathbb{E}[(X - \mathbb{E}[X])^2]
+\]
+
+\vspace{0.5cm}
+
+Variance measures variability and business risk. 
+
+\end{frame}
+
+\begin{frame}{Normal Distribution}
+
+\textbf{Definition:}
+
+A random variable $X$ follows a normal distribution if its density is:
+
+\[
+f(x) =
+\frac{1}{\sqrt{2\pi \sigma^2}}
+\exp\left(
+-\frac{(x-\mu)^2}{2\sigma^2}
+\right)
+\]
+
+\vspace{0.5cm}
+
+Notation:
+
+\[
+X \sim \mathcal{N}(\mu, \sigma^2)
+\]
+
+\textbf{Properties:}
+
+\begin{itemize}
+    \item $\mathbb{E}(X) = \mu$: mean
+    \item $\mathrm{Var}(X) = \sigma^2$: variance
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Normal Distribution Density}
+
+\textbf{Illustration:}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{figures/module_1/normal_distribution_figure.png}
+    \label{fig:normal_distribution_example}
+\end{figure}
+    
+\end{frame}
+
+\begin{frame}{Example: Normal Delivery Time}
+
+Assume delivery time follows:
+
+\[
+X \sim \mathcal{N}(3, 0.5^2)
+\]
+
+\vspace{0.5cm}
+
+\begin{itemize}
+    \item Mean = 3 days
+    \item Standard deviation = 0.5 days
+\end{itemize}
+
+\vspace{0.5cm}
+
+We can compute:
+
+\[
+\mathbf{P}(2.5 \le X \le 3.5)
+\]
+
+\end{frame}
+
+\begin{frame}{Interpretation of Parameters}
+
+\textbf{Mean $\mu$:}
+\begin{itemize}
+    \item Determines the center
+    \item Shifts the distribution
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Variance $\sigma^2$:}
+\begin{itemize}
+    \item Controls spread
+    \item Larger variance $\Rightarrow$ flatter curve
+    \item Smaller variance $\Rightarrow$ more concentrated
+\end{itemize}
+
+\vspace{0.5cm}
+
+The normal distribution is symmetric around $\mu$.
+
+\end{frame}
+
+\begin{frame}{The 68--95--99.7 Rule}
+
+\textbf{Empirical Rule for the Normal Distribution}
+
+If
+
+\[
+X \sim \mathcal{N}(\mu, \sigma^2)
+\]
+
+then approximately:
+
+\[
+\mathbf{P}(|X - \mu| \le \sigma) \approx 68\%
+\]
+
+\[
+\mathbf{P}(|X - \mu| \le 2\sigma) \approx 95\%
+\]
+
+\[
+\mathbf{P}(|X - \mu| \le 3\sigma) \approx 99.7\%
+\]
+
+\vspace{0.5cm}
+
+\textbf{Business Interpretation:}
+
+Standard deviation directly quantifies risk and uncertainty.
+
+\end{frame}
+
+\begin{frame}{Conditional Probability}
+
+\textbf{Business Example: Online Advertising}
+
+\[
+\mathbf{P}(\text{Buy} \mid \text{Click})
+\]
+
+\vspace{0.5cm}
+
+\textbf{Definition:}
+
+\[
+\mathbf{P}(A \mid B) = \frac{\mathbf{P}A \cap B)}{\mathbf{P}(B)}
+\]
+
+\vspace{0.5cm}
+
+Conditional probability models dependence between events.
+
+\end{frame}
+
+\begin{frame}{Fraud Detection Example}
+
+\textbf{Insurance Fraud}
+
+\begin{itemize}
+    \item 2\% of claims are fraudulent
+    \item 90\% of fraudulent claims are flagged
+    \item 5\% of legitimate claims are falsely flagged
+\end{itemize}
+
+\vspace{0.5cm}
+
+Question:
+
+\begin{center}
+If a claim is flagged, what is the probability it is truly fraudulent?
+\end{center}
+
+\end{frame}
+
+\begin{frame}{Bayes' Theorem}
+
+\[
+\mathbf{P}(A \mid B) = \frac{\mathbf{P}(B \mid A) \mathbf{P}(A)}{\mathbf{P}(B)} = \frac{\mathbf{P}(B \mid A) \mathbf{P}(A)}{\mathbf{P}(B | A) \mathbf{P}(A) + \mathbf{P}(B | \overline{A}) \mathbf{P}(\overline{A})}
+\]
+
+\vspace{0.5cm}
+
+\textbf{Interpretation:}
+
+\begin{itemize}
+    \item $\mathbf{P}(A)$: Prior belief
+    \item $\mathbf{P}(B \mid A)$: Likelihood
+    \item $\mathbf{P}(A \mid B)$: Posterior belief
+\end{itemize}
+
+\vspace{0.5cm}
+
+Bayes' theorem updates beliefs using new evidence.
+
+\end{frame}
+
+\begin{frame}{Bayesian Update in Fraud Detection}
+
+\[
+\mathbf{P}(F \mid \text{Flag}) =
+\frac{0.9 \cdot 0.02}
+{0.9 \cdot 0.02 + 0.05 \cdot 0.98}
+\]
+
+\vspace{0.5cm}
+
+Result:
+
+\[
+\mathbf{P}(F \mid \text{Flag}) \approx 27\%
+\]
+
+\vspace{0.5cm}
+
+Even highly accurate systems can produce many false alarms
+when the base rate is small.
+
+\end{frame}
+
+\begin{frame}{A/B Testing Example}
+
+\textbf{New Checkout Design}
+
+\begin{itemize}
+    \item After 20 users: conversion = 70\%
+    \pause
+    \item After 20,000 users: conversion = 12\%
+\end{itemize}
+
+\pause
+
+\vspace{0.5cm}
+
+Why does the estimate change so much?
+
+\end{frame}
+
+\begin{frame}{Law of Large Numbers}
+
+Let
+
+\[
+X_1, \dots, X_n
+\]
+
+be $n$ independent random variables with expectation $\mu$.
+
+\vspace{0.4cm}
+
+Define the sample mean:
+
+\[
+\bar{X}_n = \frac{1}{n} \sum_{i=1}^{n} X_i
+\]
+
+Then:
+
+\[
+\bar{X}_n \to \mu \quad \text{as } n \to \infty
+\]
+
+\end{frame}
+
+\begin{frame}{Business Meaning of LLN}
+
+The Law of Large Numbers explains:
+
+\begin{itemize}
+    \item Why large datasets reduce noise
+    \item Why small samples are unreliable
+    \item Why ML improves with more data
+\end{itemize}
+
+\vspace{0.5cm}
+
+Large data stabilizes estimates. This comes from the following inequality which holds for all $\epsilon > 0$:
+
+\[ \mathbf{P}(|\bar{X}_n - \mu| > \epsilon) \le \frac{V(\bar{X}_n)}{\epsilon^2} \]
+
+\end{frame}
+
+\begin{frame}{Why Does the Average Look Normal?}
+
+\textbf{Customer Spending Example}
+
+Individual spending is highly skewed.
+
+\vspace{0.3cm}
+
+\pause
+
+However:
+
+\begin{itemize}
+    \item The average of 500 customers
+    \item Appears approximately normal
+\end{itemize}
+
+\vspace{0.5cm}
+
+Why?
+
+\end{frame}
+
+\begin{frame}{Central Limit Theorem}
+
+Let $X_1, \dots, X_n$ be i.i.d. with
+
+\[
+\mathbb{E}[X_i] = \mu, 
+\quad
+\mathrm{Var}(X_i) = \sigma^2
+\]
+
+Then:
+
+\[
+\frac{\bar{X}_n - \mu}{\sigma / \sqrt{n}}
+\rightarrow \mathcal{N}(0,1)
+\]
+
+as $n \to \infty$.
+
+\end{frame}
+
+\begin{frame}{Business Meaning of the CLT}
+
+For large $n$:
+
+\[
+\bar{X}_n \approx \mathcal{N}
+\left(
+\mu, \frac{\sigma^2}{n}
+\right)
+\]
+
+\vspace{0.5cm}
+
+Implications:
+
+\begin{itemize}
+    \item Enables confidence intervals
+    \item Enables A/B testing
+    \item Uncertainty decreases with $\sqrt{n}$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Market Research Example}
+
+A survey of 1000 customers:
+
+\begin{itemize}
+    \item 180 would buy the product
+\end{itemize}
+
+\vspace{0.5cm}
+
+Estimated probability:
+
+\[
+\hat{p} = 0.18
+\]
+
+\vspace{0.5cm}
+
+Is this the true purchase probability?
+
+\end{frame}
+
+\begin{frame}{Population vs Sample}
+
+\textbf{Population parameter:}
+
+\[
+p = \text{True purchase probability}
+\]
+
+\vspace{0.5cm}
+
+\textbf{Sample estimate:}
+
+\[
+\hat{p} = \frac{\text{Number of buyers}}{n}
+\]
+
+\vspace{0.25cm}
+
+In practice, we only observe samples.
+
+\end{frame}
+
+\begin{frame}{Confidence Interval}
+
+Using the CLT:
+
+\[
+\bar{X} \pm 1.96 \frac{\sigma}{\sqrt{n}}
+\]
+
+\vspace{0.25cm}
+
+\textbf{Interpretation}:
+
+If we repeated the study many times,
+95\% of the intervals would contain the true parameter.
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Exercise: Histogram with Relative Frequency}
+
+\begin{itemize}
+    \item Is the wage distribution symmetric, left-skewed, or right-skewed?
+    \item Where are most wages concentrated?
+    \item Are there extreme values or outliers?
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}[fragile]{Exercise: Histogram with Relative Frequency}
+
+\begin{minted}{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load data
+df = pd.read_csv("Wage_merged.csv")
+
+wages = df["wage"]
+
+# Histogram with relative frequency
+plt.hist(wages, bins=20, density=True)
+
+plt.xlabel("Hourly Wage")
+plt.ylabel("Relative Frequency")
+plt.title("Distribution of Hourly Wages")
+
+plt.show()
+\end{minted}
+    
+\end{frame}
+
+\begin{frame}[fragile]{Exercise: Law of Large Numbers (LLN)}
+
+\begin{itemize}
+    \item What happens to the sample mean when the sample size increases?
+    \item What happens to the variance of the estimator as the sample size grows?
+    \item Are there extreme values or outliers?
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}[fragile]{Exercise: Law of Large Numbers (LLN)}
+
+\begin{minted}{python}
+import numpy as np
+
+wages = df["wage"]
+true_mean = wages.mean()
+
+sample_sizes = range(5, 500)
+means = []
+
+for n in sample_sizes:
+    sample = wages.sample(n, replace=True)
+    means.append(sample.mean())
+
+plt.plot(sample_sizes, means, label="Sample Mean")
+plt.axhline(true_mean, linestyle="--", label="True Mean")
+
+plt.xlabel("Sample Size")
+plt.ylabel("Mean Wage")
+plt.title("Law of Large Numbers")
+
+plt.legend()
+plt.show()
+\end{minted}
+    
+\end{frame}
+
+\begin{frame}[fragile]{Exercise: Central Limit Theorem (CLT)}
+
+\begin{itemize}
+    \item Is the sample means distribution symmetric, left-skewed, or right-skewed?
+    \item What happens if we increase the sample size from 30 to 100?
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}[fragile]{Exercise: Central Limit Theorem (CLT)}
+
+\begin{minted}{python}
+sample_size = 30
+num_samples = 1000
+
+sample_means = []
+
+for _ in range(num_samples):
+    sample = wages.sample(sample_size, replace=True)
+    sample_means.append(sample.mean())
+
+plt.hist(sample_means, bins=30, density=True)
+
+plt.xlabel("Sample Mean Wage")
+plt.ylabel("Density")
+plt.title("Central Limit Theorem")
+
+plt.show()
+\end{minted}
+    
+\end{frame}
+
+\begin{frame}[fragile]{Exercise: Confidence Interval for the Mean Wage}
+
+\begin{itemize}
+    \item If we collect new wages different from the dataset, what would be the range of values with 95\% of confidence ?
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}[fragile]{Exercise: Confidence Interval for the Mean Wage}
+
+\begin{minted}{python}
+wages = df["wage"]
+
+n = len(wages)
+mean_wage = wages.mean()
+std_wage = wages.std(ddof=1)
+
+# Standard error
+se = std_wage / np.sqrt(n)
+
+# 95% confidence interval
+ci = stats.t.interval(0.95, df=n-1, loc=mean_wage, scale=se)
+
+print("Mean wage:", mean_wage)
+print("95% confidence interval:", ci)
+\end{minted}
+    
+\end{frame}
+
+\begin{frame}[fragile]{Exercise: One-Sample Hypothesis Test}
+
+\begin{itemize}
+    \item If we collect new wages different from the dataset, what would be the range of values with 95\% of confidence ?
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}[fragile]{Exercise: One-Sample Hypothesis Test}
+
+\begin{minted}{python}
+from scipy.stats import ttest_1samp
+
+t_stat, p_value = ttest_1samp(wages, 10)
+
+print("t-statistic:", t_stat)
+print("p-value:", p_value)
+\end{minted}
+
+\end{frame}
+
+\begin{frame}[fragile]{Exercise: Comparing Two Groups (Two-Sample Test)}
+
+\begin{minted}{python}
+men = df[df["female"] == 0]["wage"]
+women = df[df["female"] == 1]["wage"]
+
+from scipy.stats import ttest_ind
+
+t_stat, p_value = ttest_ind(men, women)
+
+print("t-statistic:", t_stat)
+print("p-value:", p_value)
+\end{minted}
+    
+\end{frame}
+
+\begin{frame}[fragile]{Exercise: Comparing Two Groups (Two-Sample Test)}
+
+\begin{itemize}
+    \item What is the null hypothesis in this test?
+    \item What does the p-value tell us about the difference between the groups?
+    
+\end{itemize}
+    
+\end{frame}
+
+
+% =====================================================
+\section{Module 2 — Linear Models and Probabilistic Interpretation}
+
+\begin{frame}{Module 2 — Linear Models}
+\begin{itemize}
+    \item Linear Regression (One Variable)
+    \item Multiple Linear Regression
+    \item Multivariate Random Variables
+    \item Multivariate Gaussian Distribution
+    \item Likelihood and Loss Functions
+    \item Logistic Regression for Classification
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Linear Regression (1 Variable)}
+
+Model:
+
+\[
+Y = w_0 + w_1 X + \varepsilon
+\]
+
+Assume:
+
+\[
+\varepsilon \sim \mathcal{N}(0,\sigma^2)
+\]
+
+\vspace{0.4cm}
+
+Loss function (Least Squares):
+
+\[
+L(w_0,w_1)
+= \frac{1}{n}
+\sum_{i=1}^n
+(y_i - w_0 - w_1 x_i)^2 = \frac{1}{n} \sum_{i=1}^n
+(y_i - \hat{y_i})^2
+\approx \mathbb{E}[\, \lVert Y - \hat{Y} \rVert_2 \,]
+\]
+
+\vspace{0.4cm}
+
+for $n$ large
+
+\end{frame}
+
+\begin{frame}{Multiple Linear Regression}
+
+Model:
+
+\[
+Y = \mathbf{w}^T \mathbf{x} + \varepsilon = \mathbf{w}^T (\mathbf{x}_1, \ldots, \mathbf{x}_n) + \epsilon 
+\]
+
+Assume:
+
+\[
+\varepsilon \sim \mathcal{N}(0,\sigma^2)
+\]
+
+\vspace{0.5cm}
+
+Loss function:
+
+\[
+L(\mathbf{w})
+=
+\frac{1}{n}
+\sum_{i=1}^n
+(y_i - \mathbf{w}^T \mathbf{x}_i)^2
+\]
+
+\end{frame}
+
+\begin{frame}{Multivariate Random Variables}
+
+\textbf{Business Example: House Features}
+
+\[
+\mathbf{X} =
+\begin{pmatrix}
+X_1 \\
+X_2
+\end{pmatrix}
+=
+\begin{pmatrix}
+\text{Size} \\
+\text{Number of rooms}
+\end{pmatrix}
+\]
+
+\vspace{0.5cm}
+
+\textbf{Definition:}
+
+A multivariate random variable is a vector:
+
+\[
+\mathbf{X} =
+\begin{pmatrix}
+X_1 \\
+\vdots \\
+X_d
+\end{pmatrix} , \; \text{where} \; X_i \; \text{is a random variable}
+\]
+
+\end{frame}
+
+\begin{frame}{Mean Vector and Covariance Matrix}
+
+\textbf{Mean vector:}
+
+\[
+\boldsymbol{\mu} =
+\mathbb{E}[\mathbf{X}]
+= \begin{pmatrix}
+\mathbb{E}[X_1] \\
+\vdots \\
+\mathbb{E}[X_d]
+\end{pmatrix}
+\]
+
+\vspace{0.25cm}
+
+\textbf{Covariance matrix:}
+
+\[
+\Sigma =
+\mathbb{E}
+\left[
+(\mathbf{X}-\boldsymbol{\mu})
+(\mathbf{X}-\boldsymbol{\mu})^T
+\right]
+\]
+
+\vspace{0.25cm}
+
+For two variables:
+
+\begin{align*}
+\Sigma & =
+\begin{pmatrix}
+\mathrm{Var}(X_1) & \mathrm{Cov}(X_1,X_2) \\
+\mathrm{Cov}(X_1,X_2) & \mathrm{Var}(X_2)
+\end{pmatrix} , \; \text{with} \,\\[3mm]
+& \mathrm{Cov}(X_1,X_2) = \mathbb{E}[(X_1 - \mathbb{E}[X_1])(X_2 - \mathbb{E}[X_2])] 
+\end{align*}
+
+\end{frame}
+
+\begin{frame}{Multivariate Gaussian Distribution}
+
+\textbf{Definition:}
+
+A random vector $\mathbf{X} \in \mathbb{R}^d$ follows a multivariate normal distribution if:
+
+\[
+f(\mathbf{x}) =
+\frac{1}{(2\pi)^{d/2} |\Sigma|^{1/2}}
+\exp
+\left(
+-\frac{1}{2}
+(\mathbf{x}-\boldsymbol{\mu})^T
+\Sigma^{-1}
+(\mathbf{x}-\boldsymbol{\mu})
+\right)
+\]
+
+\vspace{0.5cm}
+
+\textbf{Notation:}
+
+\[
+\mathbf{X} \sim \mathcal{N}(\boldsymbol{\mu}, \Sigma)
+\]
+
+\end{frame}
+
+\begin{frame}{Interpretation of the Covariance Matrix}
+
+\begin{itemize}
+    \item $\boldsymbol{\mu}$: center
+    \item $\Sigma$: spread and dependence
+\end{itemize}
+
+\vspace{0.5cm}
+
+\begin{itemize}
+    \item If $\mathrm{Cov}(X_1,X_2)=0$, ellipses aligned with axes
+    \item If $\mathrm{Cov}(X_1,X_2)\neq 0$, ellipses are tilted
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Loss Functions Come from Probability Models}
+
+\begin{tabular}{c|c|c}
+Model & Noise Assumption & Loss \\
+\hline
+Linear Regression & Gaussian & Squared Loss \\
+Logistic Regression & Bernoulli & Cross-Entropy
+\end{tabular}
+
+\vspace{0.5cm}
+
+Machine learning models are often derived
+from probabilistic assumptions.
+
+\end{frame}
+
+\begin{frame}{Logistic Regression}
+
+\textbf{Model:}
+
+\[
+P(Y=1 \mid X)
+=
+\frac{1}{1 + e^{-w^T x}}
+\]
+
+\vspace{0.5cm}
+
+\textbf{Loss (Cross-Entropy):}
+
+\[
+L(w)
+=
+- \frac{1}{n} \, \sum_{i=1}^n
+\left[
+y_i \log p_i
++
+(1-y_i)\log(1-p_i)
+\right]
+\]
+
+\end{frame}
+
+% =====================================================
+\section{Module 3 — Optimization}
+
+\begin{frame}{Module 3 — Optimization}
+\begin{itemize}
+    \item General Optimization Problem
+    \item Loss Minimization
+    \item Gradient Descent
+    \item Learning Rate
+    \item Convex vs Non-Convex Problems
+    \item Optimization Variants (SGD, Mini-batch)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Business Example: Training a Pricing Model}
+
+We want to predict house prices using linear regression.
+
+\vspace{0.3cm}
+
+Loss function:
+
+\[
+L(w) = \frac{1}{n} \sum_{i=1}^n (y_i - w^T x_i)^2
+\]
+
+\vspace{0.3cm}
+
+Goal:
+
+\[
+\min_w L(w)
+\]
+
+\vspace{0.5cm}
+
+Question:
+\begin{itemize}
+    \item How do we compute the best parameter $w$?
+    \item What if no closed-form solution exists?
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{General Optimization Problem}
+
+In machine learning, training a model means solving:
+
+\[
+\min_{\theta} L(\theta)
+\]
+
+\vspace{0.5cm}
+
+\begin{itemize}
+    \item $\theta$ = model parameters
+    \item $L(\theta)$ = loss function
+\end{itemize}
+
+\vspace{0.5cm}
+
+Examples:
+
+\begin{itemize}
+    \item Linear regression → squared loss
+    \item Logistic regression → cross-entropy
+    \item Neural networks → cross-entropy
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Idea of Gradient Descent}
+
+Interpret the loss function as a landscape.
+
+\vspace{0.3cm}
+
+Goal: reach the lowest point.
+
+\vspace{0.5cm}
+
+The gradient:
+
+\[
+\nabla L(\theta)
+\]
+
+points in the direction of steepest increase.
+
+\vspace{0.5cm}
+
+To minimize the loss:
+
+\[
+\theta_{t+1} = \theta_t - \eta \nabla L(\theta_t)
+\]
+
+\begin{itemize}
+    \item $\eta$ = learning rate
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Gradient Descent}
+
+We solve:
+
+\[
+\min_{\theta} L(\theta)
+\]
+
+\vspace{0.3cm}
+
+Update rule:
+
+\[
+\theta_{t+1}
+=
+\theta_t
+-
+\eta \nabla L(\theta_t)
+\]
+
+\vspace{0.5cm}
+
+\begin{itemize}
+    \item $\eta$ = learning rate
+    \item $\nabla L(\theta)$ = gradient
+    \item Repeat until convergence
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Example: Gradient for Linear Regression}
+
+Loss:
+
+\[
+L(w) = \frac{1}{n} \sum_{i=1}^n (y_i - w^T x_i)^2
+\]
+
+\vspace{0.5cm}
+
+Gradient:
+
+\[
+\nabla L(w)
+=
+-\frac{2}{n} X^T (y - Xw)
+\]
+
+\vspace{0.5cm}
+
+Update rule:
+
+\[
+w \leftarrow w + \frac{2\eta}{n} X^T (y - Xw)
+\]
+
+\end{frame}
+
+\begin{frame}{Learning Rate}
+
+Gradient descent update:
+
+\[
+\theta_{t+1} = \theta_t - \eta \nabla L(\theta_t)
+\]
+
+\vspace{0.5cm}
+
+Choice of learning rate $\eta$:
+
+\begin{itemize}
+    \item Too small → slow convergence
+    \item Too large → divergence or oscillation
+    \item Well chosen → fast and stable convergence
+\end{itemize}
+
+\vspace{0.5cm}
+
+Learning rate is a key hyperparameter.
+
+\end{frame}
+
+\begin{frame}{Variants of Gradient Descent}
+
+Classical gradient descent:
+
+\begin{itemize}
+    \item Uses entire dataset at each iteration
+\end{itemize}
+
+\vspace{0.5cm}
+
+In large datasets, we use:
+
+\begin{itemize}
+    \item Stochastic Gradient Descent (SGD)
+    \item Mini-batch Gradient Descent
+\end{itemize}
+
+\vspace{0.5cm}
+
+These methods are standard in deep learning.
+
+\end{frame}
+
+% =====================================================
+\section{Module 4 — Generalization and Model Evaluation}
+
+\begin{frame}{Module 4 — Generalization}
+\begin{itemize}
+    \item Overfitting vs Underfitting
+    \item Bias–Variance Tradeoff
+    \item Regularization (L1 and L2)
+    \item Decision Boundaries
+    \item Performance Metrics:
+    \begin{itemize}
+        \item R\textsuperscript{2}
+        \item Accuracy
+        \item Precision
+        \item Recall
+        \item F1-score
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Overfitting vs Underfitting}
+
+\textbf{Problem:} How well does a model generalize to unseen data?
+
+\vspace{0.5cm}
+
+\begin{itemize}
+    \item \textbf{Underfitting:} Model is too simple
+    \begin{itemize}
+        \item Fails to capture patterns in training data
+        \item High bias, low variance
+        \item Poor performance on both training and test sets
+        \item Example: Linear model trying to fit a quadratic trend
+    \end{itemize}
+    \item \textbf{Overfitting:} Model is too complex
+    \begin{itemize}
+        \item Captures noise as if it were signal
+        \item Low bias, high variance
+        \item Excellent performance on training set, poor on test set
+        \item Example: High-degree polynomial for limited data points
+    \end{itemize}
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Business Example:}  
+A pricing model fits historical sales perfectly (overfit) but predicts future sales poorly.
+
+\end{frame}
+
+\begin{frame}{Bias--Variance Tradeoff}
+
+\textbf{Problem:} Why does increasing model complexity sometimes hurt performance?
+
+\vspace{0.5cm}
+
+Prediction error can be decomposed into:
+
+\[
+\text{Error}
+=
+\text{Bias}^2
++
+\text{Variance}
++
+\text{Noise}
+\]
+
+\begin{itemize}
+    \item \textbf{Bias:} Error from overly simple assumptions  
+    High bias $\rightarrow$ underfitting
+    \item \textbf{Variance:} Sensitivity to small fluctuations in training data  
+    High variance $\rightarrow$ overfitting
+    \item \textbf{Noise:} Irreducible randomness in the data
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Business Example:}  
+A very simple demand model ignores seasonality (high bias).  
+A very complex model reacts to random weekly fluctuations (high variance).
+
+\end{frame}
+
+\begin{frame}{Regularization}
+
+\textbf{Goal:} Prevent overfitting by controlling model complexity.
+
+\vspace{0.5cm}
+
+General form of regularized loss:
+
+\[
+L(\mathbf{w})
+=
+\sum_{i=1}^n (y_i - \mathbf{w}^T x_i)^2
++
+\lambda \Omega(\mathbf{w})
+\]
+
+\begin{itemize}
+    \item $\lambda$ controls the strength of the penalty
+    \item Larger $\lambda$ $\rightarrow$ simpler model
+\end{itemize}
+
+\vspace{0.3cm}
+
+\begin{tabular}{c|c|c}
+Method & Penalty & Effect \\
+\hline
+Ridge (L2) & $\sum w_j^2$ & Shrinks coefficients \\
+Lasso (L1) & $\sum |w_j|$ & Produces sparse model
+\end{tabular}
+
+\vspace{0.5cm}
+
+\textbf{Business Example:}  
+In marketing analytics with 100 features, regularization avoids unstable and extreme coefficient estimates.
+
+\end{frame}
+
+\begin{frame}{Decision Boundary in Logistic Regression}
+
+\textbf{Goal:} Understand how logistic regression separates classes.
+
+\vspace{0.5cm}
+
+Prediction rule:
+
+\[
+Y = 1 
+\quad \text{if} \quad 
+\sigma(w^T x) > 0.5
+\]
+
+This is equivalent to:
+
+\[
+w^T x = 0
+\]
+
+\begin{itemize}
+    \item The equation defines a \textbf{hyperplane}
+    \item Points on one side $\rightarrow$ Class 1
+    \item Points on the other side $\rightarrow$ Class 0
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Business Example:}  
+In credit scoring, the decision boundary separates high-risk from low-risk applicants based on their features.
+
+\end{frame}
+
+\begin{frame}{Regression Metrics}
+
+\begin{itemize}
+    \item \textbf{R\textsuperscript{2} (Coefficient of Determination):}
+    \[
+    R^2 = 1 - \frac{\sum_{i=1}^n (y_i - \hat{y}_i)^2}{\sum_{i=1}^n (y_i - \bar{y})^2}
+    \]
+    Indicates proportion of variance explained by the model. $R^2 \approx 1$ is good.
+    
+    \item \textbf{Mean Squared Error (MSE):}
+    \[
+    \text{MSE} = \frac{1}{n} \sum_{i=1}^n (y_i - \hat{y}_i)^2
+    \]
+    Penalizes large errors more heavily.
+    
+    \item \textbf{Mean Absolute Error (MAE):}
+    \[
+    \text{MAE} = \frac{1}{n} \sum_{i=1}^n |y_i - \hat{y}_i|
+    \]
+    Robust to outliers; measures average absolute deviation.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Classification Metrics - Part 1}
+
+\begin{itemize}
+    \item \textbf{Accuracy:} Fraction of correct predictions
+    \[
+    \text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
+    \]
+    Simple overall measure, but can be misleading for imbalanced classes.
+    
+    \item \textbf{Precision:} Fraction of positive predictions that are correct
+    \[
+    \text{Precision} = \frac{TP}{TP + FP}
+    \]
+    Important when false positives are costly.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Classification Metrics - Part 2}
+
+\begin{itemize}
+    \item \textbf{Recall (Sensitivity):} Fraction of actual positives correctly identified
+    \[
+    \text{Recall} = \frac{TP}{TP + FN}
+    \]
+    Important when missing a positive is costly.
+    
+    \item \textbf{F1-score:} Harmonic mean of Precision and Recall
+    \[
+    F1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
+    \]
+    Balances precision and recall.
+\end{itemize}
+
+\end{frame}
+
+
+% =====================================================
+\section{Module 5 — Nonlinear Models and Ensembles}
+
+\begin{frame}{Module 5 — Nonlinear Models}
+\begin{itemize}
+    \item Decision Trees
+    \item Random Forest
+    \item Boosting Methods
+    \item Introduction to Neural Networks
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Decision Trees}
+
+\textbf{Principle}
+
+\begin{itemize}
+    \item Partition the feature space into regions
+    \item Use threshold rules: $x_j < t$
+    \item Produce piecewise constant predictions
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Split Criteria}
+
+Classification:
+\[
+\text{Gini} = 1 - \sum_k p_k^2
+\]
+
+Regression:
+\[
+\text{Minimize squared error}
+\]
+
+\vspace{0.3cm}
+
+Flexible model with low bias but high variance.
+
+\end{frame}
+
+\begin{frame}{Instability of Decision Trees}
+
+\textbf{Observation}
+
+\begin{itemize}
+    \item Small change in data $\rightarrow$ very different tree
+    \item Structure of splits can change drastically
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Consequence}
+
+\begin{itemize}
+    \item High variance model
+    \item Prone to overfitting
+\end{itemize}
+
+\vspace{0.4cm}
+
+\[
+\text{Can we reduce variance while keeping flexibility?}
+\]
+
+\end{frame}
+
+\begin{frame}{Random Forest: Main Idea}
+
+\textbf{Instead of one tree:}
+
+\[
+\text{Build many trees}
+\]
+
+\vspace{0.4cm}
+
+\textbf{Each tree}
+
+\begin{itemize}
+    \item Trained on bootstrap sample of data
+    \item Uses random subset of features at each split
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Aggregation}
+
+\begin{itemize}
+    \item Regression $\rightarrow$ average prediction
+    \item Classification $\rightarrow$ majority vote
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Why Random Forest Works}
+
+Each individual tree:
+
+\begin{itemize}
+    \item Low bias
+    \item High variance
+\end{itemize}
+
+\vspace{0.4cm}
+
+Averaging many de-correlated trees:
+
+\[
+\text{Reduces variance}
+\]
+
+\vspace{0.4cm}
+
+\[
+\text{Ensemble of unstable models} \rightarrow \text{Stable predictor}
+\]
+
+\end{frame}
+
+\begin{frame}{Random Forest and Bias--Variance}
+
+Compared to a single tree:
+
+\begin{itemize}
+    \item Similar bias
+    \item Much lower variance
+\end{itemize}
+
+\vspace{0.5cm}
+
+Random Forest:
+
+\[
+\text{Improves generalization performance}
+\]
+
+\vspace{0.3cm}
+
+Often works well with minimal tuning.
+
+\end{frame}
+
+\begin{frame}{Motivation for Boosting}
+
+Suppose a small tree is weak:
+
+\begin{itemize}
+    \item Slightly better than random
+    \item High bias
+\end{itemize}
+
+\vspace{0.5cm}
+
+Key question:
+
+\[
+\text{Can many weak learners create a strong model?}
+\]
+
+\end{frame}
+
+\begin{frame}{Boosting: Main Idea}
+
+\textbf{Core mechanism}
+
+\[
+\text{Train models sequentially}
+\]
+
+\vspace{0.4cm}
+
+Each new tree:
+
+\begin{itemize}
+    \item Focuses on previous errors
+    \item Corrects residual mistakes
+\end{itemize}
+
+\vspace{0.4cm}
+
+Final model:
+
+\[
+F(x) = \sum_{m=1}^M \gamma_m T_m(x)
+\]
+
+\end{frame}
+
+\begin{frame}{Boosting Intuition}
+
+Step 1:
+\begin{itemize}
+    \item Fit a small tree
+\end{itemize}
+
+Step 2:
+\begin{itemize}
+    \item Identify errors
+    \item Increase focus on difficult observations
+\end{itemize}
+
+Step 3:
+\begin{itemize}
+    \item Fit new tree to residual errors
+\end{itemize}
+
+\vspace{0.4cm}
+
+Repeat until performance stabilizes.
+
+\end{frame}
+
+\begin{frame}{Boosting as Gradient Descent}
+
+Boosting can be interpreted as:
+
+\[
+\text{Gradient descent in function space}
+\]
+
+\vspace{0.4cm}
+
+At each iteration:
+
+\begin{itemize}
+    \item Compute residuals (negative gradient)
+    \item Fit tree to residuals
+    \item Update model
+\end{itemize}
+
+\vspace{0.4cm}
+
+Examples: Gradient Boosting, XGBoost, LightGBM
+
+\end{frame}
+
+\begin{frame}{Random Forest vs Boosting}
+
+\textbf{Random Forest}
+
+\begin{itemize}
+    \item Trees trained independently
+    \item Mainly reduces variance
+    \item Easily parallelizable
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Boosting}
+
+\begin{itemize}
+    \item Trees trained sequentially
+    \item Mainly reduces bias
+    \item Often higher predictive performance
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Introduction to Neural Networks}
+
+One hidden layer network:
+
+\[
+h = \sigma(W_1 x + b_1)
+\]
+
+\[
+\hat{y} = W_2 h + b_2
+\]
+
+\vspace{0.4cm}
+
+\textbf{Key idea}
+
+\begin{itemize}
+    \item Linear transformations
+    \item Followed by nonlinear activation
+\end{itemize}
+
+\vspace{0.3cm}
+
+Universal function approximator when sufficiently large.
+
+\end{frame}
+
+
+% =====================================================
+\section{Module 6 — Machine Learning in Practice}
+
+\begin{frame}{Module 6 — ML in Practice}
+\begin{itemize}
+    \item Feature Engineering
+    \item Train / Validation / Test Split
+    \item Cross-Validation
+    \item Practical ML Pipeline
+    \item Model Monitoring
+    \item Hypothesis Testing for Model Drift
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Business Example: Raw Data Is Not Enough}
+
+Suppose we predict house prices.
+
+Available variables:
+
+\begin{itemize}
+    \item Size (m$^2$)
+    \item Year built
+    \item Zip code
+\end{itemize}
+
+\vspace{0.5cm}
+
+Question:
+
+Should we use them directly?
+
+\end{frame}
+
+\begin{frame}{Feature Engineering}
+
+Feature engineering:
+
+\[
+\text{Transform raw data into informative variables}
+\]
+
+\vspace{0.5cm}
+
+Examples:
+
+\begin{itemize}
+    \item Age of house = Current year - Year built
+    \item One-hot encoding of zip code
+    \item Interaction: Size $\times$ Location
+    \item Log-transform price
+\end{itemize}
+
+\vspace{0.5cm}
+
+Better features $\rightarrow$ Better models
+
+\end{frame}
+
+\begin{frame}{Common Feature Transformations}
+
+\begin{itemize}
+    \item Scaling (standardization)
+    \[
+    x' = \frac{x - \mu}{\sigma}
+    \]
+
+    \item Log-transform for skewed variables
+
+    \item Polynomial features
+
+    \item Categorical encoding (one-hot)
+\end{itemize}
+
+\vspace{0.5cm}
+
+Important for:
+
+\begin{itemize}
+    \item Linear models
+    \item Regularization
+    \item Gradient descent
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Why Train/Test Split?}
+
+Suppose our model achieves:
+
+\[
+R^2 = 0.95
+\]
+
+on training data.
+
+\vspace{0.5cm}
+
+Question:
+
+Will it perform equally well on new customers?
+
+\end{frame}
+
+\begin{frame}{Train / Validation / Test Split}
+
+Dataset is divided into:
+
+\begin{itemize}
+    \item Training set → Fit model
+    \item Validation set → Tune hyperparameters
+    \item Test set → Final unbiased evaluation
+\end{itemize}
+
+\vspace{0.5cm}
+
+Important:
+
+\[
+\text{Test set must not influence model choice}
+\]
+
+\end{frame}
+
+\begin{frame}{Cross-Validation}
+
+Instead of one split:
+
+\[
+\text{Use multiple splits}
+\]
+
+\vspace{0.5cm}
+
+K-fold cross-validation:
+
+\begin{itemize}
+    \item Split data into K folds
+    \item Train on K-1 folds
+    \item Validate on remaining fold
+    \item Repeat K times
+\end{itemize}
+
+\vspace{0.5cm}
+
+Provides more stable performance estimate.
+
+\end{frame}
+
+\begin{frame}{Business Problem: Model Drift}
+
+Suppose churn model was deployed 6 months ago.
+
+\vspace{0.5cm}
+
+Question:
+
+Has customer behavior changed?
+
+\vspace{0.5cm}
+
+If distribution changes:
+
+\[
+P_{\text{train}}(X) \neq P_{\text{production}}(X)
+\]
+
+Model performance may degrade.
+
+\end{frame}
+
+\begin{frame}{Monitoring with Hypothesis Testing}
+
+We test:
+
+\[
+H_0: \text{Distribution unchanged}
+\]
+
+\[
+H_1: \text{Distribution changed}
+\]
+
+\vspace{0.5cm}
+
+Example tests:
+
+\begin{itemize}
+    \item t-test (mean change)
+    \item Kolmogorov–Smirnov test
+    \item Chi-square test (categorical)
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Monitoring Model Performance}
+
+We monitor metrics over time:
+
+\begin{itemize}
+    \item Accuracy
+    \item Precision / Recall
+    \item $R^2$
+\end{itemize}
+
+\vspace{0.5cm}
+
+Hypothesis test:
+
+\[
+H_0: \text{Performance unchanged}
+\]
+
+\vspace{0.3cm}
+
+If rejected:
+
+\begin{itemize}
+    \item Retrain model
+    \item Update features
+    \item Re-evaluate pipeline
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Typical ML Pipeline}
+
+\begin{enumerate}
+    \item Data collection
+    \item Feature engineering
+    \item Train/Validation split
+    \item Model training
+    \item Hyperparameter tuning
+    \item Final evaluation on test set
+    \item Deployment
+\end{enumerate}
+
+\vspace{0.5cm}
+
+Machine learning is an iterative process.
+
+\end{frame}
+
+% =====================================================
+\section{Module 7 — Unsupervised Learning}
+
+\begin{frame}{Module 7 — Clustering}
+\begin{itemize}
+    \item Introduction to Clustering
+    \item K-Means Algorithm
+    \item Importance of Distance Metrics
+    \item Silhouette Score
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Business Example: Customer Segmentation}
+
+Suppose we have customer data:
+
+\begin{itemize}
+    \item Annual income
+    \item Spending score
+\end{itemize}
+
+\vspace{0.5cm}
+
+Goal:
+
+\[
+\text{Group customers into segments}
+\]
+
+\vspace{0.5cm}
+
+No labels are available.
+
+\end{frame}
+
+\begin{frame}{What is Clustering?}
+
+Clustering is an unsupervised learning task.
+
+\vspace{0.5cm}
+
+Given data points:
+
+\[
+x_1, \dots, x_n
+\]
+
+Partition them into $K$ groups such that:
+
+\begin{itemize}
+    \item Points in same cluster are similar
+    \item Points in different clusters are dissimilar
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{K-Means Algorithm}
+
+Choose number of clusters $K$.
+
+\vspace{0.5cm}
+
+Goal:
+
+\[
+\min_{C_1,\dots,C_K}
+\sum_{k=1}^K
+\sum_{x_i \in C_k}
+\|x_i - \mu_k\|^2
+\]
+
+\vspace{0.5cm}
+
+Where:
+
+\[
+\mu_k = \text{mean of cluster } C_k
+\]
+
+\end{frame}
+
+\begin{frame}{K-Means: Algorithm Steps}
+
+\begin{enumerate}
+    \item Initialize $K$ centroids randomly
+    \item Assign each point to closest centroid
+    \item Update centroids (compute cluster means)
+    \item Repeat until convergence
+\end{enumerate}
+
+\vspace{0.5cm}
+
+Convergence:
+
+\begin{itemize}
+    \item Assignments stop changing
+    \item Centroids stabilize
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Importance of Distance}
+
+K-means relies on distance:
+
+\[
+\|x_i - \mu_k\|
+\]
+
+\vspace{0.5cm}
+
+Typically:
+
+\[
+\text{Euclidean distance}
+\]
+
+\vspace{0.5cm}
+
+Implications:
+
+\begin{itemize}
+    \item Features must be scaled
+    \item Sensitive to outliers
+    \item Assumes spherical clusters
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Why Feature Scaling is Crucial}
+
+Suppose we cluster customers using:
+
+\begin{itemize}
+    \item Income (0–100,000)
+    \item Spending score (0–100)
+\end{itemize}
+
+\vspace{0.5cm}
+
+Without scaling:
+
+\[
+\text{Income dominates distance}
+\]
+
+\vspace{0.5cm}
+
+Solution:
+
+\[
+x' = \frac{x - \mu}{\sigma}
+\]
+
+\end{frame}
+
+\begin{frame}{Choosing the Number of Clusters}
+
+Key question:
+
+\[
+\text{What is the optimal } K?
+\]
+
+\vspace{0.5cm}
+
+Common methods:
+
+\begin{itemize}
+    \item Elbow method
+    \item Silhouette score
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Silhouette Score}
+
+For each point:
+
+\begin{itemize}
+    \item $a$ = average distance to points in same cluster
+    \item $b$ = smallest average distance to other clusters
+\end{itemize}
+
+\vspace{0.5cm}
+
+Silhouette value:
+
+\[
+s = \frac{b - a}{\max(a, b)}
+\]
+
+\end{frame}
+
+\begin{frame}{Interpretation of Silhouette Score}
+
+\[
+-1 \leq s \leq 1
+\]
+
+\vspace{0.5cm}
+
+\begin{itemize}
+    \item $s \approx 1$ → well clustered
+    \item $s \approx 0$ → overlapping clusters
+    \item $s < 0$ → likely misclassified
+\end{itemize}
+
+\vspace{0.5cm}
+
+Overall quality:
+
+\[
+\text{Average silhouette score}
+\]
+
+\end{frame}
+
+\begin{frame}{Business Interpretation}
+
+High silhouette score:
+
+\begin{itemize}
+    \item Clear customer segments
+    \item Targeted marketing possible
+\end{itemize}
+
+\vspace{0.5cm}
+
+Low silhouette score:
+
+\begin{itemize}
+    \item Segments overlap
+    \item Clustering may not be meaningful
+\end{itemize}
+
+\vspace{0.5cm}
+
+Clustering must be both:
+
+\[
+\text{Mathematically sound and business relevant}
+\]
+
+\end{frame}
+
+
+% =====================================================
+\section{Conclusion}
+
+\begin{frame}{Conclusion}
+\begin{itemize}
+    \item From Probability to Business Decisions
+    \item Choosing the Right Model
+    \item The Complete ML Pipeline
+    \item Responsible and Monitored Deployment
+\end{itemize}
+\end{frame}
+
+
+\end{document}
