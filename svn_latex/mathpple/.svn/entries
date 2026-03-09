@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="429"
+   name=""
+   committed-date="2003-08-18T14:36:11.000000Z"
+   url="svn+ssh://dev/home/svn/hybsys/trunk/texmf/tex/latex/mathpple"
+   last-author="vanbeek"
+   kind="dir"
+   uuid="4f6c2a67-2208-db11-b2b3-000f1fac0742"
+   revision="1676"/>
+<entry
+   committed-rev="429"
+   name="ot1phvvv.fd"
+   text-time="2007-06-20T13:16:26.000000Z"
+   committed-date="2003-08-18T14:36:11.000000Z"
+   checksum="291c9a6f9b5ac587bbc3d21284d5e372"
+   last-author="vanbeek"
+   kind="file"
+   prop-time="2007-06-20T13:16:26.000000Z"/>
+<entry
+   committed-rev="429"
+   name="t1phvvv.fd"
+   text-time="2007-06-20T13:16:27.000000Z"
+   committed-date="2003-08-18T14:36:11.000000Z"
+   checksum="cf5843c597c7b37803bf1bdb1f2cc362"
+   last-author="vanbeek"
+   kind="file"
+   prop-time="2007-06-20T13:16:26.000000Z"/>
+<entry
+   committed-rev="429"
+   name="ts1phvvv.fd"
+   text-time="2007-06-20T13:16:27.000000Z"
+   committed-date="2003-08-18T14:36:11.000000Z"
+   checksum="84b456b5b882d46a2c5ed398547875fb"
+   last-author="vanbeek"
+   kind="file"
+   prop-time="2007-06-20T13:16:26.000000Z"/>
+<entry
+   committed-rev="429"
+   name="README.TXT"
+   text-time="2007-06-20T13:16:27.000000Z"
+   committed-date="2003-08-18T14:36:11.000000Z"
+   checksum="b829d1bbe8c9e8aac7da16c81a2079ed"
+   last-author="vanbeek"
+   kind="file"
+   prop-time="2007-06-20T13:16:26.000000Z"/>
+</wc-entries>

@@ -1,0 +1,57 @@
+%% By D.A. (Bert) van Beek.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{setimes}
+  [2003/06/11 V0.01 use times fonts for text and math]
+
+\newif\ifopt@helvetica
+\newcount\opt@setexversion
+
+\DeclareOption{helvetica}{\opt@helveticatrue}
+\DeclareOption{nohelvetica}{\opt@helveticafalse}
+
+\DeclareOption{tetex}{\opt@setexversion=0}
+\DeclareOption{miktex}{\opt@setexversion=1}
+\DeclareOption{yandy}{\opt@setexversion=2}
+\DeclareOption{truetex}{\opt@setexversion=3}
+
+\ExecuteOptions{nohelvetica,miktex}
+\ProcessOptions
+
+%% For definitions of Helvetica see F:\miktex\localtexmf\tex\latex\psnfss,
+%% F:\miktex\localtexmf\tex\latex\mathpple, G:\texmf\tex\latex\mathpple,
+%% In the mathime package, \mathsf is not redefined to Helvetica (stays Computer Modern)
+%% Definitions below should take place before the mathtime package is loaded,
+%% Otherwise if you would like to see \mathsf as Helvetica (original mathtime package implementation), it would not work. 
+\ifopt@helvetica
+%%  \renewcommand*\sfdefault{phv}%% Original Helvetica (scaled 1.00)
+  \renewcommand*\sfdefault{phvv}%% Helvetica scaled 0.95
+%%  \renewcommand*\sfdefault{phvvv}%% Helvetica scaled 0.88
+\fi
+
+\ifcase\opt@setexversion%
+  %\opt@sedvi=0 : tetex for Linux
+  \RequirePackage{times}%
+  \RequirePackage{mathptmx}%
+\or%
+  %\opt@sedvi=1 : miktex
+%% default no mtpluscal, because MikTeX calligraphic mtplus font for \matcal{I} is weird
+%% cmbold insteand of mtbold, because the mtplus fonts do not come with MikTeX (or TU/e additions) anymore.
+%  \RequirePackage[mtbold,subscriptcorrection,mtpluscal]{mathtime}
+  \RequirePackage[cmbold,subscriptcorrection]{mathtime} %%
+\or%
+  %\opt@sedvi=2 : Y&Y tex
+  \RequirePackage[ansinew]{texnansi}
+  \RequirePackage[mtbold,noTS1,subscriptcorrection,mtpluscal]{mathtime}%
+  %% Y&Y mathtimes does not include \multimap
+  \providecommand{\multimap}{\relbar\mkern-8mu\circ}
+  \def\alt{\mathrel{\chisymbol{[\mkern-3.5mu]}}} %%
+\or%
+  %\opt@sedvi=3 : truetex for SWP for MS-Windows
+  \RequirePackage{times}%
+  \RequirePackage[noTS1]{mathtime}%
+\fi
+
+\endinput
+%% 
+%% End of file `setimes.sty'.

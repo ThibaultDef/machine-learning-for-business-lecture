@@ -1,0 +1,35 @@
+%% V1.01 added end comment
+%% V1.02a added \abovecaptionskip
+%% V1.03 changed name to sedeflt.sty
+%% V1.03a corrected final comment
+%% V1.03b commented out \abovecaptionskip,
+%%        because it resulted in poor caption spacing for tables for style sebook
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{sedeflt}[1998/03/09 V1.03 Systems Engineering defaults DAvB]
+
+%%\fussy produces many lines that extend beyond the right margin
+%%chicompa.sty also contains \sloppy for compat. reasons
+\sloppy
+\raggedbottom
+%%\flushbottom
+%%\flusbottom can cause misleadingly large vertical spaces and many vbox compiler messages
+
+%%Easy placement of figures
+\setcounter{topnumber}{10}
+\setcounter{bottomnumber}{10}
+\setcounter{totalnumber}{10}
+\renewcommand{\topfraction}{1}
+\renewcommand{\bottomfraction}{1}
+\renewcommand{\textfraction}{0}
+\renewcommand{\floatpagefraction}{0.8}
+
+%\@ifundefined{abovecaptionskip}{}{\setlength\abovecaptionskip{0pt}}
+
+%\newlength{\boxwidtha}\setlength{\boxwidtha}{9cm}
+%\newlength{\boxwidthb}\setlength{\boxwidthb}{9cm}
+
+\endinput
+%% 
+%% End of file `sedeflt.sty'.
+

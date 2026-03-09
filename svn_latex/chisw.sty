@@ -1,0 +1,347 @@
+%% 2006/08/14: Added \mbox to \alt definition
+\NeedsTeXFormat{LaTeX2e}
+
+\ProvidesPackage{chisw}[2006/08/14]
+
+\DeclareOption{dvipsone}{
+%% Y&Y mathtimes does not include \multimap, changed \def to \providecommand
+  \providecommand{\multimap}{\relbar\mkern-8mu\circ}
+%  \newcommand{\alt}{\mathrel{\chisymbol{[\mkern-3.5mu]}}}
+}
+
+\ExecuteOptions{}
+\ProcessOptions
+
+%% \RequirePackage after \ProcessOptions
+%% amsmath needed because text in math mode becomes \text{} command in SWP, which is a amsmath command
+%% in tcilatex.tex for SWP \text{} is defined, but in tcilatex.tex for Y&Y amsmath definitions are removed.
+%% \RequirePackage{amssymb,amsmath,tcigraph,chicompa}
+
+\thinmuskip=3mu plus 1mu minus 1mu
+\medmuskip=4mu plus 2mu minus 2mu
+\thickmuskip=5mu plus 2mu minus 2mu
+
+%% SWP thinks in Chi specifications that it is in paragraph mode
+%% => replaces \\ by \newline when saving. To undo this
+%% (\newline cannot be used in math mode)
+%% \newline is redefined below as \\
+%% For Elsevier journal publications these kind of problems can be avoided
+%% by using \nl. This also reads more easy in the .tex file.
+\renewcommand{\newline}{\\}
+\newcommand{\nl}{\\}
+
+\newcommand{\Btab}      {\begin{tabbing}\hspace*{\chiindent}\=\+}
+\newcommand{\Etab}      {\end{tabbing}}
+
+\newcommand{\Chi}       {\protect\chi}
+\newcommand{\chitimed}  {\protect\chi_{\textrm{timed}}}
+\newcommand{\chit}      {\protect\chi_{\textrm{t}}}
+\newcommand{\chih}      {\protect\chi_{\textrm{h}}}
+\newcommand{\chiode}    {\protect\chi_{\textrm{ODE}}}
+\newcommand{\chidae}    {\protect\chi_{\textrm{DAE}}}
+
+\newcommand{\conv}[1]   {{#1}^{\sim}}
+\newcommand{\algv}[1]   {{#1}^{=}}
+
+% Chi keywords:
+\newcommand{\type}      {\mathsf{type}\;}
+\newcommand{\const}     {\mathsf{const}\;}
+\newcommand{\func}      {\mathsf{func}\;} %using \func in SW20 files causes SW to crash (bug)
+\newcommand{\Func}      {\mathsf{func}\;} %using \func in encapsulated button is no-op (bug)
+\newcommand{\proc}      {\mathsf{proc}\;}
+\newcommand{\syst}      {\mathsf{syst}\;}
+\newcommand{\model}     {\mathsf{model}\;}
+\newcommand{\xper}      {\mathsf{xper}\;}
+\newcommand{\unit}      {\mathsf{unit}\;}
+\newcommand{\ext}       {\mathsf{ext}\;}
+\newcommand{\var}       {\mathsf{var}\;}
+%\newcommand{\inv}       {\;\mathopen{\mathsf{inv}}\;}  % old, previously defined
+\newcommand{\inv}       {\mathsf{inv}\;}
+\newcommand{\urg}       {\mathsf{urg}\;}
+\newcommand{\tcp}       {\mathsf{tcp}\;}
+\newcommand{\val}       {\mathsf{val}\;}
+\newcommand{\cont}      {\mathsf{cont}\;}
+\newcommand{\realcont}  {\mathsf{cont}}
+%\newcommand{\alg}       {\mathsf{alg}\;}
+\newcommand{\alge}      {\mathsf{alg}\;}
+\newcommand{\icont}     {\mathsf{icont}\;}
+\newcommand{\ucont}     {\mathsf{ucont}\;}
+\newcommand{\jcont}     {\mathsf{jcont}\;}
+\newcommand{\dyn}       {\mathsf{dyn}\;}
+\newcommand{\state}     {\mathsf{state}\;}
+%\newcommand{\Time}      {\mathsf{time}\;}
+\newcommand{\Time}      {\mathsf{time}}
+\newcommand{\recur}     {\mathsf{recur}\;}
+\newcommand{\modenospace}{\mathsf{mode}}
+\newcommand{\rmode}     {\modenospace\;}       % use \moder because \mode is already defined in beamer.cls
+\providecommand{\mode}  {\modenospace\;}       % use \providecommand because \mode is defined in beamer.cls
+\newcommand{\disc}      {\mathsf{disc}\;}
+\newcommand{\jump}      {\mathsf{jump}\;}
+\newcommand{\init}      {\mathsf{init}\;}
+\newcommand{\ini}       {\mathsf{ini}\;}        % prefix of initialization predicate
+\newcommand{\fixed}     {\mathsf{fixed}\;}
+\newcommand{\chan}      {\mathsf{chan}\;}
+\newcommand{\nchan}     {\mathsf{nchan}\;}
+%\newcommand{\nchan}     {\mathsf{chan}'\;}
+\newcommand{\act}	{\mathsf{act}\;}
+\newcommand{\der}       {\mathsf{der}}
+
+\newcommand{\nat}       {\mathsf{nat}}
+%\newcommand{\int}      {\mathsf{int}} \int and \Int Already defined as the integral symbol
+\newcommand{\integer}   {\mathsf{int}}
+\newcommand{\real}      {\mathsf{real}}
+\newcommand{\bool}      {\mathsf{bool}}
+\newcommand{\void}      {\mathsf{void}}
+%\newcommand{\char}     {\mathsf{char}}
+%\newcommand{\string}   {\mathsf{string}}
+\newcommand{\true}      {\mathrm{true}}
+\newcommand{\false}     {\mathrm{false}}
+
+
+\newcommand{\Fixed}     {\fixed}
+\newcommand{\Var}       {\var}
+\newcommand{\Ext}       {\ext}
+\newcommand{\Cont}      {\cont}
+\newcommand{\Disc}      {\disc}
+\newcommand{\Dyn}       {\dyn}
+\newcommand{\Jump}      {\jump}
+\newcommand{\Init}      {\init}
+\newcommand{\Chan}      {\chan}
+\newcommand{\Nat}       {\nat}
+
+\newcommand{\Int}       {\integer}
+\newcommand{\Real}      {\real}
+\newcommand{\Bool}      {\bool}
+\newcommand{\Char}      {\char}
+\newcommand{\String}    {\string}
+\newcommand{\Void}      {\void}
+\newcommand{\True}      {\true}
+\newcommand{\False}     {\false}
+
+\newcommand{\Mag}       {\mathsf{mag}\;} %\mag is already defined somewhere
+\newcommand{\simblock}  {\mathrm{simblock}}
+
+
+%First define some commands without trailing space
+\newcommand{\bbn}{|\mkern-2mu[}                                 % |[    - begin block
+
+\newlength{\chisymbolwidth}
+
+%Add spacing to symbols
+\settowidth{\chisymbolwidth}{$\bbn$}
+\newcommand{\chisymbol}[1]{\makebox[\chisymbolwidth][l]{$#1$}}
+\newcommand{\nulchi}    {\chisymbol{}\;}                        % empty chi symbol for spacing
+% also should work: \newcommand{\nulchi}{\phantom{\bb}} or {\phantom{any chi symbol of fixed width}}
+
+\newcommand{\bc}        {\langle}                               % <     - Begin configuration
+\newcommand{\ec}        {\rangle}                               % >     - End configuration
+\newcommand{\bp}        {\mathopen{\chisymbol{\langle}}\;}      % <     - Begin chi process
+\newcommand{\ep}        {\mathrel{\rangle}}                     % >     - End chi process
+%\newcommand{\bmd}       {\mathopen{\chisymbol{\langle\mkern-3mu\langle}}\;}
+                                                                % <     - Begin chi model
+\newcommand{\bmd}       {\bb}                                   % <     - Begin chi model
+%\newcommand{\emd}       {\mathrel{\rangle\mkern-3mu\rangle}}    % >     - End chi model
+\newcommand{\emd}       {\eb}                                   % >     - End chi model
+\newcommand{\com}       {\mathopen{\chisymbol{\mkern1mu,}}\;}
+
+% Atomic process terms:
+\newcommand{\deadlock}  {\delta}
+\newcommand{\skp}       {\mathrm{skip}}
+\newcommand{\skippy}    {\skp}
+\newcommand{\syn}       {\mathrm{sync}}
+\newcommand{\sync}      {\mathop{^\sim}\nolimits}
+\newcommand{\ssync}     {\mathop{^\approx}\nolimits}
+%\newcommand{\ssync}     {\mathop{^{\sim\sim}}\nolimits}
+\newcommand{\recv}      {\mathop{?}\nolimits}
+\newcommand{\rrecv}     {\mathop{??}\nolimits}
+\newcommand{\din}       {\recv}
+\newcommand{\send}      {\mathop{!}\nolimits}
+\newcommand{\ssend}     {\mathop{!!}\nolimits}
+\newcommand{\sndrcv}    {\mathop{!?}\nolimits}
+\newcommand{\dout}      {\send}
+\newcommand{\dch}       {\mathop{-}\nolimits}
+\newcommand{\dio}       {\mathop{!?}\nolimits}
+\newcommand{\doi}       {\mathop{?!}\nolimits}
+\newcommand{\Dist}      {\;\rightarrow}
+\newcommand{\Sam}       {\mathop{\sigma}\nolimits}
+\newcommand{\Nab}       {\mathop{\nabla}\nolimits}
+\newcommand{\Del}       {\mathop{\Delta}\nolimits}
+\newcommand{\edge}[1]   {\;\,\mathopen{[}\mkern1mu#1\mkern1mu\mathopen{>}\;\,}
+
+% Operators:
+
+\newcommand{\bsb}       {~/\$~}                                 % \$    - Begin simblock
+\newcommand{\esb}       {~\$/~}                                 % $\    - End simblock
+\newcommand{\then}      {\;\mathopen{\rightarrow}\;}            % ->    - right arrow
+\newcommand{\gga}       {\gg}
+\newcommand{\ggi}       {\iop}
+\newcommand{\guard}     {\then}
+\newcommand{\dguard}    {\;\mathopen{\rightarrow}\;}
+\newcommand{\atomguard} {\;\mathopen{\succ}\;}
+\newcommand{\ndguard}   {\;\mathopen{:\rightarrow}\;}
+\newcommand{\sem}       {\mathopen{\chisymbol{\mkern1mu;}}\;}
+\newcommand{\seq}       {\sem}
+\newcommand{\zdelay}    {\leadsto}
+\newcommand{\disrupt}   {\rhd}
+\newcommand{\adisrupt}  {\rightslice}
+\newcommand{\cdisrupt}  {\blacktriangleright}
+\newcommand{\choice}    {\oplus}
+% use \providecommand because \alt can be already defined in setimes.sty
+%\providecommand{\alt}   {\mathrel{\chisymbol{[\mkern-2mu]}}}    % []    - guarded command separator
+%\providecommand{\alt}   {\mathrel{\chisymbol{[\mkern-1mu]}}}    % []    - guarded command separator
+%\providecommand{\alt}   {\mathrel{\chisymbol{\mkern2mu\mid}}}    % |     - alternative composition operator
+%\providecommand{\alt}   {\mathrel{\chisymbol{\talloblong}}}      % []     - alternative composition operator from stmaryrd
+%% []     - alternative composition operator from stmaryrd:
+\newcommand{\altop}     {\mathrel{\chisymbol{\talloblong}}\mbox{}} % \alt already defined in beamer.cls
+\providecommand{\alt}   {\altop}                                   % \alt defined as \altop
+%\newcommand{\para}      {\mathrel{\chisymbol{|\mkern-2mu|}}\mbox{}}    % ||
+\newcommand{\para}      {\mathrel{\chisymbol{\parallel}}\mbox{}}        % ||
+% \mbox{} acts as invisible operator and is automatically preceded by spacing (\;)
+%\newcommand{\merge}     {\para}                                % already \merge in stmaryrd package
+\newcommand{\lmerge}    {\lfloor}
+\newcommand{\commerge}  {\mathrel{\chisymbol{\mkern1mu|}}\mbox{}}
+\newcommand{\bb}        {\mathopen{\chisymbol{\bbn}}\;}         % |[  begin block
+\newcommand{\bvs}       {\mathopen{\bbn_{\mathrm{V}}}\,}        % |[  begin variable scope
+\newcommand{\bvals}     {\mathopen{\bbn_{\mathrm{S}}}\,}        % |[  begin valuation scope
+\newcommand{\bivs}      {\mathopen{\bbn_{\mathrm{V_I}}}\,}      % |[  begin initial variable scope
+\newcommand{\bcs}       {\mathopen{\bbn_{\mathrm{H}}}\,}        % |[  begin channel scope
+\newcommand{\bas}       {\mathopen{\bbn_{\mathrm{A}}}\,}        % |[  begin action scope
+\newcommand{\brs}       {\mathopen{\bbn_{\mathrm{R}}}\,}        % |[  begin recursion scope
+\newcommand{\bts}       {\mathopen{\bbn_{\mathrm{T}}}\,}        % |[  begin top level scope
+\newcommand{\bits}      {\mathopen{\bbn_{\mathrm{T_I}}}\,}      % |[  begin initial top level scope
+\newcommand{\batr}      {\mathopen{<}\,}                        % <  begin atomic region
+\newcommand{\eatr}      {\mathrel{>}}                           % >  begin atomic region
+
+%\newcommand{\sep}{\mathrel{\chisymbol{\mkern1mu|}}\mbox{}}     % |
+%\newcommand{\sep}
+%  {\mathrel{\chisymbol{\mkern1mu|\mkern-3mu\rangle}}\mbox{}}    % |>
+%\newcommand{\sep}       
+%{\mathrel{\chisymbol{\chisymbol{\rangle\mkern-3mu\rangle}}}\mbox{}} % >>
+\newcommand{\sep}
+{\mathrel{\chisymbol{\mkern-1mu:\mkern-1mu:}}\mbox{}}           % ::
+
+                                                                % | discrete-event separator
+% \mbox{} acts as invisible operator and is automatically preceded by spacing (\;)
+\newcommand{\ebn}       {\mathopen{]\mkern-2mu|}}               % ]|    - end block, no spacing before
+\newcommand{\eb}        {\mathrel{]\mkern-2mu|}}                % ]|    - end block
+\newcommand{\evs}       {\eb}                                   % ]|    - end variable scope
+\newcommand{\eivs}      {\eb}                                   % ]|    - end initial variable scope
+\newcommand{\ecs}       {\eb}                                   % ]|    - end channel scope
+\newcommand{\eas}       {\eb}                                   % ]|    - end action scope
+\newcommand{\ers}       {\eb}                                   % ]|    - end recursion scope
+\newcommand{\ets}       {\eb}                                   % ]|    - end top level scope
+\newcommand{\eits}      {\eb}                                   % ]|    - end initial top level scope
+\newcommand{\rep}       {\mathopen{*}}                          % *     - * prefix to [ gives *[
+\newcommand{\guardrep}  {\stackrel{\mathopen{*}}{\then}}
+%\newcommand{\enc}       {\partial_{\mathrm{a}}}
+\newcommand{\enc}       {\partial}				% action encapsulation operator
+\newcommand{\uc}        {\upsilon}				% urgent communication operator
+\newcommand{\uaop}	{\upsilon}				% urgent action operator
+\newcommand{\saop}[2]	{\gamma_{#1}(#2)}			% synchronizing action operator
+
+\newcommand{\cenc}      {\phi}
+\newcommand{\denc}      {\nu}
+\newcommand{\zdenc}     {\partial_{0}}
+\newcommand{\enccon}    {\partial_{\gamma}}
+\newcommand{\iv}        {\iota_{\sicont^{+},\sucont^{+}}}
+\newcommand{\jen}       {\iota_{\ljump}}                    % jump enabling operator
+\newcommand{\jenop}     {\iota}                             % jump enabling operator
+\newcommand{\ivop}      {\iota}
+\renewcommand{\mp}      {\pi}
+\newcommand{\iop}       {\succ}
+\newcommand{\seop}      {\curvearrowright}
+\newcommand{\initop}    {\gg}
+\newcommand{\ucH}       {\upsilon_H}
+\newcommand{\con}       {\gamma}
+\newcommand{\coni}      {\gamma_{\mathrm{i}}}
+\newcommand{\priop}     {\Theta}
+\newcommand{\abs}       {\tau}
+\newcommand{\ap}        {r}                                     % action predicate
+\newcommand{\ip}        {i}                                     % initialization predicate
+
+\newcommand{\equ}       {\mathrel{\chisymbol{\mkern1mu|^{\prime}}}\mbox{}}      % |'    - equation separator
+\newcommand{\bg}        {\mathopen{\chisymbol{[}}\;}            % [     - begin guarded command
+\newcommand{\eg}        {\mathrel{\mkern2mu]}}                  % ]     - end guarded command
+\newcommand{\ebs}       {\;\mkern-1mu\eb}                       % ]| preceded by space (use after \eg}
+
+\newcommand{\bproc}     {\mathopen{\chisymbol{\bc}}\;}  
+\newcommand{\eproc}     {\ec}      
+\newcommand{\bset}      {\mathopen{\chisymbol{\{}}\;}  
+\newcommand{\eset}      {\mathrel{\mkern2mu\}}}
+
+\newcommand{\Bat}       {\langle\!|}                            % <|    - array tuple begin
+\newcommand{\Eat}       {|\!\rangle}                            % |>    - array tuple end
+
+\newcommand{\bgr}       {\mathopen{\chisymbol{(}}\;}  
+\newcommand{\egr}       {\mathrel{\mkern2mu)}}      
+
+
+\newcommand{\conc}      {\mathop{+\mkern-8mu+}\nolimits}
+\newcommand{\cx}        {\mathop{+\mkern-8mu<}\nolimits}
+\newcommand{\at}        {{\scriptstyle @}}
+\newcommand{\Div}       {\mathrel{\mathrm{div}}}
+\newcommand{\Mod}       {\mathrel{\mathrm{mod}}}
+
+\newcommand{\nil}       {\mathalpha{\perp}}
+\newcommand{\eq}        {\;\mathopen{=}\;}
+\newcommand{\bl}        {\mathord{[}\mkern1mu}                  % begin list
+\newcommand{\el}        {\mkern1mu\mathord{]}}                  % end list
+\newcommand{\bt}        {\mathord{\langle}\mkern1mu}            % begin tuple
+\newcommand{\et}        {\mkern1mu\mathord{\rangle}}            % end tuple
+\newcommand{\comm}      {\ \textrm{//\,}}
+\newcommand{\ret}       {\mathop{\uparrow}\nolimits}
+\newcommand{\Neg}       {\neg}
+
+\newlength{\chiindent}
+\if@twocolumn
+\setlength{\chiindent}{3mm}
+\else
+\setlength{\chiindent}{\leftmargini}
+\fi
+
+
+\newcommand{\sts}       {\ \=}          %adds extra space before tab, use before =
+\newcommand{\tb}        {\>}            %tab
+\newcommand{\tr}        {\'}            %tab flush right
+\newcommand{\fr}        {\`}            %flush right to margin
+\newcommand{\killline}  {\kill}
+\newcommand{\pusht}     {\pushtabs}     %\pushtabs not recognized by SW
+\newcommand{\popt}      {\poptabs}      %\poptabs not recognized by SW
+
+\setlength{\tabbingsep}{0pt}            %for \tr
+
+\let\@@rtab=\@rtab        
+\def\@rtab{\ensuretext{\@@rtab}}
+\let\@@ltab=\@ltab        
+\def\@ltab{\ensuretext{\@@ltab}}
+\let\@@settab=\@settab    
+\def\@settab{\ensuretext{\@@settab}}
+\let\@@tabrj=\@tabrj      
+\def\@tabrj{\ensuretext{\@@tabrj}}
+\let\@@tablab=\@tablab    
+\def\@tablab{\ensuretext{\@@tablab}}
+\let\@@tabcr=\@tabcr      
+\def\@tabcr{\ensuretext{\@@tabcr}}
+\let\@@kill=\kill         \def\kill{\ensuretext{\@@kill}}
+\let\@@pushtabs=\pushtabs 
+\def\pushtabs{\ensuretext{\@@pushtabs}}
+\let\@@poptabs=\poptabs   
+\def\poptabs{\ensuretext{\@@poptabs}}
+\newcommand{\ensuretext}[1]{\ifmmode\endmath#1\math\else#1\fi}
+
+%Commands for syntax definitions
+\newcommand{\bopt}{[\ensuremath{\mkern1mu}}                
+% 0 or 1 times
+\newcommand{\eopt}{\ensuremath{\mkern1mu}]}
+\newcommand{\bmopt}{\{\ensuremath{\mkern1mu}}              % 0 or more times
+\newcommand{\emopt}{\ensuremath{\mkern1mu}\}}
+\newcommand{\bnt}{\ensuremath{\mathord{\langle}\mkern1mu}} % non-terminal
+\newcommand{\ent}{\ensuremath{\mkern1mu\mathord{\rangle}}}
+
+\newcommand{\msstrut}{\vphantom|^{\vphantom|}}
+
+\endinput
+%% 
+%%End of file `chisw.sty'.
+
+  

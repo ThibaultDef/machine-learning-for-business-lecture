@@ -1,0 +1,198 @@
+%% The title page is described in a separate style file
+%% (not integrated into sebook.sty) because numbering for the title page is normally not
+%% printed (i, ii), and can therefore be printed separately from the report.
+%% Also the title page style changes often.
+
+%% DAvB
+%% V1.0a added: \coaching, \reportline, \dateline
+%%       changed: \frontpage
+%% V1.01 added end comment
+%% V1.02 Koen Eijsvogels: changed position of title etc. for new SE front
+%% V1.03 DAvB changed position of title for new SE front
+%%
+%% 
+%% This is file `setitlpg.sty' (adapted from `sereport.sty' generated on <1995/6/29>, DAvB). 
+%% with the docstrip utility (2.2i).
+%% 
+%% The original source files were:
+%% 
+%% sereport.dtx  (with options: `package')
+%% 
+%% IMPORTANT NOTICE:
+%% You are not allowed to distribute this file.
+%% For distribution of the original source see
+%% the copyright notice in the file sereport.dtx .
+%% 
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{setitlpg}
+        [1999/08/26 V1.03 Systems Engineering title page package]
+
+
+\DeclareOption{largefont}{% Add a \Huge font size for 12pt class options.
+  \ifnum \@ptsize=2
+    \DeclareFontShape{OT1}{cmr}{bx}{n}
+      { <5> <6> <7> <8> <9> gen * cmbx
+        <10><10.95> cmbx10
+        <12><14.4><17.28><20.74><24.88><29.86>cmbx12 }{}
+    \renewcommand{\Huge}{\@setfontsize\Huge{29.86}{36}}
+  \fi}
+\ProcessOptions
+
+\newcommand{\se@hfsn}{}
+\newcommand{\se@hfsp}{}
+\newcommand{\SEheaderfont}[2][]{\def\se@hfsp{#2}\def\se@hfsn{#2#1}}
+\SEheaderfont[\slshape]{}
+
+\newcommand{\case@ptsize}[3]{\ifcase\@ptsize #1\or #2\or #3\fi}
+
+\def\ps@plain{\let\@mkboth\@gobbletwo
+     \let\@oddhead\@empty\def\@oddfoot{\se@hfsp\hfil\thepage
+     \hfil}\let\@evenhead\@empty\let\@evenfoot\@oddfoot}
+\if@twoside
+  \def\ps@headings{%
+      \let\@oddfoot\@empty\let\@evenfoot\@empty
+      \def\@evenhead{{\se@hfsp\thepage}\hfil{\se@hfsn\leftmark}}%
+      \def\@oddhead{{\se@hfsn\rightmark}\hfil{\se@hfsp\thepage}}%
+      \let\@mkboth\markboth
+    \def\chaptermark##1{%
+      \markboth {%
+        \ifnum \c@secnumdepth >\m@ne
+            \@chapapp\ \thechapter. \ %
+        \fi
+        ##1}{}}%
+    \def\sectionmark##1{%
+      \markright {%
+        \ifnum \c@secnumdepth >\z@
+          \thesection. \ %
+        \fi
+        ##1}}}
+\else
+  \def\ps@headings{%
+    \let\@oddfoot\@empty
+    \def\@oddhead{{\se@hfsn\rightmark}\hfil{\se@hfsp\thepage}}%
+    \let\@mkboth\markboth
+    \def\chaptermark##1{%
+      \markright {%
+        \ifnum \c@secnumdepth >\m@ne
+            \@chapapp\ \thechapter. \ %
+        \fi
+        ##1}}}
+\fi
+\def\ps@myheadings{%
+    \let\@oddfoot\@empty\let\@evenfoot\@empty
+    \def\@evenhead{{\se@hfsp\thepage}\hfil{\se@hfsn\leftmark}}%
+    \def\@oddhead{{\se@hfsn\rightmark}\hfil{\se@hfsp\thepage}}%
+    \let\@mkboth\@gobbletwo
+    \let\chaptermark\@gobble
+    \let\sectionmark\@gobble
+    }
+\pagestyle{headings}
+\setlength\parindent{0em}
+\case@ptsize{\setlength\parskip{6\p@    plus 2.4\p@ minus 0.8\p@}}
+            {\setlength\parskip{6.8\p@  plus 2.7\p@ minus 0.9\p@}}
+            {\setlength\parskip{7.25\p@ plus 2.9\p@ minus 1\p@}}
+\setlength\headsep{35\p@}
+\setlength\footskip{45\p@}
+
+\setlength\@tempdima{\paperwidth}
+\addtolength\@tempdima{-2in}
+\case@ptsize{\setlength\@tempdimb{397\p@}}
+            {\setlength\@tempdimb{415\p@}}
+            {\setlength\@tempdimb{430\p@}}
+\if@twocolumn
+  \ifdim\@tempdima>2\@tempdimb\relax
+    \setlength\textwidth{2\@tempdimb}
+  \else
+    \setlength\textwidth{\@tempdima}
+  \fi
+\else
+  \ifdim\@tempdima>\@tempdimb\relax
+    \setlength\textwidth{\@tempdimb}
+  \else
+    \setlength\textwidth{\@tempdima}
+  \fi
+\fi
+\@settopoint\textwidth
+
+\setlength\@tempdima{\paperheight}
+\addtolength\@tempdima{-2in}
+\addtolength\@tempdima{-1.5in}
+\divide\@tempdima\baselineskip
+\@tempcnta=\@tempdima
+\setlength\textheight{\@tempcnta\baselineskip}
+
+\addtolength\textheight{\topskip}
+
+\if@twoside
+  \setlength\@tempdima        {\paperwidth}
+  \addtolength\@tempdima      {-\textwidth}
+  \setlength\oddsidemargin    {0.6\@tempdima}
+  \addtolength\oddsidemargin  {-1in}
+  \setlength\marginparwidth   {0.4\@tempdima}
+  \addtolength\marginparwidth {-0.4in}
+\else
+  \setlength\@tempdima        {\paperwidth}
+  \addtolength\@tempdima      {-\textwidth}
+  \setlength\oddsidemargin    {0.5\@tempdima}
+  \addtolength\oddsidemargin  {-1in}
+  \setlength\marginparwidth   {0.5\@tempdima}
+  \addtolength\marginparwidth {-0.4in}
+\fi
+\ifdim \marginparwidth >2in
+   \setlength\marginparwidth{2in}
+\fi
+\@settopoint\oddsidemargin
+\@settopoint\marginparwidth
+\setlength\evensidemargin  {\paperwidth}
+\addtolength\evensidemargin{-2in}
+\addtolength\evensidemargin{-\textwidth}
+\addtolength\evensidemargin{-\oddsidemargin}
+\@settopoint\evensidemargin
+
+\setlength\topmargin{\paperheight}
+\addtolength\topmargin{-2in}
+\addtolength\topmargin{-\headheight}
+\addtolength\topmargin{-\headsep}
+\addtolength\topmargin{-\textheight}
+\addtolength\topmargin{-\footskip}
+\addtolength\topmargin{-.5\topmargin}
+\@settopoint\topmargin
+
+\def\reportnr#1{\gdef\@reportnr{#1}}
+\def\institute#1{\gdef\@institute{#1}}
+\def\coaching#1{\gdef\@coaching{#1}}
+\def\reportline#1{\gdef\@reportline{#1}}
+\def\dateline#1{\gdef\@dateline{#1}}
+
+\def\frontpage{
+\begin{titlepage}
+  \let\footnotesize\small \let\footnoterule\relax \setcounter{page}{0}
+  \noindent
+  \null
+  \vfil
+  \vskip 18mm
+  {\raggedright\leftskip 72mm
+    \vbox to 59mm{
+    \vspace{\stretch{1.2}}
+    {\large \@title \\}
+    \vspace{\stretch{1}}
+    \@author\\
+    \vspace{\stretch{1}}
+    \@reportnr\\
+    \vspace{\stretch{1.2}}}}
+  \vfill
+  \@reportline\par\vskip 7mm
+  \begin{tabular}{@{}l@{ }l}\@coaching\end{tabular}\par\vskip 3.5mm
+  \textsc{\@institute}\par\vskip 7mm
+  \@dateline\par
+  \vfil
+  \null
+\end{titlepage}
+
+\setcounter{footnote}{0}
+\let\frontpage\relax}
+
+
+\endinput
+%% 
+%% End of file `setitlpg.sty'.

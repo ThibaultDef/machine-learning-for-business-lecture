@@ -1,0 +1,457 @@
+\newcommand{\dchis}     {\chi_{\sigma}}
+\newcommand{\hchis}     {\chi_{\sigma_{\mathrm{h}}}}
+\newcommand{\hchi}      {\chi_{\mathrm{h}}}
+\newcommand{\ACPBM}     {\text{ACP}_{\mathrm{hs}}^{\mathrm{srt}}}   %hybrid proc alg Bergstra Midddelburg
+%\makeatletter
+\newcounter{sosrule}
+\newcounter{sosruleT}
+\newcounter{sosruleL2}
+%\renewcommand{\thesosruleL}{\textrm{$\mathcal{L}_2$-}\arabic{sosruleL2}}
+\renewcommand{\thesosruleT}{\arabic{sosruleT}}
+
+%\newcommand{\sosrule}[3]{%
+%  {\frac{\begin{array}{@{}c@{}}{#1}\end{array}}%
+%        {\begin{array}{@{}c@{}}{#2}\end{array}}%
+%   {\>\thesosrule\def\@currentlabel{\p@sosrule\thesosrule}\label{#3}\addtocounter{sosrule}{1}}}}
+\newcommand{\sosrule}[3]{{\dfrac{#1}{#2}%
+   {\>\thesosrule\def\@currentlabel{\p@sosrule\thesosrule}\label{#3}\addtocounter{sosrule}{1}}}}
+
+\newcommand{\sosruleT}[3]{{\dfrac{#1}{#2}%
+   {\>\textrm{T-}\thesosruleT\def\@currentlabel{\p@sosruleT\thesosruleT}\label{#3}\addtocounter{sosruleT}{1}}}}
+
+%\newcommand{\sosruleL2}[3]{{\dfrac{#1}{#2}%
+%{\>\thesosruleL2\def\@currentlabel{\p@sosruleL2\thesosruleL2}\label{#3}\addtocounter{sosruleL2}{1}}}}
+
+\newcommand{\refsosruleT}[3]{{\dfrac{#1}{#2}} {\>\mathcal{L}_2\textrm{-}{#3}}}
+
+\newcommand{\newrule}[2]{\dfrac{#1}{#2}}
+
+\newcommand{\combpar}[1]{\begin{array}{@{\,}c@{\,}} \mt \\ #1 \end{array}}
+\newcommand{\combparall}[1]{\begin{array}{@{\,}c@{\,}} #1 \end{array}}
+
+\newcommand{\comb}          {\begin{array}{@{\,}c@{\,}} \mt \\ p' \end{array}}
+\newcommand{\combprime}     {\begin{array}{@{\,}c@{\,}} \mt \\ p'' \end{array}}
+\newcommand{\combq}         {\begin{array}{c} \mt \\ q' \end{array}}
+\newcommand{\combzdelayqp}  {\begin{array}{c}   q \\ p'\zdelay q \end{array}}
+\newcommand{\combseq}       {\begin{array}{c}   q \\ p';q \end{array}}
+\newcommand{\comdisr}       {\begin{array}{c} \mt \\ p'\cdisrupt q \end{array}}
+\newcommand{\combenc}       {\begin{array}{@{\,}c@{\,}} \mt \\ \enc(p') \end{array}}
+\newcommand{\combenccon}    {\begin{array}{@{\,}c@{\,}} \mt \\ \enccon(p') \end{array}}
+\newcommand{\combencprime}  {\begin{array}{@{\,}c@{\,}} \mt \\ \enc(p'') \end{array}}
+\newcommand{\combiv}        {\begin{array}{c} \mt \\ \iv(p') \end{array}}
+\newcommand{\combmp}        {\begin{array}{c} \mt \\ \mp(p') \end{array}}
+\newcommand{\combmpH}       {\begin{array}{c} \mt \\ \mp_H(p') \end{array}}
+\newcommand{\combvq}        {\begin{array}{c} \mt \\ D,I:p' \end{array}}
+%\newcommand{\combscope}{\begin{array}{c} \mt  \\ \bb\sigma'\upharpoonright\dom(\isigma),E_{\mathrm{s}}                                                         \mid p'
+%                                                  \eb 
+%                        \end{array}}
+%\newcommand{\combscope}  
+%{\begin{array}{@{\,}c@{\,}} 
+%        \mt     \\
+%        \bb\sigma'\upharpoonright\dom(\isigma),\iini_0,H_0,R_0\mid p'\eb   
+% \end{array}
+%}
+\newcommand{\combdscope}  
+{\begin{array}{c} 
+        \mt     \\
+        \bb\sigma'\upharpoonright\dom(\isigma),H_0,R_0\mid p'\eb   
+ \end{array}
+}
+\newcommand{\combmergep}        {\begin{array}{@{\,}c@{\,}} \mt \\ p'\\ \mt \\p'  \end{array}}
+\newcommand{\combmergeq}        {\begin{array}{@{\,}c@{\,}} \mt \\ \mt\\ q' \\q'  \end{array}}
+\newcommand{\combmergepq}       {\begin{array}{@{\,}c@{\,}} \mt \\ p'\\ q' \\p'\merge q' \end{array}}
+\newcommand{\combmergeqp}       {\begin{array}{@{\,}c@{\,}} \mt \\ p'\\ q' \\q'\merge p' \end{array}}
+\newcommand{\combmergepqa}      {\begin{array}{@{\,}c@{\,}} q   \\ p'\merge q \end{array}}
+\newcommand{\combmergeqpa}      {\begin{array}{@{\,}c@{\,}} q   \\ q\merge p' \end{array}}
+
+\newcommand{\emptysetfive}      {\emptyset,\emptyset,\emptyset,\emptyset,\emptyset}
+\newcommand{\emptysetfour}      {\emptyset,\emptyset,\emptyset,\emptyset}
+\newcommand{\emptysetthree}     {\emptyset,\emptyset,\emptyset}
+\newcommand{\emptysettwo}       {\emptyset,\emptyset}
+
+\newcommand{\ctrue}             {\mathrm{T}}         % for consistency trans
+\newcommand{\cfalse}            {\mathrm{F}}         % id.
+%\newcommand{\bcon}              {b_{\mathrm{y}}}   % boolean for on consistency arrow
+\newcommand{\bcon}              {\beta}   % boolean for on consistency arrow
+        
+\newcommand{\flow}              {\rho}
+\newcommand{\mt}                {\checkmark}
+\newcommand{\trans}     [1]     {\xrightarrow{#1}{}}
+\newcommand{\ntrans}    [1]     {\stackrel {#1} \nrightarrow}
+%\newcommand{\dtrans}    [1]     {\stackrel {#1} \leadsto}
+\newcommand{\dtrans}    [1]     {\stackrel {#1} \longmapsto}
+\newcommand{\ctrans}    [1]     {\stackrel {#1} \leadsto}
+\newcommand{\nctrans}    [1]    {\stackrel {#1} \not\leadsto}
+%\newcommand{\ndtrans}   [1]     {\stackrel {#1} \not\leadsto}
+\newcommand{\ndtrans}   [1]     {\stackrel {#1} \not\mapsto}
+\newcommand{\dctrans}   [1]     {\stackrel {#1} {\stackrel{\longmapsto}{\leadsto}}}
+\newcommand{\dctransnp}         {\stackrel {l}  {\stackrel{\longmapsto}{\leadsto}}} %np = no parameters
+%\newcommand{\dctransnp}
+%  {\stackrel{\flow,t}{\stackrel{\longmapsto}{\stackrel{\dsigma}{\leadsto}}}} %np = no parameters
+\newcommand{\nterm}             {\not\downarrow}
+
+\newcommand{\projection}        {\downarrow}
+
+\newcommand{\solfunc}           {\mathrm{\Omega_{\mathit{\algfuncs\contfuncs}}}}
+\newcommand{\solfuncE}          {\mathrm{\Omega}_{\sigma\!Et}}
+\newcommand{\solfuncD}          {\mathrm{\Omega}_{D\sigma\!t}}
+\newcommand{\solfuncIC}         {\mathrm{\Omega}_{\sigma ICt}}
+\newcommand{\solfuncINLt}       {\mathrm{\Omega}_{\sigma\sicont\sucont\salg t}}
+\newcommand{\solfuncCI}         {\mathrm{\Omega}_{\sigma CIt}}
+\newcommand{\solfuncc}          {\mathrm{\Omega_c}}
+\newcommand{\algfuncs}          {F}
+\newcommand{\contfuncs}         {G}
+\newcommand{\sold}      [1]     {\mathrm{\Omega_{d}}({#1})}
+\newcommand{\solc}      [1]     {\mathrm{\Omega_{c}}({#1})}
+\newcommand{\solq}      [1]     {\mathrm{\Omega_{q}}({#1})}
+\newcommand{\subst}     [2]     {[{#1}/{#2}]}
+\newcommand{\dfunc}             {\mathcal{D}}
+\newcommand{\dafunc}            {\dot{\mathcal{D}}}
+\newcommand{\vplusfunc} [1]     {\mathcal{V^{+}}({#1})}
+\newcommand{\vfunc}             {\mathcal{V}}
+\newcommand{\cfunc}             {\mathcal{C}}
+\newcommand{\tfunc}             {\mathcal{T}}
+\newcommand{\tfuncR}            {\mathcal{T}_R}
+\newcommand{\tfuncbR}           {\mathcal{T}_{b,R}}
+\newcommand{\renfunc}           {\mathcal{R}}   %renaming variables by prefixing underscores
+\newcommand{\renfuncab}         {\mathcal{R}_{\alpha,\beta}}
+\newcommand{\renfunca}          {\mathcal{R}_{\alpha}}
+\newcommand{\renfuncb}          {\mathcal{R}_{\beta}}
+\newcommand{\renfuncao}         {\mathcal{R}_{\alpha,\emptyset}}
+\newcommand{\renfuncbo}         {\mathcal{R}_{\emptyset,\beta}}
+\newcommand{\mergeflowsfunc}[5] {\mathcal{F}_{#4,#5}(#1,#2,#3)}
+\newcommand{\mergesigmasfunc}[5]{\mathcal{F'}_{#4,#5}(#1,#2,#3)}
+\newcommand{\actabs}            {\operatorname{abs}}
+\newcommand{\tautau}            {\tau'2\tau}
+%\newcommand{\varabs}    [3]     {\mathrm{abs}_{#2}(#1,#3)}
+\newcommand{\flowabsIC} [5]     {\kappa_{#1,#2,#3,#4}(#5)}
+\newcommand{\flowabs}   [1]     {\kappa^{\sigma\! Et}_{\isigma}(#1)}
+\newcommand{\valabsICt} [6]     {\kappa''_{#1,#2,#3,#4,#5}(#6)}
+\newcommand{\valabsINLt}[1]     {\kappa^{\,\sigma\isigma}_{\sicont\sucont\salg t}(#1)}
+\newcommand{\valabsEt}[1]       {\kappa^{\,\sigma\! Et}_{\isigma}(#1)}
+\newcommand{\sdsigmaINL}        {\Dsigma_{\sigma\sicont\sucont\salg}}
+%\newcommand{\dsigmaINL}         {\dsigma_{\sigma\sicont\sucont\salg}}
+\newcommand{\dsigmaCJL}         {\dsigma_{\sigma\scont\sjump\salg}}
+\newcommand{\sdsigmaEW}         {\Dsigma(\sigma, E, W)}
+\newcommand{\sdsigmaE}          {\Dsigma_{\sigma E}}
+\newcommand{\varabs}    [3]     {\kappa'_{#1,#2}(#3)}
+\newcommand{\vabs}      [2]     {\kappa^{#1}_{\isigma}(#2)}
+\newcommand{\vabsE}     [1]     {\kappa^{\sigma\! E}_{\isigma}(#1)}
+\newcommand{\vabsJ}     [1]     {\kappa^{\sigma\! \sjump}_{\isigma}(#1)}
+\newcommand{\dvabs}     [1]     {\kappa^{\sigma\! E}_{\isigma}(#1)}
+\newcommand{\bclosed}           {b_{\mathrm{c}}}
+\newcommand{\Bclosed}           {B_{\mathrm{c}}}
+%\newcommand{\clfunc}            {\widetilde{\mathrm{cl}}}
+\newcommand{\clfunc}            {\neg_{\mathrm{cl}}}
+\newcommand{\enum}              {e_{\mathrm{n}}}
+\newcommand{\Dtp}		{D}		% function defining the dynamic type of variables
+\newcommand{\dtp}		{d}		% local function in variable scope operator as \Dtp
+\newcommand{\dtpx}		{d_{\mb{x}}}	% local function in var scope with domain x
+\newcommand{\cDtp}		{\cD}		% set of dynamic types
+\newcommand{\Ddisc}		{\Dtp_{\mr{disc}}}
+\newcommand{\Dcont}		{\Dtp_{\mr{cont}}}
+\newcommand{\Ddotcont}		{\dot{\Dtp}_{\mr{cont}}}
+\newcommand{\Dalg}		{\Dtp_{\mr{alg}}}
+\newcommand{\Dstate}		{\Dtp_{\mr{state}}}
+\newcommand{\ddisc}		{\dtp_{\mr{disc}}}
+\newcommand{\dcont}		{\dtp_{\mr{cont}}}
+\newcommand{\ddotcont}		{\dot{\Dtp}_{\mr{cont}}}
+\newcommand{\dalg}		{\dtp_{\mr{alg}}}
+\newcommand{\dstate}		{\dtp_{\mr{state}}}
+
+\newcommand{\dsigma}            {\xi}                  %differential sigma, eXtended sigma/state
+\newcommand{\Dsigma}            {\Xi}                  %differential sigma, eXtended sigma/state
+\newcommand{\dsigmaCL}          {\sigma\cup\dsigma^{\dot{\scont}\salg}}
+\newcommand{\xiCL}              {\sigma\cup\dsigma^{\dot{\scont}\salg}}
+\newcommand{\dsigmaCLright}     {\sigma\cup{\dsigma'}^{\dot{\scont}\salg}}
+\newcommand{\flowsigma}         {\flow_{\sigma}}
+
+%\newcommand{\tsigma}            {\tilde{\sigma}}
+\newcommand{\lsigma}            {\grave{\sigma}}
+\newcommand{\rsigma}            {\acute{\sigma}}
+\newcommand{\tsigma}            {\grave{\sigma}}
+\newcommand{\isigma}            {\sigma_0}
+\newcommand{\iwsigma}           {\sigma_{\mathit{0W}}}
+%\newcommand{\mssigma}           {\sigma_{\mathrm{\mu o}}}
+\newcommand{\bsigma}            {\bar{\sigma}}
+\newcommand{\bdsigma}           {\bar{\dsigma}}
+\newcommand{\bflow}             {\overline{\flow(0)}}
+\newcommand{\msigma}            {\flow(t)}
+
+\newcommand{\env}       [1]     {{#1}\Vdash}
+\newcommand{\envr}      [1]     {{#1}\;\;}    %envr is (single) root environment
+\newcommand{\envlit}            {(\scont,\sjump,\salg,\schan, \srecur)}  %literal environment
+
+\newcommand{\dotcup}    {\mathbin{\dot{\cup}}}  % merge of trajectories by merge of the variables
+\newcommand{\dom}       {\operatorname{dom}}
+\newcommand{\rodom}     {\operatorname{rodom}}
+%\newcommand{\mergef}[2] {{#1}\mathop{\leftleftarrows}{#2}}%merge two valuations, last one wins
+\newcommand{\mergef}[2] {{#1}\mathop{\prec}{#2}}%merge two valuations, last one wins
+
+\newcommand{\mr}        [1]     {\mathrm{#1}}   % math roman
+\newcommand{\mb}        [1]     {\mathbf{#1}}   % math bold
+\newcommand{\mi}        [1]     {\mathit{#1}}   % math italics
+\newcommand{\ttt}	[1]	{\texttt{#1}}   % verbatim chi code
+\newcommand{\tts}	[1]	{{\small\texttt{#1}}}        % footnotesize chi code
+\newcommand{\ttf}	[1]	{{\footnotesize\texttt{#1}}} % small size chi code
+\newcommand{\ttss}	[1]	{{\scriptsize\texttt{#1}}}   % scriptsize chi code
+
+\newcommand{\range}     {\mathrm{range}}
+\newcommand{\bA}        {\mathbb{A}}
+\newcommand{\bC}        {\mathbb{C}}
+\newcommand{\bH}        {\mathbb{H}}
+\newcommand{\bU}        {\mathbb{U}}
+\newcommand{\cA}        {\mathcal{A}}
+\newcommand{\cAP}       {\mathcal{AP}}
+\newcommand{\cB}        {\mathcal{B}}
+\newcommand{\cC}        {\mathcal{C}}
+\newcommand{\cCP}       {\mathcal{CP}}
+\newcommand{\cD}        {\mathcal{D}}
+\newcommand{\cE}        {\mathcal{E}}
+\newcommand{\cF}        {\mathcal{F}}
+\newcommand{\cG}        {\mathrm{\Gamma}}
+\newcommand{\cH}        {\mathcal{H}}
+\newcommand{\cI}        {\mathcal{I}}
+\newcommand{\cJ}        {\mathcal{J}}
+\newcommand{\cP}        {\mathcal{P}}
+\newcommand{\cL}        {\mathcal{L}}
+\newcommand{\cM}        {\mathcal{M}}
+\newcommand{\cR}        {\mathcal{R}}
+\newcommand{\cS}        {\mathcal{S}}
+\newcommand{\cT}        {\mathcal{T}}
+\newcommand{\cU}        {\mathcal{U}}
+\newcommand{\cV}        {\mathcal{V}}
+\newcommand{\cX}        {\mathcal{X}}
+
+\newcommand{\ldtp}	{d}			% local function defining the dynamic type
+\newcommand{\idis}       {S}                    % discrete variables
+\newcommand{\iini}       {I}                    % initialized continuous variables
+\newcommand{\iinl}       {L}                    % uninitialized continuous variables
+%\newcommand{\icont}      {C}                    % absolutely continuous variables
+\newcommand{\ialg}       {L}                    % algebraic variables
+\newcommand{\scont}      {C}                    % all continuous variables
+\newcommand{\sicont}     {I}                    % initialized continuous variables
+\newcommand{\sucont}     {N}                    % uninitialized continuous (algebraic) variables
+\newcommand{\sjump}      {J}                    % jumping variables (only in actions), continuous or discrete
+\newcommand{\salg}       {L}                    % algebraic variables
+\newcommand{\ichan}      {H}                    % local channels
+\newcommand{\schan}      {H}                    % set of channels
+\newcommand{\suchan}     {H_{\mathrm{u}}}       % set of urgent channels
+\newcommand{\srecur}     {R}                    % recursion definitions from environment
+\newcommand{\irecur}     {R_0}                  % local recursion definitions
+
+\newcommand{\surg}       {G}                    % set of all urgency numbers
+\newcommand{\sdvar}      {V_{\mathrm{d}}}       % set of all discrete veriables 
+
+\newcommand{\lcont}      {C}           		% local continuous variables
+\newcommand{\ljump}      {J^{+}}           	% local continuous variables
+\newcommand{\lalg}       {L}           		% local algebraic variables
+\newcommand{\lrecur}     {R}           		% local recursion definitions
+\newcommand{\lchan}      {H}           		% local channels (used in channel scope + urgent comm.)
+\newcommand{\lact}       {A}			% local action labels
+\newcommand{\Aurg}       {A_{\mr{u}}}  		% set of urgent actions
+\newcommand{\Aenc}       {A_{\mr{e}}}  		% set of encapsulated actions
+%\newcommand{\Lu}         {L_{\mr{u}}}		% set of urgent actions
+%\newcommand{\Le}         {L_{\mr{e}}}		% set of encapsulated actions
+
+
+\newcommand{\iD}        {\mathit{D}}            % discrete variables
+\newcommand{\iF}        {\mathit{F}}            % fixed variables
+\newcommand{\iG}        {\mathit{\Gamma}}
+\newcommand{\iI}        {\mathit{I}}
+\newcommand{\iJ}        {\mathit{J}}
+\newcommand{\iP}        {\mathit{P}}
+\newcommand{\iS}        {\mathit{S}}            % state variables
+%\newcommand{\iES}       {\mathit{ES}}          % This set is denoted with \cE
+%\newcommand{\iXS}       {\mathit{XS}}          % This set is denoted with \cX
+%\newcommand{\iRS}       {\mathit{RS}}          % This set is denoted with \cR
+
+\newcommand{\rC}        {\mathrm{C}}            % channels
+\newcommand{\rF}        {\mathrm{F}}            % fixed variables
+\newcommand{\rG}        {\mathrm{\Gamma}}       % continuous variables
+\newcommand{\rI}        {\mathrm{I}}            % discrete variables
+\newcommand{\rJ}        {\mathrm{J}}            % jumping variables
+\newcommand{\rR}        {\mathrm{R}}            % Recursion variables
+\newcommand{\rS}        {\mathrm{S}}            % state variables
+
+% Below follow sets of actions (commands starting with capital A}
+\newcommand{\Atau}      {A_{\tau}}
+\newcommand{\Aaction}   {\cA}
+\newcommand{\Acom}      {A_{\mathrm{com}}}
+\newcommand{\Aapred}    {A_{\mathrm{apred}}}
+\newcommand{\Alabel}    {A_{\mathrm{label}}}
+\newcommand{\cLbasic}   {\cL_{\mathrm{basic}}}
+\newcommand{\cLcom}	{\cL_{\mathrm{com}}}
+\newcommand{\cLtau}	{\cL_{\tau}}
+\newcommand{\Lbas}	{A}
+\newcommand{\LbasB}	{B}
+
+\newcommand{\sflow}     {\mathit{F}}
+
+\newcommand{\anya}      {\mathit{a}}           % denotes arbitrary action on transition
+\newcommand{\alabel}    {{l_{\mathrm{a}}}}
+\newcommand{\anyu}      {\mathit{g}}            % denotes arbitrary urgency number on transition
+
+\newcommand{\Lambdab}   {\Lambda_{\bottom}}
+\newcommand{\partord}   {\xi}
+
+
+\newcommand{\merfunc}  [1] {\mu({#1})}
+\newcommand{\merfuncE} [1] {\mu_{\mathrm{E}}({#1})}
+\newcommand{\merfuncR} [1] {\mu_{\mathrm{R}}({#1})}
+\newcommand{\bottom}       {\mathalpha{\perp}}
+
+\newcommand{\bisim}        {\mbox{$~\underline{\leftrightarrow}~$}}
+\newcommand{\links}           {L_*} 
+\newcommand{\rechts}         {R_*} 
+\newcommand{\HAU}          {\mathit{HA}_{\mathrm{u}}}
+\newcommand{\HAUL}          {\mathit{HA}_{\mathrm{u_l}}}
+%%%%%%Compilation Time%%%%%%%%
+\newcommand\myTime{\now}
+\newcommand*{\theto}[1]{%
+  \ifnum#1<10 0\fi
+  \the#1%
+}
+\newcommand*{\timestamp}[1]{%
+  \begingroup
+    #1
+    % format of date: "%d/%02d/%02d "
+    \the\day/%
+    \theto\month/%
+    \expandafter\the\year
+    \ %
+    % format of time: "%02d.%02d"
+    \begingroup
+      \divide\time by 60 %
+      \theto\time.%
+      \multiply\time by 60 %
+      \edef\x{\endgroup
+        \advance\time by -\the\time\relax
+      }%
+    \x
+    \theto\time
+  \endgroup
+}
+
+% Michel added
+%\newtheorem{example}    {Example}
+%\newenvironment{proof}  {\noindent\textit{Proof.~}}{\hfill$\boxtimes$\\[2ex]}
+%\newtheorem{theorem}    {Theorem}
+%\newtheorem{proposition}{Proposition}
+%%%\newtheorem{prop}       {Proposition} original
+%\newtheorem{prop}       {Proposition}[section]
+%%%\newtheorem{corollary}  {Corollary}original
+%\newtheorem{corollary}  {Corollary}[section]
+%\newtheorem{definition} {Definition}
+%\newtheorem{thm}{Theorem}[section]
+%%\newtheorem{defn}[thm]  {Definition} original
+%\newtheorem{defn} {Definition}[section]
+%\newtheorem{def1}       {Definition}
+%%%\newtheorem{Lem}        {Lemma} original
+%\newtheorem{lem}        {Lemma}
+%\newtheorem{Lem}{Lemma}[section]
+%\newenvironment{st}
+%               {\noindent\textit{Statement.~}}{\hfill$\boxtimes$\\[2ex]}
+
+
+%chi2ha:
+\newcommand {\chiHA} {\mathcal{HA}}
+%\newcommand {\pHAF}  {\cT_{\sjump}}
+\newcommand {\pHAF}  {\cT_{\sjump}}
+\newcommand{\bit}       {\mathopen{\bbn}\,}
+\newcommand{\eit}       {\eb}
+\newcommand{\stapel}[2]{\begin{array}{@{\,}c@{\,}} #1 \\ #2 \end{array}}
+\newcommand{\redundant}[1]{}
+\newcommand{\witness}{\rho}
+%\newcommand{\mi}{\mathit}
+\newcommand{\Xaux}{X_{\mathrm{aux}}}
+\newcommand{\rec}{\mathrm{rec}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\endinput
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Names of axioms
+\newcommand{\axiomiwseqone}{\mbox{$\iwseq$1}}
+\newcommand{\axiomidempotencyiwseq}{\mbox{Idem.\ $\iwseq$}}
+\newcommand{\axiomiwseqthree}{\mbox{$\iwseq$3}}
+\newcommand{\axiomcommutativityiwseq}{\mbox{Comm.\ $\iwseq$}}
+\newcommand{\axiomassociativityiwseq}{\mbox{Ass.\ $\iwseq$}}
+%%NAMES
+\newcommand{\MID}{\mbox{\textit{MID}}}
+\newcommand{\EID}{\mbox{\textit{EID}}}
+\renewcommand{\AE}{\mathit{AE}}
+\newcommand{\entities}{\mathit{Ent}}
+%%PROCESS ALGEBRA
+\newcommand{\IWD}{\mbox{\textit{IWD$(\circ)$}}}
+\newcommand{\IWE}{\mbox{\textit{IWE$(\circ,+,\parallel)$}}}
+\newcommand{\BPAiwd}{\mbox{\textit{IWD$(\circ,\cdot,+)$}}}
+\newcommand{\BPA}{\mbox{\textit{BPA}}}
+\newcommand{\BPAde}{\mbox{\textit{BPA}$_{\delta\varepsilon}$}}
+\newcommand{\PA}{\mbox{\textit{PA}}}
+\newcommand{\ACP}{\mbox{\textit{ACP}}}
+\newcommand{\BPAiwe}{\mbox{\textit{IWD$(\circ,+,\cdot,\parallel^{E})$}}}
+\renewcommand{\empty}{\varepsilon}
+\newcommand{\iwseq}{\circ_{\text{iw}}}
+\newcommand{\leftiwseq}{\,\mbox{\textbf{L}\hspace*{-.45mm}$\circ_{\text{iw}}$}}
+\newcommand{\rightiwseq}{\,\mbox{\textbf{R}\hspace*{-.45mm}$\circ_{\text{iw}}$}}
+\newcommand{\isup}[1]{\,{\stackrel{{#1}}{=}}\,}
+\def\lparal{\mathbin{\setbox0=\hbox{$\|$}%
+        \dimen0=\dp0 \advance\dimen0 -1.5pt \dp0=\dimen0%
+        \underline{\kern-1.5pt\box0\kern1.5pt}}}
+\newcommand{\iwmerge}[1]{\mbox{$\,\parallel_{\text{iw}}^{#1}\,$}}
+\newcommand{\leftiwmerge}[1]{\mbox{$\,\lparal_{\rm{iw}}^{#1}\,$}}
+\newcommand{\ciwmerge}[1]{\mbox{$\,\mid_{\rm{iw}}^{#1}\,$}}
+\newcommand{\iwdbisim}{\mbox{$~\underline{\leftrightarrow}_{\text{iwd}}~$}}
+\newcommand{\entitybisim}{\mbox{$~\underline{\leftrightarrow}~$}}
+\newcommand{\nbisim}{\mbox{$~\underline{\nleftrightarrow}~$}}
+\newcommand{\bisimsl}{\mbox{$~\underline{\leftrightarrow_{sl}}~$}}
+\newcommand{\bisimssl}{\mbox{$~\underline{\leftrightarrow_{ssl}}~$}}
+\newcommand{\nbisimsl}{\mbox{$~\underline{\nleftrightarrow_{sl}}~$}}
+\newcommand{\nbisimssl}{\mbox{$~\underline{\nleftrightarrow_{ssl}}~$}}
+\newcommand{\defs}{\mathrel{{\stackrel{\triangle}{=}}~}}
+\newcommand{\MSubsetEq}{\sqsubseteq}
+\newcommand{\MUnion}{\sqcup}
+\newcommand{\MSum}{\boxplus}
+\newcommand{\MIntersec}{\sqcap}
+\newcommand{\MSetMinus}{\boxminus}
+\newcommand{\MEmptySet}{\square \hspace{-1.2ex} | \hspace{1.2ex}}
+\newcommand{\State}[2]{\langle #1, #2 \rangle}
+\newcommand{\TState}[3]{\langle #1 , #2 , #3 \rangle}
+\newcommand{\Rule}[1]{{\bf (#1)}}
+\newcommand{\Next}{{\bf X}}
+\newcommand{\Finally}{{\bf F}}
+\newcommand{\Until}{~{\bf U}}
+\newcommand{\Globally}{{\bf G}}
+\newcommand{\Release}{~{\bf R}}
+\newcommand{\Valuation}[2]{\overline{#1}_{#2}}
+\newcommand{\Recurse}{\ast \hspace{.1cm}}
+\newcommand{\Par}{\mathrel{||}}
+\newcommand{\SPar}{\mathrel{|||}}
+\newcommand{\Seq}{\mathrel{;}}
+\newcommand{\Bc}{\mathrel{\rhd}}
+\newcommand{\Rc}{\mathrel{\curvearrowright}}
+\newcommand{\Lovely}{\heartsuit}
+\newcommand{\id}[1]{\mathit{#1}}
+\newcommand{\IZero}{{\overline{0}}}
+\newcommand{\IMinus}{\mathrel{\ominus}}
+\newcommand{\genvar}{\chi}
+\newcommand{\At}{\odot}
+\newcommand{\Skip}{\id{skip}}
+\newcommand{\rid}[1]{\id{read}(#1)}
+\newcommand{\take}[1]{\id{take}(#1)}
+\newcommand{\poot}[1]{\id{put}(#1)}
+\newcommand{\SMGS}[1]{\mu X. r_{#1} \Rc (r_{#1} \Par X)}
+\newcommand{\SMGSM}[2]{\State{\SMGS{#1}}{#2}}
+\newcommand{\MGS}{((\SMGS{0}) \Par ...) \Par (\SMGS{n})}
+\newcommand{\MGSM}[1]{\State{\MGS}{#1}}
+\newcommand{\TSMGS}[1]{r_{#1}[\sigma_0@t_0:I] \Par ... \Par r_{#1}[\sigma_n@t_n:I] \Par \mu X. r_{#1} \Rc (r_{#1} \Par X)}
+
+\endinput

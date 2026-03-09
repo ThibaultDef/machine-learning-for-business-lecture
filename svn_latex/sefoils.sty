@@ -1,0 +1,60 @@
+%% V1.01 added \sloppy
+%% V1.02 added end comment
+%% V1.03 several changes (sections numbered, lists shorter spacing)
+%% V1.04 added: \RequirePackage
+%% V1.05 added: moved lcmss and lcmtt font changes for TrueTex previewer to slides.cls
+%%              if the lcm font changes are in this file, they may overwrite and conflict Y&Y mathtime.
+%% Changed name to sefoils.sty and added stuff for foils class
+%% Removed redefinitions (comment out) of list environments (\def\@listi and \def\@listii)
+
+\ProvidesPackage{sefoils}[2002/12/04 V0.1 DAvB]
+
+%%\textfloatsep 16\p@ \@plus 8\p@ \@minus 8\p@
+%%\intextsep 16\p@ \@plus 8\p@ \@minus 8\p@
+
+\RequirePackage{chisw}
+\setlength{\chiindent}{0pt}
+
+\setlength{\foilheadskip}{-1cm}
+\setlength{\parindent}{0cm}
+
+\sloppy
+
+
+%\thinmuskip=3mu plus 1mu minus 1mu
+%\medmuskip=4mu plus 2mu minus 2mu
+%\thickmuskip=5mu plus 2mu minus 2mu
+\thinmuskip=4mu plus 1mu minus 1mu
+\medmuskip=5.5mu plus 2mu minus 2mu
+\thickmuskip=7mu plus 2mu minus 2mu
+
+\newcommand{\subsection}[1]{\foilhead{#1}}
+\newcommand{\section}[1]{\foilhead{#1}}
+
+%% Does not work for foils.cls, only for slides.cls!!!!
+%\def\@listi{\parsep .5\parskip
+%            \topsep 0\parsep
+%            \itemsep 0.5\parskip
+%            \partopsep \z@}
+%\def\@listii{\leftmargin\leftmarginii
+%             \labelwidth\leftmarginii
+%             \advance\labelwidth-\labelsep
+%             \parsep .5\parskip
+%             \topsep 0\parsep
+%             \itemsep 0.5\parskip}
+
+%This is how to do it for foils.cls:
+%\newcommand\@listIa{\leftmargin\leftmargini
+%\topsep 14\p@ \@plus 2\p@ \@minus 4\p@
+%\parsep 14\p@ \@plus 4\p@ \@minus 4\p@
+%\itemsep 14\p@ \@plus 4\p@ \@minus 2\p@}
+\renewcommand\@listIa{\leftmargin\leftmargini
+\topsep 7\p@ \@plus 1\p@ \@minus 2\p@
+\parsep 7\p@ \@plus 2\p@ \@minus 2\p@
+\itemsep 7\p@ \@plus 2\p@ \@minus 1\p@}
+
+\endinput
+%% 
+%% End of file `sefoils.sty'.
+
+

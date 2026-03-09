@@ -1,0 +1,278 @@
+%% LaTeX Poster Style for Systems Engineering  
+%% By D.A. (Bert) van Beek and Johan H. Jacobs based on the file seposter.tex
+%%
+%% V0.01 (98/05/18) added: \special{PDF: Author ...} (vBeek)
+%% V0.02 (98/05/25) added: \bar@color,\logoleft,\logoright,dummy env. (vBeek)
+%% V0.03 (98/10/19) changed: \se@color to `se blue' (vBeek)
+%% V0.04 (99/04/26) added: option markers (default off), subsection formatting,
+%%                  changed: slightly smaller spacing around sections
+%%                  removed: dummy env. (vBeek)
+%% V0.05 (99/10/11) changed: textheight, to ensure all text is printed (Jacobs)
+%%                  added: times and mathptmx package for PostScript-fonts
+%% V0.06 (99/10/15) added: \logorightwidth, \logoleftwidth (Jacobs)
+%% V0.07 (01/02/16) changed: markers changed (markers on is default) (Jacobs)
+%%                  removed: \special (Jacobs)
+%% V0.08 (01/06/06) added: empty pdf author \special (vBeek)
+%%                  added: options dvips, tcidvi, dvipsone for mathtimes dependent on linux/windows (vBeek)
+%%                  added: seposter.cfg for platform dependent configuration (vBeek)
+%%        changed: \LFM, \RFM bottom markers 5mm lower (were too high) (vBeek)
+%% V0.09 (03/06/11) moved references to times font to new package setimes (DAvB)
+%%                  removed: \special{PDF: Author} because of error message in dvips
+
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{seposter}[2001/06/06 V0.08 DAvB and JH]
+
+\newif\ifopt@secolor
+\newif\ifopt@semarkers
+
+\DeclareOption{color}{\opt@secolortrue}
+\DeclareOption{nocolor}{\opt@secolorfalse}
+\DeclareOption{markers}{\opt@semarkerstrue}
+\DeclareOption{nomarkers}{\opt@semarkersfalse}
+
+\ExecuteOptions{color,markers}
+
+%% Make sure that seposter.cfg is present in texinput path and contains:
+%% \ExecuteOptions{dvips} under Linux and \ExecuteOptions{tcidvi} (or \ExecuteOptions{dvipsone}) under MS-Windows
+%% Do not provide global option dvips (or tcidvi) in file poster.tex under MS-Windows
+
+\InputIfFileExists{seposter.cfg}{}{\typeout{Warning: file seposter.cfg cannot be found!!}}
+
+\ProcessOptions
+
+\ifopt@secolor
+  \RequirePackage{color}
+\fi
+  
+\RequirePackage{multicol}
+\RequirePackage{graphicx}
+\RequirePackage{ifthen}
+\RequirePackage{calc}
+\ifopt@semarkers
+  \RequirePackage{fancyhdr}
+\fi
+
+\ifopt@secolor
+  \newcommand\se@color{\color[rgb]{0.000,0.588,0.745}}
+  \newcommand\bar@color{\color{red}}
+\else
+  \newcommand\se@color{}
+  \newcommand\bar@color{}
+\fi
+
+\newlength{\logoleftwidth}
+\newlength{\logorightwidth}
+\newlength{\logomaxwidth}
+\newlength{\affiliationwidth}
+
+%\special{PDF: Author}                 %% empty author field in Acrobat
+
+
+\newcommand{\logoleft}{se.eps}        %% filename of the left logo
+\newcommand{\logoright}{tue.eps}      %% filename of the right logo
+\setlength{\logoleftwidth}{18mm}      %% se-logo standard width 18mm
+%%DAvB\setlength{\logorightwidth}{27mm}     %% width no more than 35mm
+\setlength{\logorightwidth}{27mm}     %% width no more than 35mm
+
+
+% Layout-settings
+\setlength{\columnsep}{10mm}
+\setlength{\textheight}{272mm}  %% adapted by Johan, due to problems Albert
+\setlength{\textwidth}{190mm}
+\setlength{\topmargin}{-1in+10mm}
+\setlength{\headheight}{0mm}
+\setlength{\headsep}{0mm}
+\setlength{\leftmargin}{-1in+10mm}
+\setlength{\rightmargin}{-1in+10mm}
+\setlength{\oddsidemargin}{-1in+10mm}
+\setlength{\evensidemargin}{0 mm}
+\setlength{\parindent}{0.0mm}
+
+\setlength{\labelwidth}{0.0mm}
+
+% Poster itemize list
+\newenvironment{posteritems}
+  {\begin{list}{}{
+        \renewcommand{\makelabel}{\se@color $\m@th\bullet$\hfill}
+        \setlength{\itemsep}{1mm}
+        \setlength{\labelwidth}{4mm}
+        \setlength{\labelsep}{3mm}
+        \setlength{\leftmargin}{8mm}
+        }
+  }
+  {\end{list}}
+\let\itemize=\posteritems
+\let\enditemize=\endposteritems
+
+% Poster sub itemize list
+\newenvironment{postersubitems}
+  {\begin{list}{}{
+%        \renewcommand{\makelabel}{\se@color \ding{52}\hfill}
+        \renewcommand{\makelabel}{\se@color --\hfill}
+        \setlength{\itemsep}{1mm}
+        \setlength{\labelwidth}{4mm}
+        \setlength{\labelsep}{3mm}
+        \setlength{\leftmargin}{8mm}
+        }
+  }
+  {\end{list}}
+
+
+%Poster enumerate list
+
+\let\tempenum=\enumerate
+\def\enumerate{%
+ \tempenum
+  \setlength{\itemsep}{1mm}
+  \setlength{\labelwidth}{4mm}
+  \setlength{\labelsep}{3mm}
+  \setlength{\leftmargin}{8mm}
+}
+
+%Section headings: no numbering, \se@color, bold
+\setcounter{secnumdepth}{0}
+
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+%%                                   {-3.5ex \@plus -1ex \@minus -0.2ex}%
+%%                                   {2.3ex \@plus 0.2ex}%
+                                   {-2.5ex plus -1ex minus -.5ex}%
+                                   {2ex plus 0.5ex minus 0.5ex}%
+                                   {\normalfont\se@color\sffamily\Large\bfseries}}
+\renewcommand\subsection{\@startsection {subsection}{1}{\z@}%
+                                   {-1.5ex plus -0.5ex minus -.3ex}%
+                                   {1.0ex plus 0.3ex minus 0.3ex}%
+                                   {\normalfont\sffamily\normalsize\bfseries}}
+
+% References section in normalsize 
+\renewenvironment{thebibliography}[1]
+     {\renewcommand{\refname}{References}
+      \footnotesize
+      \section*{\normalsize\refname
+        \@mkboth{\MakeUppercase\refname}{\MakeUppercase\refname}}%
+      \list{\@biblabel{\@arabic\c@enumiv}}%
+           {\settowidth\labelwidth{\@biblabel{#1}}%
+            \leftmargin\labelwidth
+            \advance\leftmargin\labelsep
+%            \@openbib@code
+            \usecounter{enumiv}%
+            \let\p@enumiv\@empty
+            \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+      \sloppy\clubpenalty4000\widowpenalty4000%
+      \sfcode`\.\@m}
+     {\def\@noitemerr
+       {\@latex@warning{Empty `thebibliography' environment}}%
+      \endlist}
+
+% Bibliography items itemized without blank lines
+\newdimen\unitindent
+{\setbox0\hbox{\normalsize\rmfamily 2.2.2\hskip.5em}
+ \global\unitindent=\wd0}
+\def\@listI{%
+            \leftmargin\unitindent
+            \labelsep.5em%
+            \labelwidth\leftmargin
+            \advance\labelwidth-\labelsep
+            \parsep \z@
+            \topsep -.5\parskip \@plus\p@
+            \itemsep 0\p@ \@plus1\p@}
+\let\@listi\@listI
+\@listi                                                
+
+\def\@maketitle{%
+\ifthenelse{\lengthtest{\logorightwidth > 35mm}}%
+           {\setlength{\logorightwidth}{35mm}}{}
+\ifthenelse{\lengthtest{\logoleftwidth > 35mm}}%
+           {\setlength{\logoleftwidth}{35mm}}{}
+
+\ifthenelse{\lengthtest{\logorightwidth > \logoleftwidth}}%
+           {\setlength{\logomaxwidth}{\logorightwidth}}%
+           {\setlength{\logomaxwidth}{\logoleftwidth}}
+
+\setlength{\affiliationwidth}{\textwidth-2\logomaxwidth-12mm}
+\sffamily
+{\bar@color \noindent\rule[3mm]{\textwidth}{1mm}}
+% Title of the poster 
+\begin{minipage}[c]{190mm}
+  \begin{center}
+    \huge\textbf{\@title}
+  \end{center}
+\end{minipage}
+\\[4.0mm]
+%
+% Logo on the left side
+\begin{minipage}{\textwidth}
+\hspace{3mm}
+\begin{minipage}{\logomaxwidth}
+  \includegraphics[width=\logoleftwidth]{\logoleft}
+\end{minipage}
+\hfill
+%
+% Authors and affiliation
+\begin{minipage}[c]{\affiliationwidth}
+  \begin{center}
+    \normalsize\textsl{\@author}\\[2 mm]
+    \small
+Eindhoven University of Technology\\
+Department of Mechanical Engineering, Systems Engineering Group\\
+http://se.wtb.tue.nl\\ [2 mm]
+%% ${}^{*}$Department of Mechanical Engineering, Systems Engineering Group\\
+%% ${}^{**}$Department of Mathematics and Computer Science, Formal Methods Group\\ [2 mm]
+  \end{center}
+  \raggedbottom
+\end{minipage}
+\hfill
+%
+% Logo on the right side
+\begin{minipage}{\logomaxwidth}%
+   \hfill%
+   \includegraphics[width=\logorightwidth]{\logoright}%
+\end{minipage} \hspace{3mm}
+\end{minipage}
+%
+% Horizontal line
+\vskip 3mm
+{\bar@color \noindent\rule[1mm]{\textwidth}{1mm}}
+}%end make title
+
+\ifopt@semarkers
+  \newcommand{\LHM}{\setlength{\unitlength}{1mm}%
+  \begin{picture}(10,10)(10,-10)%
+    \put(0,10){\line(-1,0){10}}%
+    \put(0,10){\line(0,1){10}}%
+  \end{picture}}
+  \newcommand{\RHM}{\setlength{\unitlength}{1mm}%
+  \begin{picture}(10,10)(-10,-10)%
+    \put(10,10){\line(1,0){10}}%
+    \put(10,10){\line(0,1){10}}%
+  \end{picture}}
+  \newcommand{\LFM}{\setlength{\unitlength}{1mm}%
+  \begin{picture}(10,10)(10,5)%
+    \put(-10,0){\line(1,0){10}}%
+    \put(0,-10){\line(0,1){10}}%
+  \end{picture}}
+  \newcommand{\RFM}{\setlength{\unitlength}{1mm}%
+  \begin{picture}(10,10)(-10,5)%
+    \put(10,0){\line(1,0){10}}%
+    \put(10,-10){\line(0,1){10}}%
+  \end{picture}}
+\fi
+
+\newcommand{\Bposter}{%
+  \ifopt@semarkers
+    \thispagestyle{fancy}%
+    \renewcommand{\headrulewidth}{0pt}%
+    \lhead{\LHM}\chead{}\rhead{\RHM}%
+    \lfoot{\LFM}\cfoot{}\rfoot{\RFM}%
+  \else
+    \thispagestyle{empty}
+  \fi
+  \normalsize%
+  \sffamily%
+  \begin{multicols}{2}%
+}
+\newcommand{\Eposter}{\end{multicols}}
+
+\endinput
+%% 
+%% End of file `seposter.sty'.

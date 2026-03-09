@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="629"
+   name=""
+   committed-date="2004-03-04T16:01:35.000000Z"
+   url="svn+ssh://dev/home/svn/hybsys/trunk/texmf/tex/latex/configure"
+   last-author="vanbeek"
+   kind="dir"
+   uuid="4f6c2a67-2208-db11-b2b3-000f1fac0742"
+   revision="1676"/>
+<entry
+   committed-rev="629"
+   name="hyperref.cfg"
+   text-time="2007-06-20T13:16:25.000000Z"
+   committed-date="2004-03-04T16:01:35.000000Z"
+   checksum="65c1752ec3013663779d7cefa74faa3a"
+   last-author="vanbeek"
+   kind="file"
+   prop-time="2007-06-20T13:16:25.000000Z"/>
+<entry
+   committed-rev="429"
+   name="seposter.cfg"
+   text-time="2007-06-20T13:16:25.000000Z"
+   committed-date="2003-08-18T14:36:11.000000Z"
+   checksum="04345c428969969e16915922054ca425"
+   last-author="vanbeek"
+   kind="file"
+   prop-time="2007-06-20T13:16:25.000000Z"/>
+<entry
+   committed-rev="429"
+   name="foiltex.cfg"
+   text-time="2007-06-20T13:16:25.000000Z"
+   committed-date="2003-08-18T14:36:11.000000Z"
+   checksum="04345c428969969e16915922054ca425"
+   last-author="vanbeek"
+   kind="file"
+   prop-time="2007-06-20T13:16:25.000000Z"/>
+<entry
+   committed-rev="429"
+   name="LTXDOC.CFG"
+   text-time="2007-06-20T13:16:25.000000Z"
+   committed-date="2003-08-18T14:36:11.000000Z"
+   checksum="965bfdb856be48758a3d330b9044fed1"
+   last-author="vanbeek"
+   kind="file"
+   prop-time="2007-06-20T13:16:25.000000Z"/>
+</wc-entries>

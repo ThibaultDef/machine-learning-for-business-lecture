@@ -1,0 +1,19 @@
+%% V1.01 added end comment
+%% V1.02a added \abovecaptionskip
+%% V1.02b commented out \abovecaptionskip,
+%%        because it resulted in poor caption spacing for tables for style sebook
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{figfree}[1996/03/20 V1.02 easy placement of figures on top or
+bottom of page DAvB]
+
+\renewcommand{\topfraction}{1}
+\renewcommand{\bottomfraction}{1}
+\renewcommand{\textfraction}{0}
+
+%\@ifundefined{abovecaptionskip}{}{\setlength\abovecaptionskip{0pt}}
+
+\endinput
+%% 
+%% End of file `figfree.sty'.
+

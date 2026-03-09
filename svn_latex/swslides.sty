@@ -1,0 +1,49 @@
+%% V1.01 added \sloppy
+%% V1.02 added end comment
+%% V1.03 several changes (sections numbered, lists shorter spacing)
+%% V1.04 added: \RequirePackage
+%% V1.05 added: moved lcmss and lcmtt font changes for TrueTex previewer to slides.cls
+%%              if the lcm font changes are in this file, they may overwrite and conflict Y&Y mathtime.
+
+\ProvidesPackage{swslides}[2001/04/12 V1.05 DAvB]
+
+%%\textfloatsep 16\p@ \@plus 8\p@ \@minus 8\p@
+%%\intextsep 16\p@ \@plus 8\p@ \@minus 8\p@
+
+\RequirePackage{chisw}
+
+\sloppy
+
+\setlength{\chiindent}{0pt}
+
+%\thinmuskip=3mu plus 1mu minus 1mu
+%\medmuskip=4mu plus 2mu minus 2mu
+%\thickmuskip=5mu plus 2mu minus 2mu
+\thinmuskip=4mu plus 1mu minus 1mu
+\medmuskip=5.5mu plus 2mu minus 2mu
+\thickmuskip=7mu plus 2mu minus 2mu
+
+
+\def\@listi{\parsep .5\parskip
+            \topsep 0\parsep
+            \itemsep 0.5\parskip
+            \partopsep \z@}
+\def\@listii{\leftmargin\leftmarginii
+             \labelwidth\leftmarginii
+             \advance\labelwidth-\labelsep
+             \parsep .5\parskip
+             \topsep 0\parsep
+             \itemsep 0.5\parskip}
+
+%\newcommand{\section}{\@startsection{section}{1}{\z@}%
+%                                  {-3.5ex \@plus -1ex \@minus -.2ex}%
+%                                   {2.3ex \@plus.2ex}%
+%                                   {0ex}
+%                                   {1ex \@plus .5ex \@minus .5ex}
+%                                   {\normalfont\large\bfseries\boldmath}}
+%\newcommand{\subsection}[1]{\textbf{#1}}
+
+\endinput
+%% 
+%% End of file `swslides.sty'.
+

@@ -1,0 +1,42 @@
+%% Footline: page numbers only
+
+%<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=us-ascii">
+\mode<presentation>
+
+%% we don't want enumerated circles as in \setbeamertemplate{items}[circle]. Therefore
+%% do not use: \useinnertheme{circles} %% itemize and enumerate all circles, but
+\useinnertheme{default}  %% triangles for itemize items, enumerated items numbers only
+\setbeamertemplate{itemize items}[circle] %%
+
+% taken from \useinnertheme{circles}, file beamerinnerthemecircles.sty
+%\setbeamertemplate{sections/subsections in toc}[circle]
+%\setbeamertemplate{sections/subsections in toc}[default]  %% no numbers, no bullets
+\setbeamertemplate{sections/subsections in toc}[sections numbered]
+
+\useoutertheme{split} %%
+\usecolortheme{koos} %%
+
+\setbeamerfont{block title}{size={}}
+
+% empty head line
+% \setbeamertemplate{headline}[default]
+
+% empty navigation bar
+\setbeamertemplate{navigation symbols}{} %%
+
+% empty foot line
+\setbeamertemplate{footline}{} %%
+
+% insert page numbers
+\setbeamertemplate{sidebar right} {
+  \vfill%
+  \llap{%
+    \usebeamerfont{page number in head/foot}%
+    \insertframenumber{} / \inserttotalframenumber\hskip0.1cm}% paginanummering
+  \vskip2pt%
+}
+
+%\hypersetup{pdfpagemode=FullScreen, colorlinks=false}
+\hypersetup{pdfpagemode=None, colorlinks=false} %%
+
+\mode<all>

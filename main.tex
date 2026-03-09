@@ -1,6 +1,10 @@
 \documentclass{beamer}
+\usepackage{bm}
+\usepackage{listings}
 
 \usepackage{tikz}
+\usepackage{svn_latex/hybtikz}
+%\usetikzlibrary{arrows}
 \usetikzlibrary{arrows}
 \usepackage{bm}
 \usepackage[utf8]{inputenc}
@@ -232,8 +236,322 @@ What is the probability that a new applicant will default?
 \textbf{Key Idea:} Business decisions are made under uncertainty.
 
 \end{frame}
+\begin{frame}{Why We Need Probability in Machine Learning}
 
-\begin{frame}{Discrete Random Variables}
+In machine learning, we try to predict an output based on input variables such as 
+education, experience, age, or other business characteristics.
+
+\medskip
+
+\textbf{However, in real life the same inputs do not always lead to the same output.}
+
+\begin{itemize}
+    \item Two people with the same education and experience may earn different wages.
+    \item Two customers with identical profiles may behave differently.
+    \item Two products with the same features may still sell at different prices.
+\end{itemize}
+
+\medskip
+
+This variation comes from many sources:
+
+\begin{itemize}
+    \item unobserved factors,
+    \item randomness in human behaviour,
+    \item measurement errors,
+    \item missing information,
+    \item natural economic and social variability.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Why Probability Is Necessary}
+
+Because outcomes vary even when inputs are identical, machine learning models must
+treat outputs as \textbf{random variables} rather than fixed quantities.
+
+\medskip
+
+Your probability tools explain how to describe such randomness:
+
+\begin{itemize}
+    \item A random variable represents all possible outcomes.
+    \item Probability tells us how frequently each outcome occurs.
+    \item Expected value describes the long-run average.
+    \item Variance measures uncertainty and risk.
+    \item The Law of Large Numbers explains why estimates improve with more data.
+    \item The Central Limit Theorem explains why averages behave predictably.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Probability and Model Evaluation}
+
+Probability theory is essential for understanding and evaluating machine learning
+models:
+
+\begin{itemize}
+    \item It explains why models cannot predict perfectly.
+    \item It allows us to estimate and interpret prediction errors.
+    \item It provides the foundation for loss functions used in training.
+    \item It helps us understand how models generalize to unseen data.
+    \item It quantifies uncertainty in business predictions.
+\end{itemize}
+
+\medskip
+
+\textbf{Machine learning does not predict exact outcomes.  
+It predicts patterns in data that are inherently variable.  
+Probability allow us to evaluate these predictions.}
+
+\end{frame}
+\begin{frame}{Set of all outcomes $\Omega$}
+
+We imagine an Excel file containing rows such as:
+experience, education, wage, gender, etc.
+
+\medskip
+
+If more people are observed, the file grows: each new person adds a new row.
+
+\medskip
+
+\textbf{$\Omega$ is defined as the collection of all possible rows}
+that could ever appear in this Excel file.
+
+\medskip
+
+In \textbf{general:} $\Omega$ is the collection of all possible rows. 
+
+\medskip
+
+Each row in our dataset is one observed element of $\Omega$.
+Future data are simply additional elements drawn from the same set.
+
+\end{frame}
+\begin{frame}{Probability measure}
+
+%\begin{itemize}
+%    \item $\Omega$ is the set of all possible rows of the Excel file  
+%          (all possible combinations of experience, education, wage, gender, etc.).
+%    \item Each observed row is one element $\omega \in \Omega$.
+%\end{itemize}
+
+
+%\medskip 
+
+Probability describes how often different types of rows appear.
+
+\medskip
+
+A \textbf{event} $A$ is a subset of $\Omega$: collection of rows with a certain property: certain combination of values of columns. 
+
+\textbf{Examples of probability events:}
+\begin{itemize}
+    \item Wage smaller than 10.
+    \item Education greater than 8.
+    \item Female = 1 (the worker is female).
+    \item ``Female = 1 AND education $> 8$ AND wage $< 10$.''
+\end{itemize}
+
+\medskip
+
+ \textbf{Probability $P(A)$ of an event $A$}: how often we see rows from $A$
+ 
+\end{frame}
+\begin{frame}{Probability $P(A)$ of an event $A$: a more precise defintion}
+
+  Choose $N$ rows from $\Omega$, $N$ large
+
+ \[ P(A)=\frac{\mbox{number of rows among the chosen $N$ rows which are in $A$}}{N} \]
+
+
+  We want $P(A)$ to be roughly the same as $N$ grows: limit exists
+
+ \[ P(A)=\lim_{N \rightarrow \infty} \frac{\mbox{number of rows among the chosen $N$ rows which are in $A$}}{N} \]
+
+
+ \medskip
+
+ The elements of $\Omega$ should be \textbf{independent samples}: the frequencies
+  \[ \frac{\mbox{number of rows among the chosen $N$ rows which are in $A$}}{N} \]
+  should be approximately for the same $N$ for any choice of $N$ rows.
+
+  \medskip
+   If rows correspond to time (time-series), not always true. 
+
+
+
+\end{frame}
+\begin{frame}{Probability: difficulties}
+  
+    The precise definition is difficult: Kolmogorov 1930's, advanced math.
+    
+\textbf{Properties:}
+\begin{itemize}
+    \item $P(A) \ge 0$ for all events $A$,
+    \item $P(\Omega) = 1$,
+    \item If $A$ and $B$ cannot occur at the same time,  
+          then $P(A \cup B) = P(A) + P(B)$.
+\end{itemize}
+
+\bigskip
+
+\textbf{Probability is not always defined}
+   The frequency 
+  \[ \frac{\mbox{number of rows among the chosen $N$ rows which are in $A$}}{N} \]
+
+  need not stabilize as $N$ grows. 
+
+ \medskip
+
+ We can never know based on data if probability is defined, we assume it. 
+
+ \medskip
+
+ We can make some experiments to see if this assumption is not invalidated.
+
+
+\end{frame}
+\begin{frame}{Random variable}
+A \textbf{random variable} assigns a numerical value to every row in $\Omega$.
+
+\medskip
+
+Formally:
+\[
+X: \Omega \to \mathbb{R}
+\]
+
+\medskip
+
+\textbf{Interpretation:}
+\begin{itemize}
+    \item Each column in the Excel file is a random variable.
+    \item The random variable takes a row and outputs the value in that column.
+\end{itemize}
+
+\medskip
+
+Examples:
+\begin{itemize}
+    \item Experience: maps each row to that person's experience.
+    \item Education: maps each row to that person's education.
+    \item Wage: maps each row to that person's wage.
+    \item Gender: maps each row to 0 (male) or 1 (female).
+\end{itemize}
+
+\end{frame}
+\begin{frame}{Discrete and Continuous Random Variables}
+
+A random variable can have two types of possible values:
+
+\medskip
+
+\textbf{Discrete random variables}
+\begin{itemize}
+    \item Take values like 0, 1, 2, 3, ...
+    \item There are no values in between.
+    \item Example: gender (0 = male, 1 = female).
+\end{itemize}
+
+\medskip
+
+\textbf{Continuous random variables}
+\begin{itemize}
+    \item Can take any value with decimals in between.
+    \item Example: wage (10.2, 10.21, 10.212, and so on).
+\end{itemize}
+
+\medskip
+
+The value of a random variable for a given row  
+depends on the values in that row's columns.
+
+\end{frame}
+
+
+\begin{frame}{Probability Distributions}
+
+A probability distribution describes how the values of a random
+variable are spread across all possible rows in $\Omega$.
+
+\medskip
+
+\textbf{Discrete case $p(a)$:} event $X=a$ -- all rows to which $X$  assigns $a$. 
+ \[ p(a)=\mathbf{P}(X=a) \]
+ 
+$p(a)$ is relative frequency of rows for which $X$ is  $a$.
+
+\textbf{Continuous case $F(a)$:}
+  Events:$X \le a$, $X \ge b$.
+  \[ F(a) = \mathbf{P}(X \le  a )\]
+
+    $F(a)$ is relative frequency of rows for which $X \le a$.
+        
+  
+  \[  \mathbf{P}(b \le X \le  a) = \left\{\begin{array}{rl} \sum_{s=a}^{b}
+     p(s) & \mbox{ discrete } \\
+    F(b)-F(a) & \mbox{ continuous }
+  \end{array}\right.
+  \]
+
+
+%Thus, the distribution of a random variable depends entirely on the
+%relative frequencies of certain combinations of column values in $\Omega$.
+
+\end{frame}
+\begin{frame}{Probability Density Function}
+
+\textbf{Definition:}
+A continuous random variable has a density $f(x)$ such that:
+
+\begin{itemize}
+    \item $f(x) \ge 0$
+    \item $\int_{-\infty}^{\infty} f(x)\, dx = 1$
+    \item $f$ is the derivative of the probability distribution 
+         $\frac{dF(a)}{da}=f(a)$.
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Probability of an interval:}
+
+\[
+\mathbf{P}(a \le X \le b)
+=
+\int_a^b f(x)\, dx
+\]
+
+  $f$ - density function.  Integral: area under curve. 
+
+
+\begin{center}
+ \includegraphics[scale=0.2]{integral.jpeg} 
+\end{center}
+
+
+\end{frame}
+\begin{frame}{Example of density}
+	Gaussian  distribution: $f(x)=\frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x-m)^2}{2\sigma^2}}$, 
+
+
+	uniform distribution on $[0,1]$: $f(x)=\left\{\begin{array}{rl} 1 & x \in [0,1] \\ 0 & \mbox{ otherwise} \end{array}\right.$.
+
+%\begin{figure}
+%    \centering
+%    \includegraphics[width=0.7\linewidth]{figures/module_1/delivery_time_figure.png}
+%    \label{fig:delivery_time_density_example}
+%\end{figure}
+
+
+\textbf{For continuous variables:}
+\( \mathbf{P}(X = a) = 0 \)
+
+\end{frame}
+\begin{frame}{Example Discrete Random Variables}
 
 \textbf{Business Example: Online Shop}
 
@@ -247,20 +565,18 @@ Possible values:
 X \in \{0,1,2,3,\dots\}
 \]
 
-\vspace{0.5cm}
 
-\textbf{Definition:}
+%\textbf{Definition:}
 
-A \textit{discrete} random variable is a function
+%A \textit{discrete} random variable is a function
 
-\[
-X : \Omega \rightarrow \mathbb{N}
-\]
-
-that assigns a numerical value to each outcome. An element $\omega \in \Omega$ is called an \textbf{observation} (here the behaviour of a customer).
+%\[
+%X : \Omega \rightarrow \mathbb{N}
+%\]
+%
+%that assigns a numerical value to each outcome. An element $\omega \in \Omega$ is called an \textbf{observation} (here the behaviour of a customer).
 
 \end{frame}
-
 \begin{frame}{Example: Probability Distribution of Purchases}
 
 \textbf{Histogram for Discrete Distribution:}
@@ -290,50 +606,341 @@ Purchases & Relative Frequency \\
 
 \vspace{0.25cm}
 
-\textbf{Definition:}
+%\textbf{Definition:}
 
-For a discrete random variable:
+%For a discrete random variable:
 
-\begin{align*}
-p(x) & = \mathbf{P}(X = x) = \mathbf{P}(\{\omega \in \Omega | X(\omega) = x\})\\
-& = \mathbf{P}(\{ \text{all customers that buy x times} \})
-\end{align*}
+%\begin{align*}
+%p(x) & = \mathbf{P}(X = x) = \mathbf{P}(\{\omega \in \Omega | X(\omega) = x\})\\
+%& = \mathbf{P}(\{ \text{all customers that buy x times} \})
+%\end{align*}
 
-with
+%with
 
-\[
-\sum_x p(x) = 1
-\]
-
-\end{frame}
-
-\begin{frame}{Relative Frequency}
-
-\textbf{From Data to Probability}
-
-In practice, probabilities are often estimated from observed data.
-
-\medskip
-
-If we observe $n$ customers and $n_x$ of them buy $x$ times, the \textbf{relative frequency} is
-
-\[
-f(x) = \frac{n_x}{n}
-\]
-
-\medskip
-
-As the number of observations increases,
-
-\[
-f(x) \rightarrow P(X=x)
-\]
-
-\textbf{Idea:} Relative frequencies approximate probabilities.
+%\[
+%\sum_x p(x) = 1
+%\]
 
 \end{frame}
 
-\begin{frame}{Expectation of Discrete Probability Distribution}
+%\begin{frame}{Relative Frequency}
+%
+%\textbf{From Data to Probability}
+
+%In practice, probabilities are often estimated from observed data.
+
+%\medskip
+
+%If we observe $n$ customers and $n_x$ of them buy $x$ times, the \textbf{relative frequency} is
+
+%\[
+%f(x) = \frac{n_x}{n}
+%\]
+
+%\medskip
+
+%As the number of observations increases,
+%
+%\[
+%f(x) \rightarrow P(X=x)
+%\]
+
+%\textbf{Idea:} Relative frequencies approximate probabilities.
+%
+%\end{frame}
+
+\begin{frame}{Example: Continuous Random Variables}
+
+\textbf{Business Example: Delivery Time}
+
+Let
+
+\[
+X = \text{Delivery time (in days)}
+\]
+
+\textbf{Possible values:}
+
+\[
+2.13, \; 3.47, \; 4.002, \; \dots
+\]
+
+%\textbf{Definition:}
+
+%A \textit{continuous} random variable is a function
+
+%\[
+%X : \Omega \rightarrow \mathbb{R}
+%\]
+
+%that assigns a numerical value lying in the \textit{uncountable} set of real numbers to each observation.
+
+%\end{frame}
+
+%\begin{frame}{Example: Probability Density of Delivery Time}
+
+\textbf{Assumption:}
+The density function of delivery time follows an exponential distribution of parameter $\lambda=0.10$ (i.e. $f(x) = \lambda \, exp(-\lambda x)$ if $x \geq 0$, else $0$).
+
+
+\end{frame}
+\begin{frame}
+
+\textbf{Visualization of Probability:}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{figures/module_1/delivery_time_figure.png}
+    \label{fig:delivery_time_density_example}
+\end{figure}
+
+\end{frame}
+
+%\begin{frame}{Probability Density Function}
+%
+%\textbf{Definition:}
+%A continuous random variable has a density $f(x)$ such that:
+%
+%\begin{itemize}
+%    \item $f(x) \ge 0$
+%    \item $\int_{-\infty}^{\infty} f(x)\, dx = 1$
+%\end{itemize}
+
+%\vspace{0.5cm}
+
+%\textbf{Probability of an interval:}
+
+%\[
+%\mathbf{P}(a \le X \le b)
+%=
+%\int_a^b f(x)\, dx
+%\]
+
+%\vspace{0.5cm}
+
+%\textbf{For continuous variables:}
+
+%\[
+%\mathbf{P}(X = a) = 0
+%\]
+
+%\end{frame}
+\begin{frame}{From samples to distribution}
+   
+     Value of a random variable $\mathbf{X}$ are \textbf{samples}. 
+
+
+     \medskip
+
+     Intuitively, if $x_1,\ldots, x_t$ samples of $\mathbf{X}$, ($t$ row index),
+     the the distribution can be computed:
+      \[ 
+        \begin{split}
+		& F(a)=\hat{F}_N(a),\quad  \mbox{ for any choice $t_1 < t_2 < \ldots < t_N$, $N$ large} \\
+        & \mbox{\textbf{empirical frequency}} \\
+        & \hat{F}_N(a)=\frac{1}{N} (\mbox{ number of times $x_t \le a$, $t=t_1 < \ldots < t_N$})  
+        \end{split}
+	  \]
+
+    \textbf{Problem} what if $x_1 < x_2 < \cdots < x_n$ ? 
+
+    \bigskip 
+
+    $x_1,\ldots, x_t$ should be \textbf{independently identically sampled (i.i.d) from $F$} :
+ \end{frame}
+ \begin{frame}{Independently sampled data}
+
+     $x_1,\ldots, x_n$ \textbf{i.i.d} of $F$, if for any
+     choice (independent of data) of non-overlapping  
+     data 
+     \begin{itemize}
+     \item
+     $z_1,\ldots, z_N$, 
+     \item     
+     $y_1,\ldots, y_N$ 
+     \end{itemize}
+     from $x_1,\ldots, x_n$ such that $N$ is large:
+
+
+     \begin{itemize}
+     \item \textbf{Identical probabilities:}
+     \[
+     \begin{split}
+      &	 \frac{1}{N} (\mbox{ number of times $z_i < a$, $i=1,2,\ldots,N$}) = \\
+      &	 \frac{1}{N} (\mbox{ number of times $y_i < a$, $i=1,2,\ldots,N$})=F(a)
+     \end{split}
+    \]
+    relative frequences of events in $y_1,\ldots,y_N$, $z_1,\ldots,z_N$
+    is the same. 
+    \item \textbf{Independence}
+    \[
+     \begin{split}
+      &	 \frac{1}{N} (\mbox{ number of times $z_i < a$, $y_i < b$,
+           $i=1,2,\ldots,N$}) \approx F(a)F(b)
+      %&	 \frac{1}{N} (\mbox{ number of times $z_i < a$, $i=1,2,\ldots,N$})
+      %\\
+      %&	 \times \frac{1}{N} (\mbox{ number of times $y_i < b$, $i=1,2,\ldots,N$})
+     \end{split}
+    \]
+    \end{itemize}
+    the values of $y_i$ and $z_i$ change independtly from each other. 
+
+\end{frame}
+ \begin{frame}{Independently sampled data}
+
+    if $z_1,\ldots, z_N$ are past observations, and 
+    $y_1,\ldots, y_N$ are new observations, then 
+    frequencies in the past tell us about frequencies of the future. 
+
+  %$x_t$ independently sampled from a distribution $\implies$ past observations 
+%	$x_1,\ldots,\x_N$ tell us something about frequencies of new data points $x_{K}, \ldots ,x_{K+N}$, $K > N$:
+ %\[
+ %    \begin{split}
+ %     &	 \frac{1}{N} (\mbox{ number of times $a < x_t \le b$, $t=1,\ldots, N$}) 
+	% \approx 
+	% \mathbf{P}(a < \mathbf{x} \le b)   \\
+	%     & \approx 
+	% \frac{1}{N} (\mbox{ number of times $a < x_t \le b$, $t=K,\ldots, K+N$}) 
+ %   \end{split}	 
+ %\]
+
+ \bigskip
+
+ Independence $\implies$ frequencies of  different subsets of data are the same and do not influence each other
+%  \[
+%    \begin{split}	  
+%	  & \frac{1}{N} (\mbox{ number of times $a_1 < x_{t} \le b_1$, $a_2 < x_{K+t-1} \le b_2$, $t=1,\ldots, N$}) \approx  \\
+%	  & \mathbf{P}(a_1 < \mathbf{x}_1 \le b_1, a_2 < \mathbf{x}_K \le b_2) =  \mathbf{P}(a_1 < \mathbf{x}_1 \le b_1)\mathbf{P}(a_2 < \mathbf{x}_K \le b_2) \\
+%	  & \approx  \frac{1}{N} (\mbox{ number of times $a < x_t \le b$, $t=1,\ldots, N$}) \times \\
+%	  & \times  \frac{1}{N} (\mbox{ number of times $a < x_t \le b$, $t=K,\ldots, K+N$}) 
+%    \end{split}	  
+%  \]
+\end{frame}
+\begin{frame}{Independent samples, independent variables}
+
+    Two random variable $X$ and $Y$ are independent,
+    \[ 
+      \begin{split}
+       & \mathbf{P}(X=a,Y=b)=\mathbf{P}(X=a)\mathbf{P}(Y=b), \quad 
+       \mbox{discrete variable} \\
+       & \mathbf{P}(X \le a,Y \le b)=\mathbf{P}(X \le a)\mathbf{P}(Y\le b), \quad 
+       \mbox{continuous variable} 
+      \end{split} 
+    \]
+
+   The sample $x_1,x_2,\ldots,n$ is i.i.d. sample of $F$, if
+   there exists sample space $\widetilde{\Omega}$ and 
+   random variables $X_1,X_2,\ldots $ on $\widetilde{\Omega}$, 
+   such that 
+        \begin{itemize}
+        \item			
+	   $x_t$ is a sample of some random variables $X_t$ 
+	corresponding to the same element (row) of $\widetilde{\Omega}$,
+        \item 			
+		$X_t$ have the same probability distribution $F$ and they are independent (one variable contains no information on others):
+
+        \end{itemize}
+ \medskip
+
+	\textbf{Law of large number:} if $x_t$, $t=1,2,$ i.i.d. sample of $F$
+     \[ F(a) \approx  \frac{1}{N} (\mbox{ number of times $x_t \le a$, $t=t_1 < \ldots < t_N$}) \]
+%	The distribution $F$ can be reconstructed from indepent samples $x_t$, $t=1,2,\ldots$, 
+%	using empirical probabilities, for large enough $N$ and any choice $t_1 < \ldots < t_N$
+   %there exists a random variable $X$ whose probability distribution  is $F$, each $x_t$ is a sample of $\mathbf{x}$, and 
+   %for large enough $N$: 
+	
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}{Expected value of a random variable}
+
+ Expected value of $\mathbf{E}[X]$:
+
+
+ \begin{itemize}
+ \item $X$ takes discrete values:
+    $$\mathbf{E}[X]=\sum_{i=1}^{\infty} i \mathbf{P}(X=i)$$
+
+
+ \medskip
+
+ \item $X$ has continuous values:
+
+    \[ \mathbf{E}[X]=\int_{-\infty}^{+\infty} x f(x)dx \]
+ \end{itemize}
+
+
+
+  \begin{center}
+
+  $m_{X}=\mathbf{E}[X]$ -- mean of $X$.
+
+  \end{center}
+
+  \medskip
+  $(X-m_{X})^2$ is a random variable: 
+
+  \begin{center}
+
+
+      $\sigma_{X}=\sqrt{\mathbf{E}[(X-m_{X})^2]}$ standard deviation,
+
+      $\sigma_{X}^2$ -- variance of $X$.
+  
+  \end{center}
+
+  Example:Gaussian  distribution: $f(x)=\frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x-m)^2}{2\sigma^2}}$,  
+      mean $m$,variance $\sigma^2$.
+
+\end{frame}
+\begin{frame}{Expected value of a random variable}
+
+ Expectation, variance depend on the distribution $F$ of $X$. 
+
+ \medskip
+
+ $x_t$ independently, randomly sampled from $F$:
+
+    \[ m_{X}=\mathbf{E}[X]  \approx \bar{x}=\frac{1}{N} \sum_{t=1}^{N} x_t \]
+      \[ \sigma_{X}^2=\mathbf{E}[(X-m_{X})^2] \approx  \frac{1}{N-1} \sum_{t=1}^{N} (x_t - \bar{x})^2 \]
+
+  \medskip
+
+  
+
+  Interpretation of standard deviation:
+
+
+ \[ \mathbf{P}(|X - m_{X}| > a) \le \frac{\sigma_{X}^2}{a^2} \]
+
+
+   The smaller the standard deviation is, the more the points $x_t$ are concentrated around the mean.
+
+
+\end{frame}
+\begin{frame}{Mean, variance from data, visualization}
+
+ \lstinline$np.mean(X)$, \lstinline$np.std(X)$, \lstinline$np.var(X)$.
+
+ \medskip
+
+    Historgrams are concentrated around the mean, they get flatter with the increase of standard deviation (more points far away from the mean).
+
+ \begin{center}	
+    \includegraphics[scale=0.4]{Figure_6V.pdf}
+  \end{center}
+
+\end{frame}
+
+\begin{frame}{Example: Expectation of Discrete Probability Distribution}
+ \textbf{Assumption:}
+The density function of delivery time follows an exponential distribution of parameter $\lambda=0.10$ (i.e. $f(x) = \lambda \, exp(-\lambda x)$ if $x \geq 0$, else $0$).
+
 
 \textbf{Business Example: Average Purchases}
 
@@ -356,86 +963,8 @@ f(x) \rightarrow P(X=x)
 
 \end{frame}
 
-\begin{frame}{Continuous Random Variables}
+\begin{frame}{Example: Expectation of Probability Density Function}
 
-\textbf{Business Example: Delivery Time}
-
-Let
-
-\[
-X = \text{Delivery time (in days)}
-\]
-
-\textbf{Possible values:}
-
-\[
-2.13, \; 3.47, \; 4.002, \; \dots
-\]
-
-\vspace{0.5cm}
-
-\textbf{Definition:}
-
-A \textit{continuous} random variable is a function
-
-\[
-X : \Omega \rightarrow \mathbb{R}
-\]
-
-that assigns a numerical value lying in the \textit{uncountable} set of real numbers to each observation.
-
-\end{frame}
-
-\begin{frame}{Example: Probability Density of Delivery Time}
-
-\textbf{Assumption:}
-The density function of delivery time follows an exponential distribution of parameter $\lambda=0.10$ (i.e. $f(x) = \lambda \, exp(-\lambda x)$ if $x \geq 0$, else $0$).
-
-\vspace{0.4cm}
-
-\textbf{Visualization of Probability:}
-
-\begin{figure}
-    \centering
-    \includegraphics[width=0.7\linewidth]{figures/module_1/delivery_time_figure.png}
-    \label{fig:delivery_time_density_example}
-\end{figure}
-
-\end{frame}
-
-\begin{frame}{Probability Density Function}
-
-\textbf{Definition:}
-A continuous random variable has a density $f(x)$ such that:
-
-\begin{itemize}
-    \item $f(x) \ge 0$
-    \item $\int_{-\infty}^{\infty} f(x)\, dx = 1$
-\end{itemize}
-
-\vspace{0.5cm}
-
-\textbf{Probability of an interval:}
-
-\[
-\mathbf{P}(a \le X \le b)
-=
-\int_a^b f(x)\, dx
-\]
-
-\vspace{0.5cm}
-
-\textbf{For continuous variables:}
-
-\[
-\mathbf{P}(X = a) = 0
-\]
-
-\end{frame}
-
-\begin{frame}{Expectation of Probability Density Function}
-
-\textbf{Business Example: Delivery Time}
 
 \[
 \mathbb{E}[X] = \int_{-\infty}^{+\infty} x \, f(x) \, dx = \frac{1}{\lambda} = 10
@@ -459,8 +988,6 @@ A continuous random variable has a density $f(x)$ such that:
 Two segments have the same average revenue. Which one is riskier?
 
 \vspace{0.5cm}
-
-\textbf{Definition:}
 
 \[
 \mathrm{Var}(X) = \mathbb{E}[(X - \mathbb{E}[X])^2]
@@ -595,110 +1122,110 @@ Standard deviation directly quantifies risk and uncertainty.
 
 \end{frame}
 
-\begin{frame}{Conditional Probability}
-
-\textbf{Business Example: Online Advertising}
-
-\[
-\mathbf{P}(\text{Buy} \mid \text{Click})
-\]
-
-\vspace{0.5cm}
-
-\textbf{Definition:}
-
-\[
-\mathbf{P}(A \mid B) = \frac{\mathbf{P}A \cap B)}{\mathbf{P}(B)}
-\]
-
-\vspace{0.5cm}
-
-Conditional probability models dependence between events.
-
-\end{frame}
-
-\begin{frame}{Fraud Detection Example}
-
-\textbf{Insurance Fraud}
-
-\begin{itemize}
-    \item 2\% of claims are fraudulent
-    \item 90\% of fraudulent claims are flagged
-    \item 5\% of legitimate claims are falsely flagged
-\end{itemize}
-
-\vspace{0.5cm}
-
-Question:
-
-\begin{center}
-If a claim is flagged, what is the probability it is truly fraudulent?
-\end{center}
-
-\end{frame}
-
-\begin{frame}{Bayes' Theorem}
-
-\[
-\mathbf{P}(A \mid B) = \frac{\mathbf{P}(B \mid A) \mathbf{P}(A)}{\mathbf{P}(B)} = \frac{\mathbf{P}(B \mid A) \mathbf{P}(A)}{\mathbf{P}(B | A) \mathbf{P}(A) + \mathbf{P}(B | \overline{A}) \mathbf{P}(\overline{A})}
-\]
-
-\vspace{0.5cm}
-
-\textbf{Interpretation:}
-
-\begin{itemize}
-    \item $\mathbf{P}(A)$: Prior belief
-    \item $\mathbf{P}(B \mid A)$: Likelihood
-    \item $\mathbf{P}(A \mid B)$: Posterior belief
-\end{itemize}
-
-\vspace{0.5cm}
-
-Bayes' theorem updates beliefs using new evidence.
-
-\end{frame}
-
-\begin{frame}{Bayesian Update in Fraud Detection}
-
-\[
-\mathbf{P}(F \mid \text{Flag}) =
-\frac{0.9 \cdot 0.02}
-{0.9 \cdot 0.02 + 0.05 \cdot 0.98}
-\]
-
-\vspace{0.5cm}
-
-Result:
-
-\[
-\mathbf{P}(F \mid \text{Flag}) \approx 27\%
-\]
-
-\vspace{0.5cm}
-
-Even highly accurate systems can produce many false alarms
-when the base rate is small.
-
-\end{frame}
-
-\begin{frame}{A/B Testing Example}
-
-\textbf{New Checkout Design}
-
-\begin{itemize}
-    \item After 20 users: conversion = 70\%
-    \pause
-    \item After 20,000 users: conversion = 12\%
-\end{itemize}
-
-\pause
-
-\vspace{0.5cm}
-
-Why does the estimate change so much?
-
-\end{frame}
+%%\begin{frame}{Conditional Probability}
+%%
+%%\textbf{Business Example: Online Advertising}
+%%
+%%\[
+%%\mathbf{P}(\text{Buy} \mid \text{Click})
+%%\]
+%%
+%%\vspace{0.5cm}
+%%
+%%\textbf{Definition:}
+%%
+%%\[
+%%\mathbf{P}(A \mid B) = \frac{\mathbf{P}A \cap B)}{\mathbf{P}(B)}
+%%\]
+%%
+%%\vspace{0.5cm}
+%%
+%%Conditional probability models dependence between events.
+%%
+%%\end{frame}
+%%
+%%\begin{frame}{Fraud Detection Example}
+%%
+%%\textbf{Insurance Fraud}
+%%
+%%\begin{itemize}
+%%    \item 2\% of claims are fraudulent
+%%    \item 90\% of fraudulent claims are flagged
+%%    \item 5\% of legitimate claims are falsely flagged
+%%\end{itemize}
+%%
+%%\vspace{0.5cm}
+%%
+%%Question:
+%%
+%%\begin{center}
+%%If a claim is flagged, what is the probability it is truly fraudulent?
+%%\end{center}
+%%
+%%\end{frame}
+%%
+%%\begin{frame}{Bayes' Theorem}
+%%
+%%\[
+%%\mathbf{P}(A \mid B) = \frac{\mathbf{P}(B \mid A) \mathbf{P}(A)}{\mathbf{P}(B)} = \frac{\mathbf{P}(B \mid A) \mathbf{P}(A)}{\mathbf{P}(B | A) \mathbf{P}(A) + \mathbf{P}(B | \overline{A}) \mathbf{P}(\overline{A})}
+%%\]
+%%
+%%\vspace{0.5cm}
+%%
+%%\textbf{Interpretation:}
+%%
+%%\begin{itemize}
+%%    \item $\mathbf{P}(A)$: Prior belief
+%%    \item $\mathbf{P}(B \mid A)$: Likelihood
+%%    \item $\mathbf{P}(A \mid B)$: Posterior belief
+%%\end{itemize}
+%%
+%%\vspace{0.5cm}
+%%
+%%Bayes' theorem updates beliefs using new evidence.
+%%
+%%\end{frame}
+%%
+%%\begin{frame}{Bayesian Update in Fraud Detection}
+%%
+%%\[
+%%\mathbf{P}(F \mid \text{Flag}) =
+%%\frac{0.9 \cdot 0.02}
+%%{0.9 \cdot 0.02 + 0.05 \cdot 0.98}
+%%\]
+%%
+%%\vspace{0.5cm}
+%%
+%%Result:
+%%
+%%\[
+%%\mathbf{P}(F \mid \text{Flag}) \approx 27\%
+%%\]
+%%
+%%\vspace{0.5cm}
+%%
+%%Even highly accurate systems can produce many false alarms
+%%when the base rate is small.
+%%
+%%\end{frame}
+%%
+%%\begin{frame}{A/B Testing Example}
+%%
+%%\textbf{New Checkout Design}
+%%
+%%\begin{itemize}
+%%    \item After 20 users: conversion = 70\%
+%%    \pause
+%%    \item After 20,000 users: conversion = 12\%
+%%\end{itemize}
+%%
+%%\pause
+%%
+%%\vspace{0.5cm}
+%%
+%%Why does the estimate change so much?
+%%
+%%\end{frame}
 
 \begin{frame}{Law of Large Numbers}
 

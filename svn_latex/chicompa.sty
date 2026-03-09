@@ -1,0 +1,107 @@
+%% Chi compatibility package for old files
+%% V1.00 97/11/13 original
+%% V1.01 98/06/30 added: \sloppy
+%% V1.02 01/02/08 %%\newcommand{\And} changed to \providecommand{\And}
+%%                removed \examplename and example environment (conflicts with llncs.cls)
+%%       26/05/03 added \ireal,\inat
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{chicompa}[2001/02/08 V1.02 DAvB]
+
+%% \fussy produces many lines that extend beyond the right margin
+%% \sloppy moved to package sedeflt, remains here for compat. reasons
+\sloppy
+
+\newcommand{\ireal}{I\mkern-6mu R}
+\newcommand{\inat}{I\mkern-6mu N}
+
+\newcommand{\proj}{.}
+\newcommand{\bu}{\mathord{(}\mkern1mu}
+\newcommand{\eu}{\mkern1mu\mathord{)}}
+\newcommand{\eqq}{\;\;\mathopen{=}\;\;}
+
+%Add \mbox{} for correct spacing if followed by [
+\newcommand{\cin}{\mathop{\downarrow}\nolimits\mbox{}} 
+\newcommand{\cout}{\mathop{\uparrow}\nolimits\mbox{}}
+
+\providecommand{\And}{\mathrel{\wedge}} %%Is already defined in SWP30 installation
+\newcommand{\Or}{\mathrel{\vee}}
+
+%% Not needed anymore because spacing is now included in the arrays for links
+%%\newcommand{\linkn}{\mathopen{\relbar\mkern-8mu\circ}}
+%%\newcommand{\link}{\;\linkn\;}
+%%\newcommand{\linkb}{\mbox{}\mathrel{\linkn}}          % link for bundles
+
+\newcommand{\linkn}{\mathopen{\multimap}}
+\newcommand{\link}{\;\linkn\;}
+\newcommand{\becn}%
+  {\mathopen{\raise.1ex\hbox{:}\mkern-5mu=}}          % :=
+\newcommand{\bec}{\;\becn\;}                          % :=
+
+
+%\newcommand{\examplename}{Example} % <-----------
+%\@ifundefined{chapter}
+%{ \newcounter{example}
+%  \renewcommand{\theexample}{\arabic{example}}}
+%{ \newcounter{example}[chapter]
+%  \renewcommand{\theexample}{\thechapter.\arabic{example}}}
+%\newenvironment{example}
+%{ \refstepcounter{example}
+%  \subsubsection*{\examplename\ \theexample}
+%  \list{}{
+%    \leftmargin\z@\rightmargin\leftmargin
+%    \parsep\parskip
+%    \listparindent\parindent}
+%  \item[]}
+%{ \vskip\parskip
+%  \noindent\mbox{$\Box$}
+%  \endlist}
+
+%Old (was for equations)
+\newcommand{\rg}{\rep\bg}                             % *[    - begin repetitive command
+                                                      %       - use\rep\rg instead
+\newcommand{\be}
+  {\hspace{-0.1em}\{\hspace{0.05em}\;}                % {
+\newcommand{\ee}{\mathrel{\}}\;}                      % }  extra spacing after, if followed by |
+
+%Old
+\newlength{\xfig}
+\newlength{\yfig}
+\newlength{\xsfig}
+\newlength{\ysfig}
+\newcommand{\scaledfigure}[4]
+{\setlength{\xfig}{#3}\setlength{\yfig}{#4}
+\setlength{\xsfig}{#1\xfig}\setlength{\ysfig}{#1\yfig}
+\begin{center}\makebox[\xsfig][l]{\special{isoscale #2, \the\xsfig \the\ysfig}}\vspace*{\ysfig}
+\end{center}}
+
+
+%\newcommand{\st}        {\=}            %set tab
+
+\newcommand{\varsigmaa} {\varsigma_{\mathrm{a}}}
+\newcommand{\varsigmad} {\varsigma_{\mathrm{d}}}
+\newcommand{\adtrans} 	[1] {\stackrel {#1} {\twoheadrightarrow}}
+\newcommand{\afunc}   	[1] {\mathrm{A}({#1})}
+\newcommand{\soli}    [1] {\mathrm{\Omega_i}({#1})}
+\newcommand{\mzsigma}     {\varsigma(0)}
+\newcommand{\dV}          {\Theta}
+\newcommand{\mtb}         {\emptyset}
+\newcommand{\stack}       {\sigma_{\mathrm{s}}}
+\newcommand{\abst}   	    {\mathrm{aa}}
+\newcommand{\xifunc}  	[1] {\mathrm{\xi}({#1})}
+\newcommand{\xifunca} 	[1] {\mathrm{\xi'}({#1})}
+\newcommand{\eqfunc}  	[1] {\mathrm{EQ_{\chi}}({#1})}
+\newcommand{\tfunc}   	[1] {\mathrm{\Theta}({#1})}
+\newcommand{\cnfunc}  	[1] {\mathrm{C_{\mathrm{N}}}({#1})}
+\newcommand{\cnfunca} 	[1] {\mathrm{C'_{\mathrm{N}}}({#1})}
+\newcommand{\gefunc}  	[1] {\mathrm{\gamma_{\mathrm{E}}}({#1})}
+\newcommand{\term}        {\downarrow}
+\newcommand{\watch}       {\longmapsto}
+\newcommand{\cp}          {\gamma}
+\newcommand{\dabs}        {\tau_{J}}
+\newcommand{\delay}       {\varsigma,t}
+\newcommand{\cUEB}        {(\mathcal{U},\mathcal{E},\mathcal{B})}
+
+\endinput
+%% 
+%% End of file `chicompa.sty'.

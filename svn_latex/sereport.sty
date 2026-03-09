@@ -1,0 +1,262 @@
+%% DAvB 1997/03/24 V1.1:
+%% Removed uppercase from toc and biblio
+%% (17 Oct 97): removed openbib from thebiblio (Y&YTex compiler error)
+%% (18 Nov 97): added \addcontentsline{toc}{chapter}{Bibliography} to bib env.
+%% 31-05-2001 : merged with setitlpg.sty and added \fontsize{12}{14.5}\selectfont to front page
+%%%% 
+%%
+%% 
+%% This is file `sereport.sty', generated on <1995/6/29> 
+%% with the docstrip utility (2.2i).
+%% 
+%% The original source files were:
+%% 
+%% sereport.dtx  (with options: `package')
+%% 
+%% IMPORTANT NOTICE:
+%% You are not allowed to distribute this file.
+%% For distribution of the original source see
+%% the copyright notice in the file sereport.dtx .
+%%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{sereport}
+        [2001/05/31 V1.2 Systems Engineering report package]
+
+
+\DeclareOption{largefont}{% Add a \Huge font size for 12pt class options.
+  \ifnum \@ptsize=2
+    \DeclareFontShape{OT1}{cmr}{bx}{n}
+      { <5> <6> <7> <8> <9> gen * cmbx
+        <10><10.95> cmbx10
+        <12><14.4><17.28><20.74><24.88><29.86>cmbx12 }{}
+    \renewcommand{\Huge}{\@setfontsize\Huge{29.86}{36}}
+  \fi}
+\ProcessOptions
+
+\newcommand{\se@hfsn}{}
+\newcommand{\se@hfsp}{}
+\newcommand{\SEheaderfont}[2][]{\def\se@hfsp{#2}\def\se@hfsn{#2#1}}
+\SEheaderfont[\slshape]{}
+
+\newcommand{\case@ptsize}[3]{\ifcase\@ptsize #1\or #2\or #3\fi}
+
+%%DAvB
+\renewcommand\tableofcontents{%
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \chapter*{\contentsname
+        \@mkboth{%
+           \contentsname}{\contentsname}}%
+    \@starttoc{toc}%
+    \if@restonecol\twocolumn\fi
+    }
+%%DAvB
+
+%%DAvB
+\renewenvironment{thebibliography}[1]
+     {\chapter*{\bibname
+%%DAvB        \@mkboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}}%
+        \@mkboth{\bibname}{\bibname}}%
+      \addcontentsline{toc}{chapter}{\bibname}%%DAvB 
+      \list{\@biblabel{\@arabic\c@enumiv}}%
+           {\settowidth\labelwidth{\@biblabel{#1}}%
+            \leftmargin\labelwidth
+            \advance\leftmargin\labelsep
+            \usecounter{enumiv}%
+            \let\p@enumiv\@empty
+            \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+      \renewcommand\newblock{\hskip .11em \@plus.33em \@minus.07em}%
+      \sloppy\clubpenalty4000\widowpenalty4000%
+      \sfcode`\.=\@m}
+     {\def\@noitemerr
+       {\@latex@warning{Empty `thebibliography' environment}}%
+      \endlist}
+%%DAvB
+
+%%DAvB
+\def\@makechapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+        \huge\bfseries \@chapapp{} \thechapter
+        \par\nobreak
+        \vskip 20\p@
+    \fi
+    \interlinepenalty\@M
+    \Huge \bfseries\boldmath #1\par\nobreak
+    \vskip 40\p@
+  }}
+\def\@makeschapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright
+    \normalfont
+    \interlinepenalty\@M
+    \Huge \bfseries\boldmath  #1\par\nobreak
+    \vskip 40\p@
+  }}
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+                                   {-3.5ex \@plus -1ex \@minus -.2ex}%
+                                   {2.3ex \@plus.2ex}%
+                                   {\normalfont\Large\bfseries\boldmath}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                     {1.5ex \@plus .2ex}%
+                                     {\normalfont\large\bfseries\boldmath}}
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                     {1.5ex \@plus .2ex}%
+                                     {\normalfont\normalsize\bfseries\boldmath}}
+%%DAvB
+
+\def\ps@plain{\let\@mkboth\@gobbletwo
+     \let\@oddhead\@empty\def\@oddfoot{\se@hfsp\hfil\thepage
+     \hfil}\let\@evenhead\@empty\let\@evenfoot\@oddfoot}
+\if@twoside
+  \def\ps@headings{%
+      \let\@oddfoot\@empty\let\@evenfoot\@empty
+      \def\@evenhead{{\se@hfsp\thepage}\hfil{\se@hfsn\leftmark}}%
+      \def\@oddhead{{\se@hfsn\rightmark}\hfil{\se@hfsp\thepage}}%
+      \let\@mkboth\markboth
+    \def\chaptermark##1{%
+      \markboth {%
+        \ifnum \c@secnumdepth >\m@ne
+            \@chapapp\ \thechapter. \ %
+        \fi
+        ##1}{}}%
+    \def\sectionmark##1{%
+      \markright {%
+        \ifnum \c@secnumdepth >\z@
+          \thesection. \ %
+        \fi
+        ##1}}}
+\else
+  \def\ps@headings{%
+    \let\@oddfoot\@empty
+    \def\@oddhead{{\se@hfsn\rightmark}\hfil{\se@hfsp\thepage}}%
+    \let\@mkboth\markboth
+    \def\chaptermark##1{%
+      \markright {%
+        \ifnum \c@secnumdepth >\m@ne
+            \@chapapp\ \thechapter. \ %
+        \fi
+        ##1}}}
+\fi
+\def\ps@myheadings{%
+    \let\@oddfoot\@empty\let\@evenfoot\@empty
+    \def\@evenhead{{\se@hfsp\thepage}\hfil{\se@hfsn\leftmark}}%
+    \def\@oddhead{{\se@hfsn\rightmark}\hfil{\se@hfsp\thepage}}%
+    \let\@mkboth\@gobbletwo
+    \let\chaptermark\@gobble
+    \let\sectionmark\@gobble
+    }
+\pagestyle{headings}
+\setlength\parindent{0em}
+\case@ptsize{\setlength\parskip{6\p@    plus 2.4\p@ minus 0.8\p@}}
+            {\setlength\parskip{6.8\p@  plus 2.7\p@ minus 0.9\p@}}
+            {\setlength\parskip{7.25\p@ plus 2.9\p@ minus 1\p@}}
+\setlength\headsep{35\p@}
+\setlength\footskip{45\p@}
+
+\setlength\@tempdima{\paperwidth}
+\addtolength\@tempdima{-2in}
+\case@ptsize{\setlength\@tempdimb{397\p@}}
+            {\setlength\@tempdimb{415\p@}}
+            {\setlength\@tempdimb{430\p@}}
+\if@twocolumn
+  \ifdim\@tempdima>2\@tempdimb\relax
+    \setlength\textwidth{2\@tempdimb}
+  \else
+    \setlength\textwidth{\@tempdima}
+  \fi
+\else
+  \ifdim\@tempdima>\@tempdimb\relax
+    \setlength\textwidth{\@tempdimb}
+  \else
+    \setlength\textwidth{\@tempdima}
+  \fi
+\fi
+\@settopoint\textwidth
+
+\setlength\@tempdima{\paperheight}
+\addtolength\@tempdima{-2in}
+\addtolength\@tempdima{-1.5in}
+\divide\@tempdima\baselineskip
+\@tempcnta=\@tempdima
+\setlength\textheight{\@tempcnta\baselineskip}
+
+\addtolength\textheight{\topskip}
+
+\if@twoside
+  \setlength\@tempdima        {\paperwidth}
+  \addtolength\@tempdima      {-\textwidth}
+  \setlength\oddsidemargin    {0.6\@tempdima}
+  \addtolength\oddsidemargin  {-1in}
+  \setlength\marginparwidth   {0.4\@tempdima}
+  \addtolength\marginparwidth {-0.4in}
+\else
+  \setlength\@tempdima        {\paperwidth}
+  \addtolength\@tempdima      {-\textwidth}
+  \setlength\oddsidemargin    {0.5\@tempdima}
+  \addtolength\oddsidemargin  {-1in}
+  \setlength\marginparwidth   {0.5\@tempdima}
+  \addtolength\marginparwidth {-0.4in}
+\fi
+\ifdim \marginparwidth >2in
+   \setlength\marginparwidth{2in}
+\fi
+\@settopoint\oddsidemargin
+\@settopoint\marginparwidth
+\setlength\evensidemargin  {\paperwidth}
+\addtolength\evensidemargin{-2in}
+\addtolength\evensidemargin{-\textwidth}
+\addtolength\evensidemargin{-\oddsidemargin}
+\@settopoint\evensidemargin
+
+\setlength\topmargin{\paperheight}
+\addtolength\topmargin{-2in}
+\addtolength\topmargin{-\headheight}
+\addtolength\topmargin{-\headsep}
+\addtolength\topmargin{-\textheight}
+\addtolength\topmargin{-\footskip}
+\addtolength\topmargin{-.5\topmargin}
+\@settopoint\topmargin
+
+\def\reportnr#1{\gdef\@reportnr{#1}}
+\def\institute#1{\gdef\@institute{#1}}
+
+\def\frontpage{
+\begin{titlepage}
+  \fontsize{12}{14.5}\selectfont
+  \let\footnotesize\small \let\footnoterule\relax \setcounter{page}{0}
+  \noindent
+  \null
+  \vfil
+  \vskip 18mm
+  {\raggedright\leftskip 72mm
+    \vbox to 59mm{
+    \vspace{\stretch{1.2}}
+    {\large \@title \\}
+    \vspace{\stretch{1}}
+    \@author\\
+    \vspace{\stretch{1}}
+    \@reportnr\\
+    \vspace{\stretch{1.2}}}}
+  \vfill
+  \@reportline\par\vskip 7mm
+  \begin{tabular}{@{}l@{ }l}\@coaching\end{tabular}\par\vskip 3.5mm
+  \textsc{\@institute}\par\vskip 7mm
+  \@dateline\par
+  \vfil
+  \null
+\end{titlepage}
+
+\setcounter{footnote}{0}
+\let\frontpage\relax}
+
+
+\endinput
+%% 
+%% End of file `sereport.sty'.

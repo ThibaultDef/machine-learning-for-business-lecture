@@ -1,0 +1,165 @@
+\NeedsTeXFormat{LaTeX2e}
+
+\ProvidesPackage{hybtikz}[2007/06/13]
+
+\newcommand{\modeprocsize}{6}	% box size of processes and circle diameter of modes
+\newcommand{\dist}{14}     	% center distance of modes / processes
+\newcommand{\pindist}{4}
+\newcommand{\setmodeprocsize}[1]{\renewcommand{\modeprocsize}{#1}}
+\newcommand{\setdist}[1]{\renewcommand{\dist}{#1}}
+\newcommand{\setpindist}[1]{\renewcommand{\pindist}{#1}}
+
+%% Set arrow tips
+%% Arrow tips of normal lines (every picture style) are set independently from
+%% the arrow tips of edges (every edge style):
+\newcommand{\setarrowtip}[1]
+  {\tikzstyle{every edge}+=[>=#1]
+   \tikzstyle{every picture}+=[>=#1]}
+\setarrowtip{latex}              %% default
+%% Select another arrow tip:
+%%\setarrowtip{angle 45}         %%
+%%\setarrowtip{stealth'}         %%
+%%\setarrowtip{open triangle 45} %%
+%%\setarrowtip{triangle 45}      %%
+%%\setarrowtip{}                 %% no arrow tip
+ 
+%% auto options:
+%% auto=left: left places nodes left of edges / lines on which the node is placed 
+%%  (e.g. with pos=0.5 option). Likewise for auto=left
+%% auto=false, normal positioning, no left/right placement
+%% auto without further info remembers and uses the last auto=.. command
+\tikzstyle{every picture}=[x=1ex,y=1ex,line width=0.6pt,auto,>=latex] 
+\tikzstyle{every edge}=[draw,->] %%
+\tikzstyle{every pin}=[pin distance=\pindist ex] %%
+\tikzstyle{every pin edge}=[draw,<-,bend left=0] %%
+
+%% Trick to get two lines above each other in all kind of nodes
+\newcommand{\twolines}[2]{\vbox{\hbox{#1}\hbox{#2}}}
+
+%% thin=0.4pt, semithick=0.6pt, thick=0.8pt
+\tikzstyle{modeproc}=
+  [ text centered, inner sep=0ex, text width=\modeprocsize ex 
+  , node distance=\dist ex, draw ] %% 
+
+%% text width needed to be able to use \brk for splitting text over more lines
+%% text width only works properly with circles
+%% text width with rectangles gives the rectangle the height of the text (not a square)
+%% minimum width for rectangle gives a proper square, but then \brk does not work
+%% so that lines cannot be split in rectangles with option minimum width
+%% Therefore use text width together with minimum height for rectangles
+  
+%% The following order "\tikzstyle{mode} = [modeproc,circle]" gives the error:
+%% "I do not know what to do with the option circle"
+%% Therefore use (reverse the order of the keywords)
+\tikzstyle{mode} = [circle,modeproc]    		%% Drawing (modes of) automata
+\tikzstyle{proc} = 
+  [rectangle,minimum height=\modeprocsize ex,modeproc] 	%% Drawing parallel processes
+\tikzstyle{box} = 
+  [rectangle,minimum height=\modeprocsize ex,modeproc]  %% Drawing boxes (default for parallel processes)
+
+\newcommand{\brk}{\linebreak[4]}
+
+\newenvironment{tikzpicturewith}[2][]
+ {#2\begin{tikzpicture}[#1]}
+ {\end{tikzpicture}}
+ 
+\newenvironment{tikzpictureat}[2][]
+  {\begin{tikzpicture}[remember picture,overlay]
+  \path[x=1cm,y=1cm] (current page.south west) +(#2) coordinate (start);
+  \begin{scope}[#1]\begin{scope}[shift=(start)]}
+  {\end{scope}\end{scope}\end{tikzpicture}\ignorespacesafterend}
+
+\newenvironment{tikzpicturewithat}[3][]
+  {#2\begin{tikzpictureat}[#1]{#3}}
+  {\end{tikzpictureat}}
+
+
+%% Absolute positioning on page
+%% First parameter: coordinates in cm 
+%% Second parameter: drawing code, where (start) refers to starting position
+%\newcommand{\tikzpictat}[2]
+%{\begin{tikzpicture}[remember picture,overlay]
+% \path[x=1cm,y=1cm] (current page.south west) ++(#1) coordinate (start);
+% #2
+% \end{tikzpicture}
+%}
+\newcommand{\tikzpictat}[3][]
+{\begin{tikzpictureat}[#1]{#2}#3\end{tikzpictureat}}
+
+\newcommand{\grid}
+{\begin{tikzpicture}[remember picture,overlay,x=1cm,y=1cm]
+ \draw[very thin,black!10] (current page.south west) grid[step=2mm] (current page.north east);    
+%% horizontal lines:
+ \foreach \y in {1,...,9} 
+   \draw[very thin,black!50] (current page.south west) 
+     ++(0,\y) -- node[pos=0.02,font=\tiny]{\y} node[pos=0.98,font=\tiny]{\y} +(12.8,0);
+%% vertical lines:
+ \foreach \x in {1,...,12} 
+   \draw[very thin,black!50] (current page.south west) 
+     ++(\x,0) -- node[pos=0.05,font=\tiny]{\x} node[pos=0.85,font=\tiny]{\x} +(0,9.6);
+\end{tikzpicture}
+}
+
+\newcommand{\connector}[2] %%
+ {\node[rectangle,minimum size=1ex,draw,fill=white,label={#2}] (#1) at (#1) {}}
+
+\newcommand{\inconnorth}[3]%%
+ {\draw (#1) node[minimum size=0ex,inner sep=0ex,
+   label={[label distance=#3ex]#2}]{} -- +(-1,0) -- +(0,-1)  -- +(1,0) -- cycle} 
+\newcommand{\inconsouth}[3]%%
+ {\draw (#1) node[minimum size=0ex,inner sep=0ex,
+   label={[label distance=#3ex]#2}]{} -- +(-1,0) -- +(0,1)  -- +(1,0) -- cycle} 
+
+\newcommand{\outconnorth}[2]%%
+ {\draw (#1) node[minimum size=0ex,inner sep=0ex,label={#1}]{}
+   -- +(-1,0) -- +(0,1) coordinate(#1) -- +(1,0) -- cycle} 
+\newcommand{\outconsouth}[2]%%
+ {\draw (#1) node[minimum size=0ex,inner sep=0ex,label={#2}]{} 
+   -- +(-1,0) -- +(0,-1) coordinate(#1) -- +(1,0) -- cycle} 
+
+\newcommand{\hvalve}[2][0:]
+ {\filldraw[fill=white] (#2) --++(-1.6,-0.8)--++(0,1.6)--++(3.2,-1.6)--++(0,1.6)--cycle;
+  \path (#2) node[minimum size=0ex,inner sep=0ex,
+                  label={[label distance=0.6ex]#1}]{};
+ }
+\newcommand{\vvalve}[2][0:]
+ {\begin{scope}[rotate=90]\hvalve{#2}\end{scope}
+  \path (#2) node[minimum size=0ex,inner sep=0ex,
+                  label={[label distance=0.6ex]#1}]{};
+ } 
+ 
+\newcommand{\diode}[2][0:]
+ {\filldraw[fill=white] (#2) ++(-1,-1)--++(0,2)--++(2,-1)--cycle;
+  \draw (#2) ++(1,1) --++(0,-2);
+  \path (#2) node[minimum size=0ex,inner sep=0ex,
+                  label={[label distance=0.6ex]#1}]{};
+ }
+\newcommand{\resistor}[2][0:]
+ {\filldraw[fill=white] (#2) ++(-1.4,-0.7) rectangle +(2.8,1.4);
+  \path (#2) node[minimum size=0ex,inner sep=0ex,
+                  label={[label distance=0.6ex]#1}]{};
+ }
+\newcommand{\capacitor}[2][0:]
+ {\fill[fill=white] (#2) ++(-1.2,-0.4) rectangle +(2.4,0.8);
+  \draw (#2) ++(-1.2,-0.4) -- +(2.4,0)
+             ++(0,0.8)     -- +(2.4,0);
+  \path (#2) node[minimum size=0ex,inner sep=0ex,
+                  label={[label distance=0.3ex]#1}]{};
+ }
+
+
+%% First parameter: center bottom, must be an existing coordinate name or literal without the brackets
+%% Second parameter: center top, is a coordinate parameter that is set by the drawing
+%% Start drawing at bottom
+%% \tank{0,0}{top} or 
+%% \path (0,0) coordinate(bottom); \tank{bottom}{top}
+\newcommand{\tank}[2]
+ {\filldraw[fill=blue!40] (#1) ++(-6,5)|-(#1)-|++(6,5);
+  \draw (#1) ++(-6,5)--+(0,2);
+  \draw (#1) ++ (6,5)--+(0,2);
+  \path (#1) ++(0,7) coordinate(#2);
+ }
+
+\endinput
+%% 
+%%End of file `hybtikz.sty'.

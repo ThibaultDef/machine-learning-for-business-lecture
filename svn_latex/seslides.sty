@@ -1,0 +1,188 @@
+%% 27-10-97 DAvB changed: \se@recalc (65=>90) 
+%% 29jan95 HvR/DAvB 
+%% V1.0a changed: options (D)dutch and (E)english
+%% V1.1  27/11/98 added: option nologos
+%%
+%% This is file `seslides.sty', generated on <1995/6/29> 
+%% with the docstrip utility (2.2i).
+%% 
+%% The original source files were:
+%% 
+%% seslides.dtx  (with options: `package')
+%% 
+%% IMPORTANT NOTICE:
+%% You are not allowed to distribute this file.
+%% For distribution of the original source see
+%% the copyright notice in the file seslides.dtx .
+%% 
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{seslides}
+        [1998/11/27 v1.1 Systems Engineering slides package]
+
+\newcommand{\se@faculty}{}
+\DeclareOption{english}{\def\se@faculty{Faculty of Mechanical Engineering}}
+\DeclareOption{dutch}{\def\se@faculty{Faculteit Werktuigbouwkunde}}
+\DeclareOption{nologos}{\newcommand{\se@logo}{}\newcommand{\tue@logo}{}}
+\ExecuteOptions{english}
+\ProcessOptions
+
+\DeclareFontShape{OT1}{cmss}{bx}{n}{<10>cmssbx10}{}
+
+\newlength{\se@margin}
+\newlength{\se@left}
+\newlength{\se@bot}
+\newlength{\se@width}
+\newlength{\se@height}
+\newcommand{\SEframesep}[1]{\setlength{\se@margin}{#1}\se@recalc}
+\newlength{\SErulewidth} \setlength{\SErulewidth}{0.7pt}
+\newcommand{\SEslide@mark}{}
+\newcommand{\SEslidemark}[1]{\def\SEslide@mark{#1}}
+
+\setlength\footskip{96\p@}
+
+\newcommand{\se@recalc}{%
+\if@compatibility
+  \setlength\textwidth{460\p@}
+\else
+  \setlength\@tempdima{\paperwidth}
+  \addtolength\@tempdima{-2\se@margin}
+  \addtolength\@tempdima{-1in}
+  \setbox\@tempboxa\hbox{\rmfamily im}
+  \setlength\@tempdimb{.5\wd\@tempboxa}
+  \setlength\@tempdimb{90\@tempdimb}
+  \ifdim\@tempdima>\@tempdimb\relax
+    \setlength\textwidth{\@tempdimb}
+  \else
+    \setlength\textwidth{\@tempdima}
+  \fi
+\fi
+
+\@settopoint\textwidth
+\columnwidth \textwidth
+\columnsep 10pt
+\columnseprule \z@
+
+\if@compatibility
+  \setlength\textheight{600\p@}
+\else
+  \setlength\@tempdima{\paperheight}
+  \addtolength\@tempdima{-2\se@margin}
+  \addtolength\@tempdima{-1in}
+  \addtolength\@tempdima{-\headheight}
+  \addtolength\@tempdima{-\headsep}
+  \addtolength\@tempdima{-\footskip}
+  \divide\@tempdima\baselineskip
+  \@tempcnta=\@tempdima
+  \setlength\textheight{\@tempcnta\baselineskip}
+\fi
+\advance\textheight by \topskip
+
+\if@compatibility
+   \setlength\oddsidemargin  {17\p@}
+   \setlength\evensidemargin {17\p@}
+   \setlength\marginparwidth {20\p@}
+\else
+  \setlength\@tempdima        {\paperwidth}
+  \addtolength\@tempdima      {-2in}
+  \addtolength\@tempdima      {-\textwidth}
+  \setlength\oddsidemargin    {.5\@tempdima}
+  \setlength\marginparwidth   {.8in}
+  \addtolength\marginparwidth {.5\@tempdima}
+  \setlength\evensidemargin  {\paperwidth}
+  \addtolength\evensidemargin{-2in}
+  \addtolength\evensidemargin{-\textwidth}
+  \addtolength\evensidemargin{-\oddsidemargin}
+\fi
+
+\setlength\marginparsep {5\p@}
+\setlength\marginparpush{5\p@}
+
+\if@compatibility
+  \setlength\topmargin{-10pt}
+\else
+  \setlength\topmargin{\paperheight}
+  \addtolength\topmargin{-2in}
+  \addtolength\topmargin{-\headheight}
+  \addtolength\topmargin{-\headsep}
+  \addtolength\topmargin{-\textheight}
+  \addtolength\topmargin{-\footskip}
+  \addtolength\topmargin{-.5\topmargin}
+\fi
+\@settopoint\topmargin
+
+\setlength{\se@left}{-\oddsidemargin}
+\addtolength{\se@left}{-1in}
+\addtolength{\se@left}{\se@margin}
+\setlength{\se@bot}{\topmargin}
+\addtolength{\se@bot}{\headheight}
+\addtolength{\se@bot}{\headsep}
+\addtolength{\se@bot}{\textheight}
+\addtolength{\se@bot}{\footskip}
+\addtolength{\se@bot}{1in}
+\addtolength{\se@bot}{-\paperheight}
+\addtolength{\se@bot}{\se@margin}
+\setlength{\se@height}{\paperheight}
+\addtolength{\se@height}{-2\se@margin}
+\setlength{\se@width}{\paperwidth}
+\addtolength{\se@width}{-2\se@margin}
+} % end of command \se@recalc
+
+\providecommand{\tue@logo}{\begin{picture}(0,0)
+%%  \put(35,85){\special{em:graph tuelogo.pcx}}
+%%  \put(35,23){{\fontsize{10}{12}\usefont{OT1}{cmss}{bx}{n}\se@faculty}}
+%% tue6logo is 16.26mm hoog = 46 pt => 85 - 46 = 39 (wordt 38)
+  \put(35,38){\special{insertimage: tue6logo.tif}}
+  \put(35,23){{\fontsize{10}{12}\textsf{\se@faculty}}}
+\end{picture}}
+
+\providecommand{\se@logo}{\begin{picture}(0,0)
+%%  \put(-186,85){\special{em:graph selogo.pcx}}
+%% se6logo is 29.49 mm h00g = 84 pt => 85 - 84 = 1 pt (wordt -0.2)
+  \put(-184,-0.2){\special{insertimage: se6logo.tif}}
+\end{picture}}
+
+\newcommand{\se@frame}{\makebox[0pt][l]
+{\kern\se@left\raisebox{\se@bot}[0pt][0pt]{%
+\setlength{\unitlength}{1pt}%
+\tue@logo%
+\rule{\SErulewidth}{\se@height}%
+\rule[\se@height]{\se@width}{\SErulewidth}%
+\rule{\SErulewidth}{\se@height}%
+\se@logo}}}
+
+\newcommand{\se@pagenum}[1]{\makebox[0pt][l]
+ {\kern\se@left\raisebox{\se@bot}[0pt][0pt]
+ {\kern35pt#1\kern20pt{\tiny\SEslide@mark}}}}
+
+\def\ps@headings{%
+  \def\ps@slide{%
+    \def\@oddfoot{\@mainsize \se@frame\se@pagenum{\theslide}\hfil}%
+    \def\@oddhead{}%
+    \def\@evenfoot{\@mainsize \se@frame\se@pagenum{\theslide}\hfil}%
+    \def\@evenhead{}}
+
+  \def\ps@overlay{%
+    \def\@oddfoot{\@mainsize \se@pagenum{\theoverlay}\hfil}%
+    \def\@oddhead{}%
+    \def\@evenfoot{\@mainsize \se@pagenum{\theoverlay}\hfil}%
+    \def\@evenhead{}}
+
+  \def\ps@note{%
+    \def\@oddfoot{%
+      \@mainsize
+      \se@pagenum{\thenote}\hfil
+      \if@clock \fbox{\large \arabic{minutes} min}\else \hbox{}\fi}%
+    \def\@oddhead{}%
+    \def\@evenfoot{%
+      \@mainsize
+      \se@pagenum{\thenote}\hfil
+      \if@clock \fbox{\large \arabic{minutes} min}\else \hbox{}\fi}%
+    \def\@evenhead{}}}
+
+\pagestyle{headings}
+\SEframesep{0.5in}
+
+\endinput
+%% 
+%% End of file `seslides.sty'.
+
