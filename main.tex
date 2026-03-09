@@ -837,7 +837,7 @@ The density function of delivery time follows an exponential distribution of par
 	   $x_t$ is a sample of some random variables $X_t$ 
 	corresponding to the same element (row) of $\widetilde{\Omega}$,
         \item 			
-		$X_t$ have the same probability distribution $F$ and they are independent (one variable contains no information on others):
+		$X_t$ are \textbf{idenpendently identically distributed(i.i.d)}: have the same probability distribution $F$ and they are independent (one variable contains no information on others):
 
         \end{itemize}
  \medskip
@@ -922,6 +922,50 @@ The density function of delivery time follows an exponential distribution of par
    The smaller the standard deviation is, the more the points $x_t$ are concentrated around the mean.
 
 
+\end{frame}
+\begin{frame}{Covariance, correlation and independence}
+\textbf{Covariance:}
+
+The covariance of two random variables $X$ and $Y$ is:
+
+\[
+\mathrm{Cov}(X, Y) = \mathbb{E}[(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])]
+\]
+
+\vspace{0.3cm}
+
+Measures how much $X$ and $Y$ vary together.
+
+\vspace{0.5cm}
+
+\textbf{Correlation:}
+
+The correlation coefficient is:
+
+\[
+\rho(X, Y) = \frac{\mathrm{Cov}(X, Y)}{\sigma_X \sigma_Y}
+\]
+
+\vspace{0.3cm}
+
+Normalized to $[-1, 1]$:
+\begin{itemize}
+    \item $\rho = 1$ → perfect positive correlation
+    \item $\rho = 0$ → no linear relationship
+    \item $\rho = -1$ → perfect negative correlation
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Independence and Covariance:}
+
+If $X$ and $Y$ are independent, then:
+
+\[
+\mathrm{Cov}(X, Y) = 0
+\]
+
+Conversely, zero covariance does not necessarily imply independence.
 \end{frame}
 \begin{frame}{Mean, variance from data, visualization}
 
@@ -1227,32 +1271,6 @@ Standard deviation directly quantifies risk and uncertainty.
 %%
 %%\end{frame}
 
-\begin{frame}{Law of Large Numbers}
-
-Let
-
-\[
-X_1, \dots, X_n
-\]
-
-be $n$ independent random variables with expectation $\mu$.
-
-\vspace{0.4cm}
-
-Define the sample mean:
-
-\[
-\bar{X}_n = \frac{1}{n} \sum_{i=1}^{n} X_i
-\]
-
-Then:
-
-\[
-\bar{X}_n \to \mu \quad \text{as } n \to \infty
-\]
-
-\end{frame}
-
 \begin{frame}{Business Meaning of LLN}
 
 The Law of Large Numbers explains:
@@ -1502,7 +1520,436 @@ plt.show()
 \end{minted}
     
 \end{frame}
+\begin{frame}{Machine learning}
 
+ Black box process
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}
+ \tikzstyle{mode}=[draw,transform shape, minimum size=10mm]
+ \node[draw,right, fill=black, text centered, text width=20ex,transform shape, minimum size = 10mm] at 
+    (0,0) (SW) {}; % \textbf{Black box}};
+ \draw[very thick, double,->] (SW.east)++(0,0) -- ++(10,0) node[pos=0.7]{$Y$};
+ \draw[very thick, double,<-] (SW.west)++(0,0) -- ++(-10,0) node[pos=0.8]{$X$};
+\end{tikzpicture}
+\end{center}
+\end{figure}
+
+\medskip
+
+$X,Y$ random variables.
+
+
+  \medskip
+
+
+  Find a function $f$ such that
+
+  \begin{figure}
+\begin{center}
+\begin{tikzpicture}
+ \tikzstyle{mode}=[draw,transform shape, minimum size=10mm]
+  \node[draw,right, text centered, text width=30ex,transform shape, minimum size = 15mm] at 
+  (0,0) (SW) 
+  { $\hat{Y}=f(X)$ };
+  \draw[very thick, double,->] (SW.east)++(0,0) -- ++(10,0) node[pos=0.7]{$\hat{Y}$};
+  \draw[very thick, double,<-] (SW.west)++(0,0) -- ++(-10,0) node[pos=0.8]{$X$};
+\end{tikzpicture}
+\end{center}
+\end{figure}
+
+
+and the probability of $(Y-\hat{Y})$ being large is not too big, i.e, \textcolor{blue}{expected prediction error (true loss)}
+\[ 
+  \mathbf{E}[(Y-\hat{Y})^2] \mbox{ or more generally}
+  \mathbf{E}[\ell(Y\,\underbrace{\hat{Y})}{f(X)}]
+\]
+
+is small,  $\ell(y,y')$ a measure of how close $y$ and $y'$ are.? 
+
+\medskip
+
+\end{frame}
+\begin{frame}{Machine learning}
+ 
+
+	We do not fully know the distribution of $X,Y$.
+
+\medskip
+
+	$E[\ell(Y,f(X))]$ -- depends on the distribution of $X,Y$
+
+
+ \bigskip
+
+	We know i.i.d. samples $x_1,\ldots, x_N$ of $X$
+    and $y_1,\ldots,y_N$ of $Y$, $x_i,y_i$ correspond to the same row (outcome)
+
+  \bigskip
+
+  Basic soluton: find $f$ for which: 
+   \[ \frac{1}{N} \sum_{i=1}^{N} \ell(y_i,f(x_i))+ \mbox{some cleverly chosen term} \]
+
+   is small. 
+
+
+  \medskip
+
+   Question:  will 
+           $$E[(\ell(Y,f(X))]$$
+
+   be small, if  
+   \( \frac{1}{N} \sum_{i=1}^{N} \ell(y_i,f(x_i))+ \mbox{some cleverly chosen term} \)
+
+    is small ? 
+    
+
+\end{frame}
+\begin{frame}{Tearser for future: generalisation bounds}
+  If $x_1,x_2,\ldots, x_N$ i.i.d. sample
+of $F$, then with probability at least $1-\delta$:
+
+\[
+\underbrace{\mathbb{E}[\ell(Y, f(X))]}_{\text{true loss}} \le \underbrace{\frac{1}{N} \sum_{i=1}^{N} \ell(y_i, f(x_i))}_{\text{empirical loss}} + \frac{C}{\sqrt{N}} \sqrt{\log(1/\delta)}
+\]
+
+where $C$ depends on the complexity of the model class $\mathcal{F}$, measured by:
+
+\begin{itemize}
+    \item \textbf{VC dimension:} Growth rate of different models which behave the same way on finite samples
+    \item \textbf{Rademacher complexity:} Average correlation with random labels
+\end{itemize}
+
+\medskip 
+
+\begin{itemize}
+    \item Higher model complexity $\Rightarrow$ Larger $C$
+    \item Larger sample size $N$ $\Rightarrow$ Tighter bound (decreases as $1/\sqrt{N}$)
+    \item The bound trades off: training error vs model complexity
+    \item Smaller $\delta$ (higher confidence) $\Rightarrow$ Larger bound (looser guarantee)
+\end{itemize}
+
+\end{frame}
+\begin{frame}{Learning from Data: Estimating Distributions}
+
+\textbf{Key Insight:}
+
+Estimating the mean, variance, and distribution from data is itself a form of machine learning.
+
+\textbf{Given i.i.d. samples:}
+\(
+x_1, x_2, \ldots, x_N 
+\) from $F$.
+
+We estimate the population parameters:
+
+
+\textbf{Empirical Mean:}
+
+\[
+\hat{m} = \frac{1}{N} \sum_{i=1}^{N} x_i \quad \text{estimates} \quad \mu = \mathbb{E}[X]
+\]
+
+\textbf{Empirical Distribution:}
+
+\[
+\hat{F}(a) = \frac{1}{N} \#\{i : x_i \le a\} \quad \text{estimates} \quad F(a) = \mathbb{P}(X \le a)
+\]
+
+
+These are \textbf{learned models} from data, just like any other ML model.
+
+\end{frame}
+\section{Hypothesis testing}
+\begin{frame}{Why hypothesis testing}
+\textbf{Problem:} Different datasets yield different model estimates.
+
+\vspace{0.5cm}
+
+\textbf{Example:}
+\begin{itemize}
+    \item Dataset 1: Sample mean $\hat{m}_1 = 10.2$
+    \item Dataset 2: Sample mean $\hat{m}_2 = 10.5$
+    \item True population mean: unknown
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Question:} Is the difference real or just noise?
+
+\vspace{0.5cm}
+
+Hypothesis testing provides a framework to assess whether observed differences are statistically significant or due to random sampling variation.
+
+\vspace{0.5cm}
+
+\textbf{Key Models We Estimate from Data:}
+\begin{itemize}
+    \item Empirical mean: $\hat{m} = \frac{1}{N}\sum x_i$
+    \item Empirical variance: $\hat{\sigma}^2 = \frac{1}{N-1}\sum (x_i - \hat{m})^2$
+    \item Empirical distribution: $\hat{F}(a) = \frac{\text{count}(x_i \le a)}{N}$
+\end{itemize}
+
+\vspace{0.5cm}
+
+All depend on random samples, so they fluctuate. Hypothesis testing quantifies this uncertainty.
+
+\end{frame}
+\begin{frame}{Notions from statistics}
+    A statistic $\mathbf{T}$ is a function of an i.i.d. sample $x_1, \ldots, x_N$ that serves to estimate a parameter of the probability distribution.
+
+    \medskip
+
+    The statistic $\mathbf{T}$ depends on the observed data $x_1, \ldots, x_N$, so its value changes whenever we collect a new sample.
+
+    \medskip
+
+     Examples:
+     
+    \[ \hat{m} = \frac{1}{N} \sum_{t=1}^{N} x_t \]
+     estimates the mean,
+
+    \[ \hat{\sigma}^2 = \frac{1}{N-1} \sum_{t=1}^{N} (x_t - \hat{m})^2 \]
+
+     estimates the variance,
+
+    \[ \hat{F}(x) = \frac{1}{N} \mbox{ number of times } x_i \le x \]
+
+    estimates the probability distribution. 
+
+    \medskip
+
+    We want a statistic $\mathbf{T}$ to be:
+
+    \begin{itemize}
+    \item \textbf{Unbiased:} $\mathbb{E}[\mathbf{T}] = \theta_*$ (true parameter). 
+    
+                 The \textbf{bias} is $\theta_* - \mathbb{E}[\mathbf{T}]$.
+
+    \item \textbf{Consistent:} $\mathbf{T}$ converges to the true value as $N \to \infty$.
+
+    \item \textbf{Efficient:} $\mathbf{T}$ has small variance that decreases to zero as $N$ grows.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Basic setup for hypothesis testing}
+
+     We want to decide if a parameter $\theta$ equals $0$.   
+
+    \medskip
+
+    We have a statistic $\mathbf{T}$ computed from an i.i.d. sample $x_1, \ldots, x_N$ to estimate $\theta$. 
+
+ \medskip
+
+     The assumption $\theta=0$ is \textbf{the null hypothesis ($H_0$)}. 
+
+    \medskip
+
+     The assumption $\theta \ne 0$ is \textbf{the alternative hypothesis ($H_1$)}. 
+
+    \bigskip
+
+     Intuitive solution: check if $|\mathbf{T}| > c$ for some threshold $c$. 
+
+     \medskip
+
+        If $|\mathbf{T}| > c$, then we reject the null hypothesis $H_0$. 
+
+     \medskip
+
+        Otherwise, we cannot be sure. 
+
+    \medskip
+
+     How to choose $c$?
+
+\end{frame}
+
+\begin{frame}{Formal solution to hypothesis testing}
+
+     \textbf{Type I error:} we reject $H_0$ while it is true.
+
+     \medskip
+
+     \textbf{Type II error:} we fail to reject $H_0$ while $H_1$ is true. 
+
+    \medskip
+
+     Basic idea: we choose $c$ so that the probability of Type I error is small, and the probability of Type II error is not too large.
+
+\end{frame}
+
+\begin{frame}{Formal solution to hypothesis testing}
+
+    We choose $c$ such that:
+
+            \medskip
+
+             If $\theta=0$, then the probability of $|\mathbf{T}| > c$ is at most $\alpha$:
+             \[ \mathbb{P}(|\mathbf{T}| > c \mid \theta = 0) \le \alpha \]
+
+             \medskip
+
+             $\alpha$ is the \textbf{significance level}, typically $\alpha=0.02, 0.05$. 
+
+            \medskip
+
+            We reject $H_0$ if the probability under $H_0$ of observing $|\mathbf{T}|$ or larger is at most $\alpha$.
+
+            \medskip
+
+    \textbf{$p$-value:} the smallest significance level $\alpha$ for the observed data such that $H_0$ is rejected.
+
+            \medskip
+
+             Statistical software returns $p$-values.
+
+         \medskip
+
+    If the $p$-value is less than the significance level ($0.02, 0.05$), we reject $H_0$. 
+
+\end{frame}
+
+\begin{frame}{Formal solution to hypothesis testing}
+
+         For hypothesis testing, we need to know the distribution of the statistic $\mathbf{T}$.
+
+         \medskip
+
+         If $\mathbf{T}$ is unbiased, we often know the distribution of 
+
+         \[ \frac{\mathbf{T} - \theta}{\hat{\sigma}} \]
+
+        where $\hat{\sigma}$ is an estimate of the standard error of $\mathbf{T}$ that does not depend on $\theta$.
+
+        \medskip 
+
+        Instead of testing $|\mathbf{T}| > c$, we test
+
+         \[  \left|\frac{\mathbf{T}}{\hat{\sigma}}\right| > c \]
+
+\end{frame}
+
+\begin{frame}{Formal solution to hypothesis testing}
+
+         Under $\theta=0$, the distribution of 
+
+    \[\frac{\mathbf{T}}{\hat{\sigma}}\]
+
+        is known.
+
+        \medskip
+
+        We can calculate $c$ such that the probability of 
+         \[  \left|\frac{\mathbf{T}}{\hat{\sigma}}\right| > c \]
+     
+        is $\alpha$ when $\theta=0$.  
+
+        \medskip
+
+        We reject $H_0$ if 
+        \[\left|\frac{\mathbf{T}}{\hat{\sigma}}\right| > c\]
+
+\end{frame}
+
+\begin{frame}{Examples}
+
+         \textbf{Example (t-test):} Let $x_1, \ldots, x_N$ be an i.i.d. sample with unknown mean $\mu$ and variance $\sigma^2$. 
+         
+         The null hypothesis is $H_0: \mu = 0$. 
+
+        \[\mathbf{T} = \hat{m} = \frac{1}{N} \sum_{i=1}^{N} x_i\]
+
+        \[\hat{\sigma} = \sqrt{\frac{1}{N(N-1)} \sum_{i=1}^{N} (x_i - \hat{m})^2}\]
+
+         The test statistic 
+         \[\frac{\mathbf{T}}{\hat{\sigma}}\]
+         follows a Student's t-distribution. For large $N$, it is approximately normal.
+
+        \medskip	
+         
+            Other examples include the Kolmogorov-Smirnov test, Bernoulli test, etc. 	   
+     
+            \medskip
+
+             Python: \lstinline$scipy.stats.ttest_1samp$, \lstinline$scipy.stats.ks_1samp$, \lstinline$scipy.stats.binomtest$.
+
+\end{frame}
+
+\begin{frame}{Extensions of hypothesis testing}
+
+        \textbf{Non-zero null hypothesis:} $H_0: \theta = \theta_0$
+
+        \medskip
+
+         \textbf{One-sided alternative:} Instead of $H_1: \theta \ne \theta_0$, use $H_1: \theta > \theta_0$ or $H_1: \theta < \theta_0$.
+         
+         We reject $H_0$ if $\mathbf{T} > c$ or $\mathbf{T} < c$ (respectively) instead of $|\mathbf{T}| > c$.
+
+     \medskip
+         
+         \textbf{Two-sample hypothesis test:} 
+         \begin{itemize}
+                     \item Let $x_1, \ldots, x_N$ be an i.i.d. sample with parameter $\theta_1$.
+                     \item Let $y_1, \ldots, y_M$ be an i.i.d. sample with parameter $\theta_2$.
+                     \item $H_0: \theta_1 = \theta_2$, $H_1: \theta_1 \ne \theta_2$.
+                    \end{itemize}			   
+
+         We reject $H_0$ if $|\mathbf{T}| > c$, where the distribution of $\mathbf{T}$ under $H_0$ is known.
+
+         Examples: Kolmogorov-Smirnov test, t-test, Spearman's correlation, Pearson's correlation.
+                     
+         Python: \lstinline$scipy.stats.ttest_2samp$, \lstinline$scipy.stats.ks_2samp$, \lstinline$scipy.stats.spearmanr$.
+
+\end{frame}	   
+
+\begin{frame}{Confidence intervals}
+         
+         Choose $c$ such that 
+
+        \[ \left|\frac{\mathbf{T} - \theta}{\hat{\sigma}}\right| > c \]
+         
+        with probability $\alpha$.
+
+        Then with probability $1-\alpha$:
+
+        \[ 
+    \begin{split}
+                \mathbf{T} - c \hat{\sigma} \le \theta \le \mathbf{T} + c \hat{\sigma}
+             \end{split}
+        \]
+
+\end{frame}
+
+\begin{frame}{Confidence intervals}
+
+     The probability of observing data such that $\theta$ falls outside the interval
+
+     \[   
+             [\mathbf{T} - c \hat{\sigma}, \mathbf{T} + c \hat{\sigma}]
+    \]
+
+     is $\alpha$.
+
+    \medskip
+
+     This interval is the \textbf{confidence interval} at significance level $\alpha$ (or confidence level $1-\alpha$).
+
+    \medskip
+
+    Typically $\alpha = 0.02$ or $\alpha = 0.05$.
+
+    \medskip
+
+     For any $\theta_*$ in the confidence interval, we cannot reject the null hypothesis $H_0: \theta = \theta_*$ at significance level $\alpha$.
+
+    \medskip
+
+     If the confidence interval contains $0$, we cannot reject that $\theta = 0$. 
+
+\end{frame}
 \begin{frame}[fragile]{Exercise: Confidence Interval for the Mean Wage}
 
 \begin{itemize}
