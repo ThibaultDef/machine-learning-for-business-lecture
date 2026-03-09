@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{men} \PYG{o}{=} \PYG{n}{df}\PYG{p}{[}\PYG{n}{df}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}female\PYGZdq{}}\PYG{p}{]} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{][}\PYG{l+s+s2}{\PYGZdq{}wage\PYGZdq{}}\PYG{p}{]}
+\PYG{n}{women} \PYG{o}{=} \PYG{n}{df}\PYG{p}{[}\PYG{n}{df}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}female\PYGZdq{}}\PYG{p}{]} \PYG{o}{==} \PYG{l+m+mi}{1}\PYG{p}{][}\PYG{l+s+s2}{\PYGZdq{}wage\PYGZdq{}}\PYG{p}{]}
+
+\PYG{k+kn}{from}\PYG{+w}{ }\PYG{n+nn}{scipy.stats}\PYG{+w}{ }\PYG{k+kn}{import} \PYG{n}{ttest\PYGZus{}ind}
+
+\PYG{n}{t\PYGZus{}stat}\PYG{p}{,} \PYG{n}{p\PYGZus{}value} \PYG{o}{=} \PYG{n}{ttest\PYGZus{}ind}\PYG{p}{(}\PYG{n}{men}\PYG{p}{,} \PYG{n}{women}\PYG{p}{)}
+
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}t\PYGZhy{}statistic:\PYGZdq{}}\PYG{p}{,} \PYG{n}{t\PYGZus{}stat}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}p\PYGZhy{}value:\PYGZdq{}}\PYG{p}{,} \PYG{n}{p\PYGZus{}value}\PYG{p}{)}
+\end{Verbatim}

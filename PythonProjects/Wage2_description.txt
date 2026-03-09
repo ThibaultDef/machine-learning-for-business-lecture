@@ -1,0 +1,17 @@
+wage
+hours
+IQ
+KWW
+educ
+exper
+tenure
+age
+married
+black
+south
+urban
+sibs
+brthord
+meduc
+feduc
+lwage

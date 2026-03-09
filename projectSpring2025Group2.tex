@@ -1,0 +1,266 @@
+\documentclass{article}
+\usepackage{listings}
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+%\PassOptionsToPackage{hyphens}{url}
+\usepackage{hyperref}
+\usepackage{xurl}
+
+
+\title{Team projects Financial Modeling I}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\textbf{Deadline: 19/04/2024, 23:59,  please submit your *.py or *.ipynb files and a pdf file with the answers 
+       using the designated folder on the K2 site of the course.}
+
+\section*{Project 1: Team 1 (Yifei BAI,Felix KNABE, Wei LI), Team 7 (Weizhen Wang, Sarah Hamid Khan, Maria PANTOJA ERAZO) }
+
+ \subsection*{Linear regression for independetly identically sampled data}
+  The task is to  predict the logarithm of the hourly wages (in USD) (variable $lwage$) based on education (variable $educ$), work experience (variable $exper$), tenure (variable $tenure$) and gender (variable $female$). The gender is encoded in the variable $female$ which is $1$ for   females, zero for males. 
+ The .csv file can be found at %\url{https://www.kaggle.com/datasets/mihalypetreczky/wagedataset}
+
+ \url{https://kaggle.com/datasets/02f69ffd32ee24c19c78526e7dee71cfe75a475a78c48b66c63fc11dc1d09e75}. 
+
+ Linear regression for predicting the logarithm of wage. 
+ Use the independent variables $educ$, $exper$, $tenure$ and $female$
+ and use them to build models for predicting the logarithm of the wage ($lwage$).
+
+ Reserve at least 20\% of your data for validation.
+
+  \begin{itemize}
+  \item Choose randomly two sets of 100 data points from your data set, and for each data set compute the mean, variance, and the histogram
+	of each of the variables  $educ$, $exper$, $tenure$,  $female$  and $lwage$. 
+	Are these values similar for the two data sets ?  Can we say that each of these variables are independetly identically sampled ? 
+  \item Check if there is any linear relationship between variables. 		  
+  \item Calculate the $R^2$ score on the validation data set. Comment on the quality of the model.
+  \item Evalute the confidence intervals for the estimated regression parameters. Are all regression coefficients statistically significant ? Explain your answer. 
+  \item Interpret the regression coefficient for the variable $female$. What does it say about the influence of gender on wages ?
+%  \item Try to estimate by linear regression the logarithm of the hourly wage using only gender. Comment on the result
+%  \item In addition to the variables $educ$, $exper$,$female$, use the variables $female \cdot (educ - m)$ instead, where $m$ is the average number of formal education,
+
+  \item  Try to use  square $exper$ (variable $expersq$) in addition to $educ$, $exper$, $tenure$ and $female$ to predict $lwage$. What do you see ? 
+  \item  Use  first $\log(educ+1)$ and $\log(exper+1)$ and $\log((exper+1)*(educ+1))$ to predict $lwage$ (without constant coefficient, i.e. $\beta_0=0$), and then use only 
+	  $\log(educ+1)$ and $\log(exper+1)$ to predict   $lwage$ (again without constant coefficient, i.e. $\beta_0=0$),.  For both models compute the confidence intervals of regression coefficients.
+	   What can you conclude about the effect of $\log(exper+1)$ on $lwage$
+	  from the first and from the second model ?   Can you explain it ?
+	 Is there a  linear relationship between the various independent variables ? 
+  \end{itemize}
+
+ \subsection*{Time-series prediction}
+   Use the data set  
+
+    \url{https://kaggle.com/datasets/c0375f8666f329bf473a90c56739d47f9c9351706018cebe96fc4c385ee91b1d} 
+
+    to predict the weekly 
+   price index of the New York Stock Exchange using the price indices of the previous two weeks. The prince index is represented by
+   variable $price$. Use linear regression. Consider detrending using affine dependence on time.  
+   Evaluate the $R^2$ score and try taking into account several past values: price index of
+   the previous week, previous two weeks, previous three weeks, etc. 
+
+
+\section*{Project 2:  Team 2 (Benard Margot, Miet Alice, Azogui Tom,Nobis Marcel), Team 8  (Zhao Meihan,Li Mengfan, Wei Yujiang)}
+
+
+ \subsection*{Linear regression for independetly identically sampled data}
+  The task is to predict the logarithm of the house prices (variable $lprice$) using the following variables:
+  logarithm of the lot size (variable $llotisize$), logarithm of the surface of the house (variabl $lsqrtft$), number of bedrooms (variable $bdrms$). 	
+   The .csv file can be found at 
+
+   \url{https://kaggle.com/datasets/eb36254d39a218a99ac169cedb764d10b6468df9aff710c1e3508651170ff355}. % \url{https://www.kaggle.com/datasets/mihalypetreczky/hpric1}.  
+
+  \begin{enumerate}
+   \item Choose randomly two sets of 40 data points from your data set, and for each data set compute the mean, variance, and the histogram
+	of each of the variables  $lprice$, $llotsize$, $lsqrtft$,  $bdrms$. 
+	Are these values similar for the two data sets ?  Can we say that each of these variables are independetly identically sampled ? 
+
+  \item Estimate the coefficients of the linear regression from data. Reserve at least 20\% of your data for validation.
+  \item Calculate the $R^2$ score and the average mean squared error. Comment on the quality of the model.
+  \item Evalute the confidence intervals for the estimated regression parameters. Are all regression coefficients statistically significant ? Explain your answer. 
+  \item Add the variable $\log(lotsize^2*sqrft)$ as a new variable, and construct a linear regression model predicting $lprice$ using
+	 $llotsize$ and $lsqrtft$ and $bdrms$ and $\log(lotsize^2*sqrft)$. What can you say about the relevance of  $llotsize$ and $lsqrtft$ and $bdrms$
+		  for predicting $lprice$ ? Is it consistent with the results of the previous model (the one without $\log(lotsize^2*sqrft)$).
+		  Explain your answer. Is there a linear relationship among those variables ? 
+
+  \end{enumerate}
+ 
+ 
+ \subsection*{Time-series prediction}
+ Use the data set  
+
+   \url{https://kaggle.com/datasets/045ebee9dbafdf9e30b88dcbcd64d33a29ae7a425e2e9d6b73cb9d0051569713} 
+
+   to predict fertility rate (variable $gfr$)
+    using the fertility rate of the previous years. 
+    Use linear regression. Consider detrending using quadratic dependence on time.  
+   Evaluate the $R^2$ score and try taking into account several past values: fertility rate of the previous year, of the previous two years, etc. 
+
+
+
+\section*{Project 3: Team 3(BOUNEMRA Mohamed Ali,COURBOT Pierre, Moukarzel Christophe,
+Heymans Theophile)) Team 9 (Alex Mory,Maxence Piriou, MORANTE  Francesca, BAROUDI Zouhair) }
+
+
+
+
+ \subsection*{Linear regression for independetly identically sampled data}
+    The task is to predict house prices in different communities based on air pollution level (represented by the concentration of nitrogine oxid), 
+distance from employment centers, average student-teacher ratio 
+ in local schools and average number of rooms, and crime rate The variables are as follows:
+    \begin{itemize}
+    \item{$price$ \\}       
+	median housing price
+    \item{$crime$ \\}                    
+		crimes committed per capita
+    \item{$nox$ \\}                      
+	nitrogine oxide, parts per 100 mill.
+    \item{$rooms$ \\}                    
+    avg number of rooms per house
+    \item{$dist$ \\}                     
+      weighted dist. to 5 employ centers
+    \item{$stratio$ \\}                  average student-teacher ratio
+    \item{$lprice$ \\}                   $\log(price)$
+    \item{$lnox$ \\}                     $\log(nox)$
+   \end{itemize}
+
+   The .csv file can be found at 
+
+    \url{https://kaggle.com/datasets/f06415afa98ac5a0a50ad7fdec3c4b526023dcf2a1b39435e6f2b6a43eddf88e}.% \url{https://www.kaggle.com/datasets/mihalypetreczky/hprice2}. 
+    
+ \begin{itemize}
+	 \item Choose randomly two sets of 100 data points from your data set, and for each data set compute the mean, variance, and the histogram
+	of each of the variables  $lprice$, $lnox$, $rooms$,  $dist$. 
+	Are these values similar for the two data sets ?  Can we say that each of these variables are independetly identically sampled ? 
+
+   \item Find a linear regression model which uses the variables $lnox$, $dist$, $rooms$, $stratio$  in order to predict the variable $lprice$.
+     When estimating the coefficients of the linear regression, reserve at least 20\% of your data for validation.
+  \item Calculate the $R^2$ score. Comment on the quality of the model. Are all the independent variables also linearly independent ?
+  \item Evalute the confidence intervals for the estimated regression parameters. Are all regression coefficients statistically significant ? Explain your answer.
+  \item Find a  linear regression model which uses the variables $lnox$, $dist$, $rooms$, $stratio$ and the new variable
+	$\log(nox^3*e^{dist+1})$ to predict $lprice$. Compute the confidence intervals of the estimated regression parameters.
+	What can you say about the significance of the variables $lnox$, $dist$, $rooms$, $stratio$ in predicting $lprice$.
+	Is it different from the significance in the first model ? If so, why ? Is there a linear relationship among the variables ? 
+  \end{itemize}
+
+   
+ \subsection*{Time-series prediction}
+   Use the data set 
+   
+    \url{https://kaggle.com/datasets/1b473a28fa790cd0ae128969ea13f5ce68bc06e906614c1ae21bf554c99cdce3} 
+
+    to predict the consumer price index 
+   based on its values in the previous years.    Use linear regression.
+   Consider detrending using quadratic dependence on time.  
+   Evaluate the $R^2$ score and try taking into account several past values: price index  of the previous month, of the previous two months, etc. 
+
+
+
+\section*{Project 4: Team 12 (Hoi Ting LUK, Ahmed SHAABAN,Pengfei TANG),  Team 5 (Wu Linhan, Du Tingxuan, Song Xinyao,Yongting Wang), Team 11 (Qingni XU,Rufei YE,Luyu ZENG)}
+
+
+ \subsection*{Linear regression for independetly identically sampled data}
+   The task to predict logarithm of wages based on education, experience and IQ, hours worked. The variables are as follows:
+   \begin{itemize}
+   \item{$lwage$ \\}                    logarithm monthly earnings
+   \item{$hours$ \\}                    average weekly hours
+   \item{$IQ$ \\}                      IQ score
+   \item{$educ$ \\}                     years of education
+   \item{$exper$ \\}                    years of work experience
+   \end{itemize}
+
+
+   The .csv file can be found at 
+
+   \url{https://kaggle.com/datasets/053a610ff5d8f491e3ee24c7eadc563cdd094ff395e72ba6734ebeec4ab1ca59}. %\url{https://www.kaggle.com/datasets/mihalypetreczky/wage2dataset}. 
+
+  \begin{enumerate}
+	 \item Choose randomly two sets of 100 data points from your data set, and for each data set compute the mean, variance, and the histogram
+		 of each of the variables  $lwage$, $hours$, $IQ$,  $educ$, $exper$. 
+	Are these values similar for the two data sets ?  Can we say that each of these variables are independetly identically sampled ? 
+\item Find a linear regression model for predicting $lwage$ using the variables $\log(hours+1)$, $\log(exper+1)$ and $educ$. 
+   Leave at least 20\% of the data for validation. 
+  \item Calculate the $R^2$ score. Comment on the quality of the model.
+  \item Evalute the confidence intervals for the estimated regression parameters. Are all regression coefficients statistically significant ? Explain your answer.
+  \item Build a linear regression model  for predicting $lwage$ using the variables $\log(hours+1)$, $\log(exper+1)$ and $educ$ and $IQ$
+	  and $\log((exper+1)*\sqrt{(hours+1)})$. Compute the confidence intervals of the estimated regression parameters.
+	What can you say about the significance of the variables $\log(hours+1)$, $\log(exper+1)$ and $educ$ and 
+	in predicting $lwage$.
+	Is it different from the significance in the first model ? If so, why ? Is there a linear relationship among the variables ? 
+
+ \end{enumerate}
+
+
+   
+ \subsection*{Time-series prediction}
+    Use the data set 
+
+    \url{https://kaggle.com/datasets/04bc82c1251c2480108197dafd684078b0ed02b30cfc9a53d3200ad6b0724aa9} 
+
+    to predict the percentage change in monthly
+    industrial production with respect to the previous year (variable $pcip$). Use linear regression.
+   Consider detrending using affine  dependence on time.  
+   Evaluate the $R^2$ score and try taking into account several past values: the value of $pcip$ the past year, the year before, etc. 
+
+
+\section*{Project 5: Team 4 (Lingtong Sun,  Lucia Escobar PANIAGUA, SEMILINKO Houefa, YAGO Laurene, MAINET Anne-Lise), Team 10 (Basile de Cointet, GENETET-MOREL Balthazar)}
+ 
+
+ \subsection*{Linear regression for independetly identically sampled data}
+    The task is to predict the percentage of students receiving a passing grade in math (variable $math10$) in function of 
+    the following variables:
+    \begin{itemize}
+    \item{$lnchprg$}    
+	    percentage of students getting lunch at school
+     \item{$staff$}     
+	    number of teachers per 1000 students
+     \item{$expend$}    
+	    expenditure per student
+    \item{$salary$}
+	    average teacher salary
+    \item{$graduation$}
+	    graduation rate (percentage)
+    \item{$benefits$}
+	    average benefits (outside salary) of teachers.
+    \end{itemize}		    
+     The .csv file can be found at  
+
+     \url{https://kaggle.com/datasets/c490c3b6eacc1c99cb84a5890c8646f82dc05ffe33a52c20b35c64b61cf730ef}. 
+
+  \begin{enumerate}
+	 \item Choose randomly two sets of 100 data points from your data set, and for each data set compute the mean, variance, and the histogram
+		 of each of the variables $lnchprg$, $staff$, $expend$, $salary$, $math10$. 
+	Are these values similar for the two data sets ?  Can we say that each of these variables are independetly identically sampled ? 
+\item Find a linear regression model for predicting $math10$ using the variables $lnchprg$, $\log(expend)$, $\log(salary)$. Find linear
+	regression models for predicting $math10$ using only  $lnchprg$, only $\log(expend)$ and only $\log(salary)$. 
+   Leave at least 20\% of the data for validation. 
+  \item Calculate the $R^2$ score for each of the $4$ models. Comment on the quality of the model.
+  \item Evalute the confidence intervals for the estimated regression parameters for each of the for $4$ models. Are all regression coefficients statistically significant ? Explain your answer.
+   \item
+	What can you say about the significance of the variables $\log(expend)$, $\log(salary)$ and $lnchprg$
+	in predicting $math10$.
+	Do the coefficients of $\log(expend)$, $lnchprg$, $\log(salary)$ change a lot when you use all $3$ variables to predict $math10$ 
+	compared to the case when you use only one of them ? For example, is the coefficient
+		  of $\log(expend)$ in the model $\widehat{math10}=\beta_0+\beta_1 \log(expend)$  
+		    is similar to the coefficient of $\log(expend)$ in the model   $\widehat{math10}=\beta_0+\beta_1 \log(expend)+\beta_2 \log(salary)+\beta_3 lnchprg$.
+	If so, why ? Is there a linear relationship among the variables ? 
+
+ \end{enumerate}
+
+
+ \subsection*{Time-series prediction}
+     Use the data set 
+
+      \url{https://kaggle.com/datasets/a0ad6cf9f223e382a09fc5e8602ea450c118165eb5a6b351e7b2875bb3c2c554} 
+
+      to predict the annual barium import
+    (variable $chnimp$). Use linear regression.
+   Consider detrending using affine  dependence on time.  
+   Evaluate the $R^2$ score and try taking into account several past values: the value of $chnimp$ the past year, the year before, etc. 
+
+
+
+
+\end{document}

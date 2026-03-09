@@ -1,0 +1,23 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{numpy}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n+nn}{np}
+
+\PYG{n}{wages} \PYG{o}{=} \PYG{n}{df}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}wage\PYGZdq{}}\PYG{p}{]}
+\PYG{n}{true\PYGZus{}mean} \PYG{o}{=} \PYG{n}{wages}\PYG{o}{.}\PYG{n}{mean}\PYG{p}{()}
+
+\PYG{n}{sample\PYGZus{}sizes} \PYG{o}{=} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{,} \PYG{l+m+mi}{500}\PYG{p}{)}
+\PYG{n}{means} \PYG{o}{=} \PYG{p}{[]}
+
+\PYG{k}{for} \PYG{n}{n} \PYG{o+ow}{in} \PYG{n}{sample\PYGZus{}sizes}\PYG{p}{:}
+    \PYG{n}{sample} \PYG{o}{=} \PYG{n}{wages}\PYG{o}{.}\PYG{n}{sample}\PYG{p}{(}\PYG{n}{n}\PYG{p}{,} \PYG{n}{replace}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{)}
+    \PYG{n}{means}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{sample}\PYG{o}{.}\PYG{n}{mean}\PYG{p}{())}
+
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{sample\PYGZus{}sizes}\PYG{p}{,} \PYG{n}{means}\PYG{p}{,} \PYG{n}{label}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}Sample Mean\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{axhline}\PYG{p}{(}\PYG{n}{true\PYGZus{}mean}\PYG{p}{,} \PYG{n}{linestyle}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}\PYGZhy{}\PYGZhy{}\PYGZdq{}}\PYG{p}{,} \PYG{n}{label}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}True Mean\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Sample Size\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Mean Wage\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Law of Large Numbers\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{()}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{Verbatim}

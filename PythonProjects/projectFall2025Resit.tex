@@ -1,0 +1,51 @@
+\documentclass{article}
+\usepackage{listings}
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{xurl}
+
+
+\title{Resit programming with Python }
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\textbf{Deadline: 12/03/2026, 23:59,  please submit your *.py or *.ipynb files using the designated folder on the K2 site of the course.}
+
+
+\section*{Project 1 }
+ The task is to predict house prices in different communities based on air pollution level (represented by the concentration of nitrogine oxid), 
+distance from employment centers, average student-teacher ratio 
+ in local schools and average number of rooms, and crime rate The variables are as follows:
+    \begin{itemize}
+    \item{$price$ \\}       
+	median housing price
+    \item{$crime$ \\}                    
+		crimes committed per capita
+    \item{$nox$ \\}                      
+	nitrogine oxide, parts per 100 mill.
+    \item{$rooms$ \\}                    
+    avg number of rooms per house
+    \item{$dist$ \\}                     
+      weighted dist. to 5 employ centers
+    \item{$stratio$ \\}                  average student-teacher ratio
+    \item{$lprice$ \\}                   $\log(price)$
+    \item{$lnox$ \\}                     $\log(nox)$
+   \end{itemize}
+
+   The .csv file can be found at  
+
+   \url{https://kaggle.com/datasets/f06415afa98ac5a0a50ad7fdec3c4b526023dcf2a1b39435e6f2b6a43eddf88e} or downloaded
+   from the assignment in K2 (\texttt{hprice2\_merged.csv})
+   %\url{https://www.kaggle.com/datasets/mihalypetreczky/hprice2}. 
+    
+     Use various models (linear regression, SVM, decision tress, neural networks) for predicting house prices. Compare the various models in terms of accuracy of prediction. Which one is the best ? 
+ Select one or two independent variables  and use them to build models for predicting houses prices. Which variables give the best 
+ model for predicting  house prices  ?  Try to predict the logarithm of house prices instead of house prices. Do you see any improvement in performance of the models ?
+
+
+
+\end{document}

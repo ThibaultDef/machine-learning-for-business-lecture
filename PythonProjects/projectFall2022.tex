@@ -1,0 +1,131 @@
+\documentclass{article}
+\usepackage{listings}
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+
+\title{Group projects Programming in Python II}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\textbf{Deadline: 30/12/2022, 23:59,  please submit your *.py or *.ipynb files using the designated folder on the K2 site of the course.}
+
+
+
+\section*{Project 1: Team 1 (Wenpei XU, Xiyue CHEN, Yujie ZENG), Team 2 (Antoine Gossen, Hela Ben Hafsia, Pius Piyush Pawar) }
+  The task is to  predict the logarithm of the hourly wages (in USD) (variable $lwage$) based on education (variable $educ$), work experience (variable $exper$), tenure (variable $tenure$) and gender (variable $female$). The gender is encoded in the variable $female$ which is $1$ for   females, zero for males. 
+ The .csv file can be found at \url{https://www.kaggle.com/datasets/mihalypetreczky/wagedataset}. 
+
+ Use various models (linear regression, SVM, decision tress, neural networks) for predicting the logarithm of  wage. Compare the various models in terms of accuracy of prediction. Which one is the best ? 
+ Select one or two independent variables (say only the tenure and gender, or education and tenure, etc.)  and use them to build models for predicting the logarith of wage. Which variables are the most
+ significant ones for predicting  wage ? Repeat the exercise separately for males and females and for the wage instead of its logarithm. 
+
+
+
+
+
+\section*{Project 2:  Team 3 (Helia Masset, Perrine Cornu, Solenn Deluche), Team 4  (Luyu ZENG, Annachiara Dindo,Mahera Hassambay)}
+  The task is to predict the logarithm of the house prices (variable \emph{lprice}) using the following variables:
+  logarithm of the lot size (variable \emph{llotisize}), logarithm of the surface of the house (variable \emph{lsqrtft}), number of bedrooms (variable \emph{bdrms}). 	
+   The .csv file can be found at \url{https://www.kaggle.com/datasets/mihalypetreczky/hpric1}.  
+
+   Use various models (linear regression, SVM, decision tress, neural networks) for predicting the logarithm house prices. Compare the various models in terms of accuracy of prediction. Which one is the best ? 
+ Select one or two independent variables  and use them to build models for predicting the logarithm of houses prices. Which variables are the most
+ significant ones for predicting  the logarithm of house prices  ?  Repeat the exercises with the house prices instead of their logarithm. 
+ 
+ 
+
+
+
+
+\section*{Project 3:  Team 5 (Asmae MHAMMEDI ALAOUI, Sirine CHERIF), Team 6 (Jordan VIEL
+Hamza AMAR, Theo BIGOGNE) }
+    The task is to predict house prices in different communities based on air pollution level (represented by the concentration of nitrogine oxid), 
+distance from employment centers, average student-teacher ratio 
+ in local schools and average number of rooms, and crime rate The variables are as follows:
+    \begin{itemize}
+    \item{$price$ \\}       
+	median housing price
+    \item{$crime$ \\}                    
+		crimes committed per capita
+    \item{$nox$ \\}                      
+	nitrogine oxide, parts per 100 mill.
+    \item{$rooms$ \\}                    
+    avg number of rooms per house
+    \item{$dist$ \\}                     
+      weighted dist. to 5 employ centers
+    \item{$stratio$ \\}                  average student-teacher ratio
+    \item{$lprice$ \\}                   $\log(price)$
+    \item{$lnox$ \\}                     $\log(nox)$
+   \end{itemize}
+
+   The .csv file can be found at \url{https://www.kaggle.com/datasets/mihalypetreczky/hprice2}. 
+    
+     Use various models (linear regression, SVM, decision tress, neural networks) for predicting house prices. Compare the various models in terms of accuracy of prediction. Which one is the best ? 
+ Select one or two independent variables  and use them to build models for predicting houses prices. Which variables are the most
+ significant ones for predicting  house prices  ?  Try to predict the logarithm of house prices instead of house prices. Do you see any improvement in performance of the models ?
+
+   
+
+
+
+\section*{Project 4: Team 7 (Paul BEAUVOIS,Louis BERNARD,Sachin Sanjay DONGAONKAR), Team 8 (Sean DUTRAIN,Yifa FAN,Jiapeng JING ) }
+  The task is to predict the price growth based on the monthly growth of the hourly wage. The variables are as follows
+   \begin{itemize}
+   \item{$price$ \\}                   consumer price index
+   \item{$gwage$ \\}                    increase in hourly wage in the current month
+   \item{$gwage_i$ \\} $i=1,\ldots,12$   increase in hourly wage in month $=$ the current month$- i$
+  \end{itemize}
+
+   The .csv file can be found at \url{https://www.kaggle.com/datasets/mihalypetreczky/wageprcdataset}. 
+
+
+    Use various models (linear regression, SVM, decision tress, neural networks) for predicting price growth. Compare the various models in terms of accuracy of prediction. Which one is the best ? 
+     Adapt the models to predict the price $price$ based on $gwage,gwage_1,\ldots,gwage_n$, for $n=1,2,\ldots,12$. Which variables are the most
+ significant ones for predicting  prices  ?  Try to predict the logarithm of house prices instead of house prices. Do you see any improvement in performance of the models ?
+
+   
+
+ 
+\section*{Project 5: Team 9 (Amina MAHI,Adam MOUAWAD), Team 10: (Luyu ZENG,Zhizhen ZHU) }
+  The task is to predict the inventory change based on GDP growth and on real interest rates. More precisely, the variables are as follows:
+  \begin{itemize}
+  \item{$cinven$\\}  annual growth of inventory
+  \item{$cgdp$\\}    annual growth of GDP %                 gdp - gdp[t-1]
+  \item{$r3$\\}      real interest rate      
+  \item{$cr3$\\}     annual growth of the real interest rate      
+  \item{$gdp$\\}     annual gdp      
+ \end{itemize}
+
+ The .csv file can be found at \url{https://www.kaggle.com/datasets/mihalypetreczky/invendataset}. 
+   
+  Use various models (linear regression, SVM, decision tress, neural networks) for predicting inventory. Compare the various models in terms of accuracy of prediction. Which one is the best ? 
+   Select one or two independent variables  and use them to build models for predicting inventory.
+Which variables are the most significant ones for predicting  inventory  ?  
+
+
+
+%\section*{Project 6: }} %Team 11(Emilie Coutaz, Julie Sansoucy, Mathieu Douziech), Team 12 (Vincent Braganti, Adrien Farges, Benjamin Groult) }
+%   The task to predict logarithm of wages based on education, experience and IQ, hours worked. The variables are as follows:
+%   \begin{itemize}
+%   \item{$lwage$ \\}                    logarithm monthly earnings
+%   \item{$hours$ \\}                    average weekly hours
+%   \item{$IQ$ \\}                      IQ score
+%   \item{$educ$ \\}                     years of education
+%   \item{$exper$ \\}                    years of work experience
+%   \end{itemize}
+
+%   The .csv file can be found at \url{https://www.kaggle.com/datasets/mihalypetreczky/wage2dataset}. 
+   
+%  Use various models (linear regression, SVM, decision tress, neural networks) for predicting the logarithm of wage. Compare the various models in terms of accuracy of prediction. Which one is the best ? 
+%   Select one or two independent variables  and use them to build models for predicting the logarithm of wage.
+%  Which variables are the most significant ones for predicting  the logarithm of wage  ? Repeat the exercise for wage instead of its logarithm. Do you see any difference in the performance of various models ? 
+   
+
+
+
+\end{document}

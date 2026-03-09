@@ -1,0 +1,13 @@
+price
+crime
+nox
+rooms
+dist
+radial
+proptax
+stratio
+lowstat
+lprice
+lnox
+lproptax
+

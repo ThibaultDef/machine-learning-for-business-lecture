@@ -1,0 +1,14 @@
+year
+i3
+inf
+inven
+gdp
+r3
+cinven
+cgdp
+cr3
+ci3
+cinf
+ginven
+ggdp
+

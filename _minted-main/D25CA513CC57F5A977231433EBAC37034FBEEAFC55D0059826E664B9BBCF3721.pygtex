@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{wages} \PYG{o}{=} \PYG{n}{df}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}wage\PYGZdq{}}\PYG{p}{]}
+
+\PYG{n}{n} \PYG{o}{=} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{wages}\PYG{p}{)}
+\PYG{n}{mean\PYGZus{}wage} \PYG{o}{=} \PYG{n}{wages}\PYG{o}{.}\PYG{n}{mean}\PYG{p}{()}
+\PYG{n}{std\PYGZus{}wage} \PYG{o}{=} \PYG{n}{wages}\PYG{o}{.}\PYG{n}{std}\PYG{p}{(}\PYG{n}{ddof}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Standard error}
+\PYG{n}{se} \PYG{o}{=} \PYG{n}{std\PYGZus{}wage} \PYG{o}{/} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{n}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} 95\PYGZpc{} confidence interval}
+\PYG{n}{ci} \PYG{o}{=} \PYG{n}{stats}\PYG{o}{.}\PYG{n}{t}\PYG{o}{.}\PYG{n}{interval}\PYG{p}{(}\PYG{l+m+mf}{0.95}\PYG{p}{,} \PYG{n}{df}\PYG{o}{=}\PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{loc}\PYG{o}{=}\PYG{n}{mean\PYGZus{}wage}\PYG{p}{,} \PYG{n}{scale}\PYG{o}{=}\PYG{n}{se}\PYG{p}{)}
+
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Mean wage:\PYGZdq{}}\PYG{p}{,} \PYG{n}{mean\PYGZus{}wage}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}95}\PYG{l+s+si}{\PYGZpc{} c}\PYG{l+s+s2}{onfidence interval:\PYGZdq{}}\PYG{p}{,} \PYG{n}{ci}\PYG{p}{)}
+\end{Verbatim}

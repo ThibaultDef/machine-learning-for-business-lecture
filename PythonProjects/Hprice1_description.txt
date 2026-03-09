@@ -1,0 +1,10 @@
+price
+assess
+bdrms
+lotsize
+sqrft
+colonial
+lprice                  
+lassess                 
+llotsize                
+lsqrft                  

@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{from}\PYG{+w}{ }\PYG{n+nn}{scipy.stats}\PYG{+w}{ }\PYG{k+kn}{import} \PYG{n}{ttest\PYGZus{}1samp}
+
+\PYG{n}{t\PYGZus{}stat}\PYG{p}{,} \PYG{n}{p\PYGZus{}value} \PYG{o}{=} \PYG{n}{ttest\PYGZus{}1samp}\PYG{p}{(}\PYG{n}{wages}\PYG{p}{,} \PYG{l+m+mi}{10}\PYG{p}{)}
+
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}t\PYGZhy{}statistic:\PYGZdq{}}\PYG{p}{,} \PYG{n}{t\PYGZus{}stat}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}p\PYGZhy{}value:\PYGZdq{}}\PYG{p}{,} \PYG{n}{p\PYGZus{}value}\PYG{p}{)}
+\end{Verbatim}

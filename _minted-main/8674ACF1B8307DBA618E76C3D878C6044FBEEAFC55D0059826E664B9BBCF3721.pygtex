@@ -1,0 +1,18 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{sample\PYGZus{}size} \PYG{o}{=} \PYG{l+m+mi}{30}
+\PYG{n}{num\PYGZus{}samples} \PYG{o}{=} \PYG{l+m+mi}{1000}
+
+\PYG{n}{sample\PYGZus{}means} \PYG{o}{=} \PYG{p}{[]}
+
+\PYG{k}{for} \PYG{n}{\PYGZus{}} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{num\PYGZus{}samples}\PYG{p}{):}
+    \PYG{n}{sample} \PYG{o}{=} \PYG{n}{wages}\PYG{o}{.}\PYG{n}{sample}\PYG{p}{(}\PYG{n}{sample\PYGZus{}size}\PYG{p}{,} \PYG{n}{replace}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{)}
+    \PYG{n}{sample\PYGZus{}means}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{sample}\PYG{o}{.}\PYG{n}{mean}\PYG{p}{())}
+
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{hist}\PYG{p}{(}\PYG{n}{sample\PYGZus{}means}\PYG{p}{,} \PYG{n}{bins}\PYG{o}{=}\PYG{l+m+mi}{30}\PYG{p}{,} \PYG{n}{density}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{)}
+
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Sample Mean Wage\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Density\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Central Limit Theorem\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{Verbatim}

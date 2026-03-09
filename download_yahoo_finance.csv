@@ -1,0 +1,16 @@
+import yfinance as yf
+import pandas as pd
+import numpy as np
+
+#tickers = []
+#data = yf.download(tickers, start='2014-01-01', end='2018-01-01')
+
+p500_tickers = pd.read_html('https://en.wikipedia.org/wiki/List_of_S%26P_500_companies')[0]['Symbol'].tolist()
+
+# Fetch company names
+company_names_sp500 = {}
+for symbol in sp500_tickers[:10]:  # Limiting to first 10 for quicker results
+    ticker = yf.Ticker(symbol)
+    company_names_sp500[symbol] = ticker.info.get('longName', 'N/A')
+
+print(company_names_sp500)

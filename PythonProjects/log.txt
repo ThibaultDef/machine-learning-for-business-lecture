@@ -1,0 +1,53 @@
+   Unnamed: 0.1  Unnamed: 0        Date  ...      Open_4     Close_5      Open_5
+0             0           0  2023-10-09  ...         NaN         NaN         NaN
+1             1           1  2023-10-10  ...         NaN         NaN         NaN
+2             2           2  2023-10-11  ...         NaN         NaN         NaN
+3             3           3  2023-10-12  ...         NaN         NaN         NaN
+4             4           4  2023-10-13  ...  176.809998         NaN         NaN
+5             5           5  2023-10-16  ...  178.100006  178.990005  176.809998
+6             6           6  2023-10-17  ...  178.199997  178.389999  178.100006
+7             7           7  2023-10-18  ...  180.070007  179.800003  178.199997
+8             8           8  2023-10-19  ...  181.419998  180.710007  180.070007
+9             9           9  2023-10-20  ...  176.750000  178.850006  181.419998
+
+[10 rows x 16 columns]
+{'TSLA', 'MSFT', 'GOOGL', 'NVDA', 'AAPL', 'AMZN', 'META'}
+Init port 
+       TSLA MSFT GOOGL NVDA AAPL AMZN META cash
+alpha  NaN  NaN   NaN  NaN  NaN  NaN  NaN  NaN
+Beta
+A1 matrix [1.51855824 0.65224691 0.64835547 1.74186168 0.58524272 0.82830757
+ 1.02542741]
+b1 shape (1, 1)
+b2 shape (1, 1)
+b3 shape (7, 1)
+b4 shape (1, 1)
+b [[ 0.7]
+ [-0.7]
+ [ 1. ]
+ [ 1. ]
+ [ 1. ]
+ [ 1. ]
+ [ 1. ]
+ [ 1. ]
+ [ 1. ]
+ [-1. ]]
+c [[np.float64(-0.0008412345726383231) np.float64(-0.000498938068235741)
+  np.float64(0.00015588878408738098) np.float64(-3.838307221449536e-05)
+  np.float64(0.0006422942148762534) np.float64(6.833984911617651e-05)
+  np.float64(0.0005120328650087491)]]
+Constraints: [Inequality(Constant(CONSTANT, ZERO, ())), Equality(Expression(AFFINE, UNKNOWN, (1,)), Constant(CONSTANT, NONNEGATIVE, ())), Equality(Expression(AFFINE, UNKNOWN, ()), Constant(CONSTANT, NONNEGATIVE, (1, 1)))]
+Optimal value: -0.0006083343461673245
+Optimal x: [9.53820574e-08 8.19719494e-08 2.05608578e-07 1.79574680e-08
+ 7.39297241e-01 1.81192196e-07 2.60702177e-01]
+Constraints: sum==1:[1.]target beta0.7000000000000002
+Return: [np.float64(0.0006083343461673245)]
+initial portfolio 
+                TSLA      MSFT     GOOGL  ...      AMZN      META cash
+alpha     -0.000841 -0.000499  0.000156  ...  0.000068  0.000512  NaN
+beta       1.518558  0.652247  0.648355  ...  0.828308  1.025427  NaN
+number          NaN       NaN       NaN  ...       NaN       NaN    0
+weight          0.0       0.0       0.0  ...       0.0  0.260702  NaN
+avg_error      -0.0       0.0      -0.0  ...      -0.0      -0.0  NaN
+
+[5 rows x 8 columns]
