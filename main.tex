@@ -2084,7 +2084,7 @@ for $n$ large
 Model:
 
 \[
-Y = \mathbf{w}^T \mathbf{x} + \varepsilon = \mathbf{w}^T (\mathbf{x}_1, \ldots, \mathbf{x}_n) + \epsilon 
+Y = w_0 + w_1 X_1 + w_2 X_2 + \cdots + w_p X_p + \varepsilon
 \]
 
 Assume:
@@ -2098,177 +2098,149 @@ Assume:
 Loss function:
 
 \[
-L(\mathbf{w})
+L(w_0, w_1, \ldots, w_p)
 =
 \frac{1}{n}
 \sum_{i=1}^n
-(y_i - \mathbf{w}^T \mathbf{x}_i)^2
+\left(y_i - w_0 - \sum_{j=1}^p w_j x_{ij}\right)^2
 \]
 
 \end{frame}
 
-\begin{frame}{Multivariate Random Variables}
+%\begin{frame}{Multivariate Random Variables}
 
-\textbf{Business Example: House Features}
+%\textbf{Business Example: House Features}
 
-\[
-\mathbf{X} =
-\begin{pmatrix}
-X_1 \\
-X_2
-\end{pmatrix}
-=
-\begin{pmatrix}
-\text{Size} \\
-\text{Number of rooms}
-\end{pmatrix}
-\]
+%\[
+%X_1 = \text{Size}, \quad X_2 = \text{Number of rooms}
+%\]
 
-\vspace{0.5cm}
+%\vspace{0.5cm}
+%%
+%%\textbf{Definition:}
+%%
+%%Multiple random variables are:
+%%
+%%\[
+%%X_1, X_2, \ldots, X_p
+%%\]
+%%
+%%where each $X_j$ is a random variable describing a feature.
+%%
+%%\end{frame}
+%%
+%%\begin{frame}{Mean and Covariance}
+%%
+%%\textbf{Mean of each variable:}
+%%
+%%\[
+%%\mu_j = \mathbb{E}[X_j]
+%%\]
+%%
+%%\vspace{0.25cm}
+%%
+%%\textbf{Variance of each variable:}
+%%
+%%\[
+%%\sigma_j^2 = \mathbb{E}[(X_j - \mu_j)^2]
+%%\]
+%%
+%%\vspace{0.25cm}
+%%
+%%\textbf{Covariance between two variables:}
+%%
+%%\[
+%%\mathrm{Cov}(X_j, X_k) = \mathbb{E}[(X_j - \mu_j)(X_k - \mu_k)]
+%%\]
+%%
+%%Measures how much $X_j$ and $X_k$ vary together.
+%%
+%%\end{frame}
+%%
+%%
+%%\end{frame}
+%%
+%%
+%%\[
+%%f(\mathbf{x}) =
+%%\frac{1}{(2\pi)^{d/2} |\Sigma|^{1/2}}
+%%\exp
+%%\left(
+%%-\frac{1}{2}
+%%(\mathbf{x}-\boldsymbol{\mu})^T
+%%\Sigma^{-1}
+%%(\mathbf{x}-\boldsymbol{\mu})
+%%\right)
+%%\]
+%%
+%%\vspace{0.5cm}
+%%
+%%\textbf{Notation:}
+%%
+%%\[
+%%\mathbf{X} \sim \mathcal{N}(\boldsymbol{\mu}, \Sigma)
+%%\]
+%%
+%%\end{frame}
+%%
+%%\begin{frame}{Interpretation of the Covariance Matrix}
+%%
+%%\begin{itemize}
+%%    \item $\boldsymbol{\mu}$: center
+%%    \item $\Sigma$: spread and dependence
+%%\end{itemize}
+%%
+%%\vspace{0.5cm}
+%%
+%%\begin{itemize}
+%%    \item If $\mathrm{Cov}(X_1,X_2)=0$, ellipses aligned with axes
+%%    \item If $\mathrm{Cov}(X_1,X_2)\neq 0$, ellipses are tilted
+%%\end{itemize}
+%%
+%%\end{frame}
+%%
+%%\begin{frame}{Loss Functions Come from Probability Models}
+%%
+%%\begin{tabular}{c|c|c}
+%%Model & Noise Assumption & Loss \\
+%%\hline
+%%Linear Regression & Gaussian & Squared Loss \\
+%%Logistic Regression & Bernoulli & Cross-Entropy
+%%\end{tabular}
+%%
+%%\vspace{0.5cm}
+%%
+%%Machine learning models are often derived
+%%from probabilistic assumptions.
+%%
+%%\end{frame}
 
-\textbf{Definition:}
-
-A multivariate random variable is a vector:
-
-\[
-\mathbf{X} =
-\begin{pmatrix}
-X_1 \\
-\vdots \\
-X_d
-\end{pmatrix} , \; \text{where} \; X_i \; \text{is a random variable}
-\]
-
-\end{frame}
-
-\begin{frame}{Mean Vector and Covariance Matrix}
-
-\textbf{Mean vector:}
-
-\[
-\boldsymbol{\mu} =
-\mathbb{E}[\mathbf{X}]
-= \begin{pmatrix}
-\mathbb{E}[X_1] \\
-\vdots \\
-\mathbb{E}[X_d]
-\end{pmatrix}
-\]
-
-\vspace{0.25cm}
-
-\textbf{Covariance matrix:}
-
-\[
-\Sigma =
-\mathbb{E}
-\left[
-(\mathbf{X}-\boldsymbol{\mu})
-(\mathbf{X}-\boldsymbol{\mu})^T
-\right]
-\]
-
-\vspace{0.25cm}
-
-For two variables:
-
-\begin{align*}
-\Sigma & =
-\begin{pmatrix}
-\mathrm{Var}(X_1) & \mathrm{Cov}(X_1,X_2) \\
-\mathrm{Cov}(X_1,X_2) & \mathrm{Var}(X_2)
-\end{pmatrix} , \; \text{with} \,\\[3mm]
-& \mathrm{Cov}(X_1,X_2) = \mathbb{E}[(X_1 - \mathbb{E}[X_1])(X_2 - \mathbb{E}[X_2])] 
-\end{align*}
-
-\end{frame}
-
-\begin{frame}{Multivariate Gaussian Distribution}
-
-\textbf{Definition:}
-
-A random vector $\mathbf{X} \in \mathbb{R}^d$ follows a multivariate normal distribution if:
-
-\[
-f(\mathbf{x}) =
-\frac{1}{(2\pi)^{d/2} |\Sigma|^{1/2}}
-\exp
-\left(
--\frac{1}{2}
-(\mathbf{x}-\boldsymbol{\mu})^T
-\Sigma^{-1}
-(\mathbf{x}-\boldsymbol{\mu})
-\right)
-\]
-
-\vspace{0.5cm}
-
-\textbf{Notation:}
-
-\[
-\mathbf{X} \sim \mathcal{N}(\boldsymbol{\mu}, \Sigma)
-\]
-
-\end{frame}
-
-\begin{frame}{Interpretation of the Covariance Matrix}
-
-\begin{itemize}
-    \item $\boldsymbol{\mu}$: center
-    \item $\Sigma$: spread and dependence
-\end{itemize}
-
-\vspace{0.5cm}
-
-\begin{itemize}
-    \item If $\mathrm{Cov}(X_1,X_2)=0$, ellipses aligned with axes
-    \item If $\mathrm{Cov}(X_1,X_2)\neq 0$, ellipses are tilted
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Loss Functions Come from Probability Models}
-
-\begin{tabular}{c|c|c}
-Model & Noise Assumption & Loss \\
-\hline
-Linear Regression & Gaussian & Squared Loss \\
-Logistic Regression & Bernoulli & Cross-Entropy
-\end{tabular}
-
-\vspace{0.5cm}
-
-Machine learning models are often derived
-from probabilistic assumptions.
-
-\end{frame}
-
-\begin{frame}{Logistic Regression}
-
-\textbf{Model:}
-
-\[
-P(Y=1 \mid X)
-=
-\frac{1}{1 + e^{-w^T x}}
-\]
-
-\vspace{0.5cm}
-
-\textbf{Loss (Cross-Entropy):}
-
-\[
-L(w)
-=
-- \frac{1}{n} \, \sum_{i=1}^n
-\left[
-y_i \log p_i
-+
-(1-y_i)\log(1-p_i)
-\right]
-\]
-
-\end{frame}
+%%\begin{frame}{Logistic Regression}
+%%
+%%\textbf{Model:}
+%%
+%%\[
+%%P(Y=1 \mid X)
+%%=
+%%\frac{1}{1 + e^{-w^T x}}
+%%\]
+%%
+%%\vspace{0.5cm}
+%%
+%%\textbf{Loss (Cross-Entropy):}
+%%
+%%\[
+%%L(w)
+%%=
+%%- \frac{1}{n} \, \sum_{i=1}^n
+%%\left[
+%%y_i \log p_i
+%%+
+%%(1-y_i)\log(1-p_i)
+%%\right]
+%%\]
+%%
+%%\end{frame}
 
 % =====================================================
 \section{Module 3 — Optimization}
@@ -2361,11 +2333,34 @@ points in the direction of steepest increase.
 
 \vspace{0.5cm}
 
-To minimize the loss:
+To minimize the loss, we move opposite to the gradient direction.
+
+\end{frame}
+\begin{frame}f{What is the gradient $\nabla L(\theta)$?}
+
+The gradient is a vector of partial derivatives. For a scalar loss function $L(\theta)$, it points in the direction of steepest increase.
+
+\vspace{0.3cm}
+
+\textbf{What is a derivative?}
+
+A derivative measures how much a function changes when we perturb its input slightly:
+
+\[
+\frac{dL}{d\theta} = \lim_{\delta\theta \to 0} \frac{L(\theta + \delta\theta) - L(\theta)}{\delta\theta}
+\]
+
+This ratio tells us the rate of change of $L$ with respect to $\theta$.
+
+\vspace{0.3cm}
+
+\textbf{Gradient descent update rule:}
 
 \[
 \theta_{t+1} = \theta_t - \eta \nabla L(\theta_t)
 \]
+
+We subtract the gradient (scaled by learning rate $\eta$) to move downhill toward lower loss values.
 
 \begin{itemize}
     \item $\eta$ = learning rate
