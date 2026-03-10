@@ -1,0 +1,38 @@
+\documentclass{article}
+\usepackage{listings}
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+%\PassOptionsToPackage{hyphens}{url}
+\usepackage{hyperref}
+\usepackage{xurl}
+
+
+\title{Mid-term exam}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+   The task to predict logarithm of wages based on education, experience and IQ, hours worked. The variables are as follows:
+   \begin{itemize}
+   \item{$lwage$ \\}                    logarithm monthly earnings
+   \item{$hours$ \\}                    average weekly hours
+   \item{$IQ$ \\}                      IQ score
+   \item{$educ$ \\}                     years of education
+   \item{$exper$ \\}                    years of work experience
+   \end{itemize}
+
+
+   The .csv file is \lstinline$Wage2_merged.csv$.
+
+  \begin{enumerate}
+	 \item Choose randomly two sets of 100 data points from your data set, and for each data set compute the mean, variance, and the histogram
+		 of each of the variables  $lwage$, $hours$, $IQ$. 
+	Are these values similar for the two data sets ?  Can we say that each of these variables are independetly identically sampled ? 
+	Use hypothesis testing to compare the distribution of these two data sets.
+  %\item Find a linear regression model for predicting $lwage$ using the variables $\log(hours+1)$, $\log(exper+1)$ and $educ$. 
+  %\item Evalute the confidence intervals for the estimated regression parameters. Are all regression coefficients statistically significant ? Explain your answer.
+ \end{enumerate}
+
+\end{document}

@@ -175,8 +175,6 @@ Group 19 (Marlowe Venier-Falk, Mehul Nagori, Choraria Himanshu), Group 24 (Calix
 
    The .csv file is \lstinline$Wage2_merged.csv$.
 
-%   \url{https://kaggle.com/datasets/053a610ff5d8f491e3ee24c7eadc563cdd094ff395e72ba6734ebeec4ab1ca59}. %\url{https://www.kaggle.com/datasets/mihalypetreczky/wage2dataset}. 
-
   \begin{enumerate}
 	 \item Choose randomly two sets of 100 data points from your data set, and for each data set compute the mean, variance, and the histogram
 		 of each of the variables  $lwage$, $hours$, $IQ$,  $educ$, $exper$. 
@@ -189,6 +187,7 @@ Group 19 (Marlowe Venier-Falk, Mehul Nagori, Choraria Himanshu), Group 24 (Calix
    Leave at least 20\% of the data for validation. 
   \item Calculate the $R^2$ score. Comment on the quality of the model.
   \item Evalute the confidence intervals for the estimated regression parameters. Are all regression coefficients statistically significant ? Explain your answer.
+  
   \item Build a linear regression model  for predicting $lwage$ using the variables $\log(hours+1)$, $\log(exper+1)$ and $educ$ and $IQ$
 	  and $\log((exper+1)*\sqrt{(hours+1)})$. Compute the confidence intervals of the estimated regression parameters.
 	What can you say about the significance of the variables $\log(hours+1)$, $\log(exper+1)$ and $educ$ and 
