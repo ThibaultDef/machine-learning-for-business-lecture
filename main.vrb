@@ -1,8 +1,11 @@
-\frametitle{Exercise: Comparing Two Groups (Two-Sample Test)}
+\frametitle{Practical}
 
-\begin{itemize}
-    \item What is the null hypothesis in this test?
-    \item What does the p-value tell us about the difference between the groups?
+\begin{minted}{python}
+Python computes this automatically:
+import statsmodels.api as sm
 
-\end{itemize}
-
+# Assuming X is the design matrix and y is the response variable
+X = sm.add_constant(X)  # Adds a constant term to the predictor
+model = sm.OLS(y, X).fit()  # Fit the model
+print(model.summary())  # Print the summary of the regression results
+\end{minted}

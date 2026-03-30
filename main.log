@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2025.2.28)  10 MAR 2026 08:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2026.3.26)  30 MAR 2026 05:18
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1002,7 +1002,7 @@ Package: babel 2021/01/26 3.53 The Babel package
 File: babel.def 2021/01/26 3.53 Babel common definitions
 \babel@savecnt=\count367
 \U@D=\dimen319
-\l@babelnohyphens=\language61
+\l@babelnohyphens=\language86
 
 (/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
 \bbl@readstream=\read5
@@ -1015,9 +1015,9 @@ Language: english 2017/06/06 v3.3r English support from the babel system
 Package babel Info: \l@canadian = using hyphenrules for english
 (babel)             (\language0) on input line 102.
 Package babel Info: \l@australian = using hyphenrules for ukenglish
-(babel)             (\language59) on input line 105.
+(babel)             (\language18) on input line 105.
 Package babel Info: \l@newzealand = using hyphenrules for ukenglish
-(babel)             (\language59) on input line 108.
+(babel)             (\language18) on input line 108.
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/stmaryrd.sty
 Package: stmaryrd 1994/03/03 St Mary's Road symbol package
@@ -1243,11 +1243,10 @@ Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
 
 (./main.nav) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+{/home/mpetrec/.texlive2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Trying to load font information for U+msa on input line 80.
 
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 80.
@@ -1511,11 +1510,7 @@ Overfull \vbox (36.3918pt too high) detected at line 1702
 
 [63
 
-]
-Overfull \vbox (89.72717pt too high) detected at line 1739
- []
-
-[64
+] [64
 
 ] [65
 
@@ -1527,22 +1522,24 @@ Overfull \vbox (89.72717pt too high) detected at line 1739
 
 ] [69
 
+] [70
+
 ]
-Overfull \vbox (15.10864pt too high) detected at line 1884
+Overfull \vbox (15.10864pt too high) detected at line 1942
  []
 
-[70
-
-] [71
+[71
 
 ] [72
 
 ] [73
 
+] [74
+
 ]
 \openout4 = `main.vrb'.
 
- (./main.vrb) [74
+ (./main.vrb) [75
 
 ]
 \openout4 = `main.vrb'.
@@ -1552,12 +1549,12 @@ Overfull \vbox (15.10864pt too high) detected at line 1884
 
 
 (./_minted-main/D25CA513CC57F5A977231433EBAC37034FBEEAFC55D0059826E664B9BBCF372
-1.pygtex)) [75
+1.pygtex)) [76
 
 ]
 \openout4 = `main.vrb'.
 
- (./main.vrb) [76
+ (./main.vrb) [77
 
 ]
 \openout4 = `main.vrb'.
@@ -1567,7 +1564,22 @@ Overfull \vbox (15.10864pt too high) detected at line 1884
 
 
 (./_minted-main/CC2DA9CBAA05731F971DC34FA8B093844FBEEAFC55D0059826E664B9BBCF372
-1.pygtex)) [77
+1.pygtex)) [78
+
+]
+\openout4 = `main.vrb'.
+
+ (./main.vrb) [79
+
+]
+\openout4 = `main.vrb'.
+
+ (./main.vrb
+\openout5 = `main.pyg'.
+
+
+(./_minted-main/2D48E0E861A249DADFABEF69E837251D4FBEEAFC55D0059826E664B9BBCF372
+1.pygtex)) [80
 
 ]
 \openout4 = `main.vrb'.
@@ -1577,17 +1589,18 @@ Overfull \vbox (15.10864pt too high) detected at line 1884
 
 
 (./_minted-main/392C807894030BA823B2A7C632D79F3C4FBEEAFC55D0059826E664B9BBCF372
-1.pygtex)) [78
+1.pygtex)) [81
+
+] [82
 
 ]
-\openout4 = `main.vrb'.
+<LRSingle1.pdf, id=573, 722.7pt x 361.35pt>
+File: LRSingle1.pdf Graphic file (type pdf)
+<use LRSingle1.pdf>
+Package pdftex.def Info: LRSingle1.pdf  used on input line 2207.
+(pdftex.def)             Requested size: 216.81166pt x 108.40584pt.
 
- (./main.vrb) [79
-
-] [80
-
-]
-Overfull \hbox (1.9686pt too wide) detected at line 2080
+Overfull \hbox (1.9686pt too wide) detected at line 2207
 \OT1/mathkerncmss/m/sl/10.95 L\OT1/cmss/m/n/10.95 (\OT1/mathkerncmss/m/sl/10.95
  w[]\OML/cmm/m/it/10.95 ; \OT1/mathkerncmss/m/sl/10.95 w[]\OT1/cmss/m/n/10.95 )
  = [] [](\OT1/mathkerncmss/m/sl/10.95 y[] \OMS/cmsy/m/n/10.95 ^^@ \OT1/mathkern
@@ -1598,54 +1611,92 @@ OT1/cmss/m/n/10.95 [ \OMS/cmsy/m/n/10.95 k\OT1/mathkerncmss/m/sl/10.95 Y \OMS/c
 msy/m/n/10.95 ^^@ []k[] \OT1/cmss/m/n/10.95 ]
  []
 
-[81
+[83
 
-] [82
+ <./LRSingle1.pdf>] [84
 
-] [83
+]
+File: LRSingle1.pdf Graphic file (type pdf)
+<use LRSingle1.pdf>
+Package pdftex.def Info: LRSingle1.pdf  used on input line 2248.
+(pdftex.def)             Requested size: 144.53743pt x 72.2687pt.
+<LRSingle23.pdf, id=630, 722.7pt x 361.35pt>
+File: LRSingle23.pdf Graphic file (type pdf)
+<use LRSingle23.pdf>
+Package pdftex.def Info: LRSingle23.pdf  used on input line 2248.
+(pdftex.def)             Requested size: 144.53743pt x 72.2687pt.
+ [85
 
-] [84
-
-] [85
-
-] [86
+ <./LRSingle23.pdf>] [86
 
 ] [87
 
 ] [88
 
-] [89
+]
+File: LRSingle1.pdf Graphic file (type pdf)
+<use LRSingle1.pdf>
+Package pdftex.def Info: LRSingle1.pdf  used on input line 2354.
+(pdftex.def)             Requested size: 216.81166pt x 108.40584pt.
+ [89
 
-] [90
+]
+Overfull \hbox (3.31349pt too wide) detected at line 2376
+\OT1/mathkerncmss/m/sl/10.95 L\OT1/cmss/m/n/10.95 (\OT1/mathkerncmss/m/sl/10.95
+ w[]\OML/cmm/m/it/10.95 ; \OT1/mathkerncmss/m/sl/10.95 w[]\OML/cmm/m/it/10.95 ;
+ [] ; \OT1/mathkerncmss/m/sl/10.95 w[]\OT1/cmss/m/n/10.95 ) = [] [] \OML/cmm/m/
+it/10.95 `\OT1/cmss/m/n/10.95 (\OT1/mathkerncmss/m/sl/10.95 y[]\OML/cmm/m/it/10
+.95 ; []\OT1/cmss/m/n/10.95 ) = [] [] [][]
+ []
+
+[90
 
 ] [91
 
 ]
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 2494
-.
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <7> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 2494
-.
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 2494
-.
- [92
+Overfull \vbox (3.9959pt too high) detected at line 2426
+ []
 
-] [93
+[92
+
+]
+Overfull \vbox (1.4802pt too high) detected at line 2586
+ []
+
+[93
 
 ] [94
 
 ] [95
 
 ]
-[96
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <14.4> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 2654
+.
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 2654
+.
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <7> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 2654
+.
+ [96
 
 ] [97
 
 ] [98
 
-] [99
+]
+\openout4 = `main.vrb'.
+
+ (./main.vrb
+\openout5 = `main.pyg'.
+
+
+(./_minted-main/A79237525E346EDE60BFB668FBCBE6624FBEEAFC55D0059826E664B9BBCF372
+1.pygtex
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 5.
+)) [99
 
 ] [100
 
@@ -1665,10 +1716,10 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
 
 ] [108
 
-]
-[109
+] [109
 
-] [110
+]
+[110
 
 ] [111
 
@@ -1690,10 +1741,10 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
 
 ] [120
 
-]
-[121
+] [121
 
-] [122
+]
+[122
 
 ] [123
 
@@ -1715,10 +1766,45 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
 
 ] [132
 
-]
-[133
+] [133
 
-] [134
+]
+[134
+
+] [135
+
+] [136
+
+] [137
+
+] [138
+
+] [139
+
+] [140
+
+] [141
+
+] [142
+
+] [143
+
+] [144
+
+] [145
+
+]
+[146
+
+] [147
+
+] [148
+
+] [149
+
+] [150
+
+] [151
 
 ]
 \tf@nav=\write8
@@ -1737,38 +1823,35 @@ runsystem(rm main.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 28120 strings out of 479830
- 540901 string characters out of 5881135
- 900626 words of memory out of 5000000
- 44162 multiletter control sequences out of 15000+600000
- 433598 words of font info for 126 fonts, out of 8000000 for 9000
- 889 hyphenation exceptions out of 8191
- 131i,18n,132p,423b,1068s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{Navigation139} has been referenced but does not e
-xist, replaced by a fixed one
-
- </home/mpetrec/.texlive2020/texmf-var/fonts/pk/ljfour/jknappen/ec/tcss1095.600
-pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmssi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmssi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (134 pages, 414407 bytes).
+ 28209 strings out of 479304
+ 542626 string characters out of 5869779
+ 902707 words of memory out of 5000000
+ 44358 multiletter control sequences out of 15000+600000
+ 434358 words of font info for 129 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 131i,23n,132p,423b,1068s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/mpetrec/.texlive2020/texmf-var/fonts/pk/ljfour/jknappen/ec/tcss1095.6
+00pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmssi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmssi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
+0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (151 pages, 462809 bytes).
 PDF statistics:
- 968 PDF objects out of 1000 (max. 8388607)
- 759 compressed objects within 8 object streams
- 283 named destinations out of 1000 (max. 500000)
- 152 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1159 PDF objects out of 1200 (max. 8388607)
+ 854 compressed objects within 9 object streams
+ 316 named destinations out of 1000 (max. 500000)
+ 162 words of extra memory for PDF output out of 10000 (max. 10000000)
 

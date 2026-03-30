@@ -1566,8 +1566,8 @@ $X,Y$ random variables.
 
 and the probability of $(Y-\hat{Y})$ being large is not too big, i.e, \textcolor{blue}{expected prediction error (true loss)}
 \[ 
-  \mathbf{E}[(Y-\hat{Y})^2] \mbox{ or more generally}
-  \mathbf{E}[\ell(Y\,\underbrace{\hat{Y})}{f(X)}]
+  \mathbf{E}[(Y-\hat{Y})^2] \mbox{ or more generally }
+  \mathbf{E}[\ell(Y,\hat{Y})]
 \]
 
 is small,  $\ell(y,y')$ a measure of how close $y$ and $y'$ are.? 
@@ -1582,7 +1582,7 @@ is small,  $\ell(y,y')$ a measure of how close $y$ and $y'$ are.?
 
 \medskip
 
-	$E[\ell(Y,f(X))]$ -- depends on the distribution of $X,Y$
+	$E[\ell(Y, \hat{Y})]$, $\hat{Y}=f(X)$  -- depends on the distribution of $X,Y$
 
 
  \bigskip
@@ -1700,162 +1700,220 @@ Hypothesis testing provides a framework to assess whether observed differences a
 All depend on random samples, so they fluctuate. Hypothesis testing quantifies this uncertainty.
 
 \end{frame}
-\begin{frame}{Notions from statistics}
-    A statistic $\mathbf{T}$ is a function of an i.i.d. sample $x_1, \ldots, x_N$ that serves to estimate a parameter of the probability distribution.
+%%\begin{frame}{Notions from statistics}
+%%    A statistic $\mathbf{T}$ is a function of an i.i.d. sample $x_1, \ldots, x_N$ that serves to estimate a parameter of the probability distribution.
+%%
+%%    \medskip
+%%
+%%    The statistic $\mathbf{T}$ depends on the observed data $x_1, \ldots, x_N$, so its value changes whenever we collect a new sample.
+%%
+%%    \medskip
+%%
+%%     Examples:
+%%     
+%%    \[ \hat{m} = \frac{1}{N} \sum_{t=1}^{N} x_t \]
+%%     estimates the mean,
+%%
+%%    \[ \hat{\sigma}^2 = \frac{1}{N-1} \sum_{t=1}^{N} (x_t - \hat{m})^2 \]
+%%
+%%     estimates the variance,
+%%
+%%    \[ \hat{F}(x) = \frac{1}{N} \mbox{ number of times } x_i \le x \]
+%%
+%%    estimates the probability distribution. 
+%%
+%%    \medskip
+%%
+%%    We want a statistic $\mathbf{T}$ to be:
+%%
+%%    \begin{itemize}
+%%    \item \textbf{Unbiased:} $\mathbb{E}[\mathbf{T}] = \theta_*$ (true parameter). 
+%%    
+%%                 The \textbf{bias} is $\theta_* - \mathbb{E}[\mathbf{T}]$.
+%%
+%%    \item \textbf{Consistent:} $\mathbf{T}$ converges to the true value as $N \to \infty$.
+%%
+%%    \item \textbf{Efficient:} $\mathbf{T}$ has small variance that decreases to zero as $N$ grows.
+%%    \end{itemize}
+%%
+%%\end{frame}
 
-    \medskip
+\begin{frame}{Hypothesis Testing for the Mean}
 
-    The statistic $\mathbf{T}$ depends on the observed data $x_1, \ldots, x_N$, so its value changes whenever we collect a new sample.
+\textbf{Setup:} We observe i.i.d. samples $x_1, \ldots, x_N$ and want to test if the true mean is $\mu_0$.
 
-    \medskip
+\vspace{0.3cm}
 
-     Examples:
-     
-    \[ \hat{m} = \frac{1}{N} \sum_{t=1}^{N} x_t \]
-     estimates the mean,
+\textbf{Null hypothesis:} $H_0: \mu = \mu_0$
 
-    \[ \hat{\sigma}^2 = \frac{1}{N-1} \sum_{t=1}^{N} (x_t - \hat{m})^2 \]
+\textbf{Alternative hypothesis:} $H_1: \mu \ne \mu_0$
 
-     estimates the variance,
+\vspace{0.5cm}
 
-    \[ \hat{F}(x) = \frac{1}{N} \mbox{ number of times } x_i \le x \]
+\textbf{Test statistic:}
 
-    estimates the probability distribution. 
+\[
+t = \frac{\hat{m} - \mu_0}{\hat{\sigma}}
+\]
 
-    \medskip
+where $\hat{m} = \frac{1}{N}\sum x_i$ and $\hat{\sigma} = \sqrt{\frac{1}{N-1}\sum(x_i - \hat{m})^2}$.
 
-    We want a statistic $\mathbf{T}$ to be:
+\vspace{0.3cm}
 
-    \begin{itemize}
-    \item \textbf{Unbiased:} $\mathbb{E}[\mathbf{T}] = \theta_*$ (true parameter). 
-    
-                 The \textbf{bias} is $\theta_* - \mathbb{E}[\mathbf{T}]$.
+\textbf{Key fact (Central Limit Theorem):}
 
-    \item \textbf{Consistent:} $\mathbf{T}$ converges to the true value as $N \to \infty$.
-
-    \item \textbf{Efficient:} $\mathbf{T}$ has small variance that decreases to zero as $N$ grows.
-    \end{itemize}
-
-\end{frame}
-
-\begin{frame}{Basic setup for hypothesis testing}
-
-     We want to decide if a parameter $\theta$ equals $0$.   
-
-    \medskip
-
-    We have a statistic $\mathbf{T}$ computed from an i.i.d. sample $x_1, \ldots, x_N$ to estimate $\theta$. 
-
- \medskip
-
-     The assumption $\theta=0$ is \textbf{the null hypothesis ($H_0$)}. 
-
-    \medskip
-
-     The assumption $\theta \ne 0$ is \textbf{the alternative hypothesis ($H_1$)}. 
-
-    \bigskip
-
-     Intuitive solution: check if $|\mathbf{T}| > c$ for some threshold $c$. 
-
-     \medskip
-
-        If $|\mathbf{T}| > c$, then we reject the null hypothesis $H_0$. 
-
-     \medskip
-
-        Otherwise, we cannot be sure. 
-
-    \medskip
-
-     How to choose $c$?
+Under $H_0$, the test statistic $t$ approximately follows a Student's t-distribution (roughly normal for large $N$).
 
 \end{frame}
 
-\begin{frame}{Formal solution to hypothesis testing}
+\begin{frame}{Decision Rule}
 
-     \textbf{Type I error:} we reject $H_0$ while it is true.
+We choose a significance level $\alpha$ (typically 0.05).
 
-     \medskip
+\vspace{0.3cm}
 
-     \textbf{Type II error:} we fail to reject $H_0$ while $H_1$ is true. 
+\textbf{Critical value:} Find $c$ such that $\mathbb{P}(|t| > c) = \alpha$, if $\mu_0$ is the true mean.
 
-    \medskip
+\vspace{0.3cm}
 
-     Basic idea: we choose $c$ so that the probability of Type I error is small, and the probability of Type II error is not too large.
+\textbf{Rejection rule:} Reject $H_0$ if $|t| > c$.
 
-\end{frame}
+\vspace{0.5cm}
 
-\begin{frame}{Formal solution to hypothesis testing}
+\textbf{Interpretation:}
 
-    We choose $c$ such that:
+If $H_0$ were true, observing $|t| > c$ would be very unlikely (probability $\alpha$).  
+Since we observed it, we reject $H_0$.
 
-            \medskip
+\vspace{0.3cm}
 
-             If $\theta=0$, then the probability of $|\mathbf{T}| > c$ is at most $\alpha$:
-             \[ \mathbb{P}(|\mathbf{T}| > c \mid \theta = 0) \le \alpha \]
-
-             \medskip
-
-             $\alpha$ is the \textbf{significance level}, typically $\alpha=0.02, 0.05$. 
-
-            \medskip
-
-            We reject $H_0$ if the probability under $H_0$ of observing $|\mathbf{T}|$ or larger is at most $\alpha$.
-
-            \medskip
-
-    \textbf{$p$-value:} the smallest significance level $\alpha$ for the observed data such that $H_0$ is rejected.
-
-            \medskip
-
-             Statistical software returns $p$-values.
-
-         \medskip
-
-    If the $p$-value is less than the significance level ($0.02, 0.05$), we reject $H_0$. 
+\textbf{p-value:} The smallest $\alpha$ for which we reject $H_0$.  
+If p-value $< 0.05$, reject $H_0$.
 
 \end{frame}
 
-\begin{frame}{Formal solution to hypothesis testing}
+\begin{frame}{Example: Mean Wage Test}
 
-         For hypothesis testing, we need to know the distribution of the statistic $\mathbf{T}$.
+\textbf{Observed data:} $\hat{m} = 10.5$, $\hat{\sigma} = 0.2$, $N = 100$
 
-         \medskip
+\medskip
 
-         If $\mathbf{T}$ is unbiased, we often know the distribution of 
+\textbf{Test:} Is the true mean wage equal to 10?
 
-         \[ \frac{\mathbf{T} - \theta}{\hat{\sigma}} \]
+\medskip
 
-        where $\hat{\sigma}$ is an estimate of the standard error of $\mathbf{T}$ that does not depend on $\theta$.
+\textbf{Test statistic:}
+\[ t = \frac{10.5 - 10}{0.2} = 2.5 \]
 
-        \medskip 
+\medskip
 
-        Instead of testing $|\mathbf{T}| > c$, we test
+\textbf{Critical value at $\alpha = 0.05$:} $c \approx 1.98$
 
-         \[  \left|\frac{\mathbf{T}}{\hat{\sigma}}\right| > c \]
+\medskip
+
+\textbf{Decision:} Since $|t| = 2.5 > 1.98$, we reject $H_0$.
+
+\medskip
+
+\textbf{Conclusion:} The true mean wage is significantly different from 10 dollars.
 
 \end{frame}
 
-\begin{frame}{Formal solution to hypothesis testing}
+\begin{frame}{Confidence Intervals}
 
-         Under $\theta=0$, the distribution of 
+From the test statistic, we can construct a confidence interval.
 
-    \[\frac{\mathbf{T}}{\hat{\sigma}}\]
+\vspace{0.3cm}
 
-        is known.
+Choose $c$ such that $\mathbb{P}(|t| \le c) = 1 - \alpha$.
 
-        \medskip
+\vspace{0.3cm}
 
-        We can calculate $c$ such that the probability of 
-         \[  \left|\frac{\mathbf{T}}{\hat{\sigma}}\right| > c \]
-     
-        is $\alpha$ when $\theta=0$.  
+Then with probability $1-\alpha$:
 
-        \medskip
+\[
+\hat{m} - c \cdot \hat{\sigma} \le \mu \le \hat{m} + c \cdot \hat{\sigma}
+\]
 
-        We reject $H_0$ if 
-        \[\left|\frac{\mathbf{T}}{\hat{\sigma}}\right| > c\]
+\vspace{0.3cm}
+
+\textbf{Interpretation:}
+
+The confidence interval contains all values $\mu_0$ for which we cannot reject $H_0: \mu = \mu_0$ at significance level $\alpha$.
+
+\vspace{0.3cm}
+
+\textbf{Example:} If the 95\% confidence interval is $[10.1, 10.9]$, we can reject $H_0: \mu = 10$ but not $H_0: \mu = 10.5$.
+
+\end{frame}
+
+\begin{frame}{Two-Sample Hypothesis Testing}
+
+\textbf{Problem:} Compare means of two independent groups.
+
+\vspace{0.3cm}
+
+\textbf{Data:}
+\begin{itemize}
+    \item Group 1: $x_1, \ldots, x_N$ with mean $\hat{m}_1$ and variance $\hat{\sigma}_1^2$
+    \item Group 2: $y_1, \ldots, y_M$ with mean $\hat{m}_2$ and variance $\hat{\sigma}_2^2$
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Hypotheses:}
+
+$H_0: \mu_1 = \mu_2$ (means are equal)
+
+$H_1: \mu_1 \ne \mu_2$ (means differ)
+
+\end{frame}
+
+\begin{frame}{Two-Sample t-Test}
+
+\textbf{Test statistic:}
+
+\[
+t = \frac{\hat{m}_1 - \hat{m}_2}{\sqrt{\frac{\hat{\sigma}_1^2}{N} + \frac{\hat{\sigma}_2^2}{M}}}
+\]
+
+\vspace{0.3cm}
+
+Under $H_0$, $t$ approximately follows a t-distribution (by CLT).
+
+\vspace{0.3cm}
+
+\textbf{Decision:} Reject $H_0$ if $|t| > c$ (critical value at significance level $\alpha$).
+
+\vspace{0.3cm}
+
+\textbf{Business Example:}
+
+Compare average wages between men and women.  
+If $|t|$ is large, evidence suggests systematic wage differences.
+
+\end{frame}
+
+\begin{frame}{Example: Mean wage of 10 dollars}
+
+\textbf{Observed data:} $\hat{m} = 10.5$, $\hat{\sigma} = 0.2$, $N = 100$
+
+\medskip
+
+\textbf{Test statistic:}
+\[ t = \frac{10.5 - 10}{0.2} = \frac{0.5}{0.2} = 2.5 \]
+
+\medskip
+
+\textbf{Critical value at $\alpha = 0.05$:} $c \approx 1.98$ (from t-distribution with 99 degrees of freedom)
+
+\medskip
+
+\textbf{Decision:} Since $|t| = 2.5 > 1.98$, we reject $H_0$.
+
+\medskip
+
+\textbf{Conclusion:} The evidence strongly suggests that the true mean wage is not 10 dollars; it is likely higher.
 
 \end{frame}
 
@@ -2004,7 +2062,68 @@ print("p-value:", p_value)
 \end{minted}
 
 \end{frame}
+\begin{frame}[fragile]{Exercise: Two-Sample Hypothesis Test}
 
+\begin{itemize}
+    \item Are wages significantly different between men and women?
+    \item What is the null hypothesis?
+    \item What does the p-value tell us?
+\end{itemize}
+    
+\end{frame}
+%\begin{frame}{Two-Sample t-Test: Test Statistic}
+
+%\textbf{Setup:} We observe two independent i.i.d. samples:
+%\begin{itemize}
+%    \item Sample 1: $x_1, \ldots, x_N$ with mean $\hat{m}_1$ and variance $\hat{\sigma}_1^2$
+%    \item Sample 2: $y_1, \ldots, y_M$ with mean $\hat{m}_2$ and variance $\hat{\sigma}_2^2$
+%\end{itemize}
+
+%\vspace{0.3cm}
+
+%\textbf{Null hypothesis:} $H_0: \mu_1 = \mu_2$
+
+%\textbf{Alternative hypothesis:} $H_1: \mu_1 \ne \mu_2$
+%
+%\vspace{0.5cm}
+
+%\textbf{Test statistic:}
+
+%\[
+%t = \frac{\hat{m}_1 - \hat{m}_2}{\sqrt{\frac{\hat{\sigma}_1^2}{N} + \frac{\hat{\sigma}_2^2}{M}}}
+%\]
+
+%\vspace{0.3cm}
+
+%\textbf{Key fact (Central Limit Theorem):}
+
+%Under $H_0$, the test statistic $t$ approximately follows a Student's t-distribution.
+
+%\end{frame}
+
+\begin{frame}[fragile]{Solution: Two-Sample t-Test}
+
+\begin{minted}{python}
+from scipy import stats
+
+men = df[df["female"] == 0]["wage"]
+women = df[df["female"] == 1]["wage"]
+
+# Perform two-sample t-test
+t_stat, p_value = stats.ttest_ind(men, women)
+
+print(f"Mean wage (men): {men.mean():.2f}")
+print(f"Mean wage (women): {women.mean():.2f}")
+print(f"t-statistic: {t_stat:.4f}")
+print(f"p-value: {p_value:.4f}")
+
+if p_value < 0.05:
+    print("Reject H0: Wages are significantly different")
+else:
+    print("Fail to reject H0: No significant difference")
+\end{minted}
+    
+\end{frame}
 \begin{frame}[fragile]{Exercise: Comparing Two Groups (Two-Sample Test)}
 
 \begin{minted}{python}
@@ -2021,15 +2140,15 @@ print("p-value:", p_value)
     
 \end{frame}
 
-\begin{frame}[fragile]{Exercise: Comparing Two Groups (Two-Sample Test)}
+%\begin{frame}[fragile]{Exercise: Comparing Two Groups (Two-Sample Test)}
 
-\begin{itemize}
-    \item What is the null hypothesis in this test?
-    \item What does the p-value tell us about the difference between the groups?
+%\begin{itemize}
+%    \item What is the null hypothesis in this test?
+%    \item What does the p-value tell us about the difference between the groups?
     
-\end{itemize}
+%\end{itemize}
     
-\end{frame}
+%\end{frame}
 
 
 % =====================================================
@@ -2039,70 +2158,269 @@ print("p-value:", p_value)
 \begin{itemize}
     \item Linear Regression (One Variable)
     \item Multiple Linear Regression
-    \item Multivariate Random Variables
-    \item Multivariate Gaussian Distribution
+    %\item Multivariate Random Variables
+    %\item Multivariate Gaussian Distribution
     \item Likelihood and Loss Functions
-    \item Logistic Regression for Classification
+    %\item Logistic Regression for Classification
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Linear Regression (1 Variable)}
 
-Model:
+Model: $\hat{y}=f(x)=w_0 + w_1 x$    
 
-\[
-Y = w_0 + w_1 X + \varepsilon
-\]
+\begin{center}
+\includegraphics[scale=0.3]{LRSingle1.pdf}
+\end{center}
 
-Assume:
+%\[
+%Y = w_0 + w_1 X + \varepsilon
+%\]
 
-\[
-\varepsilon \sim \mathcal{N}(0,\sigma^2)
-\]
+%Assume:
+%
+%\[
+%\varepsilon \sim \mathcal{N}(0,\sigma^2)
+ %\]
 
-\vspace{0.4cm}
+%vspace{0.4cm}
 
-Loss function (Least Squares):
+I.i.d sample $\{(x_i, y_i)\}_{i=1}^n$ from the distribution 
+of $Y$, $X$. 
 
+\medskip
+
+Loss function (Least Squares): $\ell(y,y')=(y-y')^2$
+
+\medskip
+
+Linear least squares (LLS): Find $w_0, w_1$ by minimizing
 \[
 L(w_0,w_1)
 = \frac{1}{n}
 \sum_{i=1}^n
-(y_i - w_0 - w_1 x_i)^2 = \frac{1}{n} \sum_{i=1}^n
+(y_i -w_0 - w_1 x_i)^2 = \frac{1}{n} \sum_{i=1}^n
 (y_i - \hat{y_i})^2
 \approx \mathbb{E}[\, \lVert Y - \hat{Y} \rVert_2 \,]
 \]
 
-\vspace{0.4cm}
+\end{frame}
+\begin{frame}{Single Variable Linear Regression: intuition}
+    
+    
+    Making 
+    \[
+    L(w_0, w_1) = \frac{1}{2} \sum_{i=1}^n (y_i - w_0 - w_1 x_i)^2
+    \]
+    small is like solving equation
+    \[
+        y_1=w_0+w_1 x_1, \quad y_2=w_0+w_1x_2 
+    \]
+   for $w_0$ and $w_1$. 
 
-for $n$ large
+    \textbf{Example:} Suppose we have two data points: $(x_1, y_1) = (1, 2)$ and $(x_2, y_2) = (3, 4)$.
+    Solve to equations:
+    \[
+    \begin{cases}
+    2 = w_0 + w_1 \cdot 1 \\
+    4 = w_0 + w_1 \cdot 3
+    \end{cases}
+    \]
+
+    $w_0=w_1=1$
+
+    \textbf{Result:} The best-fit line is $\hat{y} = 1 + 1 \cdot x$.
+\end{frame}
+\begin{frame}{Single Variable Linear Regression: intuition}
+
+    For 2 data points: always a solution (line passes through both points)
+
+    \begin{center}
+    \includegraphics[scale=0.2]{LRSingle1.pdf}
+    \end{center}
+
+    For 3 data points: no solution. 
+
+    \begin{center}
+    \includegraphics[scale=0.2]{LRSingle23.pdf}
+    \end{center}
 
 \end{frame}
+\begin{frame}{Learning as minimization}
 
+Goal: minimize $L(w_0,w_1)$
+
+
+\textbf{Gradient descent:}
+for simplicity $w_0=0$, i.e., $L(w_1)=L(\theta)$
+
+\[
+\theta(t+1) = \theta(t) - \eta \nabla L(\theta(t))
+\]
+$\eta$ learning rate. 
+
+\medskip
+
+Stop when $\theta(t)$ does not change:
+\( \min_{\theta} L(\theta) \approx L(\theta(t)) \).
+
+\medskip 
+
+Gradient (derivative):
+\[
+   \nabla L(\theta)=\frac{L(\theta)}{d\theta} \approx \frac{L(\theta+\Delta)-L(\theta)}{\Delta}, \quad \Delta \mbox{ is very small }
+\]
+
+Gradient points in the direction of steepest increase.
+
+\medskip
+
+To minimize the loss, we move opposite to the gradient direction.
+
+\end{frame}
+\begin{frame}{Example: Gradient for Linear Regression}
+
+For LSS:
+\(
+  \frac{L(\theta)}{d\theta} = 
+   \frac{2}{n} \sum_{i=1}^n (y_i - \theta x_i)x_i
+\)
+
+\[
+\theta(t+1) = \theta(t) - 
+   \frac{2\eta}{n} \sum_{i=1}^n \underbrace{(y_i - \theta(t) x_i)}_{\mbox{prediction error}}x_i
+\]
+
+Choice of learning rate $\eta$:
+
+\begin{itemize}
+    \item Too small → slow convergence
+    \item Too large → divergence or oscillation
+    \item Well chosen → fast and stable convergence
+\end{itemize}
+
+\vspace{0.5cm}
+
+Learning rate is a key hyperparameter.
+
+\end{frame}
+\begin{frame}{Variants of Gradient Descent}
+
+Classical gradient descent:
+
+\begin{itemize}
+    \item Uses entire dataset at each iteration
+\end{itemize}
+
+\vspace{0.5cm}
+
+In large datasets, we use:
+
+\begin{itemize}
+    \item Stochastic Gradient Descent (SGD)
+    \item Mini-batch Gradient Descent
+\end{itemize}
+
+
+\begin{itemize}
+    \item \textbf{Batch size:} Number of samples processed before the model is updated.
+    \item \textbf{Epoch:} One full iteration over all training data.
+\end{itemize}
+
+\textbf{Example:} If you have 1000 samples, batch size 100, then 1 epoch = 10 batches.
+\vspace{0.5cm}
+
+These methods are standard in deep learning.
+
+\end{frame}
+\begin{frame}{Overfitting}
+
+Fits the \emph{training data perfectly} but fails to generalize to new data:
+    \begin{center}
+    \includegraphics[scale=0.3]{LRSingle1.pdf}
+    \end{center}
+
+Don't trust performance on training data: need test data. 
+
+
+\medskip
+
+Underfitting: does not even work on training data. 
+
+\medskip
+
+Avoid overfitting: large training sample, simple model (Occam's razor).
+
+\end{frame}
 \begin{frame}{Multiple Linear Regression}
 
 Model:
 
-\[
-Y = w_0 + w_1 X_1 + w_2 X_2 + \cdots + w_p X_p + \varepsilon
-\]
+\(
+\hat{y}=f(x_1,\ldots,x_p) = w_0 + w_1 x_1 + w_2 x_2 + \cdots + w_p x_p
+\)
 
-Assume:
+Learning from $\{(x_{i1}, \ldots, x_{ip}, y_i)\}_{i=1}^n\}$
 
-\[
-\varepsilon \sim \mathcal{N}(0,\sigma^2)
-\]
+\medskip
 
-\vspace{0.5cm}
-
-Loss function:
-
+Loss function: $\ell(y,y')=(y-y')^2$
 \[
 L(w_0, w_1, \ldots, w_p)
-=
-\frac{1}{n}
-\sum_{i=1}^n
-\left(y_i - w_0 - \sum_{j=1}^p w_j x_{ij}\right)^2
+= \frac{1}{n} \sum_{i=1}^n \ell(y_i, \hat{y}_i)
+= \frac{1}{n} \sum_{i=1}^n \left(y_i - w_0 - \sum_{j=1}^p w_j x_{ij}\right)^2
+\]
+
+Learning: minimize $L(w_0, w_1, \ldots, w_p)$
+
+\end{frame}
+\begin{frame}{Gradient Descent for Several Variables}
+
+    \textbf{Gradient descent:}
+$L(w_0,\ldots, w_p)=L(\theta)$
+
+\[
+\begin{split}
+& w_0(t+1) = w_0(t) - \eta \frac{\partial L(w_0(t), \ldots, w_p(t))}{\partial w_0}, \\
+& w_1(t+1) = w_1(t) - \eta \frac{\partial L(w_0(t), \ldots, w_p(t))}{\partial w_1}, \\
+& \cdots \cdots \cdots  \\
+& w_p(t+1) = w_p(t) - \eta \frac{\partial L(w_0(t), \ldots, w_p(t))}{\partial w_p}
+\end{split}
+\]
+$\eta$ learning rate. 
+
+\medskip
+
+Stop when $w_0(t),\ldots, w_p(t)$ does not change:
+\( \min_{\theta} L(\theta) \approx L(w_0(t), \ldots, w_p    (t)) \).
+
+\medskip 
+
+Gradient points in the direction of steepest increase.
+
+\medskip
+
+To minimize the loss, we move opposite to the gradient direction.
+
+
+\end{frame}
+\begin{frame}{Gradient Descent for Several Variables}
+
+    Multivariate Linear Regression
+
+ \[
+   L(w_0, w_1, \ldots, w_p)=\frac{1}{n} \sum_{i=1}^n \left(y_i - w_0 - \sum_{j=1}^p w_j x_{ij}\right)^2
+ \]
+
+ Gradient descend
+
+ \[
+\begin{split}
+& w_0(t+1) = w_0(t) - \eta \frac{1}{n} \sum_{i=1}^n  \left(y_i - w_0(t) - \sum_{j=1}^p w_j(t) x_{ij}\right), \\
+& w_1(t+1) = w_1(t) - \eta \frac{1}{n} \sum_{i=1}^n  \left(y_i - w_0(t) - \sum_{j=1}^p w_j(t) x_{ij}\right) x_{i1}, \\
+& \cdots \cdots \cdots  \\
+& w_p(t+1) = w_p(t) - \eta \frac{1}{n} \sum_{i=1}^n  \left(y_i - w_0(t) - \sum_{j=1}^p w_j(t) x_{ij}\right) x_{ip}
+\end{split}
 \]
 
 \end{frame}
@@ -2241,6 +2559,158 @@ L(w_0, w_1, \ldots, w_p)
 %%\]
 %%
 %%\end{frame}
+\begin{frame}{Statistical properties of linear least squares}
+
+ What can we say about \emph{true loss}
+ 
+ \[ E[(Y-f(X))^2]=E[[Y-w_0-\sum_{i=1}^p w_i X_i]^2] \]
+
+ average performance on unseen data. 
+
+ \bigskip
+
+Assume
+
+\[ Y=w_0+ w_{1,true}X_1+\cdots + w_{p,true} X_p + \epsilon, \quad \epsilon \sim \mathcal{N}(0, \sigma^2) 
+\]
+i.e., there exists an `ideal' linear regression.
+\[ 
+  E[(Y-f(X))^2]=E[\left((w_0-w_{0,true}) + \sum_{i=1}^p (w_i-w_{i,true}) X_i\right)^2]  + \sigma^2] 
+\]
+i.e. \emph{true loss} is determined by \emph{parameter estimation error}
+
+\[ w_0-w_{0,true}, \quad w_1-w_{1,true}, \quad \ldots, \quad w_p-w_{p,true} \]
+
+and variance $\sigma^2$ of the error. 
+
+\end{frame}
+\begin{frame}{Statistical properties of linear least squares}
+\textbf{Key observation:}
+
+The estimated coefficients $w_0, w_1, \ldots, w_p$ are computed from random data, so they are themselves random variables.
+
+\vspace{0.3cm}
+
+Different datasets $\rightarrow$ Different estimates.
+
+\vspace{0.5cm}
+
+\textbf{Question:}
+
+What is the distribution of $w_i - w_{i,true}$ for $i = 0, 1, \ldots, p$?
+
+\end{frame}
+
+\begin{frame}{Statistical properties of least squares estimation}
+
+\begin{itemize}
+    \item \textbf{Unbiasedness:}
+    \[
+    \begin{split}
+    & E[w_i] = w_{i,true}, \quad i = 0, 1, \ldots, p \\
+    & E[\underbrace{L(w_0, \ldots, w_p)}_{\text{empirical loss}}] = \sigma^2
+    \end{split}
+    \]
+
+    \item \textbf{Consistency:}
+    
+    As $n \to \infty$, $w_i \to w_{i,true}$ and 
+     $\hat{\sigma}^2=\underbrace{L(w_0,\ldots,w_n)}_{\text{empirical loss}} \to \sigma^2$.
+
+    \item \textbf{Known distribution:}
+    
+    The distribution of $w_i - w_{i,true}$ for $i = 0, 1, \ldots, p$ is known (Student's t-distribution).
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Measuring goodness of fit: $R^2$}
+
+Let:
+\begin{itemize}
+    \item $\bar{y} = \frac{1}{n} \sum_{i=1}^n y_i$ (sample mean)
+    \item $\hat{y}_i = \hat{w}_0 + \sum_{j=1}^p \hat{w}_j x_{ij}$ (predicted value)
+\end{itemize}
+
+\vspace{0.3cm}
+
+The $R^2$ (coefficient of determination):
+
+\[
+R^2 = 1 - \frac{\sum_{i=1}^n (y_i - \hat{y}_i)^2}{\sum_{i=1}^n (y_i - \bar{y})^2}
+\]
+
+\vspace{0.3cm}
+
+Interpretation:
+
+\begin{itemize}
+    \item $R^2 = 0$: Model explains no variance
+    \item $R^2 = 1$: Perfect fit
+    \item $0 < R^2 < 1$: Model explains fraction $R^2$ of variance
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Hypothesis testing and confidence intervals for regression}
+
+\textbf{Setup:}
+
+We test whether a coefficient equals zero:
+
+\[
+H_0: w_{j,true} = 0 \quad \text{vs} \quad H_1: w_{j,true} \neq 0
+\]
+
+\vspace{0.3cm}
+
+\textbf{Test statistic:}
+\[
+t = \frac{w_j - 0}{\text{SE}(w_j)}
+\]
+
+where $\text{SE}(w_j)$ is the standard error (estimated standard deviation) of $w_j$.
+
+\vspace{0.3cm}
+
+Under $H_0$, $t$ follows a Student's t-distribution.
+
+\end{frame}
+
+\begin{frame}{Confidence interval for regression coefficients}
+
+Choose significance level $\alpha$ (typically 0.05).
+
+\vspace{0.3cm}
+
+The $(1-\alpha)$-confidence interval for $w_{j,true}$:
+
+\[
+w_j \pm c \cdot \text{SE}(w_j)
+\]
+
+where $c$ is the critical value from the t-distribution.
+
+\vspace{0.3cm}
+
+\textbf{Interpretation:}
+
+All values $w_{j,true}^*$ in the confidence interval cannot be rejected at significance level $\alpha$.
+
+\end{frame}
+\begin{frame}[fragile]{Practical}
+
+\begin{minted}{python}
+Python computes this automatically:
+import statsmodels.api as sm
+
+# Assuming X is the design matrix and y is the response variable
+X = sm.add_constant(X)  # Adds a constant term to the predictor
+model = sm.OLS(y, X).fit()  # Fit the model
+print(model.summary())  # Print the summary of the regression results
+\end{minted}
+\end{frame}
 
 % =====================================================
 \section{Module 3 — Optimization}
