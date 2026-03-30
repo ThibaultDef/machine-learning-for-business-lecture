@@ -1,11 +1,16 @@
-\frametitle{Practical}
-
+\frametitle{Python Code Example: Logistic Regression}
 \begin{minted}{python}
-Python computes this automatically:
-import statsmodels.api as sm
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, recall_score, precision_score, f1_score
 
-# Assuming X is the design matrix and y is the response variable
-X = sm.add_constant(X)  # Adds a constant term to the predictor
-model = sm.OLS(y, X).fit()  # Fit the model
-print(model.summary())  # Print the summary of the regression results
+# X: feature matrix, y: binary labels
+model = LogisticRegression()
+model.fit(X, y)
+y_pred = model.predict(X)
+
+print("Accuracy:", accuracy_score(y, y_pred))
+print("Recall:", recall_score(y, y_pred))
+print("Precision:", precision_score(y, y_pred))
+print("F1-score:", f1_score(y, y_pred))
 \end{minted}
+

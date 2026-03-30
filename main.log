@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2026.3.26)  30 MAR 2026 05:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2026.3.26)  30 MAR 2026 17:24
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1600,15 +1600,16 @@ File: LRSingle1.pdf Graphic file (type pdf)
 Package pdftex.def Info: LRSingle1.pdf  used on input line 2207.
 (pdftex.def)             Requested size: 216.81166pt x 108.40584pt.
 
-Overfull \hbox (1.9686pt too wide) detected at line 2207
+Overfull \hbox (9.69875pt too wide) detected at line 2207
 \OT1/mathkerncmss/m/sl/10.95 L\OT1/cmss/m/n/10.95 (\OT1/mathkerncmss/m/sl/10.95
  w[]\OML/cmm/m/it/10.95 ; \OT1/mathkerncmss/m/sl/10.95 w[]\OT1/cmss/m/n/10.95 )
  = [] [](\OT1/mathkerncmss/m/sl/10.95 y[] \OMS/cmsy/m/n/10.95 ^^@ \OT1/mathkern
 cmss/m/sl/10.95 w[] \OMS/cmsy/m/n/10.95 ^^@ \OT1/mathkerncmss/m/sl/10.95 w[]x[]
 \OT1/cmss/m/n/10.95 )[] = [] [](\OT1/mathkerncmss/m/sl/10.95 y[] \OMS/cmsy/m/n/
 10.95 ^^@ []\OT1/cmss/m/n/10.95 )[] \OMS/cmsy/m/n/10.95 ^^Y \U/msb/m/n/10.95 E\
-OT1/cmss/m/n/10.95 [ \OMS/cmsy/m/n/10.95 k\OT1/mathkerncmss/m/sl/10.95 Y \OMS/c
-msy/m/n/10.95 ^^@ []k[] \OT1/cmss/m/n/10.95 ]
+OT1/cmss/m/n/10.95 [(\OT1/mathkerncmss/m/sl/10.95 Y \OMS/cmsy/m/n/10.95 ^^@ \OT
+1/mathkerncmss/m/sl/10.95 f\OT1/cmss/m/n/10.95 (\OT1/mathkerncmss/m/sl/10.95 X\
+OT1/cmss/m/n/10.95 ))[]]
  []
 
 [83
@@ -1706,7 +1707,15 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
 
 ] [103
 
-] [104
+]
+\openout4 = `main.vrb'.
+
+ (./main.vrb
+\openout5 = `main.pyg'.
+
+
+(./_minted-main/2DD4B7D4411AD1BA059D86FAEE38811E4FBEEAFC55D0059826E664B9BBCF372
+1.pygtex)) [104
 
 ] [105
 
@@ -1716,10 +1725,13 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
 
 ] [108
 
-] [109
-
 ]
-[110
+Overfull \vbox (169.25316pt too high) detected at line 2969
+ []
+
+[109
+
+] [110
 
 ] [111
 
@@ -1741,10 +1753,10 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
 
 ] [120
 
-] [121
-
 ]
-[122
+[121
+
+] [122
 
 ] [123
 
@@ -1766,10 +1778,10 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
 
 ] [132
 
-] [133
-
 ]
-[134
+[133
+
+] [134
 
 ] [135
 
@@ -1791,20 +1803,16 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
 
 ] [144
 
-] [145
-
 ]
-[146
+[145
+
+] [146
 
 ] [147
 
 ] [148
 
 ] [149
-
-] [150
-
-] [151
 
 ]
 \tf@nav=\write8
@@ -1817,25 +1825,19 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
 \openout10 = `main.snm'.
 
  (./main.aux)
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: F0C538ED059E05F020F49BC9D1A182E6;734
-(rerunfilecheck)             After:  C027AB3CBD78E5125B5EBB806D2C2FAA;734.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: CB212C837903A9FA905A4CB6B435A634;738.
 runsystem(rm main.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 28209 strings out of 479304
- 542626 string characters out of 5869779
- 902707 words of memory out of 5000000
- 44358 multiletter control sequences out of 15000+600000
- 434358 words of font info for 129 fonts, out of 8000000 for 9000
+ 28298 strings out of 479304
+ 545200 string characters out of 5869779
+ 910431 words of memory out of 5000000
+ 44446 multiletter control sequences out of 15000+600000
+ 434665 words of font info for 130 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 131i,23n,132p,423b,1068s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 131i,23n,132p,457b,1390s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/mpetrec/.texlive2020/texmf-var/fonts/pk/ljfour/jknappen/ec/tcss1095.6
 00pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/s
@@ -1854,10 +1856,10 @@ ts/cm/cmssi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
 are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (151 pages, 462827 bytes).
+Output written on main.pdf (149 pages, 465341 bytes).
 PDF statistics:
- 1159 PDF objects out of 1200 (max. 8388607)
- 854 compressed objects within 9 object streams
- 316 named destinations out of 1000 (max. 500000)
+ 1148 PDF objects out of 1200 (max. 8388607)
+ 844 compressed objects within 9 object streams
+ 312 named destinations out of 1000 (max. 500000)
  162 words of extra memory for PDF output out of 10000 (max. 10000000)
 

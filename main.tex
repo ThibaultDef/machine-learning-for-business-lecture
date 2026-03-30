@@ -2201,7 +2201,7 @@ L(w_0,w_1)
 \sum_{i=1}^n
 (y_i -w_0 - w_1 x_i)^2 = \frac{1}{n} \sum_{i=1}^n
 (y_i - \hat{y_i})^2
-\approx \mathbb{E}[\, \lVert Y - \hat{Y} \rVert_2 \,]
+\approx \mathbb{E}[(Y - f(X))^2]
 \]
 
 \end{frame}
@@ -2210,7 +2210,7 @@ L(w_0,w_1)
     
     Making 
     \[
-    L(w_0, w_1) = \frac{1}{2} \sum_{i=1}^n (y_i - w_0 - w_1 x_i)^2
+    L(w_0, w_1) = \frac{1}{2} \sum_{i=1}^2 (y_i - w_0 - w_1 x_i)^2
     \]
     small is like solving equation
     \[
@@ -2287,7 +2287,7 @@ For LSS:
 \)
 
 \[
-\theta(t+1) = \theta(t) - 
+\theta(t+1) = \theta(t) +  
    \frac{2\eta}{n} \sum_{i=1}^n \underbrace{(y_i - \theta(t) x_i)}_{\mbox{prediction error}}x_i
 \]
 
@@ -2416,10 +2416,10 @@ To minimize the loss, we move opposite to the gradient direction.
 
  \[
 \begin{split}
-& w_0(t+1) = w_0(t) - \eta \frac{1}{n} \sum_{i=1}^n  \left(y_i - w_0(t) - \sum_{j=1}^p w_j(t) x_{ij}\right), \\
-& w_1(t+1) = w_1(t) - \eta \frac{1}{n} \sum_{i=1}^n  \left(y_i - w_0(t) - \sum_{j=1}^p w_j(t) x_{ij}\right) x_{i1}, \\
+& w_0(t+1) = w_0(t) + \eta \frac{1}{n} \sum_{i=1}^n  \left(y_i - w_0(t) - \sum_{j=1}^p w_j(t) x_{ij}\right), \\
+& w_1(t+1) = w_1(t) + \eta \frac{1}{n} \sum_{i=1}^n  \left(y_i - w_0(t) - \sum_{j=1}^p w_j(t) x_{ij}\right) x_{i1}, \\
 & \cdots \cdots \cdots  \\
-& w_p(t+1) = w_p(t) - \eta \frac{1}{n} \sum_{i=1}^n  \left(y_i - w_0(t) - \sum_{j=1}^p w_j(t) x_{ij}\right) x_{ip}
+& w_p(t+1) = w_p(t) + \eta \frac{1}{n} \sum_{i=1}^n  \left(y_i - w_0(t) - \sum_{j=1}^p w_j(t) x_{ij}\right) x_{ip}
 \end{split}
 \]
 
@@ -2711,200 +2711,172 @@ model = sm.OLS(y, X).fit()  # Fit the model
 print(model.summary())  # Print the summary of the regression results
 \end{minted}
 \end{frame}
+\begin{frame}{Hypothesis Testing for MSE of Linear Regression}
 
-% =====================================================
-\section{Module 3 — Optimization}
+ Two models $w_1$ and $w_2$
 
-\begin{frame}{Module 3 — Optimization}
-\begin{itemize}
-    \item General Optimization Problem
-    \item Loss Minimization
-    \item Gradient Descent
-    \item Learning Rate
-    \item Convex vs Non-Convex Problems
-    \item Optimization Variants (SGD, Mini-batch)
-\end{itemize}
+ \medskip
+
+ $L_1(w_1)$ on test set 1 and $L_2(w_2)$ on test set 2
+
+\textbf{Question:}  
+ Are they the same ?
+
+\textbf{Approach:}
+\begin{enumerate}
+    \item For each model $j$, compute prediction errors $e_{i,j} = y_{i,j} - f_{w_j}(x_{i,j})$ on its test set.
+    \item Compute losses: $s_{i,j} = (y_{i,j}, f_{w_j}(x_{i,j}))^2$.
+    \item Compare the means $L_1(w_1)=\frac{1}{n_1} \sum_{i=1}^{n_1} s_{i,1}$ and $L_2(w_2)=\frac{1}{n_2} \sum_{i=1}^{n_2} s_{i,2}$ using a two-sample t-test:
+    \[
+    t = \frac{L_1(w_1) - L_2(w_2)}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}
+    \]
+    where $s_j^2$ is the sample variance of $\{s_{i,j}\}$.
+    \item Compute the p-value; reject $H_0$ (no difference in expected loss) if $p < 0.05$.
+\end{enumerate}
+
+\textbf{Interpretation:}  
+If $H_0$ is rejected, the difference is significant.
+
 \end{frame}
 
-\begin{frame}{Business Example: Training a Pricing Model}
 
-We want to predict house prices using linear regression.
+\begin{frame}{Logistic Regression}
 
-\vspace{0.3cm}
-
-Loss function:
+Logistic regression is used for binary classification. The model predicts the probability that $y=1$ given input $x$:
 
 \[
-L(w) = \frac{1}{n} \sum_{i=1}^n (y_i - w^T x_i)^2
+f(x) = 
+\begin{cases}
+1 & \text{if } \sigma(w_0 + \sum_i w_i x_i) > 0.5 \\
+0 & \text{otherwise}
+\end{cases}
+\]
+where $\sigma(z) = \frac{1}{1 + e^{-z}}$ is the sigmoid (logistic) function.
+
+\textbf{Natural $0-1$ loss}
+\[
+   L(w)=\frac{1}{n} \sum_{i=1}^n \ell(y_i, f(x_i)), ~ \ell(y, y') =
+   \begin{cases}
+   0 & \text{if } y = y' \\
+   1 & \text{if } y \neq y'
+   \end{cases}
 \]
 
-\vspace{0.3cm}
+\textbf{Cross-Entropy Loss Function}
 
-Goal:
+For $n$ samples $(x_i, y_i)$ with $y_i \in \{0,1\}$, the cross-entropy loss is:
+\[
+L(w) = -\frac{1}{n} \sum_{i=1}^n \left[ y_i \log p_i + (1 - y_i) \log (1 - p_i) \right]
+\]
+where $p_i = \sigma(w_0 + \sum_j w_j x_{ij})$.
 
+\end{frame}
+\begin{frame}{Evaluation Metrics}
+    % Calculates the values for True Positives (TP), False Positives (FP), and False Negatives (FN).
+    \begin{itemize}
+        \item \textbf{True Positives (TP)}: Number of instances correctly predicted as positive.
+        \item \textbf{False Positives (FP)}: Number of instances incorrectly predicted as positive (actually negative).
+        \item \textbf{False Negatives (FN)}: Number of instances incorrectly predicted as negative (actually positive).
+    \end{itemize}
+
+    These metrics are commonly used in classification tasks to evaluate the performance of a model.
+
+\end{frame}
+\begin{frame}
+\begin{itemize}
+    \item \textbf{Accuracy}: Fraction of correct predictions.
+    \[
+    \text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
+     \approx 1-E[\ell(Y,f(X))]
+    \]
+    where $\ell(y,y')=
+    \begin{cases}
+    0 & \text{if } y = y' \\
+    1 & \text{if } y \neq y'
+    \end{cases}$.
+
+    \item \textbf{Recall}: Fraction of actual positives correctly identified.
+    \[
+    \text{Recall} = \frac{TP}{TP + FN}
+    \]
+    \item \textbf{Precision}: Fraction of predicted positives that are correct.
+    \[
+    \text{Precision} = \frac{TP}{TP + FP}
+    \]
+    \item \textbf{F1-score}: Harmonic mean of precision and recall.
+    \[
+    F1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
+    \]
+\end{itemize}
+\end{frame}
+\begin{frame}[fragile]{Python Code Example: Logistic Regression}
+\begin{minted}{python}
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, recall_score, precision_score, f1_score
+
+# X: feature matrix, y: binary labels
+model = LogisticRegression()
+model.fit(X, y)
+y_pred = model.predict(X)
+
+print("Accuracy:", accuracy_score(y, y_pred))
+print("Recall:", recall_score(y, y_pred))
+print("Precision:", precision_score(y, y_pred))
+print("F1-score:", f1_score(y, y_pred))
+\end{minted}
+
+\end{frame}
+% =====================================================
+\section{Module 3 — Machine learning}
+
+\begin{frame}{Machine learning: general setup}
+ 
+Model class: $\hat{y} = f_w(x)$
+
+\medskip
+
+
+Loss $\ell(y, \hat{y})$
+
+\medskip
+
+Sample $\{(x_i, y_i)\}_{i=1}^n$ from the distribution $Y$ and $X$
+
+\medskip
+
+Learning objective: minimize the \emph{empirical loss} 
 \[
 \min_w L(w)
 \]
-
-\vspace{0.5cm}
-
-Question:
-\begin{itemize}
-    \item How do we compute the best parameter $w$?
-    \item What if no closed-form solution exists?
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{General Optimization Problem}
-
-In machine learning, training a model means solving:
-
-\[
-\min_{\theta} L(\theta)
+where 
+\[ 
+   L(w)=\frac{1}{n} \sum_{i=1}^n \ell(y_i, f_w(x_i))
 \]
 
-\vspace{0.5cm}
 
-\begin{itemize}
-    \item $\theta$ = model parameters
-    \item $L(\theta)$ = loss function
-\end{itemize}
+Motivation: small $L(w)$ implies small \emph{true loss}
 
-\vspace{0.5cm}
-
-Examples:
-
-\begin{itemize}
-    \item Linear regression → squared loss
-    \item Logistic regression → cross-entropy
-    \item Neural networks → cross-entropy
-\end{itemize}
+\[ E[\ell(Y, f_w(X))] \]
 
 \end{frame}
-
 \begin{frame}{Idea of Gradient Descent}
-
-Interpret the loss function as a landscape.
-
-\vspace{0.3cm}
-
-Goal: reach the lowest point.
-
-\vspace{0.5cm}
-
-The gradient:
-
+To solve:
 \[
-\nabla L(\theta)
+\min_{w} L(w)
 \]
 
-points in the direction of steepest increase.
-
-\vspace{0.5cm}
-
-To minimize the loss, we move opposite to the gradient direction.
-
-\end{frame}
-\begin{frame}f{What is the gradient $\nabla L(\theta)$?}
-
-The gradient is a vector of partial derivatives. For a scalar loss function $L(\theta)$, it points in the direction of steepest increase.
-
-\vspace{0.3cm}
-
-\textbf{What is a derivative?}
-
-A derivative measures how much a function changes when we perturb its input slightly:
-
+we use gradient descend
 \[
-\frac{dL}{d\theta} = \lim_{\delta\theta \to 0} \frac{L(\theta + \delta\theta) - L(\theta)}{\delta\theta}
-\]
-
-This ratio tells us the rate of change of $L$ with respect to $\theta$.
-
-\vspace{0.3cm}
-
-\textbf{Gradient descent update rule:}
-
-\[
-\theta_{t+1} = \theta_t - \eta \nabla L(\theta_t)
+w_{t+1} = w_t - \eta \nabla L(w_t)
 \]
 
 We subtract the gradient (scaled by learning rate $\eta$) to move downhill toward lower loss values.
 
 \begin{itemize}
     \item $\eta$ = learning rate
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Gradient Descent}
-
-We solve:
-
-\[
-\min_{\theta} L(\theta)
-\]
-
-\vspace{0.3cm}
-
-Update rule:
-
-\[
-\theta_{t+1}
-=
-\theta_t
--
-\eta \nabla L(\theta_t)
-\]
-
-\vspace{0.5cm}
-
-\begin{itemize}
-    \item $\eta$ = learning rate
-    \item $\nabla L(\theta)$ = gradient
+    \item $\nabla L(w)$ = gradient (derivative)
     \item Repeat until convergence
 \end{itemize}
-
-\end{frame}
-
-\begin{frame}{Example: Gradient for Linear Regression}
-
-Loss:
-
-\[
-L(w) = \frac{1}{n} \sum_{i=1}^n (y_i - w^T x_i)^2
-\]
-
-\vspace{0.5cm}
-
-Gradient:
-
-\[
-\nabla L(w)
-=
--\frac{2}{n} X^T (y - Xw)
-\]
-
-\vspace{0.5cm}
-
-Update rule:
-
-\[
-w \leftarrow w + \frac{2\eta}{n} X^T (y - Xw)
-\]
-
-\end{frame}
-
-\begin{frame}{Learning Rate}
-
-Gradient descent update:
-
-\[
-\theta_{t+1} = \theta_t - \eta \nabla L(\theta_t)
-\]
-
-\vspace{0.5cm}
 
 Choice of learning rate $\eta$:
 
@@ -2942,73 +2914,59 @@ In large datasets, we use:
 These methods are standard in deep learning.
 
 \end{frame}
+
 \section{Module 5 — Nonlinear Models and Ensembles}
 
 \begin{frame}{Module 5 — Nonlinear Models}
 \begin{itemize}
     \item Decision Trees
     \item Random Forest
-    \item Boosting Methods
     \item Introduction to Neural Networks
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Decision Trees}
+    A decision tree is a predictive model that splits data into branches based on feature values, forming a tree-like structure. Each internal node represents a decision based on a feature, each branch corresponds to an outcome of that decision, and each leaf node represents a final prediction (class or value). The tree recursively partitions the data to maximize homogeneity within leaves, making decisions interpretable and easy to visualize.
+    \begin{block}{Example: Decision Tree for Loan Approval}
+    Suppose a bank wants to automate loan approvals. The decision tree might split as follows:
 
-\textbf{Principle}
+    \begin{itemize}
+        \item \textbf{Node 1:} Is credit score $>$ 700?
+        \begin{itemize}
+            \item \textbf{Yes:} Approve loan
+            \item \textbf{No:} Go to Node 2
+        \end{itemize}
+        \item \textbf{Node 2:} Is annual income $>$ \$50,000?
+        \begin{itemize}
+            \item \textbf{Yes:} Approve loan
+            \item \textbf{No:} Reject loan
+        \end{itemize}
+    \end{itemize}
 
-\begin{itemize}
-    \item Partition the feature space into regions
-    \item Use threshold rules: $x_j < t$
-    \item Produce piecewise constant predictions
-\end{itemize}
-
-\vspace{0.4cm}
+    \begin{center}
+    \begin{tikzpicture}[level distance=1.5cm,
+      level 1/.style={sibling distance=4cm},
+      level 2/.style={sibling distance=2cm}]
+    \node[draw, rectangle, fill=blue!10] {Credit score $>$ 700?}
+      child {node[draw, rectangle, fill=green!10] {Approve}}
+      child {node[draw, rectangle, fill=orange!10] {Income $>$ \$50k?}
+        child {node[draw, rectangle, fill=green!10] {Approve}}
+        child {node[draw, rectangle, fill=red!10] {Reject}}
+      };
+    \end{tikzpicture}
+    \end{center}
+    \end{block}
 
 \textbf{Split Criteria}
 
-Classification:
+Classification: split so that \text{Gini impurity} is minimized
 \[
 \text{Gini} = 1 - \sum_k p_k^2
 \]
 
-Regression:
-\[
-\text{Minimize squared error}
-\]
-
-\vspace{0.3cm}
-
-Flexible model with low bias but high variance.
-
+%Regression:
+%    A decision tree is a model that predicts outcomes by recursively splitting data based on feature values, forming a tree of decisions. Each internal node tests a feature, and each leaf gives a prediction. Decision trees are interpretable and visualize how decisions are made.
 \end{frame}
-
-\begin{frame}{Instability of Decision Trees}
-
-\textbf{Observation}
-
-\begin{itemize}
-    \item Small change in data $\rightarrow$ very different tree
-    \item Structure of splits can change drastically
-\end{itemize}
-
-\vspace{0.4cm}
-
-\textbf{Consequence}
-
-\begin{itemize}
-    \item High variance model
-    \item Prone to overfitting
-\end{itemize}
-
-\vspace{0.4cm}
-
-\[
-\text{Can we reduce variance while keeping flexibility?}
-\]
-
-\end{frame}
-
 \begin{frame}{Random Forest: Main Idea}
 
 \textbf{Instead of one tree:}
