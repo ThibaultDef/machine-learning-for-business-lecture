@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2026.3.26)  30 MAR 2026 05:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2026.3.26)  30 MAR 2026 05:22
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1817,8 +1817,14 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
 \openout10 = `main.snm'.
 
  (./main.aux)
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: F0C538ED059E05F020F49BC9D1A182E6;734.
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: F0C538ED059E05F020F49BC9D1A182E6;734
+(rerunfilecheck)             After:  C027AB3CBD78E5125B5EBB806D2C2FAA;734.
 runsystem(rm main.pyg)...executed.
 
  ) 
@@ -1848,7 +1854,7 @@ ts/cm/cmssi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
 are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (151 pages, 462809 bytes).
+Output written on main.pdf (151 pages, 462827 bytes).
 PDF statistics:
  1159 PDF objects out of 1200 (max. 8388607)
  854 compressed objects within 9 object streams

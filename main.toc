@@ -4,8 +4,8 @@
 \beamer@sectionintoc {3}{Hypothesis testing}{63}{0}{3}
 \beamer@sectionintoc {4}{Module 2 — Linear Models and Probabilistic Interpretation}{82}{0}{4}
 \beamer@sectionintoc {5}{Module 3 — Optimization}{100}{0}{5}
-\beamer@sectionintoc {6}{Module 4 — Generalization and Model Evaluation}{109}{0}{6}
-\beamer@sectionintoc {7}{Module 5 — Nonlinear Models and Ensembles}{117}{0}{7}
-\beamer@sectionintoc {8}{Module 6 — Machine Learning in Practice}{129}{0}{8}
+\beamer@sectionintoc {6}{Module 5 — Nonlinear Models and Ensembles}{109}{0}{6}
+\beamer@sectionintoc {7}{Module 6 — Machine Learning in Practice}{121}{0}{7}
+\beamer@sectionintoc {8}{Module 4 — Generalization and Model Evaluation}{132}{0}{8}
 \beamer@sectionintoc {9}{Module 7 — Unsupervised Learning}{140}{0}{9}
 \beamer@sectionintoc {10}{Conclusion}{151}{0}{10}

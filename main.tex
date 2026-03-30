@@ -2942,223 +2942,6 @@ In large datasets, we use:
 These methods are standard in deep learning.
 
 \end{frame}
-
-% =====================================================
-\section{Module 4 — Generalization and Model Evaluation}
-
-\begin{frame}{Module 4 — Generalization}
-\begin{itemize}
-    \item Overfitting vs Underfitting
-    \item Bias–Variance Tradeoff
-    \item Regularization (L1 and L2)
-    \item Decision Boundaries
-    \item Performance Metrics:
-    \begin{itemize}
-        \item R\textsuperscript{2}
-        \item Accuracy
-        \item Precision
-        \item Recall
-        \item F1-score
-    \end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Overfitting vs Underfitting}
-
-\textbf{Problem:} How well does a model generalize to unseen data?
-
-\vspace{0.5cm}
-
-\begin{itemize}
-    \item \textbf{Underfitting:} Model is too simple
-    \begin{itemize}
-        \item Fails to capture patterns in training data
-        \item High bias, low variance
-        \item Poor performance on both training and test sets
-        \item Example: Linear model trying to fit a quadratic trend
-    \end{itemize}
-    \item \textbf{Overfitting:} Model is too complex
-    \begin{itemize}
-        \item Captures noise as if it were signal
-        \item Low bias, high variance
-        \item Excellent performance on training set, poor on test set
-        \item Example: High-degree polynomial for limited data points
-    \end{itemize}
-\end{itemize}
-
-\vspace{0.5cm}
-
-\textbf{Business Example:}  
-A pricing model fits historical sales perfectly (overfit) but predicts future sales poorly.
-
-\end{frame}
-
-\begin{frame}{Bias--Variance Tradeoff}
-
-\textbf{Problem:} Why does increasing model complexity sometimes hurt performance?
-
-\vspace{0.5cm}
-
-Prediction error can be decomposed into:
-
-\[
-\text{Error}
-=
-\text{Bias}^2
-+
-\text{Variance}
-+
-\text{Noise}
-\]
-
-\begin{itemize}
-    \item \textbf{Bias:} Error from overly simple assumptions  
-    High bias $\rightarrow$ underfitting
-    \item \textbf{Variance:} Sensitivity to small fluctuations in training data  
-    High variance $\rightarrow$ overfitting
-    \item \textbf{Noise:} Irreducible randomness in the data
-\end{itemize}
-
-\vspace{0.5cm}
-
-\textbf{Business Example:}  
-A very simple demand model ignores seasonality (high bias).  
-A very complex model reacts to random weekly fluctuations (high variance).
-
-\end{frame}
-
-\begin{frame}{Regularization}
-
-\textbf{Goal:} Prevent overfitting by controlling model complexity.
-
-\vspace{0.5cm}
-
-General form of regularized loss:
-
-\[
-L(\mathbf{w})
-=
-\sum_{i=1}^n (y_i - \mathbf{w}^T x_i)^2
-+
-\lambda \Omega(\mathbf{w})
-\]
-
-\begin{itemize}
-    \item $\lambda$ controls the strength of the penalty
-    \item Larger $\lambda$ $\rightarrow$ simpler model
-\end{itemize}
-
-\vspace{0.3cm}
-
-\begin{tabular}{c|c|c}
-Method & Penalty & Effect \\
-\hline
-Ridge (L2) & $\sum w_j^2$ & Shrinks coefficients \\
-Lasso (L1) & $\sum |w_j|$ & Produces sparse model
-\end{tabular}
-
-\vspace{0.5cm}
-
-\textbf{Business Example:}  
-In marketing analytics with 100 features, regularization avoids unstable and extreme coefficient estimates.
-
-\end{frame}
-
-\begin{frame}{Decision Boundary in Logistic Regression}
-
-\textbf{Goal:} Understand how logistic regression separates classes.
-
-\vspace{0.5cm}
-
-Prediction rule:
-
-\[
-Y = 1 
-\quad \text{if} \quad 
-\sigma(w^T x) > 0.5
-\]
-
-This is equivalent to:
-
-\[
-w^T x = 0
-\]
-
-\begin{itemize}
-    \item The equation defines a \textbf{hyperplane}
-    \item Points on one side $\rightarrow$ Class 1
-    \item Points on the other side $\rightarrow$ Class 0
-\end{itemize}
-
-\vspace{0.5cm}
-
-\textbf{Business Example:}  
-In credit scoring, the decision boundary separates high-risk from low-risk applicants based on their features.
-
-\end{frame}
-
-\begin{frame}{Regression Metrics}
-
-\begin{itemize}
-    \item \textbf{R\textsuperscript{2} (Coefficient of Determination):}
-    \[
-    R^2 = 1 - \frac{\sum_{i=1}^n (y_i - \hat{y}_i)^2}{\sum_{i=1}^n (y_i - \bar{y})^2}
-    \]
-    Indicates proportion of variance explained by the model. $R^2 \approx 1$ is good.
-    
-    \item \textbf{Mean Squared Error (MSE):}
-    \[
-    \text{MSE} = \frac{1}{n} \sum_{i=1}^n (y_i - \hat{y}_i)^2
-    \]
-    Penalizes large errors more heavily.
-    
-    \item \textbf{Mean Absolute Error (MAE):}
-    \[
-    \text{MAE} = \frac{1}{n} \sum_{i=1}^n |y_i - \hat{y}_i|
-    \]
-    Robust to outliers; measures average absolute deviation.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Classification Metrics - Part 1}
-
-\begin{itemize}
-    \item \textbf{Accuracy:} Fraction of correct predictions
-    \[
-    \text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
-    \]
-    Simple overall measure, but can be misleading for imbalanced classes.
-    
-    \item \textbf{Precision:} Fraction of positive predictions that are correct
-    \[
-    \text{Precision} = \frac{TP}{TP + FP}
-    \]
-    Important when false positives are costly.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Classification Metrics - Part 2}
-
-\begin{itemize}
-    \item \textbf{Recall (Sensitivity):} Fraction of actual positives correctly identified
-    \[
-    \text{Recall} = \frac{TP}{TP + FN}
-    \]
-    Important when missing a positive is costly.
-    
-    \item \textbf{F1-score:} Harmonic mean of Precision and Recall
-    \[
-    F1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
-    \]
-    Balances precision and recall.
-\end{itemize}
-
-\end{frame}
-
-
-% =====================================================
 \section{Module 5 — Nonlinear Models and Ensembles}
 
 \begin{frame}{Module 5 — Nonlinear Models}
@@ -3688,6 +3471,223 @@ If rejected:
 Machine learning is an iterative process.
 
 \end{frame}
+% =====================================================
+\section{Module 4 — Generalization and Model Evaluation}
+
+\begin{frame}{Module 4 — Generalization}
+\begin{itemize}
+    \item Overfitting vs Underfitting
+    \item Bias–Variance Tradeoff
+    \item Regularization (L1 and L2)
+    \item Decision Boundaries
+    \item Performance Metrics:
+    \begin{itemize}
+        \item R\textsuperscript{2}
+        \item Accuracy
+        \item Precision
+        \item Recall
+        \item F1-score
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Overfitting vs Underfitting}
+
+\textbf{Problem:} How well does a model generalize to unseen data?
+
+\vspace{0.5cm}
+
+\begin{itemize}
+    \item \textbf{Underfitting:} Model is too simple
+    \begin{itemize}
+        \item Fails to capture patterns in training data
+        \item High bias, low variance
+        \item Poor performance on both training and test sets
+        \item Example: Linear model trying to fit a quadratic trend
+    \end{itemize}
+    \item \textbf{Overfitting:} Model is too complex
+    \begin{itemize}
+        \item Captures noise as if it were signal
+        \item Low bias, high variance
+        \item Excellent performance on training set, poor on test set
+        \item Example: High-degree polynomial for limited data points
+    \end{itemize}
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Business Example:}  
+A pricing model fits historical sales perfectly (overfit) but predicts future sales poorly.
+
+\end{frame}
+
+\begin{frame}{Bias--Variance Tradeoff}
+
+\textbf{Problem:} Why does increasing model complexity sometimes hurt performance?
+
+\vspace{0.5cm}
+
+Prediction error can be decomposed into:
+
+\[
+\text{Error}
+=
+\text{Bias}^2
++
+\text{Variance}
++
+\text{Noise}
+\]
+
+\begin{itemize}
+    \item \textbf{Bias:} Error from overly simple assumptions  
+    High bias $\rightarrow$ underfitting
+    \item \textbf{Variance:} Sensitivity to small fluctuations in training data  
+    High variance $\rightarrow$ overfitting
+    \item \textbf{Noise:} Irreducible randomness in the data
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Business Example:}  
+A very simple demand model ignores seasonality (high bias).  
+A very complex model reacts to random weekly fluctuations (high variance).
+
+\end{frame}
+
+\begin{frame}{Regularization}
+
+\textbf{Goal:} Prevent overfitting by controlling model complexity.
+
+\vspace{0.5cm}
+
+General form of regularized loss:
+
+\[
+L(\mathbf{w})
+=
+\sum_{i=1}^n (y_i - \mathbf{w}^T x_i)^2
++
+\lambda \Omega(\mathbf{w})
+\]
+
+\begin{itemize}
+    \item $\lambda$ controls the strength of the penalty
+    \item Larger $\lambda$ $\rightarrow$ simpler model
+\end{itemize}
+
+\vspace{0.3cm}
+
+\begin{tabular}{c|c|c}
+Method & Penalty & Effect \\
+\hline
+Ridge (L2) & $\sum w_j^2$ & Shrinks coefficients \\
+Lasso (L1) & $\sum |w_j|$ & Produces sparse model
+\end{tabular}
+
+\vspace{0.5cm}
+
+\textbf{Business Example:}  
+In marketing analytics with 100 features, regularization avoids unstable and extreme coefficient estimates.
+
+\end{frame}
+
+\begin{frame}{Decision Boundary in Logistic Regression}
+
+\textbf{Goal:} Understand how logistic regression separates classes.
+
+\vspace{0.5cm}
+
+Prediction rule:
+
+\[
+Y = 1 
+\quad \text{if} \quad 
+\sigma(w^T x) > 0.5
+\]
+
+This is equivalent to:
+
+\[
+w^T x = 0
+\]
+
+\begin{itemize}
+    \item The equation defines a \textbf{hyperplane}
+    \item Points on one side $\rightarrow$ Class 1
+    \item Points on the other side $\rightarrow$ Class 0
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Business Example:}  
+In credit scoring, the decision boundary separates high-risk from low-risk applicants based on their features.
+
+\end{frame}
+
+\begin{frame}{Regression Metrics}
+
+\begin{itemize}
+    \item \textbf{R\textsuperscript{2} (Coefficient of Determination):}
+    \[
+    R^2 = 1 - \frac{\sum_{i=1}^n (y_i - \hat{y}_i)^2}{\sum_{i=1}^n (y_i - \bar{y})^2}
+    \]
+    Indicates proportion of variance explained by the model. $R^2 \approx 1$ is good.
+    
+    \item \textbf{Mean Squared Error (MSE):}
+    \[
+    \text{MSE} = \frac{1}{n} \sum_{i=1}^n (y_i - \hat{y}_i)^2
+    \]
+    Penalizes large errors more heavily.
+    
+    \item \textbf{Mean Absolute Error (MAE):}
+    \[
+    \text{MAE} = \frac{1}{n} \sum_{i=1}^n |y_i - \hat{y}_i|
+    \]
+    Robust to outliers; measures average absolute deviation.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Classification Metrics - Part 1}
+
+\begin{itemize}
+    \item \textbf{Accuracy:} Fraction of correct predictions
+    \[
+    \text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
+    \]
+    Simple overall measure, but can be misleading for imbalanced classes.
+    
+    \item \textbf{Precision:} Fraction of positive predictions that are correct
+    \[
+    \text{Precision} = \frac{TP}{TP + FP}
+    \]
+    Important when false positives are costly.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Classification Metrics - Part 2}
+
+\begin{itemize}
+    \item \textbf{Recall (Sensitivity):} Fraction of actual positives correctly identified
+    \[
+    \text{Recall} = \frac{TP}{TP + FN}
+    \]
+    Important when missing a positive is costly.
+    
+    \item \textbf{F1-score:} Harmonic mean of Precision and Recall
+    \[
+    F1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
+    \]
+    Balances precision and recall.
+\end{itemize}
+
+\end{frame}
+
+
+% =====================================================
+
 
 % =====================================================
 \section{Module 7 — Unsupervised Learning}
