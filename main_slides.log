@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2026.3.26)  31 MAR 2026 07:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2026.3.26)  31 MAR 2026 08:24
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1051,7 +1051,7 @@ Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 )
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\\' on input line 44.
+(hyperref)                removing `\\' on input line 48.
 
 runsystem(which pygmentize && touch main_slides.aex)...executed.
 
@@ -1062,25 +1062,26 @@ File: l3backend-pdftex.def 2020-01-29 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count375
 \l__pdf_internal_box=\box88
 )
-No file main_slides.aux.
+(./main_slides.aux)
 \openout1 = `main_slides.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -1137,7 +1138,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring OFF on input line 47.
+Package hyperref Info: Link coloring OFF on input line 51.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
@@ -1150,66 +1151,68 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count382
 )
-LaTeX Info: Redefining \ref on input line 47.
-LaTeX Info: Redefining \pageref on input line 47.
-LaTeX Info: Redefining \nameref on input line 47.
+LaTeX Info: Redefining \ref on input line 51.
+LaTeX Info: Redefining \pageref on input line 51.
+LaTeX Info: Redefining \nameref on input line 51.
+
+(./main_slides.out) (./main_slides.out)
 \@outlinefile=\write7
 \openout7 = `main_slides.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 47.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 51.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 47.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 51.
 \symnumbers=\mathgroup13
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 47.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 51.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
-(Font)                  OT1/mathkerncmss/m/sl --> OT1/cmss/m/it on input line 4
-7.
+(Font)                  OT1/mathkerncmss/m/sl --> OT1/cmss/m/it on input line 5
+1.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/mathkerncmss/bx/sl --> OT1/cmss/m/it on input line 
-47.
+51.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 47.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 47.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 47.
+(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 51.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 51.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 51.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 47.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 51.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 47.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 47.
+(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 51.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 51.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 47.
+(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 51.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 47.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 47.
+(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 51.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 51.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 47.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 51.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 47.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 51.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 47.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 51.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 47.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 51.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 47.
+(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 51.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 47.
+(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 51.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 47.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 51.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 47.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 51.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 47.
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 47.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 51.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 51.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
-(Font)                  OT1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 4
-7.
+(Font)                  OT1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 5
+1.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/b/it --> OT1/mathkerncmss/m/sl on input line 4
-7.
+(Font)                  OT1/cmss/b/it --> OT1/mathkerncmss/m/sl on input line 5
+1.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on inp
-ut line 47.
+ut line 51.
 
 (/usr/share/texlive/texmf-dist/tex/latex/translator/translator-basic-dictionary
 -English.dict
@@ -1239,34 +1242,32 @@ Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
 )
 \c@lstlisting=\count383
 
-No file main_slides.nav.
-[1
+(./main_slides.nav) [1
 
 {/home/mpetrec/.texlive2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 80.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 84.
 
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 80.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 84.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inp
-ut line 80.
+ut line 84.
 
 (/usr/share/texlive/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/ma
 thkerncmss.
 )
 LaTeX Font Info:    Trying to load font information for U+stmry on input line 8
-0.
+4.
 
 (/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 80
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 84
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd
@@ -1274,8 +1275,7 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 ) [2
 
 ]
-No file main_slides.toc.
-[3
+(./main_slides.toc) [3
 
 ] [4
 
@@ -1299,10 +1299,11 @@ No file main_slides.toc.
 
 ] [14
 
-] [15
+]
+[15
 
 ]
-Overfull \hbox (23.46384pt too wide) detected at line 388
+Overfull \hbox (23.46384pt too wide) detected at line 392
 \OT1/mathkerncmss/m/sl/10.95 P\OT1/cmss/m/n/10.95 (\OT1/mathkerncmss/m/sl/10.95
  A\OT1/cmss/m/n/10.95 ) = [] []
  []
@@ -1317,23 +1318,23 @@ Overfull \hbox (23.46384pt too wide) detected at line 388
 
 ]
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10.95> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 506.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 510.
 
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <8> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 506.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 510.
 
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 506.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 510.
 
  [20
 
 ] [21
 
 ]
-<integral.jpeg, id=139, 803.0pt x 611.28375pt>
+<integral.jpeg, id=184, 803.0pt x 611.28375pt>
 File: integral.jpeg Graphic file (type jpg)
 <use integral.jpeg>
-Package pdftex.def Info: integral.jpeg  used on input line 541.
+Package pdftex.def Info: integral.jpeg  used on input line 545.
 (pdftex.def)             Requested size: 160.59715pt x 122.25458pt.
  [22
 
@@ -1342,13 +1343,13 @@ Package pdftex.def Info: integral.jpeg  used on input line 541.
 ] [24
 
 ]
-<figures/module_1/purchase_distribution_figure.png, id=158, 462.528pt x 346.896
+<figures/module_1/purchase_distribution_figure.png, id=203, 462.528pt x 346.896
 pt>
 File: figures/module_1/purchase_distribution_figure.png Graphic file (type png)
 
 <use figures/module_1/purchase_distribution_figure.png>
 Package pdftex.def Info: figures/module_1/purchase_distribution_figure.png  use
-d on input line 595.
+d on input line 599.
 (pdftex.def)             Requested size: 245.83282pt x 184.37802pt.
  [25
 
@@ -1357,23 +1358,23 @@ d on input line 595.
 ] [27
 
 ]
-<figures/module_1/delivery_time_figure.png, id=179, 462.528pt x 346.896pt>
+<figures/module_1/delivery_time_figure.png, id=223, 462.528pt x 346.896pt>
 File: figures/module_1/delivery_time_figure.png Graphic file (type png)
 <use figures/module_1/delivery_time_figure.png>
 Package pdftex.def Info: figures/module_1/delivery_time_figure.png  used on inp
-ut line 702.
+ut line 706.
 (pdftex.def)             Requested size: 215.10196pt x 161.32614pt.
  [28
 
  <./figures/module_1/delivery_time_figure.png>] [29
 
 ]
-Overfull \hbox (12.36438pt too wide) detected at line 793
+Overfull \hbox (12.36438pt too wide) detected at line 797
 []
  []
 
 
-Overfull \hbox (21.90005pt too wide) detected at line 793
+Overfull \hbox (21.90005pt too wide) detected at line 797
 []
  []
 
@@ -1389,21 +1390,21 @@ Overfull \hbox (21.90005pt too wide) detected at line 793
 
 ]
 LaTeX Font Info:    Trying to load font information for TS1+cmss on input line 
-974.
+978.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmss.fd
 File: ts1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-Overfull \vbox (79.20848pt too high) detected at line 974
+Overfull \vbox (79.20848pt too high) detected at line 978
  []
 
 [35
 
 ]
-<Figure_6V.pdf, id=225, 695.96008pt x 358.4592pt>
+<Figure_6V.pdf, id=269, 695.96008pt x 358.4592pt>
 File: Figure_6V.pdf Graphic file (type pdf)
 <use Figure_6V.pdf>
-Package pdftex.def Info: Figure_6V.pdf  used on input line 987.
+Package pdftex.def Info: Figure_6V.pdf  used on input line 991.
 (pdftex.def)             Requested size: 278.37909pt x 143.38113pt.
  [36
 
@@ -1416,12 +1417,12 @@ Package pdftex.def Info: Figure_6V.pdf  used on input line 987.
 ] [40
 
 ]
-<figures/module_1/normal_distribution_figure.png, id=296, 462.528pt x 346.896pt
+<figures/module_1/normal_distribution_figure.png, id=342, 462.528pt x 346.896pt
 >
 File: figures/module_1/normal_distribution_figure.png Graphic file (type png)
 <use figures/module_1/normal_distribution_figure.png>
 Package pdftex.def Info: figures/module_1/normal_distribution_figure.png  used 
-on input line 1092.
+on input line 1096.
 (pdftex.def)             Requested size: 245.83282pt x 184.37802pt.
  [41
 
@@ -1459,21 +1460,9 @@ on input line 1092.
  (./main_slides.vrb
 \openout5 = `main_slides.pyg'.
 
-runsystem(pygmentize -S default -f latex -P commandprefix=PYG > _minted-main_sl
-ides/default-pyg-prefix.pygstyle)...executed.
-
 
 (./_minted-main_slides/default-pyg-prefix.pygstyle)
-runsystem(pygmentize -S vs -f latex -P commandprefix=PYGvs > _minted-main_slide
-s/vs.pygstyle)...executed.
-
-
 (./_minted-main_slides/vs.pygstyle)
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -o _
-minted-main_slides/B0BF211A9C7DC8D26CF09BBA97A3D850FF18CF5B751027030F12BC45E825
-1982.pygtex main_slides.pyg)...executed.
-
-
 (./_minted-main_slides/B0BF211A9C7DC8D26CF09BBA97A3D850FF18CF5B751027030F12BC45
 E8251982.pygtex)) [54
 
@@ -1487,10 +1476,6 @@ E8251982.pygtex)) [54
 
  (./main_slides.vrb
 \openout5 = `main_slides.pyg'.
-
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -o _
-minted-main_slides/4F78238E897ED79ACBFABFCC4E39C091FF18CF5B751027030F12BC45E825
-1982.pygtex main_slides.pyg)...executed.
 
 
 (./_minted-main_slides/4F78238E897ED79ACBFABFCC4E39C091FF18CF5B751027030F12BC45
@@ -1507,10 +1492,6 @@ E8251982.pygtex)) [56
  (./main_slides.vrb
 \openout5 = `main_slides.pyg'.
 
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -o _
-minted-main_slides/8674ACF1B8307DBA618E76C3D878C604FF18CF5B751027030F12BC45E825
-1982.pygtex main_slides.pyg)...executed.
-
 
 (./_minted-main_slides/8674ACF1B8307DBA618E76C3D878C604FF18CF5B751027030F12BC45
 E8251982.pygtex)) [58
@@ -1520,7 +1501,7 @@ E8251982.pygtex)) [58
 ] [60
 
 ]
-Overfull \vbox (4.47652pt too high) detected at line 1637
+Overfull \vbox (4.47652pt too high) detected at line 1641
  []
 
 [61
@@ -1528,7 +1509,7 @@ Overfull \vbox (4.47652pt too high) detected at line 1637
 ] [62
 
 ]
-Overfull \vbox (36.3918pt too high) detected at line 1702
+Overfull \vbox (36.3918pt too high) detected at line 1706
  []
 
 [63
@@ -1548,7 +1529,7 @@ Overfull \vbox (36.3918pt too high) detected at line 1702
 ] [70
 
 ]
-Overfull \vbox (15.10864pt too high) detected at line 1942
+Overfull \vbox (14.72948pt too high) detected at line 1946
  []
 
 [71
@@ -1570,10 +1551,6 @@ Overfull \vbox (15.10864pt too high) detected at line 1942
  (./main_slides.vrb
 \openout5 = `main_slides.pyg'.
 
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -o _
-minted-main_slides/D25CA513CC57F5A977231433EBAC3703FF18CF5B751027030F12BC45E825
-1982.pygtex main_slides.pyg)...executed.
-
 
 (./_minted-main_slides/D25CA513CC57F5A977231433EBAC3703FF18CF5B751027030F12BC45
 E8251982.pygtex)) [76
@@ -1588,10 +1565,6 @@ E8251982.pygtex)) [76
 
  (./main_slides.vrb
 \openout5 = `main_slides.pyg'.
-
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -o _
-minted-main_slides/CC2DA9CBAA05731F971DC34FA8B09384FF18CF5B751027030F12BC45E825
-1982.pygtex main_slides.pyg)...executed.
 
 
 (./_minted-main_slides/CC2DA9CBAA05731F971DC34FA8B09384FF18CF5B751027030F12BC45
@@ -1608,10 +1581,6 @@ E8251982.pygtex)) [78
  (./main_slides.vrb
 \openout5 = `main_slides.pyg'.
 
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -o _
-minted-main_slides/2D48E0E861A249DADFABEF69E837251DFF18CF5B751027030F12BC45E825
-1982.pygtex main_slides.pyg)...executed.
-
 
 (./_minted-main_slides/2D48E0E861A249DADFABEF69E837251DFF18CF5B751027030F12BC45
 E8251982.pygtex)) [80
@@ -1622,10 +1591,6 @@ E8251982.pygtex)) [80
  (./main_slides.vrb
 \openout5 = `main_slides.pyg'.
 
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -o _
-minted-main_slides/392C807894030BA823B2A7C632D79F3CFF18CF5B751027030F12BC45E825
-1982.pygtex main_slides.pyg)...executed.
-
 
 (./_minted-main_slides/392C807894030BA823B2A7C632D79F3CFF18CF5B751027030F12BC45
 E8251982.pygtex)) [81
@@ -1633,13 +1598,13 @@ E8251982.pygtex)) [81
 ] [82
 
 ]
-<LRSingle1.pdf, id=521, 722.7pt x 361.35pt>
+<LRSingle1.pdf, id=562, 722.7pt x 361.35pt>
 File: LRSingle1.pdf Graphic file (type pdf)
 <use LRSingle1.pdf>
-Package pdftex.def Info: LRSingle1.pdf  used on input line 2207.
+Package pdftex.def Info: LRSingle1.pdf  used on input line 2211.
 (pdftex.def)             Requested size: 216.81166pt x 108.40584pt.
 
-Overfull \hbox (9.69875pt too wide) detected at line 2207
+Overfull \hbox (9.69875pt too wide) detected at line 2211
 \OT1/mathkerncmss/m/sl/10.95 L\OT1/cmss/m/n/10.95 (\OT1/mathkerncmss/m/sl/10.95
  w[]\OML/cmm/m/it/10.95 ; \OT1/mathkerncmss/m/sl/10.95 w[]\OT1/cmss/m/n/10.95 )
  = [] [](\OT1/mathkerncmss/m/sl/10.95 y[] \OMS/cmsy/m/n/10.95 ^^@ \OT1/mathkern
@@ -1658,12 +1623,12 @@ OT1/cmss/m/n/10.95 ))[]]
 ]
 File: LRSingle1.pdf Graphic file (type pdf)
 <use LRSingle1.pdf>
-Package pdftex.def Info: LRSingle1.pdf  used on input line 2248.
+Package pdftex.def Info: LRSingle1.pdf  used on input line 2252.
 (pdftex.def)             Requested size: 144.53743pt x 72.2687pt.
-<LRSingle23.pdf, id=578, 722.7pt x 361.35pt>
+<LRSingle23.pdf, id=619, 722.7pt x 361.35pt>
 File: LRSingle23.pdf Graphic file (type pdf)
 <use LRSingle23.pdf>
-Package pdftex.def Info: LRSingle23.pdf  used on input line 2248.
+Package pdftex.def Info: LRSingle23.pdf  used on input line 2252.
 (pdftex.def)             Requested size: 144.53743pt x 72.2687pt.
  [85
 
@@ -1676,12 +1641,12 @@ Package pdftex.def Info: LRSingle23.pdf  used on input line 2248.
 ]
 File: LRSingle1.pdf Graphic file (type pdf)
 <use LRSingle1.pdf>
-Package pdftex.def Info: LRSingle1.pdf  used on input line 2354.
+Package pdftex.def Info: LRSingle1.pdf  used on input line 2358.
 (pdftex.def)             Requested size: 216.81166pt x 108.40584pt.
  [89
 
 ]
-Overfull \hbox (3.31349pt too wide) detected at line 2376
+Overfull \hbox (3.31349pt too wide) detected at line 2380
 \OT1/mathkerncmss/m/sl/10.95 L\OT1/cmss/m/n/10.95 (\OT1/mathkerncmss/m/sl/10.95
  w[]\OML/cmm/m/it/10.95 ; \OT1/mathkerncmss/m/sl/10.95 w[]\OML/cmm/m/it/10.95 ;
  [] ; \OT1/mathkerncmss/m/sl/10.95 w[]\OT1/cmss/m/n/10.95 ) = [] [] \OML/cmm/m/
@@ -1694,13 +1659,13 @@ it/10.95 `\OT1/cmss/m/n/10.95 (\OT1/mathkerncmss/m/sl/10.95 y[]\OML/cmm/m/it/10
 ] [91
 
 ]
-Overfull \vbox (3.9959pt too high) detected at line 2426
+Overfull \vbox (3.9959pt too high) detected at line 2430
  []
 
 [92
 
 ]
-Overfull \vbox (1.4802pt too high) detected at line 2586
+Overfull \vbox (1.4802pt too high) detected at line 2590
  []
 
 [93
@@ -1711,13 +1676,13 @@ Overfull \vbox (1.4802pt too high) detected at line 2586
 
 ]
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <14.4> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 2654
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 2658
 .
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 2654
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 2658
 .
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <7> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 2654
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 2658
 .
  [96
 
@@ -1730,10 +1695,6 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <7> not available
 
  (./main_slides.vrb
 \openout5 = `main_slides.pyg'.
-
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -o _
-minted-main_slides/A79237525E346EDE60BFB668FBCBE662FF18CF5B751027030F12BC45E825
-1982.pygtex main_slides.pyg)...executed.
 
 
 (./_minted-main_slides/A79237525E346EDE60BFB668FBCBE662FF18CF5B751027030F12BC45
@@ -1756,10 +1717,6 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
  (./main_slides.vrb
 \openout5 = `main_slides.pyg'.
 
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -o _
-minted-main_slides/2DD4B7D4411AD1BA059D86FAEE38811EFF18CF5B751027030F12BC45E825
-1982.pygtex main_slides.pyg)...executed.
-
 
 (./_minted-main_slides/2DD4B7D4411AD1BA059D86FAEE38811EFF18CF5B751027030F12BC45
 E8251982.pygtex)) [104
@@ -1772,11 +1729,7 @@ E8251982.pygtex)) [104
 
 ] [108
 
-]
-Overfull \vbox (169.25316pt too high) detected at line 2969
- []
-
-[109
+] [109
 
 ] [110
 
@@ -1784,24 +1737,74 @@ Overfull \vbox (169.25316pt too high) detected at line 2969
 
 ] [112
 
-] [113
+]
+\openout4 = `main_slides.vrb'.
 
-] [114
 
-] [115
+(./main_slides.vrb) [113
 
-] [116
+]
+\openout4 = `main_slides.vrb'.
 
-] [117
+ (./main_slides.vrb
+Overfull \hbox (18.8703pt too wide) in paragraph at lines 30--31
+ [] 
+ []
 
-] [118
+) [114
+
+]
+\openout4 = `main_slides.vrb'.
+
+ (./main_slides.vrb
+Missing character: There is no l in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no ; in font nullfont!
+
+Overfull \hbox (9.47585pt too wide) in paragraph at lines 56--57
+ [] 
+ []
+
+) [115
+
+]
+\openout4 = `main_slides.vrb'.
+
+ (./main_slides.vrb
+<index.jpeg, id=829, 288.07625pt x 176.66pt>
+File: index.jpeg Graphic file (type jpg)
+<use index.jpeg>
+Package pdftex.def Info: index.jpeg  used on input line 6.
+(pdftex.def)             Requested size: 201.65198pt x 123.66115pt.
+) [116
+
+ <./index.jpeg>]
+\openout4 = `main_slides.vrb'.
+
+ (./main_slides.vrb) [117
+
+]
+[118
 
 ] [119
 
 ] [120
 
-]
-[121
+] [121
 
 ] [122
 
@@ -1819,47 +1822,20 @@ Overfull \vbox (169.25316pt too high) detected at line 2969
 
 ] [129
 
-] [130
+]
+[130
 
 ] [131
 
 ] [132
 
-]
-[133
+] [133
 
 ] [134
 
 ] [135
 
 ] [136
-
-] [137
-
-] [138
-
-] [139
-
-] [140
-
-] [141
-
-] [142
-
-] [143
-
-] [144
-
-]
-[145
-
-] [146
-
-] [147
-
-] [148
-
-] [149
 
 ]
 \tf@nav=\write8
@@ -1872,50 +1848,43 @@ Overfull \vbox (169.25316pt too high) detected at line 2969
 \openout10 = `main_slides.snm'.
 
  (./main_slides.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `main_slides.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main_slides.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  CB212C837903A9FA905A4CB6B435A634;738.
+Package rerunfilecheck Info: File `main_slides.out' has not changed.
+(rerunfilecheck)             Checksum: A2EA61166652565C67767F48EBE89CA4;621.
 runsystem(rm main_slides.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 27937 strings out of 479304
- 542435 string characters out of 5869779
- 902726 words of memory out of 5000000
- 44095 multiletter control sequences out of 15000+600000
- 434665 words of font info for 130 fonts, out of 8000000 for 9000
+ 28348 strings out of 479304
+ 546701 string characters out of 5869779
+ 910622 words of memory out of 5000000
+ 44513 multiletter control sequences out of 15000+600000
+ 434700 words of font info for 130 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 131i,23n,132p,464b,1389s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/mpetrec/.texlive2020/texmf-var/fonts/pk/ljfour/jknappen/ec/tcss1095.6
-00pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmssi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmssi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
-0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main_slides.pdf (149 pages, 463158 bytes).
+ 131i,23n,132p,430b,1224s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/mpetrec/.texlive2020/texmf-var/fonts/pk/ljfour/jknappen/ec/tcss0900.6
+00pk> </home/mpetrec/.texlive2020/texmf-var/fonts/pk/ljfour/jknappen/ec/tcss109
+5.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmss9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmssi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmssi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+si8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on main_slides.pdf (136 pages, 479278 bytes).
 PDF statistics:
- 1107 PDF objects out of 1200 (max. 8388607)
- 803 compressed objects within 9 object streams
- 312 named destinations out of 1000 (max. 500000)
- 82 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1074 PDF objects out of 1200 (max. 8388607)
+ 781 compressed objects within 8 object streams
+ 284 named destinations out of 1000 (max. 500000)
+ 151 words of extra memory for PDF output out of 10000 (max. 10000000)
 

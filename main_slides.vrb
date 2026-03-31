@@ -1,16 +1,39 @@
-\frametitle{Python Code Example: Logistic Regression}
-\begin{minted}{python}
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, recall_score, precision_score, f1_score
+\frametitle{Neural networks: multilayer perceptron regression}
 
-# X: feature matrix, y: binary labels
-model = LogisticRegression()
-model.fit(X, y)
-y_pred = model.predict(X)
+ \lstinline$from sklearn.neural_network import MLPRegressor$
 
-print("Accuracy:", accuracy_score(y, y_pred))
-print("Recall:", recall_score(y, y_pred))
-print("Precision:", precision_score(y, y_pred))
-print("F1-score:", f1_score(y, y_pred))
-\end{minted}
+
+ \begin{lstlisting}
+
+ nw=MLPRegressor(hiden_layer_sizes=(k_1,k_2,...,k_N),
+          activation=func, max_iter=iter)
+
+
+ \end{lstlisting}
+
+
+ \bigskip
+
+ \begin{itemize}
+ \item \lstinline$k_1,...,k_N$ sizes of the first, second, etc. $N$th layer.
+
+ \medskip
+
+ \item \lstinline$func$ can be \lstinline$'identity'$, \lstinline$'logistic'$,  \lstinline$'tanh'$, \lstinline$'relu'$.
+
+ \medskip
+
+  \item \lstinline$iter$ the bigger the number is, the more likely to find optimal model.
+	  %$W_1,\ldots,W_N,b_1,\ldots,b_N$ which
+%  minimizes the loss function.
+
+
+ \end{itemize}
+
+
+ \lstinline$nw.fit(X_train,y_train)$, \lstinline$nw.predict(X_test)$.
+
+
+
+
 

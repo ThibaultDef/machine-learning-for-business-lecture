@@ -15,6 +15,8 @@
 \usepackage{stmaryrd}
 \usepackage{mathrsfs}
 \usepackage{multimedia}
+\lstset{basicstyle=\footnotesize}
+
 
 \usepackage{algorithm}
 \usepackage{algorithmic}
@@ -26,6 +28,8 @@
 
 
 % \lstset{basicstyle=\footnotesize}
+
+
 
 \setminted[python]{
   style=vs,
@@ -2926,8 +2930,9 @@ These methods are standard in deep learning.
 \end{frame}
 
 \begin{frame}{Decision Trees}
-    A decision tree is a predictive model that splits data into branches based on feature values, forming a tree-like structure. Each internal node represents a decision based on a feature, each branch corresponds to an outcome of that decision, and each leaf node represents a final prediction (class or value). The tree recursively partitions the data to maximize homogeneity within leaves, making decisions interpretable and easy to visualize.
-    \begin{block}{Example: Decision Tree for Loan Approval}
+    A decision tree is a predictive model that splits data into branches based on feature values, forming a tree-like structure. Each internal node represents a decision based on a feature, each branch corresponds to an outcome of that decision, and each leaf node represents a final prediction (class or value). 
+    
+    \textbf{Example: Decision Tree for Loan Approval}
     Suppose a bank wants to automate loan approvals. The decision tree might split as follows:
 
     \begin{itemize}
@@ -2943,6 +2948,8 @@ These methods are standard in deep learning.
         \end{itemize}
     \end{itemize}
 
+\end{frame}
+\begin{frame}
     \begin{center}
     \begin{tikzpicture}[level distance=1.5cm,
       level 1/.style={sibling distance=4cm},
@@ -2955,14 +2962,13 @@ These methods are standard in deep learning.
       };
     \end{tikzpicture}
     \end{center}
-    \end{block}
 
-\textbf{Split Criteria}
+%\textbf{Split Criteria}
 
-Classification: split so that \text{Gini impurity} is minimized
-\[
-\text{Gini} = 1 - \sum_k p_k^2
-\]
+%Classification: split so that \text{Gini impurity} is minimized
+%\[
+%\text{Gini} = 1 - \sum_k p_k^2
+%\]
 
 %Regression:
 %    A decision tree is a model that predicts outcomes by recursively splitting data based on feature values, forming a tree of decisions. Each internal node tests a feature, and each leaf gives a prediction. Decision trees are interpretable and visualize how decisions are made.
@@ -2980,7 +2986,7 @@ Classification: split so that \text{Gini impurity} is minimized
 \textbf{Each tree}
 
 \begin{itemize}
-    \item Trained on bootstrap sample of data
+    \item Trained on subset sample of data
     \item Uses random subset of features at each split
 \end{itemize}
 
@@ -2994,181 +3000,12 @@ Classification: split so that \text{Gini impurity} is minimized
 \end{itemize}
 
 \end{frame}
-
-\begin{frame}{Why Random Forest Works}
-
-Each individual tree:
-
-\begin{itemize}
-    \item Low bias
-    \item High variance
-\end{itemize}
-
-\vspace{0.4cm}
-
-Averaging many de-correlated trees:
-
-\[
-\text{Reduces variance}
-\]
-
-\vspace{0.4cm}
-
-\[
-\text{Ensemble of unstable models} \rightarrow \text{Stable predictor}
-\]
-
-\end{frame}
-
-\begin{frame}{Random Forest and Bias--Variance}
-
-Compared to a single tree:
-
-\begin{itemize}
-    \item Similar bias
-    \item Much lower variance
-\end{itemize}
-
-\vspace{0.5cm}
-
-Random Forest:
-
-\[
-\text{Improves generalization performance}
-\]
-
-\vspace{0.3cm}
-
-Often works well with minimal tuning.
-
-\end{frame}
-
-\begin{frame}{Motivation for Boosting}
-
-Suppose a small tree is weak:
-
-\begin{itemize}
-    \item Slightly better than random
-    \item High bias
-\end{itemize}
-
-\vspace{0.5cm}
-
-Key question:
-
-\[
-\text{Can many weak learners create a strong model?}
-\]
-
-\end{frame}
-
-\begin{frame}{Boosting: Main Idea}
-
-\textbf{Core mechanism}
-
-\[
-\text{Train models sequentially}
-\]
-
-\vspace{0.4cm}
-
-Each new tree:
-
-\begin{itemize}
-    \item Focuses on previous errors
-    \item Corrects residual mistakes
-\end{itemize}
-
-\vspace{0.4cm}
-
-Final model:
-
-\[
-F(x) = \sum_{m=1}^M \gamma_m T_m(x)
-\]
-
-\end{frame}
-
-\begin{frame}{Boosting Intuition}
-
-Step 1:
-\begin{itemize}
-    \item Fit a small tree
-\end{itemize}
-
-Step 2:
-\begin{itemize}
-    \item Identify errors
-    \item Increase focus on difficult observations
-\end{itemize}
-
-Step 3:
-\begin{itemize}
-    \item Fit new tree to residual errors
-\end{itemize}
-
-\vspace{0.4cm}
-
-Repeat until performance stabilizes.
-
-\end{frame}
-
-\begin{frame}{Boosting as Gradient Descent}
-
-Boosting can be interpreted as:
-
-\[
-\text{Gradient descent in function space}
-\]
-
-\vspace{0.4cm}
-
-At each iteration:
-
-\begin{itemize}
-    \item Compute residuals (negative gradient)
-    \item Fit tree to residuals
-    \item Update model
-\end{itemize}
-
-\vspace{0.4cm}
-
-Examples: Gradient Boosting, XGBoost, LightGBM
-
-\end{frame}
-
-\begin{frame}{Random Forest vs Boosting}
-
-\textbf{Random Forest}
-
-\begin{itemize}
-    \item Trees trained independently
-    \item Mainly reduces variance
-    \item Easily parallelizable
-\end{itemize}
-
-\vspace{0.5cm}
-
-\textbf{Boosting}
-
-\begin{itemize}
-    \item Trees trained sequentially
-    \item Mainly reduces bias
-    \item Often higher predictive performance
-\end{itemize}
-
-\end{frame}
-
 \begin{frame}{Introduction to Neural Networks}
 
 One hidden layer network:
 
 \[
-h = \sigma(W_1 x + b_1)
-\]
-
-\[
-\hat{y} = W_2 h + b_2
+h(x) = W\sigma(w_0+w_1x_1+\cdots + w_px_p)+b_2
 \]
 
 \vspace{0.4cm}
@@ -3183,6 +3020,263 @@ h = \sigma(W_1 x + b_1)
 \vspace{0.3cm}
 
 Universal function approximator when sufficiently large.
+
+\end{frame}
+\begin{frame}[fragile]{Neural networks: multilayer perceptron regression}
+
+ $1$- layer perceptron with hidden layer of size $1$ with one output
+       \[ 
+          \begin{split}
+            g(x_1,\ldots,x_n)=W_2 \sigma(W_1 x + b_1)+b_2 = \\
+           W_2\sigma(W_{11}x_1+\cdots + W_{1n}x_n+b_1)+b_2 
+         \end{split}
+      \]
+
+
+$\sigma$ -- activation function: 
+
+\begin{itemize}
+\item hyperbolic tangent:   $\sigma(x)=\frac{e^x-e^{-x}}{e^x+e^{-x}}$ 
+
+\item logistic function:  $\sigma(x)=\frac{1}{1+e^{-x}}$
+
+\item linear:  $\sigma(x)=x$
+
+\item RELU $\sigma(x)=\max(0,x)$. 
+
+\end{itemize}
+
+ $W_2,b_1,b_2$ scalars, $W_1=(W_{11},\ldots,W_{1n})$ 
+
+
+\end{frame}
+\begin{frame}[fragile]{Neural networks: multilayer perceptron regression}
+
+	$1$- layer perceptron with hidden layer of size $1$ with one output ($1$-neuron neural network)
+	 \begin{figure}
+\begin{center}
+\begin{tikzpicture}
+ %%\tikzstyle{mode}=[draw,transform shape, minimum size=10mm]
+	\draw (12,6)++(15,5) node{Neuron};
+  \node[draw,right, text centered, text width=20ex,transform shape, minimum size = 15mm] at 
+  (0,0) (SW) 
+	{linear regression};
+	\node[draw,right, text centered, text width=20ex,transform shape, minimum size = 15mm] 
+	at (30,0)  (ACT) {$\hat{y}=\sigma(W\hat{y}_1+b_2)$};
+	\draw[->] (ACT.east)++(0,0) -- ++(5,0) node[pos=0.3]{$\hat{y}$};
+	\draw[->] (SW.east)++(0,0) -- (ACT.west) node[pos=0.3]{$\hat{y}_1$};
+  %\draw[<-] (SW.west)++(0,3) -- ++(-8,3); % node{$x_1$};
+	\node[draw,circle] at (-8,12) (X1) {$x_1$};
+	\node[draw,circle] at (-8,6) (X2) {$x_2$};
+	\node  at (-8,0) (Xst) {$\vdots$};
+	\node[draw,circle] at (-8,-8) (Xn) {$x_n$};
+	 \draw[<-] (SW.west)++(0,3) -- (X1);
+	 \draw[<-] (SW.west)++ (0,2)-- (X2);
+	 \draw[<-] (SW.west)++(0,-2) -- (Xn);
+  %\draw  (SW.west)++(-8,5) node{$x_1$};
+  %\draw[<-] (SW.west)++(0,2) -- ++(-8,2); % node{$x_2$};
+  %\draw  (SW.west)++(-8,1) node{$x_2$};
+  %\draw[<-] (SW.west)++(0,0) -- ++(-5,0); % node[pos=0.2]{$\vdots$};
+  %\draw[<-] (SW.west)++(0,-3) -- ++(-8,-3);% node{$x_n$};
+  %\draw  (SW.west)++(-8,-4) node{$x_n$};
+\end{tikzpicture}
+\end{center}
+\end{figure}
+
+
+%       \[ 
+%          \begin{split}
+%            g(x_1,\ldots,x_n)=%W_2 \sigma(W_1 x + b_1)+b_2 = \\
+%           W_2\sigma(W_{11}x_1+\cdots + W_{1n}x_n+b_1)+b_2 
+%         \end{split}
+%      \]
+%
+%	$W_2, W_{11} \ldots, W_{1n}$ -- weights, $b_1,b_2$ --  biases. 
+
+$\sigma$ -- activation function: 
+
+\begin{itemize}
+\item hyperbolic tangent:   $\sigma(x)=\frac{e^x-e^{-x}}{e^x+e^{-x}}$ 
+
+\item logistic function:  $\sigma(x)=\frac{1}{1+e^{-x}}$
+
+\item linear:  $\sigma(x)=x$
+
+\item RELU $\sigma(x)=\max(0,x)$. 
+
+\end{itemize}
+
+% $W_2,b_1,b_2$ scalars, $W_1=(W_{11},\ldots,W_{1n})$ 
+
+
+\end{frame}
+\begin{frame}[fragile]{Neural networks: multilayer perceptron regression}
+
+
+	$1$- layer perceptron with hidden layer of size $k$  ($k$ neurons) and with one output
+
+\begin{figure}
+ \begin{center}
+	 \begin{tikzpicture}[scale=0.7]
+ %%\tikzstyle{mode}=[draw,transform shape, minimum size=10mm]
+  \node[draw,right, text centered, text width=20ex,transform shape, minimum size = 15mm] at 
+  (0,10) (SW1) 
+	{linear regression 1};
+    \node[draw,right, text centered, text width=20ex,transform shape, minimum size = 15mm] at 
+  (60,0) (SWf) 
+	{final linear regression};
+	\draw (SW1.north)++(15,3) node{Neuron  1};
+  \node[draw,right, text centered, text width=20ex,transform shape, minimum size = 15mm] at 
+  (0,-10) (SWk) 
+	{linear regression k};
+  	\draw (SWk.north)++(15,3) node{Neuron k};
+  %\node[draw,right, text centered, text width=20ex,transform shape, minimum size = 15mm] at 
+  %(0,-20) (SWk) 
+	{linear regression $k$};
+	%\draw (SWk.north)++(0,3) node{Hidden layer $k$};
+	\node[draw,right, text centered, text width=15ex,transform shape, minimum size = 15mm] 
+	at (30,10)  (ACT1) {$\hat{y}_1=\sigma(\hat{h}_1)$};
+		\node[draw,right, text centered, text width=15ex,transform shape, minimum size = 15mm] 
+	at (30,-10)  (ACTk) {$\hat{y}_k=\sigma(\hat{h}_k)$};
+
+	\draw[->] (ACT1) -- (SWf) node[pos=0.3]{$\hat{y}_1$};
+	\draw[->] (ACTk) -- (SWf) node[pos=0.3]{$\hat{y}_k$};
+	\draw[->] (SW1) -- (ACT1) node[pos=0.3]{$\hat{h}_1$};
+	\draw[->] (SWk) -- (ACTk) node[pos=0.3]{$\hat{h}_1$};
+	\draw[->] (SWf.south) -- ++(0,-5) node[pos=0.3]{$\hat{y}$};
+  %\draw[<-] (SW.west)++(0,3) -- ++(-8,3); % node{$x_1$};
+	\node[draw,circle] at (-8,12) (X1) {$x_1$};
+	\node[draw,circle] at (-8,6) (X2) {$x_2$};
+	\node  at (-8,0) (Xst) {$\vdots$};
+	\node  at (30,0) (Hst) {$\vdots$};
+	\node  at (10,0) (Hst2) {$\vdots$};
+	\node[draw,circle] at (-8,-8) (Xn) {$x_n$};
+
+	 \draw[<-] (SW1) -- (X1);
+	 \draw[<-] (SW1)-- (X2);
+	 \draw[<-] (SW1) -- (Xn);
+	  \draw[<-] (SWk) -- (X1);
+	 \draw[<-] (SWk)-- (X2);
+	 \draw[<-] (SWk) -- (Xn);
+
+  %\draw  (SW.west)++(-8,5) node{$x_1$};
+  %\draw[<-] (SW.west)++(0,2) -- ++(-8,2); % node{$x_2$};
+  %\draw  (SW.west)++(-8,1) node{$x_2$};
+  %\draw[<-] (SW.west)++(0,0) -- ++(-5,0); % node[pos=0.2]{$\vdots$};
+  %\draw[<-] (SW.west)++(0,-3) -- ++(-8,-3);% node{$x_n$};
+  %\draw  (SW.west)++(-8,-4) node{$x_n$};
+\end{tikzpicture}
+\end{center}
+\end{figure}
+
+
+
+
+       %\[ \begin{split} 
+%	       g(x_1,\ldots,x_n)&=W_{2,1} y_1+\cdots + W_{2,k} y_k +b_2 \\
+	%W_2 \stackrel{\rightarrow}{\sigma}(W_1 x + b_1)+b_2 =  \\
+%	       y_1&=\sigma(W_{1,1}x_1+\cdots W_{1,n}x_n)+b_{1,1}  \mbox{ output first layer }  \\
+%	       y_2&=\sigma(W_{2,1}x_1+\cdots W_{2,n}x_n)+b_{2,1}  \mbox{ output second layer }\\
+%	       \vdots & \vdots \\
+%	       y_k& =\sigma(W_{k,1}x_1+\cdots W_{k,n}x_n)+b_{k,1} \mbox{ output $k$th layer }\\
+%       \end{split}
+%       \]
+
+ %$W_2,b_2$ scalars, 
+
+ %\medskip
+
+ %$W_1=\begin{bmatrix} W_{11}^1 & \cdots & W_{1n}^1  \\   W_{21}^1 & \cdots & W_{2n}^1 \\ \vdots & \cdots & \vdots \\ W_{k1}^1 & \cdots & W_{kn}^1 \end{bmatrix}$, 
+  %$b_1=\begin{bmatrix} b_{1,1} \\ \vdots \\ b_{1,k} \end{bmatrix}$, $\stackrel{\rightarrow}{\sigma}(\begin{bmatrix} z_1 \\ \vdots \\ z_k \end{bmatrix})=\begin{bmatrix} \sigma(z_1) \\ \vdots \\ \sigma(z_k) \end{bmatrix}$
+
+\end{frame}
+
+ %$2$ - layer perceptron
+
+%       \[ g(x_1,\ldots,x_n)=W_3\stackrel{\rightarrow}{\sigma}(W_2 \stackrel{\rightarrow}{\sigma}(W_1x+b_1) + b_2)+b_3 \]
+ 
+
+\begin{frame}[fragile]{Neural networks: multilayer perceptron regression}
+
+Cascade of several 1-layer nerual networks: output of one 1-layer neural network is the input of the next one.
+
+ \begin{center}
+ \includegraphics[scale=0.7]{index.jpeg}
+ \end{center}
+
+\end{frame}
+%\begin{frame}[fragile]{Neural networks: multilayer perceptron regression}
+
+% $N$ -layer perceptron, $N$ hidden layers, $i$th hidden layer of size $k_i$, $p$ outputs
+%
+%       \[ g(x_1,\ldots,x_n)=W_N(\stackrel{\rightarrow}{\sigma} (W_{N-1} \stackrel{\rightarrow}{\sigma} ( \cdots \stackrel{\rightarrow}{\sigma}(W_1x+b_1) + b_2) \cdots + b_{N-1})+b_N \]
+%
+
+% \bigskip 
+
+%  $W_i$ matrices of size $k_{i+1} \times k_i$, $i=2,\ldots,N-1$, and $W_1$ is a matrix of size $k_1 \times n$  and $W_N$ is a matrox of size $p \times k_N$.
+
+%  \medskip
+
+%  $b_i$ vectors of size $k_{i} \times 1$, $i=1,\ldots,N-1$, $b_N$ vector of size $p \times 1$. 
+
+% \medskip
+
+%  $p$ -- number of outputs, $n$ is the number of inputs, $k$ is the size of each layer.
+
+% \medskip
+
+%  $W_1,\ldots,W_N$ weights, $b_1,\ldots,b_N$ bias vectors
+
+
+% \medskip
+
+% Loss function: $\mathbf{l}(y,\hat{y})=\sum_{i=1}^{p} (y_i-\hat{y}_i)^2$
+
+
+
+
+
+
+%\end{frame}
+\begin{frame}[fragile]{Neural networks: multilayer perceptron regression}
+
+ \lstinline$from sklearn.neural_network import MLPRegressor$
+
+
+ \begin{lstlisting}
+
+ nw=MLPRegressor(hiden_layer_sizes=(k_1,k_2,...,k_N), 
+          activation=func, max_iter=iter)
+
+
+ \end{lstlisting}
+
+
+ \bigskip
+
+ \begin{itemize}
+ \item \lstinline$k_1,...,k_N$ sizes of the first, second, etc. $N$th layer.
+
+ \medskip
+
+ \item \lstinline$func$ can be \lstinline$'identity'$, \lstinline$'logistic'$,  \lstinline$'tanh'$, \lstinline$'relu'$.
+ 
+ \medskip
+
+  \item \lstinline$iter$ the bigger the number is, the more likely to find optimal model.
+	  %$W_1,\ldots,W_N,b_1,\ldots,b_N$ which 
+%  minimizes the loss function. 
+
+  
+ \end{itemize}
+
+
+ \lstinline$nw.fit(X_train,y_train)$, \lstinline$nw.predict(X_test)$. 
+
+ 
+
+
 
 \end{frame}
 
@@ -3643,6 +3737,7 @@ In credit scoring, the decision boundary separates high-risk from low-risk appli
 
 \end{frame}
 
+\end{document}
 
 % =====================================================
 
