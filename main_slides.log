@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2026.3.26)  31 MAR 2026 07:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2026.3.26)  31 MAR 2026 07:57
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
-**main.tex
-(./main.tex
+**main_slides.tex
+(./main_slides.tex
 LaTeX2e <2020-10-01> patch level 4
 L3 programming layer <2021-01-09> xparse <2020-03-03>
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamer.cls
@@ -955,10 +955,11 @@ Package: catchfile 2019/12/09 v1.8 Catch the contents of a file (HO)
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifluatex.sty
 Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
 )
-runsystem(uname -s > "main.w18")...executed.
+runsystem(uname -s > "main_slides.w18")...executed.
 
- (./main.w18)
-runsystem(rm -- "main.w18")...executed.
+
+(./main_slides.w18)
+runsystem(rm -- "main_slides.w18")...executed.
 
 )
 (/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
@@ -992,7 +993,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@every@listing=\toks52
 \c@listing=\count366
 )
-runsystem(mkdir -p _minted-main)...executed.
+runsystem(mkdir -p _minted-main_slides)...executed.
 
 
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
@@ -1052,17 +1053,17 @@ Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\\' on input line 44.
 
-runsystem(which pygmentize && touch main.aex)...executed.
+runsystem(which pygmentize && touch main_slides.aex)...executed.
 
-runsystem(rm main.aex)...executed.
+runsystem(rm main_slides.aex)...executed.
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2020-01-29 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count375
 \l__pdf_internal_box=\box88
 )
-(./main.aux)
-\openout1 = `main.aux'.
+No file main_slides.aux.
+\openout1 = `main_slides.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
 LaTeX Font Info:    ... okay on input line 47.
@@ -1080,7 +1081,6 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 47.
 LaTeX Font Info:    ... okay on input line 47.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 47.
 LaTeX Font Info:    ... okay on input line 47.
-
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -1153,10 +1153,8 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 47.
 LaTeX Info: Redefining \pageref on input line 47.
 LaTeX Info: Redefining \nameref on input line 47.
-
-(./main.out) (./main.out)
 \@outlinefile=\write7
-\openout7 = `main.out'.
+\openout7 = `main_slides.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 47.
@@ -1241,12 +1239,14 @@ Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
 )
 \c@lstlisting=\count383
 
-(./main.nav) [1
+No file main_slides.nav.
+[1
 
 {/home/mpetrec/.texlive2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Trying to load font information for U+msa on input line 80.
 
- (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 80.
@@ -1273,7 +1273,8 @@ LaTeX Font Info:    Trying to load font information for U+rsfs on input line 80
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 ) [2
 
-] (./main.toc)
+]
+No file main_slides.toc.
 [3
 
 ] [4
@@ -1329,7 +1330,7 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
 ] [21
 
 ]
-<integral.jpeg, id=196, 803.0pt x 611.28375pt>
+<integral.jpeg, id=139, 803.0pt x 611.28375pt>
 File: integral.jpeg Graphic file (type jpg)
 <use integral.jpeg>
 Package pdftex.def Info: integral.jpeg  used on input line 541.
@@ -1341,7 +1342,7 @@ Package pdftex.def Info: integral.jpeg  used on input line 541.
 ] [24
 
 ]
-<figures/module_1/purchase_distribution_figure.png, id=215, 462.528pt x 346.896
+<figures/module_1/purchase_distribution_figure.png, id=158, 462.528pt x 346.896
 pt>
 File: figures/module_1/purchase_distribution_figure.png Graphic file (type png)
 
@@ -1356,7 +1357,7 @@ d on input line 595.
 ] [27
 
 ]
-<figures/module_1/delivery_time_figure.png, id=235, 462.528pt x 346.896pt>
+<figures/module_1/delivery_time_figure.png, id=179, 462.528pt x 346.896pt>
 File: figures/module_1/delivery_time_figure.png Graphic file (type png)
 <use figures/module_1/delivery_time_figure.png>
 Package pdftex.def Info: figures/module_1/delivery_time_figure.png  used on inp
@@ -1399,7 +1400,7 @@ Overfull \vbox (79.20848pt too high) detected at line 974
 [35
 
 ]
-<Figure_6V.pdf, id=281, 695.96008pt x 358.4592pt>
+<Figure_6V.pdf, id=225, 695.96008pt x 358.4592pt>
 File: Figure_6V.pdf Graphic file (type pdf)
 <use Figure_6V.pdf>
 Package pdftex.def Info: Figure_6V.pdf  used on input line 987.
@@ -1415,7 +1416,7 @@ Package pdftex.def Info: Figure_6V.pdf  used on input line 987.
 ] [40
 
 ]
-<figures/module_1/normal_distribution_figure.png, id=353, 462.528pt x 346.896pt
+<figures/module_1/normal_distribution_figure.png, id=296, 462.528pt x 346.896pt
 >
 File: figures/module_1/normal_distribution_figure.png Graphic file (type png)
 <use figures/module_1/normal_distribution_figure.png>
@@ -1448,49 +1449,71 @@ on input line 1092.
 [52
 
 ]
-\openout4 = `main.vrb'.
+\openout4 = `main_slides.vrb'.
 
- (./main.vrb) [53
-
-]
-\openout4 = `main.vrb'.
-
- (./main.vrb
-\openout5 = `main.pyg'.
-
- (./_minted-main/default-pyg-prefix.pygstyle) (./_minted-main/vs.pygstyle)
-(./_minted-main/B0BF211A9C7DC8D26CF09BBA97A3D8504FBEEAFC55D0059826E664B9BBCF372
-1.pygtex)) [54
+ (./main_slides.vrb) [53
 
 ]
-\openout4 = `main.vrb'.
+\openout4 = `main_slides.vrb'.
 
- (./main.vrb) [55
+ (./main_slides.vrb
+\openout5 = `main_slides.pyg'.
+
+runsystem(pygmentize -S default -f latex -P commandprefix=PYG > _minted-main_sl
+ides/default-pyg-prefix.pygstyle)...executed.
+
+
+(./_minted-main_slides/default-pyg-prefix.pygstyle)
+runsystem(pygmentize -S vs -f latex -P commandprefix=PYGvs > _minted-main_slide
+s/vs.pygstyle)...executed.
+
+
+(./_minted-main_slides/vs.pygstyle)
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -o _
+minted-main_slides/B0BF211A9C7DC8D26CF09BBA97A3D850FF18CF5B751027030F12BC45E825
+1982.pygtex main_slides.pyg)...executed.
+
+
+(./_minted-main_slides/B0BF211A9C7DC8D26CF09BBA97A3D850FF18CF5B751027030F12BC45
+E8251982.pygtex)) [54
 
 ]
-\openout4 = `main.vrb'.
+\openout4 = `main_slides.vrb'.
 
- (./main.vrb
-\openout5 = `main.pyg'.
-
-
-(./_minted-main/4F78238E897ED79ACBFABFCC4E39C0914FBEEAFC55D0059826E664B9BBCF372
-1.pygtex)) [56
+ (./main_slides.vrb) [55
 
 ]
-\openout4 = `main.vrb'.
+\openout4 = `main_slides.vrb'.
 
- (./main.vrb) [57
+ (./main_slides.vrb
+\openout5 = `main_slides.pyg'.
+
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -o _
+minted-main_slides/4F78238E897ED79ACBFABFCC4E39C091FF18CF5B751027030F12BC45E825
+1982.pygtex main_slides.pyg)...executed.
+
+
+(./_minted-main_slides/4F78238E897ED79ACBFABFCC4E39C091FF18CF5B751027030F12BC45
+E8251982.pygtex)) [56
 
 ]
-\openout4 = `main.vrb'.
+\openout4 = `main_slides.vrb'.
 
- (./main.vrb
-\openout5 = `main.pyg'.
+ (./main_slides.vrb) [57
+
+]
+\openout4 = `main_slides.vrb'.
+
+ (./main_slides.vrb
+\openout5 = `main_slides.pyg'.
+
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -o _
+minted-main_slides/8674ACF1B8307DBA618E76C3D878C604FF18CF5B751027030F12BC45E825
+1982.pygtex main_slides.pyg)...executed.
 
 
-(./_minted-main/8674ACF1B8307DBA618E76C3D878C6044FBEEAFC55D0059826E664B9BBCF372
-1.pygtex)) [58
+(./_minted-main_slides/8674ACF1B8307DBA618E76C3D878C604FF18CF5B751027030F12BC45
+E8251982.pygtex)) [58
 
 ] [59
 
@@ -1537,64 +1560,80 @@ Overfull \vbox (15.10864pt too high) detected at line 1942
 ] [74
 
 ]
-\openout4 = `main.vrb'.
+\openout4 = `main_slides.vrb'.
 
- (./main.vrb) [75
-
-]
-\openout4 = `main.vrb'.
-
- (./main.vrb
-\openout5 = `main.pyg'.
-
-
-(./_minted-main/D25CA513CC57F5A977231433EBAC37034FBEEAFC55D0059826E664B9BBCF372
-1.pygtex)) [76
+ (./main_slides.vrb) [75
 
 ]
-\openout4 = `main.vrb'.
+\openout4 = `main_slides.vrb'.
 
- (./main.vrb) [77
+ (./main_slides.vrb
+\openout5 = `main_slides.pyg'.
 
-]
-\openout4 = `main.vrb'.
-
- (./main.vrb
-\openout5 = `main.pyg'.
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -o _
+minted-main_slides/D25CA513CC57F5A977231433EBAC3703FF18CF5B751027030F12BC45E825
+1982.pygtex main_slides.pyg)...executed.
 
 
-(./_minted-main/CC2DA9CBAA05731F971DC34FA8B093844FBEEAFC55D0059826E664B9BBCF372
-1.pygtex)) [78
-
-]
-\openout4 = `main.vrb'.
-
- (./main.vrb) [79
+(./_minted-main_slides/D25CA513CC57F5A977231433EBAC3703FF18CF5B751027030F12BC45
+E8251982.pygtex)) [76
 
 ]
-\openout4 = `main.vrb'.
+\openout4 = `main_slides.vrb'.
 
- (./main.vrb
-\openout5 = `main.pyg'.
-
-
-(./_minted-main/2D48E0E861A249DADFABEF69E837251D4FBEEAFC55D0059826E664B9BBCF372
-1.pygtex)) [80
+ (./main_slides.vrb) [77
 
 ]
-\openout4 = `main.vrb'.
+\openout4 = `main_slides.vrb'.
 
- (./main.vrb
-\openout5 = `main.pyg'.
+ (./main_slides.vrb
+\openout5 = `main_slides.pyg'.
+
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -o _
+minted-main_slides/CC2DA9CBAA05731F971DC34FA8B09384FF18CF5B751027030F12BC45E825
+1982.pygtex main_slides.pyg)...executed.
 
 
-(./_minted-main/392C807894030BA823B2A7C632D79F3C4FBEEAFC55D0059826E664B9BBCF372
-1.pygtex)) [81
+(./_minted-main_slides/CC2DA9CBAA05731F971DC34FA8B09384FF18CF5B751027030F12BC45
+E8251982.pygtex)) [78
+
+]
+\openout4 = `main_slides.vrb'.
+
+ (./main_slides.vrb) [79
+
+]
+\openout4 = `main_slides.vrb'.
+
+ (./main_slides.vrb
+\openout5 = `main_slides.pyg'.
+
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -o _
+minted-main_slides/2D48E0E861A249DADFABEF69E837251DFF18CF5B751027030F12BC45E825
+1982.pygtex main_slides.pyg)...executed.
+
+
+(./_minted-main_slides/2D48E0E861A249DADFABEF69E837251DFF18CF5B751027030F12BC45
+E8251982.pygtex)) [80
+
+]
+\openout4 = `main_slides.vrb'.
+
+ (./main_slides.vrb
+\openout5 = `main_slides.pyg'.
+
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -o _
+minted-main_slides/392C807894030BA823B2A7C632D79F3CFF18CF5B751027030F12BC45E825
+1982.pygtex main_slides.pyg)...executed.
+
+
+(./_minted-main_slides/392C807894030BA823B2A7C632D79F3CFF18CF5B751027030F12BC45
+E8251982.pygtex)) [81
 
 ] [82
 
 ]
-<LRSingle1.pdf, id=573, 722.7pt x 361.35pt>
+<LRSingle1.pdf, id=521, 722.7pt x 361.35pt>
 File: LRSingle1.pdf Graphic file (type pdf)
 <use LRSingle1.pdf>
 Package pdftex.def Info: LRSingle1.pdf  used on input line 2207.
@@ -1621,7 +1660,7 @@ File: LRSingle1.pdf Graphic file (type pdf)
 <use LRSingle1.pdf>
 Package pdftex.def Info: LRSingle1.pdf  used on input line 2248.
 (pdftex.def)             Requested size: 144.53743pt x 72.2687pt.
-<LRSingle23.pdf, id=630, 722.7pt x 361.35pt>
+<LRSingle23.pdf, id=578, 722.7pt x 361.35pt>
 File: LRSingle23.pdf Graphic file (type pdf)
 <use LRSingle23.pdf>
 Package pdftex.def Info: LRSingle23.pdf  used on input line 2248.
@@ -1687,14 +1726,18 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <7> not available
 ] [98
 
 ]
-\openout4 = `main.vrb'.
+\openout4 = `main_slides.vrb'.
 
- (./main.vrb
-\openout5 = `main.pyg'.
+ (./main_slides.vrb
+\openout5 = `main_slides.pyg'.
+
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -o _
+minted-main_slides/A79237525E346EDE60BFB668FBCBE662FF18CF5B751027030F12BC45E825
+1982.pygtex main_slides.pyg)...executed.
 
 
-(./_minted-main/A79237525E346EDE60BFB668FBCBE6624FBEEAFC55D0059826E664B9BBCF372
-1.pygtex
+(./_minted-main_slides/A79237525E346EDE60BFB668FBCBE662FF18CF5B751027030F12BC45
+E8251982.pygtex
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
 (Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 5.
 )) [99
@@ -1708,14 +1751,18 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
 ] [103
 
 ]
-\openout4 = `main.vrb'.
+\openout4 = `main_slides.vrb'.
 
- (./main.vrb
-\openout5 = `main.pyg'.
+ (./main_slides.vrb
+\openout5 = `main_slides.pyg'.
+
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -o _
+minted-main_slides/2DD4B7D4411AD1BA059D86FAEE38811EFF18CF5B751027030F12BC45E825
+1982.pygtex main_slides.pyg)...executed.
 
 
-(./_minted-main/2DD4B7D4411AD1BA059D86FAEE38811E4FBEEAFC55D0059826E664B9BBCF372
-1.pygtex)) [104
+(./_minted-main_slides/2DD4B7D4411AD1BA059D86FAEE38811EFF18CF5B751027030F12BC45
+E8251982.pygtex)) [104
 
 ] [105
 
@@ -1816,28 +1863,37 @@ Overfull \vbox (169.25316pt too high) detected at line 2969
 
 ]
 \tf@nav=\write8
-\openout8 = `main.nav'.
+\openout8 = `main_slides.nav'.
 
 \tf@toc=\write9
-\openout9 = `main.toc'.
+\openout9 = `main_slides.toc'.
 
 \tf@snm=\write10
-\openout10 = `main.snm'.
+\openout10 = `main_slides.snm'.
 
- (./main.aux)
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: CB212C837903A9FA905A4CB6B435A634;738.
-runsystem(rm main.pyg)...executed.
+ (./main_slides.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `main_slides.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main_slides.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  CB212C837903A9FA905A4CB6B435A634;738.
+runsystem(rm main_slides.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 28298 strings out of 479304
- 545200 string characters out of 5869779
- 910430 words of memory out of 5000000
- 44446 multiletter control sequences out of 15000+600000
+ 27937 strings out of 479304
+ 542435 string characters out of 5869779
+ 902726 words of memory out of 5000000
+ 44095 multiletter control sequences out of 15000+600000
  434665 words of font info for 130 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 131i,23n,132p,457b,1390s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 131i,23n,132p,464b,1389s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/mpetrec/.texlive2020/texmf-var/fonts/pk/ljfour/jknappen/ec/tcss1095.6
 00pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/s
@@ -1856,10 +1912,10 @@ ts/cm/cmssi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
 are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (149 pages, 465341 bytes).
+Output written on main_slides.pdf (149 pages, 463158 bytes).
 PDF statistics:
- 1148 PDF objects out of 1200 (max. 8388607)
- 844 compressed objects within 9 object streams
+ 1107 PDF objects out of 1200 (max. 8388607)
+ 803 compressed objects within 9 object streams
  312 named destinations out of 1000 (max. 500000)
- 162 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 82 words of extra memory for PDF output out of 10000 (max. 10000000)
 

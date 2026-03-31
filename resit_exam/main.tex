@@ -1,0 +1,154 @@
+\documentclass[10pt, oneside]{article} 
+\usepackage{amsmath, amsthm, amssymb, calrsfs, wasysym, verbatim, bbm, color, graphics, graphicx, geometry, stmaryrd, parskip, multirow, listings, xcolor, minted}
+\usepackage{caption}
+
+\geometry{tmargin=.75in, bmargin=.75in, lmargin=.75in, rmargin = .75in}  
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\definecolor{vscode-bg}{HTML}{1E1E1E}       % fond sombre
+\definecolor{vscode-text}{HTML}{D4D4D4}     % texte normal
+\definecolor{vscode-keyword}{HTML}{569CD6}  % mots-clés
+\definecolor{vscode-string}{HTML}{CE9178}   % chaînes de caractères
+\definecolor{vscode-comment}{HTML}{6A9955}  % commentaires
+\definecolor{vscode-number}{HTML}{B5CEA8}   % nombres
+\definecolor{vscode-func}{HTML}{DCDCAA}     % fonctions
+\definecolor{vscode-class}{HTML}{4EC9B0}    % classes
+\definecolor{vscode-operator}{HTML}{D4D4D4} % opérateurs
+
+
+\setminted[python]{
+  style=vs,
+  fontsize=\footnotesize,
+  frame=single,
+  breaklines=true,
+  linenos=false
+}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Cdot}{\boldsymbol{\cdot}}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{conv}{Convention}
+\newtheorem{rem}{Remark}
+\newtheorem{lem}{Lemma}
+\newtheorem{cor}{Corollary}
+\newtheorem{ex}{Exercises}
+
+
+\title{Machine Learning for Business \\ QCM Exam}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item Machine learning primarily enables algorithms to:
+    \begin{enumerate}
+    \item Replace all business managers
+    \item Learn patterns and tasks directly from data
+    \item Eliminate uncertainty from decisions
+    \item Work only with fully labeled datasets
+    \end{enumerate}
+    
+    \item Why is probability necessary in machine learning ?
+    \begin{enumerate}
+    \item Because outcomes are fixed once inputs are known
+    \item Because models should avoid randomness completely
+    \item Because identical inputs can still lead to different outputs
+    \item Because all datasets are normally distributed
+    \end{enumerate}
+    
+    \item If the data set is represented by a table, and each row 
+    is an observation, the columns correspond to
+    \begin{enumerate}
+    \item a random variable
+    \item an event
+    \item a probability
+    \item an expectation
+    \end{enumerate}
+    
+    \item 
+    Assume that the data set is such that is row is an observation, and $X$ is a column. 
+    Suppose that $X$ is a column of a data set, whose rows are observations. The event $X \le 10$ is 
+    \begin{enumerate}
+    \item collection of rows where $X \le 10$
+    \item collection of rows where $X > 10$
+    \item the number of rows where $X \le 10$
+    \item the number of columns where $X > 10$
+    \end{enumerate}
+    
+    \item Two random variables $X$ and $Y$ have both zero mean and variance respectively
+    $\sigma_X^2=E[X^2]=4$ and $\sigma_Y^2=E[Y^2]=5$ and they are both Gaussian. Choose the event which is the more likely to happen:
+    \begin{enumerate}
+    \item $|X| > 0.2$
+    \item $|Y| > 0.2$
+    \end{enumerate}
+    
+    \item Suppose that the one sampled t-test with the null hypothesis 
+    that  the mean of a column 
+    $X$ is $10$ gave p-value $0.01$.
+    Can we reject the null hypothesis with a confidence level of $95\%$ ?
+    \begin{enumerate}
+    \item Yes
+    \item No
+    \end{enumerate}
+    
+    \item We fitted a linear regression $y = w_0 + w_1 x_1+w_2 x_2$ to data and the the confidence interval for $w_2$ is $[-1,1]$ with probability $98\%$. Can we reject the null hypothesis that the true $w_2=0$.
+    \begin{enumerate}
+    \item Yes
+    \item No
+    \end{enumerate}
+    
+    \item We applied two linear regression models to two different but identically distributed data sets
+          $D_1$ and $D_2$ 
+          and computed the the square of the prediction error $E_1$ and $E_2$. We checked with two sampled t-test if $E_1$ and $E_2$
+          have the same mean. The p-value was $0.01$.
+          Can we say that the two models have the same performance with $90\%$ of confidence level ?
+          \begin{enumerate}
+          \item Yes
+          \item No
+          \end{enumerate}
+
+    \item A discrete random variable can take:
+    \begin{enumerate}
+        \item Any real number value
+        \item Only finite values (e.g., 0, 1, 2, 3, ...)
+        \item Only negative values
+        \item Continuous values within an interval
+    \end{enumerate}
+
+    \item The Central Limit Theorem implies that:
+    \begin{enumerate}
+        \item Individual observations are normally distributed
+        \item The sample mean is approximately normal for large samples, regardless of the original distribution
+        \item Variance increases with sample size
+        \item All business data follows a normal distribution
+    \end{enumerate}
+
+    \item Why can't we use linear regression directly for binary classification problems?
+    \begin{enumerate}
+        \item Linear regression is too slow
+        \item Predictions may fall outside the [0, 1] range
+        \item Linear regression requires more data
+        \item Linear regression cannot handle multiple variables
+    \end{enumerate}
+
+    \item In gradient descent, the learning rate controls:
+    \begin{enumerate}
+        \item The direction of parameter updates
+        \item The size of each step toward the minimum
+        \item The number of iterations
+        \item The final value of the loss function
+    \end{enumerate}
+\end{enumerate}
+
+\end{document}
