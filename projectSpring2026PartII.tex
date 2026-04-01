@@ -1,0 +1,56 @@
+\documentclass{article}
+\usepackage{listings}
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+%\PassOptionsToPackage{hyphens}{url}
+\usepackage{hyperref}
+\usepackage{xurl}
+
+
+\title{Individual project Machine Learning for Business: Part II}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\textbf{Deadline:} 15/04/2026, 23:59. Submit your \texttt{*.py} or \texttt{*.ipynb} files and a PDF with answers via the K2 course portal. Use of generative AI is not allowed.
+
+\section*{Project Description}
+
+Predict house prices in different communities based on air pollution level (nitrogen oxide concentration), distance from employment centers, student-teacher ratio, average number of rooms, and crime rate.
+
+\subsection*{Variables}
+\begin{itemize}
+  \item \textbf{price:} median housing price
+  \item \textbf{crime:} crimes committed per capita
+  \item \textbf{nox:} nitrogen oxide, parts per 100 million
+  \item \textbf{rooms:} average number of rooms per house
+  \item \textbf{dist:} weighted distance to 5 employment centers
+  \item \textbf{stratio:} average student-teacher ratio
+  \item \textbf{lprice:} $\log(\text{price})$
+  \item \textbf{lnox:} $\log(\text{nox})$
+\end{itemize}
+
+Data file: \lstinline|hprice2_merged.csv|
+
+\subsection*{Tasks}
+
+\begin{enumerate}
+  
+  \item \textbf{Step 1:} Fit decision trees and neural networks using subsets of $\{lnox, dist, rooms, stratio, crime\}$ to predict $lprice$. Use 80/10/10 train/validation/test split. Explore different architectures and variable selections. Select the best model from each type using the test set. Evaluate with $R^2$ and MSE (mean squared error).
+
+  \item \textbf{Step 2:} Repeat Step 1 with normalization and min-max scaling preprocessing.
+
+  \item \textbf{Step 3:} For the best neural network and decision tree from Steps 1--2, use a t-test on independently sampled test subsets to determine if their MSE differs significantly.
+
+  \item \textbf{Step 4:} Test if train/validation/test sets have identical distributions. First test mean equality for each input variable, then test overall distribution equality.
+
+  \item \textbf{Step 5:} Compare any two models with appropriate statistical tests. Discuss whether the Step 1--2 selections are truly optimal.
+
+  \item \textbf{Step 6:} Repeat Steps 2--5 predicting $price$ instead of $lprice$.
+\end{enumerate}
+
+\end{document}
+
+\end{document}

@@ -3,7 +3,7 @@
 \beamer@sectionintoc {2}{Module 1 — Probability and Statistical Foundations}{9}{0}{2}
 \beamer@sectionintoc {3}{Hypothesis testing}{63}{0}{3}
 \beamer@sectionintoc {4}{Module 2 — Linear Models and Probabilistic Interpretation}{82}{0}{4}
-\beamer@sectionintoc {5}{Module 3 — Machine learning}{105}{0}{5}
-\beamer@sectionintoc {6}{Module 5 — Nonlinear Models and Ensembles}{108}{0}{6}
-\beamer@sectionintoc {7}{Module 6 — Machine Learning in Practice}{118}{0}{7}
-\beamer@sectionintoc {8}{Module 4 — Generalization and Model Evaluation}{129}{0}{8}
+\beamer@sectionintoc {5}{Module 3 — Machine learning}{106}{0}{5}
+\beamer@sectionintoc {6}{Module 5 — Nonlinear Models and Ensembles}{109}{0}{6}
+\beamer@sectionintoc {7}{Module 6 — Machine Learning in Practice}{119}{0}{7}
+\beamer@sectionintoc {8}{Module 4 — Generalization and Model Evaluation}{130}{0}{8}

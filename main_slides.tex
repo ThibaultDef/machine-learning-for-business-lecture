@@ -2721,16 +2721,23 @@ print(model.summary())  # Print the summary of the regression results
 
  \medskip
 
- $L_1(w_1)$ on test set 1 and $L_2(w_2)$ on test set 2
+ Performance $L_1(w_1)$ on test set $\{(x_{i,1}, y_{i,1})\}_{i=1}^{n_1}$ and $L_2(w_2)$ on test set $\{(x_{i,2}, y_{i,2})\}_{i=1}^{n_2}$
+
+ \medskip
+
+ The test sets are sampled independently. 
 
 \textbf{Question:}  
  Are they the same ?
 
+\end{frame}
+\begin{frame}
 \textbf{Approach:}
 \begin{enumerate}
     \item For each model $j$, compute prediction errors $e_{i,j} = y_{i,j} - f_{w_j}(x_{i,j})$ on its test set.
     \item Compute losses: $s_{i,j} = (y_{i,j}, f_{w_j}(x_{i,j}))^2$.
-    \item Compare the means $L_1(w_1)=\frac{1}{n_1} \sum_{i=1}^{n_1} s_{i,1}$ and $L_2(w_2)=\frac{1}{n_2} \sum_{i=1}^{n_2} s_{i,2}$ using a two-sample t-test:
+    \item Compare the means %$L_1(w_1)=\frac{1}{n_1} \sum_{i=1}^{n_1} s_{i,1}$ and $L_2(w_2)=\frac{1}{n_2} \sum_{i=1}^{n_2} s_{i,2}$ 
+    of the data sets $\{s_{i,1}\}_{i=1}^{n_1}$ and $\{s_{i,2}\}_{i=1}^{n_2}$ using a two-sample t-test:
     \[
     t = \frac{L_1(w_1) - L_2(w_2)}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}
     \]
@@ -3347,6 +3354,9 @@ Better features $\rightarrow$ Better models
     \[
     x' = \frac{x - \mu}{\sigma}
     \]
+
+    \item Min-Max scaling
+    \[ x' = \frac{x - \min(x)}{\max(x) - \min(x)} \]
 
     \item Log-transform for skewed variables
 

@@ -1,42 +1,21 @@
-Number of hours: 12 hours, lectures + exercise classes
-Evaluation: final group project. 
 
-Prerequisites:
-The prerequisite for this course is familiarity with basics of Python and the libraries NumPy, Scikit, 
-Pandas. The necessary background knowledge is completely covered by the courses Programming in Python I and Programming in Python II scheduled in the Fall.
+A l’issue de ce cours, les participants auront développé 
+leur capacité à : 
+•	Connaître les fondamentaux du Machine Learning
+•	Connaître les différents types d'algorithmes de Machine Learning
+•	Connaître les principale mesures de performance des algorithmes de Machine Learning
+•	Comprendre les concepts principaux autour du Machine Learning
+•	Comprendre du code écrit avec la librairie Scikit-Learn
 
-Course description:
-In this course we will cover the basics of statistics and machine learning. The goal is to give the students the necessary tools to understand what machine learning algorithms can achieve and what their limitations are.  In particular, the students will learn how to evaluate and interpret models produced by various machine learning algorithms, based on examples with real data sets.
 
-Topics covered in the course:
-In this course, the following topics will be covered:
-  -- Basic notions of statistics (probability, histograms, mean, variance, etc.)
-  -- Basic statistical/machine learning models: linear regressions
-  -- Evaluating regression models: R^2 score, co-linearity, hypothesis testing for regression 
-     coefficients
-  -- Time-series prediction using regression.
-  -- Standard machine learning models: neural networks, decision trees, etc.
 
-Plan of the course:
---  Basic notions of statistics (2h)
-      -- theory (1h)
-      -- exercises on data sets (1h)
- -- Basic statistical/machine learning models: linear regressions (2h)
-     -- theory (1h)
-     -- computer exercises with data sets (1h)
- -- Evaluating regression models, hypothesis testing: (2h)
-       -- theory (1h)
-       -- computer exercises with data sets (1h)
- -- Time-series prediction using regression (1.5h) 
-     -- theory (0.5h)
-     -- computer exercises with data sets (1 h)
- -- Standard machine learning models: neural networks, decision trees, etc (2.5h)
-     -- theory (1h)
-     -- computer exercises with data sets (1.5h)
-  -- Case-study, Q & A session (2h)
-     The students will do a case-study using real data, they can also ask questions regarding the 
-     course. No new concepts will be introduced. 
- 
+Les participants développeront une compréhension solide des fondamentaux du Machine Learning et apprendront à évaluer rigoureusement les modèles ML.
 
-Knowledge and skills acquired:
-The students will be able to build basic machine learning models, interpret their performance, and compare various machine learning models. The student will also learn  to communicate efficiently with data scientists, formulate clear tasks for data scientists and to interpret the models produced by data scientists. 
+Ce cours combine théorie et pratique en utilisant les bibliothèques statistiques et de machine learning Python (notamment Scikit-Learn) sur des ensembles de données réels.
+
+Sujets couverts :
+- Fondamentaux des probabilités et statistiques appliqués à l'apprentissage statistique
+- Algorithmes d'apprentissage supervisé et non supervisé
+- Fondamentaux de la régression et classification
+- Évaluation de performance et validation de modèle statistiquement rigoureuses
+

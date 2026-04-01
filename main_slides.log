@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2026.3.26)  31 MAR 2026 08:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2026.3.26)  31 MAR 2026 17:24
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1331,7 +1331,7 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
 ] [21
 
 ]
-<integral.jpeg, id=184, 803.0pt x 611.28375pt>
+<integral.jpeg, id=168, 803.0pt x 611.28375pt>
 File: integral.jpeg Graphic file (type jpg)
 <use integral.jpeg>
 Package pdftex.def Info: integral.jpeg  used on input line 545.
@@ -1343,7 +1343,7 @@ Package pdftex.def Info: integral.jpeg  used on input line 545.
 ] [24
 
 ]
-<figures/module_1/purchase_distribution_figure.png, id=203, 462.528pt x 346.896
+<figures/module_1/purchase_distribution_figure.png, id=187, 462.528pt x 346.896
 pt>
 File: figures/module_1/purchase_distribution_figure.png Graphic file (type png)
 
@@ -1358,7 +1358,7 @@ d on input line 599.
 ] [27
 
 ]
-<figures/module_1/delivery_time_figure.png, id=223, 462.528pt x 346.896pt>
+<figures/module_1/delivery_time_figure.png, id=207, 462.528pt x 346.896pt>
 File: figures/module_1/delivery_time_figure.png Graphic file (type png)
 <use figures/module_1/delivery_time_figure.png>
 Package pdftex.def Info: figures/module_1/delivery_time_figure.png  used on inp
@@ -1401,7 +1401,7 @@ Overfull \vbox (79.20848pt too high) detected at line 978
 [35
 
 ]
-<Figure_6V.pdf, id=269, 695.96008pt x 358.4592pt>
+<Figure_6V.pdf, id=253, 695.96008pt x 358.4592pt>
 File: Figure_6V.pdf Graphic file (type pdf)
 <use Figure_6V.pdf>
 Package pdftex.def Info: Figure_6V.pdf  used on input line 991.
@@ -1417,7 +1417,7 @@ Package pdftex.def Info: Figure_6V.pdf  used on input line 991.
 ] [40
 
 ]
-<figures/module_1/normal_distribution_figure.png, id=342, 462.528pt x 346.896pt
+<figures/module_1/normal_distribution_figure.png, id=325, 462.528pt x 346.896pt
 >
 File: figures/module_1/normal_distribution_figure.png Graphic file (type png)
 <use figures/module_1/normal_distribution_figure.png>
@@ -1598,7 +1598,7 @@ E8251982.pygtex)) [81
 ] [82
 
 ]
-<LRSingle1.pdf, id=562, 722.7pt x 361.35pt>
+<LRSingle1.pdf, id=546, 722.7pt x 361.35pt>
 File: LRSingle1.pdf Graphic file (type pdf)
 <use LRSingle1.pdf>
 Package pdftex.def Info: LRSingle1.pdf  used on input line 2211.
@@ -1625,7 +1625,7 @@ File: LRSingle1.pdf Graphic file (type pdf)
 <use LRSingle1.pdf>
 Package pdftex.def Info: LRSingle1.pdf  used on input line 2252.
 (pdftex.def)             Requested size: 144.53743pt x 72.2687pt.
-<LRSingle23.pdf, id=619, 722.7pt x 361.35pt>
+<LRSingle23.pdf, id=603, 722.7pt x 361.35pt>
 File: LRSingle23.pdf Graphic file (type pdf)
 <use LRSingle23.pdf>
 Package pdftex.def Info: LRSingle23.pdf  used on input line 2252.
@@ -1711,6 +1711,8 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
 
 ] [103
 
+] [104
+
 ]
 \openout4 = `main_slides.vrb'.
 
@@ -1719,9 +1721,7 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
 
 
 (./_minted-main_slides/2DD4B7D4411AD1BA059D86FAEE38811EFF18CF5B751027030F12BC45
-E8251982.pygtex)) [104
-
-] [105
+E8251982.pygtex)) [105
 
 ] [106
 
@@ -1737,11 +1737,13 @@ E8251982.pygtex)) [104
 
 ] [112
 
+] [113
+
 ]
 \openout4 = `main_slides.vrb'.
 
 
-(./main_slides.vrb) [113
+(./main_slides.vrb) [114
 
 ]
 \openout4 = `main_slides.vrb'.
@@ -1751,7 +1753,7 @@ Overfull \hbox (18.8703pt too wide) in paragraph at lines 30--31
  [] 
  []
 
-) [114
+) [115
 
 ]
 \openout4 = `main_slides.vrb'.
@@ -1779,28 +1781,26 @@ Overfull \hbox (9.47585pt too wide) in paragraph at lines 56--57
  [] 
  []
 
-) [115
+) [116
 
 ]
 \openout4 = `main_slides.vrb'.
 
  (./main_slides.vrb
-<index.jpeg, id=829, 288.07625pt x 176.66pt>
+<index.jpeg, id=820, 288.07625pt x 176.66pt>
 File: index.jpeg Graphic file (type jpg)
 <use index.jpeg>
 Package pdftex.def Info: index.jpeg  used on input line 6.
 (pdftex.def)             Requested size: 201.65198pt x 123.66115pt.
-) [116
+) [117
 
  <./index.jpeg>]
 \openout4 = `main_slides.vrb'.
 
- (./main_slides.vrb) [117
+ (./main_slides.vrb) [118
 
 ]
-[118
-
-] [119
+[119
 
 ] [120
 
@@ -1822,10 +1822,10 @@ Package pdftex.def Info: index.jpeg  used on input line 6.
 
 ] [129
 
-]
-[130
+] [130
 
-] [131
+]
+[131
 
 ] [132
 
@@ -1836,6 +1836,8 @@ Package pdftex.def Info: index.jpeg  used on input line 6.
 ] [135
 
 ] [136
+
+] [137
 
 ]
 \tf@nav=\write8
@@ -1848,16 +1850,22 @@ Package pdftex.def Info: index.jpeg  used on input line 6.
 \openout10 = `main_slides.snm'.
 
  (./main_slides.aux)
-Package rerunfilecheck Info: File `main_slides.out' has not changed.
-(rerunfilecheck)             Checksum: A2EA61166652565C67767F48EBE89CA4;621.
+
+Package rerunfilecheck Warning: File `main_slides.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main_slides.out':
+(rerunfilecheck)             Before: 6B2B18D7DF98F3FEEE90C396E4E23FED;316
+(rerunfilecheck)             After:  A2EA61166652565C67767F48EBE89CA4;621.
 runsystem(rm main_slides.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 28348 strings out of 479304
- 546701 string characters out of 5869779
- 910622 words of memory out of 5000000
- 44513 multiletter control sequences out of 15000+600000
+ 28346 strings out of 479304
+ 546674 string characters out of 5869779
+ 909940 words of memory out of 5000000
+ 44509 multiletter control sequences out of 15000+600000
  434700 words of font info for 130 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  131i,23n,132p,430b,1224s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1881,10 +1889,10 @@ b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr
 texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main_slides.pdf (136 pages, 479278 bytes).
+Output written on main_slides.pdf (137 pages, 479388 bytes).
 PDF statistics:
- 1074 PDF objects out of 1200 (max. 8388607)
- 781 compressed objects within 8 object streams
- 284 named destinations out of 1000 (max. 500000)
- 151 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1067 PDF objects out of 1200 (max. 8388607)
+ 773 compressed objects within 8 object streams
+ 286 named destinations out of 1000 (max. 500000)
+ 119 words of extra memory for PDF output out of 10000 (max. 10000000)
 
